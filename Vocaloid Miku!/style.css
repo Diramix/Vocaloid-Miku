@@ -1,0 +1,719 @@
+/*Images for Legacy patcher Support*/
+/*--------------------------------------------*/
+.FullscreenPlayerDesktop_poster__rU9SJ:after {
+	background-image: url("http://127.0.0.1:19582/assets/fullscreen-miku-XD.png");
+}
+
+.FullscreenPlayerDesktop_poster__rU9SJ:before  {
+	content: url("http://127.0.0.1:19582/assets/Kagamine-Rin.png");
+}
+
+.VibeBlock_root__z7LtR {
+	background-image: url("http://127.0.0.1:19582/assets/My-vibe.png");
+}
+
+.SyncLyrics_root__6KZg4:before {
+	background-image: url("http://127.0.0.1:19582/assets/Dilamix.png");
+}
+
+.SyncLyrics_root__6KZg4 {
+	background-image: url("http://127.0.0.1:19582/assets/fullscreen-lyrics.jpg");
+}
+
+.LikesAndHistory_carousel__579RD:after {
+	background-image: url("http://127.0.0.1:19582/assets/Main-Page-Miku_End.png");
+}
+
+.PlayerBar_root__cXUnU:before {
+	content: url("http://127.0.0.1:19582/assets/miku-run.png");
+}
+/*--------------------------------------------*/
+
+/*БАЗА*/
+/*--------------------------------------------*/
+body {
+    background-color: #000000;
+    min-width: 1px;
+    min-height: 1px;
+}
+
+:root {
+	--main-color: #86cecb;
+	--basic-color: #137a7f;
+	--hatsune-light: #bec8d1;
+	--font-color: #373b3e;
+	--miku-color: #e12885;
+}
+
+.ym-light-theme {
+    --ym-background-color-primary-enabled-content: var(--main-color);
+    --ym-background-color-primary-enabled-basic: var(--font-color);
+    --ym-background-color-primary-enabled-player: #121212;
+    --ym-controls-color-primary-default-hovered: #1FDE64;
+    --ym-controls-color-primary-default-enabled: #1FDE64;
+    --ym-controls-color-primary-outline-selected_stroke: #1FDE64;
+}
+
+.l66GiFKS1Ux_BNd603Cu {
+	background: #0005;
+}
+/*--------------------------------------------*/
+
+/*Тайтл бар*/
+.TitleBar_root__QjdOZ {
+	filter: invert(100%);
+}
+
+.TitleBar_root__QjdOZ:after {
+	position: fixed;
+	visibility: visible;
+	content: "Vocaloid Miku!";
+	font-family: "Vocaloid", sans-serif;
+	font-size: 16px;
+    font-weight: 1000;
+    left: 50%;
+    margin-left: -66px;
+    margin-top: 10px;
+    color: #793134;
+    z-index: 499;
+}
+
+/*Vibe Settings*/
+/*--------------------------------------------*/
+.VibeSettingsBlock_root__t8Hp_ {
+	background: var(--main-color);
+	box-shadow: 0 0 10px 5px var(--basic-color);
+}
+
+.VibeContext_context__Z_82k,
+.VibeContext_pinButton__b6SNF {
+	background: var(--main-color);
+}
+
+.VibeContext_pinButton__b6SNF:hover {
+	background: var(--main-color);
+	filter: brightness(1.1);
+}
+
+.VibeSettingsBlock_moodEnergy__OJ0wF {
+	background: var(--basic-color);
+	border-radius: 15px;
+	padding: 23px;
+	width: 100%;
+}
+
+.RestrictionButton_diversityButton__uclSi,
+.RestrictionButton_textButton__HC_AE {
+	background: var(--basic-color);
+}
+
+.RestrictionButton_diversityButton__uclSi:hover,
+.RestrictionButton_textButton__HC_AE:hover {
+	background: var(--basic-color);
+	filter: brightness(1.1);
+}
+/*--------------------------------------------*/
+
+/*Бэйс лайн нотификейшон*/
+/*--------------------------------------------*/
+.ReleaseNotesModal_root__RSw1p {
+	background: var(--main-color);
+	box-shadow: 0 0 10px 5px var(--basic-color);
+}
+
+.BaseNotification_cover__vpBEb {
+	background: var(--basic-color);
+	color: #fff;
+}
+
+.NotificationChangeQuality_icon__bOfQO {
+	color: var(--hatsune-light);
+}
+
+.BaseNotification_root__FwcCd {
+	background: var(--main-color);
+}
+/*--------------------------------------------*/
+
+/*Update нотификейшон*/
+.NotificationUpdate_important___0WHj {
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	max-width: 280px;
+	min-width: 280px;
+	margin-left: -135px;
+}
+
+/*Релиз нотес*/
+/*--------------------------------------------*/
+.RestrictionButton_title__UZn0O {
+	color: var(--hatsune-light);
+}
+
+.ReleaseNotesModal_item___CYml,
+.ReleaseNotesModal_paragraph___laDJ,
+.ReleaseNotesModal_date__s3_ux {
+	color: var(--font-color);
+}
+
+body > div > p {
+	visibility: hidden;
+}
+
+.TitleBar_button__9MptL {
+	z-index: 9999;
+}
+
+.ChangeVolume_root__HDxtA {
+    height: 33px;
+    margin-left: 6px;
+}
+
+body > div > section > div > button {
+    margin-left: 7px;
+    right: 5px;
+}
+/*--------------------------------------------*/
+
+/*Плеер*/
+/*--------------------------------------------*/
+section.PlayerBar_root__cXUnU {
+	background: var(--main-color);
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 90px;
+	z-index: 410;
+	border-radius: 0;
+	border-width: 0;
+}
+
+.PlayerBarDesktop_meta__6sm58 {
+    display: block;
+}
+
+.PlayerBarDesktop_meta__6sm58 span{
+    display: block;
+    width: fit-content;
+}
+
+.PlayerBar_root__cXUnU:before {
+	position: fixed;
+	text-align: center;
+	right: 20%;
+	width: 10%;
+	bottom: -2px;
+}
+
+.PlayerBarDesktop_info__56v53,
+.PlayerBarDesktop_sonata__sJHY_,
+.PlayerBarDesktop_meta__6sm58 {
+	background: var(--basic-color);
+	padding: 7px;
+	border-radius: 10px;
+	height: 76px;
+}
+
+/*--------------------------------------------*/
+
+/*Контекстное меню*/
+/*--------------------------------------------*/
+.uBAHj5MFmkw_QyxKuhdi {
+	z-index: 402;
+	background: var(--main-color);
+	z-index: 99999;
+	border-width: 3px;
+	border-color: var(--basic-color);
+	border-style: solid;
+	margin-bottom: 20px;
+}
+
+.cM0M40YHieFFCTYRgOZa {
+	color: var(--font-color);
+}
+/*--------------------------------------------*/
+
+/*Табы*/
+/*--------------------------------------------*/
+.Skeleton_tab__zvQx2 {
+	background: var(--main-color);
+	z-index: 1;
+	bottom: 0px;
+	position: static;
+}
+
+.Skeleton_tab__zvQx2:hover {
+	position: relative;
+	background: var(--main-color);
+	z-index: 1;
+	bottom: 0px;
+	filter: brightness(1.1);
+}
+
+.MusicHistoryPage_tab_selected__nmn8P {
+	background: var(--main-color);
+	filter: brightness(1.1);
+}
+
+.MusicHistoryPage_tab_selected__nmn8P:hover {
+	background: var(--main-color);
+	filter: brightness(1.15);
+}
+
+.Tab_tab_withCovers__dJzMH {
+	min-height: 63px;
+	max-height: 63px;
+}
+
+.SearchPage_filter__5xzTL {
+	background: var(--basic-color);
+	border-color: var(--basic-color);
+}
+
+.SearchPage_filter__5xzTL:hover {
+	background: var(--basic-color);
+	border-color: var(--basic-color);
+	filter: brightness(1.1);
+}
+
+.SearchPage_filter_selected__FOfyJ {
+	background: var(--main-color);
+	border-color: var(--main-color);
+	filter: brightness(1.1);
+}
+
+.SearchPage_filter_selected__FOfyJ:hover {
+	background: var(--main-color);
+	border-color: var(--main-color);
+	filter: brightness(1.15);
+}
+/*--------------------------------------------*/
+
+/*Дефолт Лойаут*/
+/*--------------------------------------------*/
+.DefaultLayout_content__md70Z {
+	position: fixed;
+	margin-top: 10px;
+	margin-right: 10px;
+	margin-bottom: 100px;
+	border-radius: 10px;
+	border-width: 0;
+	width: -webkit-fill-available;
+	height: -webkit-fill-available;
+	margin-left: -3px;
+}
+/*--------------------------------------------*/
+
+/*Навбар*/
+/*--------------------------------------------*/
+.NavbarDesktop_logo__Z4jGx {
+	position: static;
+	margin-top: 26px;
+	margin-bottom: 8px;
+	background: var(--main-color);
+	border-radius: 10px 10px 0px 0px;
+}
+
+.xfFtKQpgAYvC2jI1tBtS {
+	background: var(--main-color);
+	margin-top: -8px;
+	bottom: 90px;
+	border-radius: 0px;
+}
+
+.NavbarDesktop_pinsList___jXIM {
+	background: var(--main-color);
+	margin-top: -8px;
+	border-radius: 0px 0px 10px 10px;
+}
+/*--------------------------------------------*/
+
+.UserProfile_root__vFuOj {
+	background: var(--main-color);
+	margin-left: -19px;
+	margin-bottom: -25px;
+	padding: 10px;
+	border-radius: 0px 0px 10px 10px;
+	display: none;
+}
+
+/*Background*/
+/*--------------------------------------------*/
+.InnerHeader_root_showColor__wMtVK {
+	background: 0;
+}
+/*--------------------------------------------*/
+
+/*Fullscreen Player Desktop*/
+/*--------------------------------------------*/
+.FullscreenPlayerDesktop_poster__rU9SJ:after { 
+	visibility: visible;
+	position: fixed;
+	content: "";
+	bottom: 75px;
+	width: 100%;
+	height: 80%;
+	left: 17.2%;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: bottom;
+}
+
+.FullscreenPlayerDesktop_poster__rU9SJ:before { 
+	visibility: visible;
+	position: fixed;
+	left: 122px;
+	bottom: 432px;
+	z-index: 9999;
+}
+
+.FullscreenPlayerDesktopPoster_root__d__YD {
+	visibility: hidden;
+}
+
+.FullscreenPlayerDesktopPoster_cover__CDmhM {
+	visibility: visible;
+	position: relative;
+	display: inline-block;
+    width: 300px;
+    height: 300px;
+    position: fixed;
+    bottom: 125px;
+    left: 37px;
+    min-height: 0;
+    border-color: var(--main-color);
+    border-style: solid;
+    border-width: 7px;
+    border-radius: 50px;
+    transform: rotate(30deg);
+    box-shadow: 15px 30px 60px -10px black;
+    z-index: 410;
+}
+
+@media( min-width: 760px )
+{
+    .FullscreenPoster_cover__WWgNX {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media ( min-width: 1090px )
+{
+    .FullscreenPoster_cover__WWgNX {
+        width: 300px;
+        height: 300px;
+    }
+}
+/*--------------------------------------------*/
+
+/*HQ+ табличка настроек*/
+/*--------------------------------------------*/
+.QualitySettingsContextMenu_root__fW5GK {
+	background: var(--main-color);
+	border-width: 5px;
+	border-color: var(--basic-color);
+	z-index: 9999;
+}
+/*--------------------------------------------*/
+
+/*play button*/
+/*--------------------------------------------*/
+[data-test-id="PLAY_BUTTON_NOT_PLAYING"] {
+	background: var(--miku-color);
+}
+
+[data-test-id="PLAY_BUTTON_NOT_PLAYING"]:hover {
+	background: var(--miku-color);
+	filter: brightness(1.1);
+}
+
+[data-test-id="PLAY_BUTTON_PLAYING"] {
+	background: var(--main-color);
+	filter: brightness(1.1);
+}
+
+[data-test-id="PLAY_BUTTON_PLAYING"]:hover {
+	background: var(--main-color);
+	filter: brightness(1.2);
+}
+
+.SonataControlsDesktop_sonataButton__FTykq {
+	background: 0;
+}
+
+.SonataControlsDesktop_sonataButton__FTykq:hover {
+	background: 0;
+}
+/*--------------------------------------------*/
+
+/*Playlist Page*/
+/*
+.PageHeaderPlaylist_controls__uSwwK {
+	background: var(--font-color);
+	padding: 10px;
+	border-radius: 10px;
+}
+*/
+
+.PageHeaderPlaylist_pinControl__hJOde,
+.PageHeaderPlaylist_menuControl__RGH0G,
+.PageHeaderPlaylist_likeControl__bCypn {
+	background: var(--main-color);
+	filter: brightness(1.1);
+}
+
+.PageHeaderPlaylist_pinControl__hJOde:hover,
+.PageHeaderPlaylist_menuControl__RGH0G:hover,
+.PageHeaderPlaylist_likeControl__bCypn:hover {
+	background: var(--main-color);
+	filter: brightness(1.15);
+}
+/*--------------------------------------------*/
+
+/*Vibe - Вайб*/
+/*--------------------------------------------*/
+.VibeBlock_root__z7LtR {
+	background-size: cover;
+	background-position: center;
+	background-color: var(--basic-color);
+	margin-top: 20px;
+	margin-left: 20px;
+	border-radius: 10px;
+}
+
+[data-test-id="VIBE_SETTINGS_BUTTON"],
+[data-test-id="MY_VIBE_PLAY_BUTTON_PLAYING"]{
+	background: var(--main-color);
+	color: #000;
+}
+
+[data-test-id="VIBE_SETTINGS_BUTTON"]:hover,
+[data-test-id="MY_VIBE_PLAY_BUTTON_PLAYING"]:hover {
+	background: var(--main-color);
+	color: #000;
+	filter: brightness(1.1);
+}
+
+[data-test-id="MY_VIBE_PLAY_BUTTON_NOT_PLAYING"] {
+	background: var(--miku-color);
+	color: #000;
+}
+
+[data-test-id="MY_VIBE_PLAY_BUTTON_NOT_PLAYING"]:hover {
+	background: var(--miku-color);
+	color: #000;
+	filter: brightness(1.1);
+}
+/*--------------------------------------------*/
+
+/*Синк лирика*/
+/*--------------------------------------------*/
+.SyncLyrics_content__lbkWP {
+	width: 63%;
+	min-width: 700px;
+	height: 77%;
+	bottom: 17px;
+	padding: 10px;
+	border-radius: 40px;
+	border-style: solid;
+	border-color: var(--main-color);
+	border-width: 8px;
+	box-shadow: 0 25px 40px 20px #0009;
+	backdrop-filter: blur(20px);
+	background: #0009;
+	margin-bottom: 12px;
+}
+
+.SyncLyrics_root__6KZg4 {
+	height: 100%;
+}
+
+.SyncLyrics_root__6KZg4:before {
+	visibility: visible;
+	content: "";
+	background-repeat: no-repeat;
+	position: fixed;
+	z-index: 9999;
+	background-size: contain;
+	background-position: center;
+	top: -1%;
+	left: 50%;
+	margin-left: 5%;
+	width: 30%;
+	min-width: 250px;
+	height: 20%;
+}
+
+.SyncLyricsLine_root__r62BN {
+	color: #bec8d1;
+	margin-bottom: -0px;
+}
+
+.qoEgTMlU0VM3i4p8LeMG,
+.AccK_iF55jra4_OlFloI,
+body > div > aside > div > a > div > div > svg > use {
+	color: var(--font-color);
+}
+
+.SyncLyricsCard_root__92qn_,
+.FullscreenPlayerDesktop_poster_withSyncLyricsAnimation__bPO0o  {
+	display: none;
+}
+
+.SyncLyrics_root__6KZg4 {
+	background-position: bottom;
+	background-size: cover;
+	margin-top: -13px;
+	width: 100.1%;
+}
+
+.SyncLyrics_root__6KZg4 {
+	z-index: 999999;
+}
+/*--------------------------------------------*/
+
+/*DevPanel*/
+/*--------------------------------------------*/
+/*
+body > div > div > button {
+	background: 0;
+	backdrop-filter: blur(0px);
+	z-index: 99999;
+	right: 140%;
+	width: 95px;
+	height: 80px;
+	bottom: 0px;
+}
+*/
+
+.DevPanel_root__Gu7qn:before {
+	position: fixed;
+	visibility: visible;
+	content: "Vocaloid Miku!";
+	font-family: "Vocaloid", sans-serif;
+	font-size: 16px;
+    font-weight: 1000;
+    text-align: center;
+    top: 9px;
+    left: 50%;
+    margin-left: -66px;
+    color: var(--miku-color);
+    z-index: 500;
+}
+
+.DevPanel_panel__LnoO2 {
+	background: var(--main-color);
+	bottom: 85px;
+	right: -5px;
+	border-radius: 7px 0px 0px 0px;
+	border-width: 5px 0px 0px 5px;
+	border-color: var(--basic-color);
+}
+
+.DevPanel_block__SJ_76 {
+	background: var(--basic-color);
+	color: var(--main-color);
+}
+
+.DevPanel_block__SJ_76:hover {
+	background: var(--basic-color);
+	color: #fff;
+}
+/*--------------------------------------------*/
+
+/*SPEED_BUTTON*/
+/*--------------------------------------------*/
+[data-test-id="SPEED_BUTTON"] {
+	position: fixed;
+	background: var(--main-color);
+	border-color: var(--basic-color);
+	border-width: 3px 0px 0px 3px;
+	border-style: solid;
+	bottom: 90px;
+	right: 0;
+	color: var(--font-color);
+	text-align: center;
+	border-radius: 5px 0px 0px 0px;
+}
+/*--------------------------------------------*/
+
+/*Miku-Chan!*/
+/*--------------------------------------------*/
+.LikesAndHistory_carousel__579RD:after {
+	content: "";
+	position: absolute;
+	width: 25%;
+	min-height: 13%;
+	background-position: bottom;
+	background-size: contain;
+    bottom: -30px;
+    right: 0px;
+    height: 101px;
+    z-index: 2;
+}
+/*--------------------------------------------*/
+
+/*Beta button*/
+/*--------------------------------------------*/
+.MainPage_beta__y32vb {
+	background: var(--main-color);
+	border-color: var(--basic-color);
+	border-width: 3px;
+	border-style: solid;
+	border-radius: 10px;
+}
+
+.MainPage_beta__y32vb:hover {
+	background: var(--main-color);
+	border-color: var(--basic-color);
+	border-width: 3px;
+	border-style: solid;
+	filter: brightness(1.1);
+	border-radius: 10px;
+}
+/*--------------------------------------------*/
+
+/*Vibe and neuromusic buttons*/
+/*--------------------------------------------*/
+.VibeButton_button__tXFAm,
+[data-test-id="NEW_RELEASE_CARD"],
+.NeuromusicButton_button__kT4GN,
+.MixCard_root__9tPLV {
+	border-radius: 10px;
+	background: var(--basic-color);
+	border-color: var(--basic-color);
+}
+
+.VibeButton_button__tXFAm:hover,
+[data-test-id="NEW_RELEASE_CARD"]:hover,
+.NeuromusicButton_button__kT4GN:hover,
+.MixCard_root__9tPLV:hover {
+	border-radius: 10px;
+	background: var(--basic-color);
+	border-color: var(--basic-color);
+	filter: brightness(1.2);
+}
+
+.MixCard_title__nhghp {
+	color: var(--hatsune-light);
+}
+/*--------------------------------------------*/
+
+/*Only display:  none;*/
+/*--------------------------------------------*/
+.VibeAnimation_root_visible__S7kXl,
+.NavbarDesktop_pinsList___jXIM:before,
+.NavbarDesktop_pinsList___jXIM:after,
+.SyncLyrics_content__lbkWP:before,
+.SyncLyrics_content__lbkWP:after,
+.ArtistPage_averageColorBackground__wXTSY,
+.PlaylistPage_averageColorBackground__3wEkw,
+.AlbumPage_averageColorBackground__PmVaF,
+.VibeButton_image__GOwKJ,
+.FullscreenPlayerDesktop_info__W28Uk {
+	display: none;
+}
+/*--------------------------------------------*/

@@ -1,0 +1,9 @@
+{
+  "name": "Vocaloid Miku!",
+  "image": "url",
+  "author": "Diramix",
+  "description": "Miku in Museland",
+  "version": "1.0.0",
+  "css": "style.css",
+  "script": "script.js"
+}
