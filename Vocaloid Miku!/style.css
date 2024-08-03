@@ -59,6 +59,15 @@ body {
 }
 /*--------------------------------------------*/
 
+/*Font color*/
+/*--------------------------------------------*/
+.BlockHeader_heading__4iqvS,
+.nSU6fV9y80WrZEfafvww,
+.PageHeaderTitle_title__caKyB {
+	color: var(--font-color);
+}
+/*--------------------------------------------*/
+
 /*Тайтл бар*/
 .TitleBar_root__QjdOZ {
 	filter: invert(100%);
@@ -327,17 +336,30 @@ section.PlayerBar_root__cXUnU {
 	background: var(--main-color);
 	margin-top: -8px;
 	border-radius: 0px 0px 10px 10px;
+	margin-bottom: 68px;
+	z-index: 10;
 }
-/*--------------------------------------------*/
 
 .UserProfile_root__vFuOj {
-	background: var(--main-color);
-	margin-left: -19px;
-	margin-bottom: -25px;
+	position: fixed;
+	margin-left: -8px;
+	bottom: 102px;
 	padding: 10px;
-	border-radius: 0px 0px 10px 10px;
-	display: none;
+	z-index: 9;
+	border-radius: 10px;
+	height: 80px;
 }
+
+.UserProfile_userName__PTRuJ {
+	color: #fff;
+}
+
+.UserProfile_dialog_desktop__0p006 {
+	position: fixed;
+	bottom: 100px;
+	border-radius: 10px;
+}
+/*--------------------------------------------*/
 
 /*Background*/
 /*--------------------------------------------*/
@@ -699,6 +721,19 @@ body > div > div > button {
 
 .MixCard_title__nhghp {
 	color: var(--hatsune-light);
+}
+
+.VibeButton_title__sLC0I {
+	color: var(--ym-controls-color-secondary-text-enabled_variant);
+}
+/*--------------------------------------------*/
+
+/*ControlsBar*/
+/*--------------------------------------------*/
+.ControlsBar_likeIcon__mrNiz,
+.ControlsBar_item__I_p99,
+.ControlsBar_dislikeIcon__ENXh_ {
+	color: var(--basic-color);
 }
 /*--------------------------------------------*/
 
