@@ -231,11 +231,30 @@ section.PlayerBar_root__cXUnU {
 	right: 8px;
 }
 
-.PlayerBarDesktop_settingsButton__jLkVn {
+[data-test-id="SOUND_QUALITY_BUTTON"] {
 	position: fixed;
 	margin-right: 8px;
-	bottom: 41px;
+	bottom: 43px;
 	width: 38px;
+}
+
+/*Меню параметров качества звука*/
+.uBAHj5MFmkw_QyxKuhdi {
+	position: fixed;
+	height: 140px;
+	bottom: 47px;
+	right: -23px;
+	border-radius: 10px 0px 10px 0px;
+	border-width: 5px 0px 0px 5px;
+}
+
+.QualitySettingsContextMenu_root__fW5GK {
+	position: fixed;
+	height: 280px;
+	bottom: -36px;
+	right: -16px;
+	border-radius: 10px 0px 10px 0px;
+	border-width: 5px 0px 0px 5px;
 }
 /*--------------------------------------------*/
 
@@ -648,7 +667,7 @@ body > div > div > button {
 	background: var(--main-color);
 	bottom: 85px;
 	right: -5px;
-	border-radius: 7px 0px 0px 0px;
+	border-radius: 10px 0px 0px 0px;
 	border-width: 5px 0px 0px 5px;
 	border-color: var(--basic-color);
 }
