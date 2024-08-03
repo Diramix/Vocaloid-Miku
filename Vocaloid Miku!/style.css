@@ -342,7 +342,7 @@ section.PlayerBar_root__cXUnU {
 
 .UserProfile_root__vFuOj {
 	position: fixed;
-	margin-left: -8px;
+	margin-left: -9px;
 	bottom: 102px;
 	padding: 10px;
 	z-index: 9;
@@ -354,9 +354,15 @@ section.PlayerBar_root__cXUnU {
 	color: #fff;
 }
 
+.UserProfile_plusLink__NhVsU {
+	display: none;
+}
+
 .UserProfile_dialog_desktop__0p006 {
 	position: fixed;
 	bottom: 100px;
+	left: 50%;
+	margin-left: -150px;
 	border-radius: 10px;
 }
 /*--------------------------------------------*/
