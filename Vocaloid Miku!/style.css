@@ -225,6 +225,18 @@ section.PlayerBar_root__cXUnU {
 	height: 76px;
 }
 
+.PlayerBarDesktop_meta__6sm58 {
+	position: fixed;
+	width: 129px;
+	right: 8px;
+}
+
+.PlayerBarDesktop_settingsButton__jLkVn {
+	position: fixed;
+	margin-right: 8px;
+	bottom: 41px;
+	width: 38px;
+}
 /*--------------------------------------------*/
 
 /*Контекстное меню*/
