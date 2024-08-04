@@ -1,3 +1,4 @@
+//Change background image script
 setInterval(() => {
     const imgElements = document.querySelectorAll('[class*="FullscreenPlayerDesktopPoster_cover"]');
     let imgBackground = "";

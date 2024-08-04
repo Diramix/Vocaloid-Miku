@@ -239,16 +239,7 @@ section.PlayerBar_root__cXUnU {
 }
 
 /*Меню параметров качества звука*/
-.uBAHj5MFmkw_QyxKuhdi {
-	position: fixed;
-	height: 140px;
-	bottom: 47px;
-	right: -23px;
-	border-radius: 10px 0px 10px 0px;
-	border-width: 5px 0px 0px 5px;
-}
-
-.QualitySettingsContextMenu_root__fW5GK {
+body > div > main > div > div > div.QualitySettingsContextMenu_root__fW5GK {
 	position: fixed;
 	height: 280px;
 	bottom: -36px;
@@ -308,14 +299,8 @@ section.PlayerBar_root__cXUnU {
 }
 
 .SearchPage_filter__5xzTL {
-	background: var(--basic-color);
-	border-color: var(--basic-color);
-}
-
-.SearchPage_filter__5xzTL:hover {
-	background: var(--basic-color);
-	border-color: var(--basic-color);
-	filter: brightness(1.1);
+	background: 0;
+	border-width: 0;
 }
 
 .SearchPage_filter_selected__FOfyJ {
@@ -612,7 +597,7 @@ section.PlayerBar_root__cXUnU {
 }
 
 .qoEgTMlU0VM3i4p8LeMG,
-.AccK_iF55jra4_OlFloI,
+.AccK_iF55jra4_OlFloI
 body > div > aside > div > a > div > div > svg > use {
 	color: var(--font-color);
 }
@@ -734,7 +719,6 @@ body > div > div > button.qU2apWBO1yyEK0lZ3lPO:hover {
 /*Vibe and neuromusic buttons*/
 /*--------------------------------------------*/
 .VibeButton_button__tXFAm,
-[data-test-id="NEW_RELEASE_CARD"],
 .NeuromusicButton_button__kT4GN,
 .MixCard_root__9tPLV {
 	border-radius: 10px;
@@ -743,7 +727,6 @@ body > div > div > button.qU2apWBO1yyEK0lZ3lPO:hover {
 }
 
 .VibeButton_button__tXFAm:hover,
-[data-test-id="NEW_RELEASE_CARD"]:hover,
 .NeuromusicButton_button__kT4GN:hover,
 .MixCard_root__9tPLV:hover {
 	border-radius: 10px;
@@ -756,7 +739,8 @@ body > div > div > button.qU2apWBO1yyEK0lZ3lPO:hover {
 	color: var(--hatsune-light);
 }
 
-.VibeButton_title__sLC0I {
+.VibeButton_title__sLC0I,
+.NeuromusicButton_title__mTAB8 {
 	color: var(--ym-controls-color-secondary-text-enabled_variant);
 }
 /*--------------------------------------------*/
