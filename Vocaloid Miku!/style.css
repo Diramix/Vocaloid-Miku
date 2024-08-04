@@ -69,23 +69,11 @@ body {
 /*--------------------------------------------*/
 
 /*Тайтл бар*/
+/*--------------------------------------------*/
 .TitleBar_root__QjdOZ {
 	filter: invert(100%);
 }
-
-[id="ThemeTitleText"]:after {
-	position: fixed;
-	visibility: visible;
-	content: "Vocaloid Miku!";
-	font-family: "Vocaloid", sans-serif;
-	font-size: 16px;
-    font-weight: 1000;
-    left: 50%;
-    margin-left: -66px;
-    margin-top: 10px;
-    color: var(--main-color);
-    z-index: 1;
-}
+/*--------------------------------------------*/
 
 /*Vibe Settings*/
 /*--------------------------------------------*/
@@ -403,6 +391,7 @@ body > div > main > div > div > div.QualitySettingsContextMenu_root__fW5GK {
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: bottom;
+	z-index: 411;
 }
 
 .FullscreenPlayerDesktop_poster__rU9SJ:before { 
@@ -494,6 +483,7 @@ body > div > main > div > div > div.QualitySettingsContextMenu_root__fW5GK {
 /*--------------------------------------------*/
 
 /*Playlist Page*/
+/*--------------------------------------------*/
 /*
 .PageHeaderPlaylist_controls__uSwwK {
 	background: var(--font-color);
@@ -522,7 +512,6 @@ body > div > main > div > div > div.QualitySettingsContextMenu_root__fW5GK {
 .VibeBlock_root__z7LtR {
 	background-size: cover;
 	background-position: center;
-	background-color: var(--basic-color);
 	margin-top: 20px;
 	margin-left: 20px;
 	border-radius: 10px;
@@ -580,14 +569,14 @@ body > div > main > div > div > div.QualitySettingsContextMenu_root__fW5GK {
 	content: "";
 	background-repeat: no-repeat;
 	position: fixed;
-	z-index: 9999;
+	z-index: 1;
 	background-size: contain;
 	background-position: center;
 	top: -1%;
 	left: 50%;
 	margin-left: 5%;
 	width: 30%;
-	min-width: 250px;
+	min-width: 330px;
 	height: 20%;
 }
 
@@ -597,7 +586,7 @@ body > div > main > div > div > div.QualitySettingsContextMenu_root__fW5GK {
 }
 
 .qoEgTMlU0VM3i4p8LeMG,
-.AccK_iF55jra4_OlFloI
+.AccK_iF55jra4_OlFloI,
 body > div > aside > div > a > div > div > svg > use {
 	color: var(--font-color);
 }
@@ -612,6 +601,14 @@ body > div > aside > div > a > div > div > svg > use {
 	background-size: cover;
 	margin-top: -13px;
 	width: 100.1%;
+}
+/*--------------------------------------------*/
+
+/*FULLSCREEN_PLAYER_CLOSE_BUTTON*/
+/*--------------------------------------------*/
+[data-test-id="FULLSCREEN_PLAYER_CLOSE_BUTTON"] {
+	background: #0003;
+	backdrop-filter: blur(10px);
 }
 /*--------------------------------------------*/
 
