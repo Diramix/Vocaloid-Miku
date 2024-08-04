@@ -636,17 +636,32 @@ body > div > aside > div > a > div > div > svg > use {
 
 /*DevPanel*/
 /*--------------------------------------------*/
-/*
-body > div > div > button {
-	background: 0;
+body > div > div > button.qU2apWBO1yyEK0lZ3lPO {
 	backdrop-filter: blur(0px);
 	z-index: 99999;
-	right: 140%;
-	width: 95px;
-	height: 80px;
-	bottom: 0px;
+	background: var(--miku-color);
+	border-color: var(--font-color);
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 50px;
+	width: 36px;
+	height: 36px;
+	filter: brightness(1.1);
+	color: #000;
 }
-*/
+
+body > div > div > button.qU2apWBO1yyEK0lZ3lPO:hover {
+	backdrop-filter: blur(0px);
+	z-index: 99999;
+	background: var(--miku-color);
+	border-color: var(--font-color);
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 50px;
+	width: 36px;
+	height: 36px;
+	filter: brightness(1.2);
+}
 
 .DevPanel_root__Gu7qn:before {
 	position: fixed;
