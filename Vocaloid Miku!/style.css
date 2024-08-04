@@ -73,7 +73,7 @@ body {
 	filter: invert(100%);
 }
 
-.TitleBar_root__QjdOZ:after {
+[id="ThemeTitleText"]:after {
 	position: fixed;
 	visibility: visible;
 	content: "Vocaloid Miku!";
@@ -83,8 +83,8 @@ body {
     left: 50%;
     margin-left: -66px;
     margin-top: 10px;
-    color: #793134;
-    z-index: 499;
+    color: var(--main-color);
+    z-index: 1;
 }
 
 /*Vibe Settings*/
@@ -628,10 +628,6 @@ body > div > aside > div > a > div > div > svg > use {
 	margin-top: -13px;
 	width: 100.1%;
 }
-
-.SyncLyrics_root__6KZg4 {
-	z-index: 999999;
-}
 /*--------------------------------------------*/
 
 /*DevPanel*/
@@ -661,21 +657,6 @@ body > div > div > button.qU2apWBO1yyEK0lZ3lPO:hover {
 	width: 36px;
 	height: 36px;
 	filter: brightness(1.2);
-}
-
-.DevPanel_root__Gu7qn:before {
-	position: fixed;
-	visibility: visible;
-	content: "Vocaloid Miku!";
-	font-family: "Vocaloid", sans-serif;
-	font-size: 16px;
-    font-weight: 1000;
-    text-align: center;
-    top: 9px;
-    left: 50%;
-    margin-left: -66px;
-    color: var(--miku-color);
-    z-index: 500;
 }
 
 .DevPanel_panel__LnoO2 {

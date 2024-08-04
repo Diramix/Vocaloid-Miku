@@ -17,3 +17,8 @@ setInterval(() => {
         }
     }
 }, 0);
+
+//Vocaloid Miku!
+const ThemeTitleText = document.createElement("div");
+ThemeTitleText.id = "ThemeTitleText";
+document.body.appendChild(ThemeTitleText);

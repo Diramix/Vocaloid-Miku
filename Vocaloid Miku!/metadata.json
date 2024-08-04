@@ -3,7 +3,7 @@
   "image": "url",
   "author": "Diramix",
   "description": "Miku in Museland",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "css": "style.css",
   "script": "script.js"
 }
