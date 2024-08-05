@@ -1,31 +1,31 @@
 /*Images for Legacy patcher Support*/
 /*--------------------------------------------*/
 .FullscreenPlayerDesktop_poster__rU9SJ:after {
-	background-image: url("http://127.0.0.1:19582/assets/fullscreen-miku-XD.png");
+	background-image: url("http://127.0.0.1:2007/assets/fullscreen-miku-XD.png");
 }
 
 .FullscreenPlayerDesktop_poster__rU9SJ:before  {
-	content: url("http://127.0.0.1:19582/assets/Kagamine-Rin.png");
+	content: url("http://127.0.0.1:2007/assets/Kagamine-Rin.png");
 }
-
+/*
 .VibeBlock_root__z7LtR {
-	background-image: url("http://127.0.0.1:19582/assets/My-vibe.png");
+	background-image: url("http://127.0.0.1:2007/assets/My-vibe.png");
 }
-
+*/
 .SyncLyrics_root__6KZg4:before {
-	background-image: url("http://127.0.0.1:19582/assets/Dilamix.png");
+	background-image: url("http://127.0.0.1:2007/assets/Dilamix.png");
 }
 
 .SyncLyrics_root__6KZg4 {
-	background-image: url("http://127.0.0.1:19582/assets/fullscreen-lyrics.jpg");
+	background-image: url("http://127.0.0.1:2007/assets/fullscreen-lyrics.jpg");
 }
 
 .LikesAndHistory_carousel__579RD:after {
-	background-image: url("http://127.0.0.1:19582/assets/Main-Page-Miku_End.png");
+	background-image: url("http://127.0.0.1:2007/assets/Main-Page-Miku_End.png");
 }
 
 .PlayerBar_root__cXUnU:before {
-	content: url("http://127.0.0.1:19582/assets/miku-run.png");
+	content: url("http://127.0.0.1:2007/assets/miku-run.png");
 }
 /*--------------------------------------------*/
 

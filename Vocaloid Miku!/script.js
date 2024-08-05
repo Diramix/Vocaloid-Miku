@@ -33,7 +33,7 @@ setInterval(() => {
             };
         }
     }
-}, 0);
+}, 1000);
 /*--------------------------------------------*/
 
 // Change vibe block background image script
@@ -43,7 +43,7 @@ let previousImgBackground = "";
 setInterval(() => {
     const imgElements = document.querySelectorAll('[class*="PlayerBarDesktop_cover"]');
     let imgBackground = "";
-    const additionalImage = "http://127.0.0.1:19582/assets/My-vibe.png";
+    const additionalImage = "http://127.0.0.1:2007/assets/My-vibe.png";
 
     imgElements.forEach(img => {
         if (img.src && img.src.includes('/1000x1000')) {
@@ -89,7 +89,7 @@ setInterval(() => {
             };
         }
     }
-}, 0);
+}, 1000);
 /*--------------------------------------------*/
 
 // Vocaloid Miku!
