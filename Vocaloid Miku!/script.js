@@ -33,7 +33,7 @@ setInterval(() => {
             };
         }
     }
-}, 500);
+}, 0);
 /*--------------------------------------------*/
 
 // Change vibe block background image script
@@ -64,8 +64,8 @@ setInterval(() => {
             blurElement.style.position = 'absolute';
             blurElement.style.top = 0;
             blurElement.style.left = 0;
-            blurElement.style.width = 'calc(100% + 20px)';
-            blurElement.style.height = 'calc(100% + 20px)';
+            blurElement.style.width = '100%';
+            blurElement.style.height = '100%';
             blurElement.style.filter = 'blur(0px) brightness(0.5)';
             blurElement.style.borderRadius = '10px';
             blurElement.style.zIndex = '-1';
@@ -92,7 +92,7 @@ setInterval(() => {
         //    };
         //}
     }
-}, 1000);
+}, 500);
 /*--------------------------------------------*/
 
 // Vocaloid Miku!

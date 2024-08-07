@@ -39,6 +39,7 @@ body {
 
 :root {
 	--main-color: #86cecb;
+	--light-main-color: #AEFFFF;
 	--basic-color: #137a7f;
 	--hatsune-light: #bec8d1;
 	--font-color: #373b3e;
@@ -49,9 +50,9 @@ body {
     --ym-background-color-primary-enabled-content: var(--main-color);
     --ym-background-color-primary-enabled-basic: var(--font-color);
     --ym-background-color-primary-enabled-player: #121212;
-    --ym-controls-color-primary-default-hovered: #1FDE64;
-    --ym-controls-color-primary-default-enabled: #1FDE64;
-    --ym-controls-color-primary-outline-selected_stroke: #1FDE64;
+    --ym-controls-color-primary-default-hovered: var(--main-color);
+    --ym-controls-color-primary-default-enabled: var(--main-color);
+    --ym-controls-color-primary-outline-selected_stroke: var(--light-main-color);
 }
 /*--------------------------------------------*/
 
@@ -235,10 +236,13 @@ section.PlayerBar_root__cXUnU {
 body > div > main > div > div > div.QualitySettingsContextMenu_root__fW5GK {
 	position: fixed;
 	height: 280px;
-	bottom: -36px;
-	right: -16px;
-	border-radius: 10px 0px 10px 0px;
-	border-width: 5px 0px 0px 5px;
+	bottom: -26px;
+	right: -5px;
+	border-radius: 10px;
+	background: var(--main-color);
+	border-width: 5px;
+	border-color: var(--basic-color);
+	z-index: 9999;
 }
 /*--------------------------------------------*/
 
@@ -392,7 +396,7 @@ body > div > main > div > div > div.QualitySettingsContextMenu_root__fW5GK {
 	bottom: 75px;
 	width: 100%;
 	height: 80%;
-	left: 17.2%;
+	left: 17.3%;
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: bottom;
@@ -402,7 +406,7 @@ body > div > main > div > div > div.QualitySettingsContextMenu_root__fW5GK {
 .FullscreenPlayerDesktop_poster__rU9SJ:before { 
 	visibility: visible;
 	position: fixed;
-	left: 122px;
+	left: 131px;
 	bottom: 432px;
 	z-index: 9999;
 }
@@ -419,7 +423,7 @@ body > div > main > div > div > div.QualitySettingsContextMenu_root__fW5GK {
     height: 300px;
     position: fixed;
     bottom: 125px;
-    left: 37px;
+    left: 46px;
     min-height: 0;
     border-color: var(--main-color);
     border-style: solid;
@@ -444,16 +448,6 @@ body > div > main > div > div > div.QualitySettingsContextMenu_root__fW5GK {
         width: 300px;
         height: 300px;
     }
-}
-/*--------------------------------------------*/
-
-/*HQ+ табличка настроек*/
-/*--------------------------------------------*/
-.QualitySettingsContextMenu_root__fW5GK {
-	background: var(--main-color);
-	border-width: 5px;
-	border-color: var(--basic-color);
-	z-index: 9999;
 }
 /*--------------------------------------------*/
 
@@ -560,7 +554,7 @@ body > div > main > div > div > div.QualitySettingsContextMenu_root__fW5GK {
 	width: 63%;
 	min-width: 700px;
 	height: 77%;
-	bottom: 17px;
+	bottom: 7px;
 	padding: 10px;
 	border-radius: 40px;
 	border-style: solid;
@@ -584,7 +578,7 @@ body > div > main > div > div > div.QualitySettingsContextMenu_root__fW5GK {
 	z-index: 1;
 	background-size: contain;
 	background-position: center;
-	top: -1%;
+	top: 0.3%;
 	left: 50%;
 	margin-left: 5%;
 	width: 30%;
@@ -616,11 +610,22 @@ body > div > aside > div > a > div > div > svg > use {
 }
 /*--------------------------------------------*/
 
+/*Полноэкранный плеер*/
+/*--------------------------------------------*/
+.FullscreenPlayerDesktop_important__dGfiL {
+	width: calc(100% + 10px);
+	height: calc(100% + 10px);
+	margin-left: -5px;
+	margin-top: -5px;
+}
+/*--------------------------------------------*/
+
 /*FULLSCREEN_PLAYER_CLOSE_BUTTON*/
 /*--------------------------------------------*/
 [data-test-id="FULLSCREEN_PLAYER_CLOSE_BUTTON"] {
 	background: #0003;
 	backdrop-filter: blur(10px);
+	top: 11px;
 }
 /*--------------------------------------------*/
 
