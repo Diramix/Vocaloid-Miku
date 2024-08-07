@@ -33,7 +33,7 @@ setInterval(() => {
             };
         }
     }
-}, 1000);
+}, 500);
 /*--------------------------------------------*/
 
 // Change vibe block background image script
@@ -73,21 +73,24 @@ setInterval(() => {
             targetElement.appendChild(blurElement);
         }
 
+        blurElement.style.background = `url(${imgBackground}) center center / cover no-repeat`;
+
         blurElement.style.backgroundColor = '#26F4FE';
 
-        if (imgBackground && imgBackground !== previousImgBackground) {
-            const img = new Image();
-            img.src = imgBackground;
+        // Проверка обновления фона (Баг с обновлением фона при переключении страницы)
+        //if (imgBackground && imgBackground !== previousImgBackground) {
+        //    const img = new Image();
+        //    img.src = imgBackground;
 
-            img.onload = () => {
-                blurElement.style.background = `url(${imgBackground}) center center / cover no-repeat`;
-                previousImgBackground = imgBackground;
-            };
+        //    img.onload = () => {
+        //        blurElement.style.background = `url(${imgBackground}) center center / cover no-repeat`;
+        //        previousImgBackground = imgBackground;
+        //    };
 
-            img.onerror = () => {
-                console.error(`Ошибка загрузки изображения: ${imgBackground}`);
-            };
-        }
+        //    img.onerror = () => {
+        //        console.error(`Ошибка загрузки изображения: ${imgBackground}`);
+        //    };
+        //}
     }
 }, 1000);
 /*--------------------------------------------*/
