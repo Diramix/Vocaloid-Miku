@@ -613,7 +613,7 @@ body > div > aside > div > a > div > div > svg > use {
 /*Полноэкранный плеер*/
 /*--------------------------------------------*/
 .FullscreenPlayerDesktop_important__dGfiL {
-	width: calc(100% + 10px);
+	width: calc(100% + 13px);
 	height: calc(100% + 10px);
 	margin-left: -5px;
 	margin-top: -5px;
