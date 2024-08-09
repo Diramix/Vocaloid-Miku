@@ -235,7 +235,7 @@ section.PlayerBar_root__cXUnU {
 /*Меню параметров качества звука*/
 body > div > main > div > div > div.QualitySettingsContextMenu_root__fW5GK {
 	position: fixed;
-	height: 280px;
+	height: 300px;
 	bottom: -26px;
 	right: -5px;
 	border-radius: 10px;
