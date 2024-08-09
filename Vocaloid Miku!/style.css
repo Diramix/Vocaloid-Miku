@@ -226,10 +226,8 @@ section.PlayerBar_root__cXUnU {
 }
 
 [data-test-id="SOUND_QUALITY_BUTTON"] {
-	position: fixed;
-	margin-right: 8px;
-	bottom: 43px;
-	width: 38px;
+	width: 30px;
+	height: 30px;
 }
 
 /*Меню параметров качества звука*/
@@ -332,14 +330,16 @@ body > div > main > div > div > div.QualitySettingsContextMenu_root__fW5GK {
 /*--------------------------------------------*/
 .NavbarDesktop_collapseButton__XQh9d {
 	position: fixed;
-	margin-top: -5px;
-	margin-left: 15px;
+	margin-top: -3px;
+	margin-left: 14px;
 	border-radius: 9999px;
 	width: 43px;
 	height: 43px;
-	backdrop-filter: blur(7px);
+	backdrop-filter: blur(3px);
 	background: 0;
+	color: #fff6;
 }
+
 .NavbarDesktop_logoWrapper__89ce6 {
 	position: static;
 	margin-top: 26px;
@@ -406,7 +406,7 @@ body > div > main > div > div > div.QualitySettingsContextMenu_root__fW5GK {
 	bottom: 75px;
 	width: 100%;
 	height: 80%;
-	left: 17.3%;
+	left: 16.8%;
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: bottom;
@@ -416,7 +416,7 @@ body > div > main > div > div > div.QualitySettingsContextMenu_root__fW5GK {
 .FullscreenPlayerDesktop_poster__rU9SJ:before { 
 	visibility: visible;
 	position: fixed;
-	left: 131px;
+	left: 121px;
 	bottom: 432px;
 	z-index: 9999;
 }
@@ -433,7 +433,7 @@ body > div > main > div > div > div.QualitySettingsContextMenu_root__fW5GK {
     height: 300px;
     position: fixed;
     bottom: 125px;
-    left: 46px;
+    left: 36px;
     min-height: 0;
     border-color: var(--main-color);
     border-style: solid;
@@ -534,7 +534,7 @@ body > div > main > div > div > div.QualitySettingsContextMenu_root__fW5GK {
 }
 
 [data-test-id="VIBE_SETTINGS_BUTTON"],
-[data-test-id="MY_VIBE_PLAY_BUTTON_PLAYING"]{
+[data-test-id="MY_VIBE_PLAY_BUTTON_PLAYING"] {
 	background: var(--main-color);
 	color: #000;
 }
@@ -623,10 +623,7 @@ body > div > aside > div > div > a > div > div > svg.YjRa1ZjM_lXFlrfS7jcu {
 /*Полноэкранный плеер*/
 /*--------------------------------------------*/
 .FullscreenPlayerDesktop_important__dGfiL {
-	width: calc(100% + 13px);
-	height: calc(100% + 10px);
-	margin-left: -5px;
-	margin-top: -5px;
+	border-width: 0;
 }
 /*--------------------------------------------*/
 
