@@ -330,7 +330,17 @@ body > div > main > div > div > div.QualitySettingsContextMenu_root__fW5GK {
 
 /*Навбар*/
 /*--------------------------------------------*/
-.NavbarDesktop_logo__Z4jGx {
+.NavbarDesktop_collapseButton__XQh9d {
+	position: fixed;
+	margin-top: -5px;
+	margin-left: 15px;
+	border-radius: 9999px;
+	width: 43px;
+	height: 43px;
+	backdrop-filter: blur(7px);
+	background: 0;
+}
+.NavbarDesktop_logoWrapper__89ce6 {
 	position: static;
 	margin-top: 26px;
 	margin-bottom: 8px;
@@ -593,7 +603,7 @@ body > div > main > div > div > div.QualitySettingsContextMenu_root__fW5GK {
 
 .qoEgTMlU0VM3i4p8LeMG,
 .AccK_iF55jra4_OlFloI,
-body > div > aside > div > a > div > div > svg > use {
+body > div > aside > div > div > a > div > div > svg.YjRa1ZjM_lXFlrfS7jcu {
 	color: var(--font-color);
 }
 
