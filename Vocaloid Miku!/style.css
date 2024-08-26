@@ -375,6 +375,7 @@ body > div > main > div > div > div.QualitySettingsContextMenu_root__fW5GK {
 
 .UserProfile_userName__PTRuJ {
 	color: #fff;
+	width: 120px;
 }
 
 .UserProfile_plusLink__NhVsU {
@@ -772,6 +773,13 @@ body > div > div > button.qU2apWBO1yyEK0lZ3lPO:hover {
 .ControlsBar_item__I_p99,
 .ControlsBar_dislikeIcon__ENXh_ {
 	color: var(--basic-color);
+}
+/*--------------------------------------------*/
+
+/*Change Timecode Slider*/
+/*--------------------------------------------*/
+.ChangeTimecode_slider__P4qmT {
+	--slider-thumb-box-shadow-color: #0000;
 }
 /*--------------------------------------------*/
 
