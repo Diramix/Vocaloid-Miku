@@ -38,8 +38,6 @@ setInterval(() => {
 
 // Change vibe block background image script
 /*--------------------------------------------*/
-let previousImgBackground = "";
-
 setInterval(() => {
     const imgElements = document.querySelectorAll('[class*="PlayerBarDesktop_cover"]');
     let imgBackground = "";
@@ -53,44 +51,48 @@ setInterval(() => {
 
     const targetElement = document.querySelector('.MainPage_vibe__XEBbh');
     if (targetElement) {
-        targetElement.style.background = `url(${additionalImage}) center center / cover no-repeat`;
         targetElement.style.position = 'relative';
         targetElement.style.overflow = 'hidden';
 
-        const blurElement = targetElement.querySelector('.blur-element') || document.createElement('div');
-
-        if (!blurElement.classList.contains('blur-element')) {
-            blurElement.classList.add('blur-element');
-            blurElement.style.position = 'absolute';
-            blurElement.style.top = 0;
-            blurElement.style.left = 0;
-            blurElement.style.width = '100%';
-            blurElement.style.height = '100%';
-            blurElement.style.filter = 'blur(0px) brightness(0.5)';
-            blurElement.style.borderRadius = '10px';
-            blurElement.style.zIndex = '-1';
-            blurElement.style.imageRendering = 'crisp-edges';
-            targetElement.appendChild(blurElement);
+        let blurElement = targetElement.querySelector('.blur-element');
+        if (blurElement) {
+            targetElement.removeChild(blurElement);
         }
 
-        blurElement.style.background = `url(${imgBackground}) center center / cover no-repeat`;
+        let additionalImageElement = targetElement.querySelector('.additional-image-element');
+        if (!additionalImageElement) {
+            additionalImageElement = document.createElement('div');
+            additionalImageElement.classList.add('additional-image-element');
+            additionalImageElement.style.position = 'absolute';
+            additionalImageElement.style.top = 0;
+            additionalImageElement.style.left = 0;
+            additionalImageElement.style.width = '100%';
+            additionalImageElement.style.height = '100%';
+            additionalImageElement.style.background = `url(${additionalImage}) center center / cover no-repeat`;
+            additionalImageElement.style.borderRadius = '10px';
+            additionalImageElement.style.zIndex = '2';
+            additionalImageElement.style.imageRendering = 'crisp-edges';
+            targetElement.appendChild(additionalImageElement);
+        }
 
-        blurElement.style.backgroundColor = '#26F4FE';
+        const newBlurElement = document.createElement('div');
+        newBlurElement.classList.add('blur-element');
+        newBlurElement.style.position = 'absolute';
+        newBlurElement.style.top = 0;
+        newBlurElement.style.left = 0;
+        newBlurElement.style.width = '100%';
+        newBlurElement.style.height = '100%';
+        newBlurElement.style.background = `url(${imgBackground}) center center / cover no-repeat`;
+        newBlurElement.style.backgroundColor = '#26F4FE';
+        newBlurElement.style.filter = 'blur(0px) brightness(0.5)';
+        newBlurElement.style.zIndex = '1';
+        targetElement.appendChild(newBlurElement);
 
-        // Проверка обновления фона (Баг с обновлением фона при переключении страницы)
-        //if (imgBackground && imgBackground !== previousImgBackground) {
-        //    const img = new Image();
-        //    img.src = imgBackground;
-
-        //    img.onload = () => {
-        //        blurElement.style.background = `url(${imgBackground}) center center / cover no-repeat`;
-        //        previousImgBackground = imgBackground;
-        //    };
-
-        //    img.onerror = () => {
-        //        console.error(`Ошибка загрузки изображения: ${imgBackground}`);
-        //    };
-        //}
+        const childElements = targetElement.querySelectorAll(':scope > *:not(.additional-image-element):not(.blur-element)');
+        childElements.forEach(child => {
+            child.style.position = 'relative';
+            child.style.zIndex = '3';
+        });
     }
 }, 500);
 /*--------------------------------------------*/

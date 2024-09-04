@@ -350,6 +350,7 @@ section.PlayerBar_root__cXUnU {
 	width: -webkit-fill-available;
 	height: -webkit-fill-available;
 	margin-left: -3px;
+	z-index: 0;
 }
 /*--------------------------------------------*/
 
@@ -566,24 +567,24 @@ section.PlayerBar_root__cXUnU {
 }
 
 [data-test-id="VIBE_SETTINGS_BUTTON"],
-[data-test-id="MY_VIBE_PLAY_BUTTON"] {
+[data-test-id="MY_VIBE_PAUSE_BUTTON"] {
 	background: var(--main-color);
 	color: #000;
 }
 
 [data-test-id="VIBE_SETTINGS_BUTTON"]:hover,
-[data-test-id="MY_VIBE_PLAY_BUTTON"]:hover {
+[data-test-id="MY_VIBE_PAUSE_BUTTON"]:hover {
 	background: var(--main-color);
 	color: #000;
 	filter: brightness(1.1);
 }
 
-[data-test-id="MY_VIBE_PAUSE_BUTTON"] {
+[data-test-id="MY_VIBE_PLAY_BUTTON"] {
 	background: var(--miku-color);
 	color: #000;
 }
 
-[data-test-id="MY_VIBE_PAUSE_BUTTON"]:hover {
+[data-test-id="MY_VIBE_PLAY_BUTTON"]:hover {
 	background: var(--miku-color);
 	color: #000;
 	filter: brightness(1.1);
