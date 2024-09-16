@@ -12,14 +12,11 @@
 - [Сриншоты](#Сриншоты)
 - [Контакты](#Контакты)
 
-## Ссылки
+## Донат
 <p>
     <a href="https://boosty.to/diramix">
-      <img width="100" alt="ᓚᘏᗢ котик ждёт твоей монетки" src="https://i.imgur.com/kVUV5rV.png">
+      <img width="300" alt="ᓚᘏᗢ котик ждёт твоей монетки" src="https://github.com/Diramix/Vocaloid-Miku/blob/main/doc/boosty_button.png?raw=true">
     </a>
-    <a href="https://discord.gg/ky6bcdy7KA">
-      <img width="100" alt="Discord" src="https://i.imgur.com/1BW96c2.png">
-    </a
 </p>
 
 ## Установка
