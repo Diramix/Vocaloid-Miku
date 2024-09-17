@@ -1,10 +1,10 @@
 /*Images for Legacy patcher Support*/
 /*--------------------------------------------*/
-.FullscreenPlayerDesktop_poster__rU9SJ:after {
+.AssetsImages:after {
 	background-image: url("http://127.0.0.1:2007/assets/fullscreen-miku-XD.png");
 }
 
-.FullscreenPlayerDesktop_poster__rU9SJ:before  {
+.AssetsImages:before  {
 	content: url("http://127.0.0.1:2007/assets/Kagamine-Rin.png");
 }
 /*
@@ -173,8 +173,10 @@ body > div > p {
 }
 
 .ChangeVolume_root__HDxtA {
+	position: fixed;
+	right: 25px;
+	bottom: 12px;
     height: 33px;
-    margin-left: 6px;
 }
 
 body > div > section > div > button {
@@ -428,7 +430,7 @@ section.PlayerBar_root__cXUnU {
 
 /*Fullscreen Player Desktop*/
 /*--------------------------------------------*/
-.FullscreenPlayerDesktop_poster__rU9SJ:after { 
+.AssetsImages:after { 
 	visibility: visible;
 	position: fixed;
 	content: "";
@@ -442,19 +444,19 @@ section.PlayerBar_root__cXUnU {
 	z-index: 411;
 }
 
-.FullscreenPlayerDesktop_poster__rU9SJ:before { 
+.AssetsImages:before { 
 	visibility: visible;
 	position: fixed;
 	left: 121px;
 	bottom: 432px;
-	z-index: 9999;
+	z-index: 412;
 }
 
 .FullscreenPlayerDesktopPoster_root__d__YD {
 	visibility: hidden;
 }
 
-.FullscreenPlayerDesktopPoster_cover__CDmhM {
+.CoverImage {
 	visibility: visible;
 	position: relative;
 	display: inline-block;
@@ -473,20 +475,8 @@ section.PlayerBar_root__cXUnU {
     z-index: 410;
 }
 
-@media( min-width: 760px )
-{
-    .FullscreenPoster_cover__WWgNX {
-        width: 300px;
-        height: 300px;
-    }
-}
-
-@media ( min-width: 1090px )
-{
-    .FullscreenPoster_cover__WWgNX {
-        width: 300px;
-        height: 300px;
-    }
+.FullscreenPlayerDesktop_header__OBhzq {
+	z-index: 99999;
 }
 /*--------------------------------------------*/
 
@@ -596,8 +586,8 @@ section.PlayerBar_root__cXUnU {
 .SyncLyrics_content__lbkWP {
 	width: 63%;
 	min-width: 700px;
-	height: 77%;
-	bottom: 7px;
+	height: 85%;
+	bottom: -5px;
 	padding: 10px;
 	border-radius: 40px;
 	border-style: solid;
@@ -609,8 +599,12 @@ section.PlayerBar_root__cXUnU {
 	margin-bottom: 12px;
 }
 
-.SyncLyrics_root__6KZg4 {
+.FullscreenPlayerDesktopContent_additionalContent_enter__WQmXC {
+	position: fixed;
+	left: calc(-50% + 44px);
+	width: 100%;
 	height: 100%;
+	z-index: 500;
 }
 
 .SyncLyrics_root__6KZg4:before {
@@ -621,7 +615,7 @@ section.PlayerBar_root__cXUnU {
 	z-index: 1;
 	background-size: contain;
 	background-position: center;
-	top: 0.3%;
+	top: -1.5%;
 	left: 50%;
 	margin-left: 5%;
 	width: 30%;
@@ -645,10 +639,9 @@ section.PlayerBar_root__cXUnU {
 }
 
 .SyncLyrics_root__6KZg4 {
+	position: fixed;
 	background-position: bottom;
 	background-size: cover;
-	margin-top: -13px;
-	width: 100.1%;
 }
 /*--------------------------------------------*/
 
@@ -825,7 +818,14 @@ body > div > div > button.qU2apWBO1yyEK0lZ3lPO:hover {
 .PlaylistPage_averageColorBackground__3wEkw,
 .AlbumPage_averageColorBackground__PmVaF,
 .VibeButton_image__GOwKJ,
-.FullscreenPlayerDesktop_info__W28Uk {
+.FullscreenPlayerDesktopContent_fullscreenContent__Nvety {
 	display: none;
+}
+/*--------------------------------------------*/
+
+/*Концерты*/
+/*--------------------------------------------*/
+[data-test-id="CONCERT_TITLE"] {
+	color: #fff;
 }
 /*--------------------------------------------*/

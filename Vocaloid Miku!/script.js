@@ -117,3 +117,47 @@ themeTitleText.textContent = 'Vocaloid Miku!';
 
 document.body.appendChild(themeTitleText);
 /*--------------------------------------------*/
+
+// CoverImage для исправления багов с обложкой в фуллскрине
+/*--------------------------------------------*/
+setInterval(function() {
+    let container = document.querySelector('.FullscreenPlayerDesktopContent_root__tKNGK');
+    
+    if (container && !container.querySelector('.CoverImage')) {
+        let newElement = document.createElement('div');
+        newElement.classList.add('CoverImage');
+        container.appendChild(newElement);
+    }
+}, 1000);
+
+setInterval(() => {
+    const imgElements = document.querySelectorAll('[class*="PlayerBarDesktop_cover__IYLwR"]');
+    let imgBackground = "";
+
+    imgElements.forEach(img => {
+        if (img.src && img.src.includes('/1000x1000')) {
+            imgBackground = img.src.replace('/1000x1000', '/1000x1000');
+        }
+    });
+
+    if (imgBackground) {
+        const targetElement = document.querySelector('.CoverImage');
+        if (targetElement) {
+            targetElement.style.background = `url(${imgBackground}) center center / cover no-repeat`;
+        }
+    }
+}, 1000);
+/*--------------------------------------------*/
+
+// Элемент для отображения картинок в фуллскрине
+/*--------------------------------------------*/
+setInterval(function() {
+    let container = document.querySelector('.FullscreenPlayerDesktopContent_root__tKNGK');
+    
+    if (container && !container.querySelector('.AssetsImages')) {
+        let newElement = document.createElement('div');
+        newElement.classList.add('AssetsImages');
+        container.appendChild(newElement);
+    }
+}, 1000);
+/*--------------------------------------------*/
