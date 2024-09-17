@@ -161,3 +161,13 @@ setInterval(function() {
     }
 }, 1000);
 /*--------------------------------------------*/
+
+// Скрипт для смены темы
+/*--------------------------------------------*/
+setInterval(() => {
+  const changeTheme = document.querySelector('.ym-dark-theme');
+  if (changeTheme) {
+    changeTheme.classList.replace('ym-dark-theme', 'ym-light-theme');
+  }
+}, 0);
+/*--------------------------------------------*/

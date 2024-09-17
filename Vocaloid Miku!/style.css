@@ -46,7 +46,8 @@ body {
 	--miku-color: #e12885;
 }
 
-.ym-light-theme {
+.ym-light-theme,
+.ym-dark-theme {
     --ym-background-color-primary-enabled-content: var(--main-color);
     --ym-background-color-primary-enabled-basic: var(--font-color);
     --ym-background-color-primary-enabled-player: #121212;
