@@ -165,9 +165,11 @@ setInterval(function() {
 // Скрипт для смены темы
 /*--------------------------------------------*/
 setInterval(() => {
-  const changeTheme = document.querySelector('.ym-dark-theme');
-  if (changeTheme) {
-    changeTheme.classList.replace('ym-dark-theme', 'ym-light-theme');
+  const body = document.body;
+  if (!body.classList.contains('ym-dark-theme') && !body.classList.contains('ym-light-theme')) {
+    body.classList.add('ym-light-theme');
+  } else if (body.classList.contains('ym-dark-theme')) {
+    body.classList.replace('ym-dark-theme', 'ym-light-theme');
   }
 }, 0);
 /*--------------------------------------------*/
