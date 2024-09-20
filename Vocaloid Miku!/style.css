@@ -526,24 +526,26 @@ section.PlayerBar_root__cXUnU {
 */
 
 .PageHeaderPlaylist_pinControl__hJOde,
-.PageHeaderPlaylist_menuControl__RGH0G,
 .PageHeaderPlaylist_likeControl__bCypn,
+.PageHeaderPlaylist_playControl__yRQfm,
 .PageHeaderArtist_pinControl__dQToz,
 .PageHeaderArtist_menuControl__8qi0J,
 .PageHeaderArtist_likeControl__oEdXe,
-.PageHeaderArtist_playControl__N_3l_:hover {
+.PageHeaderArtist_playControl__N_3l_,
+.PageHeaderArtist_label__rXyrB,
+.zmtVwO34EPppZErNrlIC[data-test-id="PLAYLIST_HEADER_CONTEXT_MENU"] {
 	background: var(--main-color);
 	filter: brightness(1.1);
 }
 
 .PageHeaderPlaylist_pinControl__hJOde:hover,
-.PageHeaderPlaylist_menuControl__RGH0G:hover,
 .PageHeaderPlaylist_likeControl__bCypn:hover,
-.PageHeaderArtist_pinControl__dQToz,
-.PageHeaderArtist_menuControl__8qi0J,
-.PageHeaderArtist_likeControl__oEdXe,
-.PageHeaderArtist_playControl__N_3l_,
-.PageHeaderArtist_label__rXyrB {
+.PageHeaderPlaylist_playControl__yRQfm:hover,
+.PageHeaderArtist_pinControl__dQToz:hover,
+.PageHeaderArtist_menuControl__8qi0J:hover,
+.PageHeaderArtist_likeControl__oEdXe:hover,
+.PageHeaderArtist_playControl__N_3l_:hover,
+..zmtVwO34EPppZErNrlIC[data-test-id="PLAYLIST_HEADER_CONTEXT_MENU"]:hover {
 	background: var(--main-color);
 	filter: brightness(1.15);
 }
