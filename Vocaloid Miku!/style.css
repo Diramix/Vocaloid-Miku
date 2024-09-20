@@ -530,7 +530,8 @@ section.PlayerBar_root__cXUnU {
 .PageHeaderPlaylist_likeControl__bCypn,
 .PageHeaderArtist_pinControl__dQToz,
 .PageHeaderArtist_menuControl__8qi0J,
-.PageHeaderArtist_likeControl__oEdXe {
+.PageHeaderArtist_likeControl__oEdXe,
+.PageHeaderArtist_playControl__N_3l_:hover {
 	background: var(--main-color);
 	filter: brightness(1.1);
 }
@@ -540,7 +541,9 @@ section.PlayerBar_root__cXUnU {
 .PageHeaderPlaylist_likeControl__bCypn:hover,
 .PageHeaderArtist_pinControl__dQToz,
 .PageHeaderArtist_menuControl__8qi0J,
-.PageHeaderArtist_likeControl__oEdXe {
+.PageHeaderArtist_likeControl__oEdXe,
+.PageHeaderArtist_playControl__N_3l_,
+.PageHeaderArtist_label__rXyrB {
 	background: var(--main-color);
 	filter: brightness(1.15);
 }
@@ -587,8 +590,8 @@ section.PlayerBar_root__cXUnU {
 .SyncLyrics_content__lbkWP {
 	width: 63%;
 	min-width: 700px;
-	height: 85%;
-	bottom: -5px;
+	height: 87%;
+	bottom: -10px;
 	padding: 10px;
 	border-radius: 40px;
 	border-style: solid;
