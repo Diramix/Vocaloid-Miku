@@ -256,6 +256,12 @@ section.PlayerBar_root__cXUnU {
 	border-color: var(--basic-color);
 	z-index: 9999;
 }
+
+.QualitySettingsContextMenu_root_withEqualizer__GPjIg {
+	display: block;
+	height: 302px;
+	overflow: auto;
+}
 /*--------------------------------------------*/
 
 /*Контекстное меню*/
