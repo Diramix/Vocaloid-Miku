@@ -24,8 +24,8 @@
 	background-image: url("http://127.0.0.1:2007/assets/Main-Page-Miku_End.png");
 }
 
-.PlayerBar_root__cXUnU:before {
-	content: url("http://127.0.0.1:2007/assets/miku-run.png");
+.mikuRun {
+	background-image: url("http://127.0.0.1:2007/assets/miku-run.png");
 }
 /*--------------------------------------------*/
 
@@ -209,12 +209,14 @@ section.PlayerBar_root__cXUnU {
     width: fit-content;
 }
 
-.PlayerBar_root__cXUnU:before {
+.mikuRun {
 	position: fixed;
 	text-align: center;
-	right: 20%;
-	width: 10%;
-	bottom: -2px;
+	right: 18.3%;
+	width: 90px;
+	bottom: -13px;
+	z-index: 420;
+	height: 100px;
 }
 
 .PlayerBarDesktop_info__56v53,
@@ -285,7 +287,7 @@ section.PlayerBar_root__cXUnU {
 }
 
 [data-test-id="TRACK_CONTEXT_MENU"] {
-	bottom: calc(100% - 240px);
+	bottom: calc(100% - 300px);
 }
 
 .EiyUV4aCJzpfNzuihfMM {
@@ -543,7 +545,12 @@ section.PlayerBar_root__cXUnU {
 .zmtVwO34EPppZErNrlIC[data-test-id="ALBUM_HEADER_CONTEXT_MENU"],
 .PageHeaderAlbum_playControl__fFyS9,
 .PageHeaderAlbumControls_likeControl__eohAO,
-.PageHeaderAlbumControls_pinControl__kq6_T {
+.PageHeaderAlbumControls_pinControl__kq6_T,
+[data-test-id="TRAILER_BUTTON"],
+[data-test-id="TRAILER_LISTEN_FULL_VERSION_BUTTON"],
+[aria-label="Вернуться вперед"],
+[aria-label="Вернуться назад"],
+[data-test-id="TRAILER_CLOSE_BUTTON"] {
 	background: var(--main-color);
 	filter: brightness(1.1);
 }
@@ -559,7 +566,12 @@ section.PlayerBar_root__cXUnU {
 .zmtVwO34EPppZErNrlIC[data-test-id="ALBUM_HEADER_CONTEXT_MENU"]:hover,
 .PageHeaderAlbum_playControl__fFyS9:hover,
 .PageHeaderAlbumControls_likeControl__eohAO:hover,
-.PageHeaderAlbumControls_pinControl__kq6_T:hover {
+.PageHeaderAlbumControls_pinControl__kq6_T:hover,
+[data-test-id="TRAILER_BUTTON"]:hover,
+[data-test-id="TRAILER_LISTEN_FULL_VERSION_BUTTON"]:hover,
+[aria-label="Вернуться вперед"]:enabled:hover,
+[aria-label="Вернуться назад"]:enabled:hover,
+[data-test-id="TRAILER_CLOSE_BUTTON"]:hover {
 	background: var(--main-color);
 	filter: brightness(1.15);
 }
@@ -762,6 +774,26 @@ body > div > div > button.qU2apWBO1yyEK0lZ3lPO:hover {
 }
 /*--------------------------------------------*/
 
+/*Любимое и история*/
+/*--------------------------------------------*/
+.LikesAndHistory_historyIcon__2FAMu {
+	color: var(--main-color);
+}
+
+.LikesAndHistoryItem_root__oI1gk {
+	background: #137a7f80;
+}
+
+[data-test-id="LIKES_HISTORY_TITLE"],
+.LikesAndHistoryItem_titleIcon__2D_yS {
+	color: #e6e6e6;
+}
+
+[data-test-id="LIKES_HISTORY_SUBTITLE"] {
+	color: #e3e3e3;
+}
+/*--------------------------------------------*/
+
 /*Beta button*/
 /*--------------------------------------------*/
 .MainPage_beta__y32vb {
@@ -847,5 +879,16 @@ body > div > div > button.qU2apWBO1yyEK0lZ3lPO:hover {
 /*--------------------------------------------*/
 [data-test-id="CONCERT_TITLE"] {
 	color: #fff;
+}
+/*--------------------------------------------*/
+
+/*Trailer Modal*/
+/*--------------------------------------------*/
+.TrailerModal_root__T4ZJ8 {
+	border-radius: 10px;
+	border-style: solid;
+	border-color: var(--main-color);
+	border-width: 8px;
+	box-shadow: 0 25px 40px 20px #0004;
 }
 /*--------------------------------------------*/

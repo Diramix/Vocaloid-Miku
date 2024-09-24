@@ -173,3 +173,43 @@ setInterval(() => {
   }
 }, 0);
 /*--------------------------------------------*/
+
+// Скрипт для добавления элемента Miku-Run
+/*--------------------------------------------*/
+const newElement = document.createElement('div');
+newElement.className = 'mikuRun';
+document.body.appendChild(newElement);
+/*--------------------------------------------*/
+
+// Скрипт для скачивания треков по нажатию на Miku-Run
+/*--------------------------------------------*/
+setInterval(() => {
+    const playerBar = document.querySelector('.mikuRun');
+    const settingsButton = document.querySelector('body > div > section > div > div > span.PlayerBarDesktop_settingsButton__jLkVn');
+
+    if (playerBar) {
+        if (settingsButton && settingsButton.textContent.trim()) {
+            playerBar.style.cursor = 'pointer';
+            playerBar.addEventListener('mouseenter', () => {
+                playerBar.style.filter = 'hue-rotate(90deg)';
+            });
+            playerBar.addEventListener('mouseleave', () => {
+                playerBar.style.filter = 'hue-rotate(0deg)';
+            });
+            if (!playerBar.dataset.listenerAdded) {
+                playerBar.addEventListener('click', () => {
+                    settingsButton.click();
+                });
+                playerBar.dataset.listenerAdded = true;
+            }
+        } else {
+            playerBar.style.cursor = 'default';
+            playerBar.style.transform = 'scale(1)';
+            if (playerBar.dataset.listenerAdded) {
+                playerBar.removeEventListener('click', () => settingsButton.click());
+                playerBar.dataset.listenerAdded = false;
+            }
+        }
+    }
+}, 1000);
+/*--------------------------------------------*/
