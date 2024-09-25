@@ -546,11 +546,11 @@ section.PlayerBar_root__cXUnU {
 .PageHeaderAlbum_playControl__fFyS9,
 .PageHeaderAlbumControls_likeControl__eohAO,
 .PageHeaderAlbumControls_pinControl__kq6_T,
-[data-test-id="TRAILER_BUTTON"],
 [data-test-id="TRAILER_LISTEN_FULL_VERSION_BUTTON"],
 [aria-label="Вернуться вперед"],
 [aria-label="Вернуться назад"],
-[data-test-id="TRAILER_CLOSE_BUTTON"] {
+[data-test-id="TRAILER_CLOSE_BUTTON"],
+.PageHeaderArtist_trailerControl__BWQXJ {
 	background: var(--main-color);
 	filter: brightness(1.1);
 }
@@ -567,11 +567,11 @@ section.PlayerBar_root__cXUnU {
 .PageHeaderAlbum_playControl__fFyS9:hover,
 .PageHeaderAlbumControls_likeControl__eohAO:hover,
 .PageHeaderAlbumControls_pinControl__kq6_T:hover,
-[data-test-id="TRAILER_BUTTON"]:hover,
 [data-test-id="TRAILER_LISTEN_FULL_VERSION_BUTTON"]:hover,
 [aria-label="Вернуться вперед"]:enabled:hover,
 [aria-label="Вернуться назад"]:enabled:hover,
-[data-test-id="TRAILER_CLOSE_BUTTON"]:hover {
+[data-test-id="TRAILER_CLOSE_BUTTON"]:hover,
+.PageHeaderArtist_trailerControl__BWQXJ:hover {
 	background: var(--main-color);
 	filter: brightness(1.15);
 }
