@@ -55,6 +55,11 @@ body {
     --ym-controls-color-primary-default-enabled: var(--main-color);
     --ym-controls-color-primary-outline-selected_stroke: var(--light-main-color);
 }
+
+@font-face {
+	font-family: "Vocaloid";
+	src: url("http://127.0.0.1:2007/assets/VOC-RE.ttf") format("truetype");
+}
 /*--------------------------------------------*/
 
 /*Затемнение фона*/
