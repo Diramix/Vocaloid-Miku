@@ -31,6 +31,8 @@
 4. Выберете тему в приложении мода И СТАВИТЕ ОБЯЗАТЕЛЬНО СВЯЕТЛУЮ ТЕМУ В ЯНДЕКС МУЗЫКЕ.
 5. Всё!
 
+Надпись «Vocaloid Miku!» вверху темы, имеет сторонний шрифт, который вы можете скачать [здесь](https://github.com/Diramix/Vocaloid-Miku/blob/main/doc/Fonts/VOC-RE.ttf).
+
 ## Сриншоты
 ![2](https://github.com/user-attachments/assets/7e81b89c-4c30-4b53-9a82-69d67467f37b)
 ![3](https://github.com/user-attachments/assets/c8aa6337-56f3-4330-a56f-7560e77458aa)
