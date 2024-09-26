@@ -54,6 +54,7 @@ body {
     --ym-controls-color-primary-default-hovered: var(--main-color);
     --ym-controls-color-primary-default-enabled: var(--main-color);
     --ym-controls-color-primary-outline-selected_stroke: var(--light-main-color);
+    --ym-controls-color-primary-text-enabled_variant: var(--font-color);
 }
 
 @font-face {
@@ -255,13 +256,14 @@ section.PlayerBar_root__cXUnU {
 [data-test-id="QUALITY_SETTINGS_CONTEXT_MENU"] {
 	position: fixed;
 	height: 300px;
-	bottom: -26px;
-	right: -5px;
+	bottom: 110px;
+	right: 18px;
 	border-radius: 10px;
 	background: var(--main-color);
 	border-width: 5px;
 	border-color: var(--basic-color);
 	z-index: 9999;
+	box-shadow: 0px 0px 0px 0px black;
 }
 
 .QualitySettingsContextMenu_root_withEqualizer__GPjIg {
@@ -273,14 +275,23 @@ section.PlayerBar_root__cXUnU {
 
 /*Контекстное меню*/
 /*--------------------------------------------*/
+[data-test-id="virtuoso-scroller"] {
+	background: var(--main-color);
+}
+
+.EiyUV4aCJzpfNzuihfMM:hover,
+.EiyUV4aCJzpfNzuihfMM[data-nested][data-open] {
+	--ym-surface-color-primary-enabled-list: var(--light-main-color);
+}
+
 .s7_MO4NdsYs7nPQALD8W {
 	position: absolute;
 	z-index: 402;
 	background: var(--main-color);
-	z-index: 99999;
 	border-width: 3px;
 	border-color: var(--basic-color);
 	border-style: solid;
+	bottom: calc(100% - 300px);
 }
 
 .cM0M40YHieFFCTYRgOZa {
@@ -289,10 +300,6 @@ section.PlayerBar_root__cXUnU {
 
 [data-test-id="PLAYERBAR_DESKTOP_CONTEXT_MENU_BUTTON"][aria-expanded="true"] {
 	color: #fff;
-}
-
-[data-test-id="TRACK_CONTEXT_MENU"] {
-	bottom: calc(100% - 300px);
 }
 
 .EiyUV4aCJzpfNzuihfMM {
@@ -555,7 +562,8 @@ section.PlayerBar_root__cXUnU {
 [aria-label="Вернуться вперед"],
 [aria-label="Вернуться назад"],
 [data-test-id="TRAILER_CLOSE_BUTTON"],
-.PageHeaderArtist_trailerControl__BWQXJ {
+.PageHeaderArtist_trailerControl__BWQXJ,
+[aria-label="Закрыть меню настройки звука"] {
 	background: var(--main-color);
 	filter: brightness(1.1);
 }
@@ -576,7 +584,8 @@ section.PlayerBar_root__cXUnU {
 [aria-label="Вернуться вперед"]:enabled:hover,
 [aria-label="Вернуться назад"]:enabled:hover,
 [data-test-id="TRAILER_CLOSE_BUTTON"]:hover,
-.PageHeaderArtist_trailerControl__BWQXJ:hover {
+.PageHeaderArtist_trailerControl__BWQXJ:hover,
+[aria-label="Закрыть меню настройки звука"]:hover {
 	background: var(--main-color);
 	filter: brightness(1.15);
 }
@@ -857,9 +866,13 @@ body > div > div > button.qU2apWBO1yyEK0lZ3lPO:hover {
 }
 /*--------------------------------------------*/
 
-/*Change Timecode Slider*/
+/*Slider*/
 /*--------------------------------------------*/
 .ChangeTimecode_slider__P4qmT {
+	--slider-thumb-box-shadow-color: #0000;
+}
+
+.ChangeVolume_root__HDxtA {
 	--slider-thumb-box-shadow-color: #0000;
 }
 /*--------------------------------------------*/
@@ -875,7 +888,8 @@ body > div > div > button.qU2apWBO1yyEK0lZ3lPO:hover {
 .PlaylistPage_averageColorBackground__3wEkw,
 .AlbumPage_averageColorBackground__PmVaF,
 .VibeButton_image__GOwKJ,
-.FullscreenPlayerDesktopContent_fullscreenContent__Nvety {
+.FullscreenPlayerDesktopContent_fullscreenContent__Nvety,
+.QualitySettingsModal_overlay__8pjOO {
 	display: none;
 }
 /*--------------------------------------------*/
