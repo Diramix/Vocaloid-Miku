@@ -310,7 +310,7 @@ section.PlayerBar_root__cXUnU {
 /*Табы*/
 /*--------------------------------------------*/
 [data-test-id="MAIN_TABS"] {
-	z-index: 9999;
+	z-index: 400;
 }
 
 .Skeleton_tab__zvQx2 {
