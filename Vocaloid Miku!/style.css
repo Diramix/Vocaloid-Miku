@@ -25,7 +25,7 @@
 }
 
 .mikuRun {
-	background-image: url("http://127.0.0.1:2007/assets/miku-run.png");
+	background-image: url("https://github.com/Diramix/Vocaloid-Miku/blob/main/Vocaloid%20Miku!/assets/miku-run.png?raw=true");
 }
 /*--------------------------------------------*/
 
@@ -271,6 +271,14 @@ section.PlayerBar_root__cXUnU {
 	height: 302px;
 	overflow: auto;
 }
+
+.EqualizerPresets_container__ABVY8 {
+	background: var(--main-color);
+}
+
+.EqualizerPresets_container__ABVY8 * {
+	color: var(--font-color);
+}
 /*--------------------------------------------*/
 
 /*Контекстное меню*/
@@ -375,6 +383,10 @@ section.PlayerBar_root__cXUnU {
 	margin-left: -3px;
 	z-index: 0;
 }
+
+.Content_main__8_wIa {
+	border-radius: 10px;
+}
 /*--------------------------------------------*/
 
 /*Навбар*/
@@ -394,14 +406,13 @@ section.PlayerBar_root__cXUnU {
 .NavbarDesktop_logoWrapper__89ce6 {
 	position: static;
 	margin-top: 26px;
-	margin-bottom: 8px;
+	margin-bottom: 0;
 	background: var(--main-color);
 	border-radius: 10px 10px 0px 0px;
 }
 
 .xfFtKQpgAYvC2jI1tBtS {
 	background: var(--main-color);
-	margin-top: -8px;
 	bottom: 90px;
 	border-radius: 0px;
 }
