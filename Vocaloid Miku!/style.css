@@ -292,14 +292,18 @@ section.PlayerBar_root__cXUnU {
 	--ym-surface-color-primary-enabled-list: var(--light-main-color);
 }
 
+.NOqNiasunvfLvvi75zl9 {
+	z-index: 500;
+}
+
 .s7_MO4NdsYs7nPQALD8W {
-	position: absolute;
 	z-index: 402;
 	background: var(--main-color);
 	border-width: 3px;
 	border-color: var(--basic-color);
 	border-style: solid;
-	bottom: calc(100% - 300px);
+	background: 0;
+	backdrop-filter: blur(60px);
 }
 
 .cM0M40YHieFFCTYRgOZa {
@@ -664,6 +668,13 @@ section.PlayerBar_root__cXUnU {
 	z-index: 500;
 }
 
+.FullscreenPlayerDesktopContent_additionalContent__tuuy7 {
+	position: fixed;
+	width: 100%;
+	left: calc(-50% + 44px);
+	z-index: 500;
+}
+
 .SyncLyrics_root__6KZg4:before {
 	visibility: visible;
 	content: "";
@@ -699,6 +710,21 @@ section.PlayerBar_root__cXUnU {
 	position: fixed;
 	background-position: bottom;
 	background-size: cover;
+}
+/*--------------------------------------------*/
+
+/*Track Lyrics*/
+/*--------------------------------------------*/
+.TrackLyricsModal_root__KsVRf {
+	background: var(--main-color);
+	box-shadow: 0 0;
+	border-width: 5px;
+	border-color: var(--basic-color);
+}
+
+.TrackLyricsModal_header__nWar3,
+.TrackLyricsModal_content__Cstzi {
+	color: var(--font-color);
 }
 /*--------------------------------------------*/
 
@@ -900,7 +926,8 @@ body > div > div > button.qU2apWBO1yyEK0lZ3lPO:hover {
 .AlbumPage_averageColorBackground__PmVaF,
 .VibeButton_image__GOwKJ,
 .FullscreenPlayerDesktopContent_fullscreenContent__Nvety,
-.QualitySettingsModal_overlay__8pjOO {
+.QualitySettingsModal_overlay__8pjOO,
+.TrackLyricsModal_overlay__0Ehwu {
 	display: none;
 }
 /*--------------------------------------------*/
