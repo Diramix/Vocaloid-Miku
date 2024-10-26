@@ -55,6 +55,7 @@ body {
     --ym-controls-color-primary-default-enabled: var(--main-color);
     --ym-controls-color-primary-outline-selected_stroke: var(--light-main-color);
     --ym-controls-color-primary-text-enabled_variant: var(--font-color);
+    --ym-background-color-primary-enabled-popover: var(--main-color);
 }
 
 @font-face {
@@ -329,11 +330,9 @@ section.PlayerBar_root__cXUnU {
 	background: var(--main-color);
 	z-index: 10;
 	bottom: 0px;
-	position: static;
 }
 
 .Skeleton_tab__zvQx2:hover {
-	position: relative;
 	background: var(--main-color);
 	z-index: 10;
 	bottom: 0px;
@@ -425,18 +424,8 @@ section.PlayerBar_root__cXUnU {
 	background: var(--main-color);
 	margin-top: -8px;
 	border-radius: 0px 0px 10px 10px;
-	margin-bottom: 68px;
+	margin-bottom: 34px; /*Navbar size*/
 	z-index: 10;
-}
-
-.UserProfile_root__vFuOj {
-	position: fixed;
-	margin-left: -9px;
-	bottom: 102px;
-	padding: 10px;
-	z-index: 9;
-	border-radius: 10px;
-	height: 80px;
 }
 
 .UserProfile_userName__PTRuJ {
@@ -746,7 +735,7 @@ section.PlayerBar_root__cXUnU {
 
 /*DevPanel*/
 /*--------------------------------------------*/
-body > div > div > button.qU2apWBO1yyEK0lZ3lPO {
+body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO {
 	backdrop-filter: blur(0px);
 	z-index: 99999;
 	background: var(--miku-color);
@@ -760,7 +749,7 @@ body > div > div > button.qU2apWBO1yyEK0lZ3lPO {
 	color: #000;
 }
 
-body > div > div > button.qU2apWBO1yyEK0lZ3lPO:hover {
+body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
 	backdrop-filter: blur(0px);
 	z-index: 99999;
 	background: var(--miku-color);
@@ -947,5 +936,36 @@ body > div > div > button.qU2apWBO1yyEK0lZ3lPO:hover {
 	border-color: var(--main-color);
 	border-width: 8px;
 	box-shadow: 0 25px 40px 20px #0004;
+}
+/*--------------------------------------------*/
+
+/*Эксперементы*/
+/*--------------------------------------------*/
+.OverwrittenExperimentsModal_submitButton___VRmz,
+.OverwrittenExperimentsModal_closeModalButton__k0LqG,
+.OverwrittenExperimentsModal_reloadButton__bskTH,
+.OverwrittenExperimentsModal_overrideForm__cJ8PH > .qU2apWBO1yyEK0lZ3lPO {
+	background: var(--basic-color);
+	color: #fff;
+}
+
+.OverwrittenExperimentsModal_submitButton___VRmz:hover,
+.OverwrittenExperimentsModal_closeModalButton__k0LqG:hover,
+.OverwrittenExperimentsModal_reloadButton__bskTH:hover,
+.OverwrittenExperimentsModal_overrideForm__cJ8PH > .qU2apWBO1yyEK0lZ3lPO:hover {
+	background: var(--basic-color);
+	color: #fff;
+	filter: brightness(1.1);
+}
+/*--------------------------------------------*/
+
+/*Попрошайки*/
+/*--------------------------------------------*/
+.Donation_root__nwHCN {
+	background: var(--basic-color);
+}
+
+.Donation_root__nwHCN * {
+	color: #E6E6E6;
 }
 /*--------------------------------------------*/
