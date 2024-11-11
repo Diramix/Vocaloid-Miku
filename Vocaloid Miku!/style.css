@@ -31,12 +31,6 @@
 
 /*БАЗА*/
 /*--------------------------------------------*/
-body {
-    background-color: #000000;
-    min-width: 1px;
-    min-height: 1px;
-}
-
 :root {
 	--main-color: #86cecb;
 	--light-main-color: #AEFFFF;
@@ -424,8 +418,12 @@ section.PlayerBar_root__cXUnU {
 	background: var(--main-color);
 	margin-top: -8px;
 	border-radius: 0px 0px 10px 10px;
-	margin-bottom: 34px; /*Navbar size*/
+	margin-bottom: -4px; /*Navbar size*/
 	z-index: 10;
+}
+
+.UserProfile_root__vFuOj {
+	margin-top: 13px;
 }
 
 .UserProfile_userName__PTRuJ {
@@ -443,6 +441,10 @@ section.PlayerBar_root__cXUnU {
 	left: 50%;
 	margin-left: -150px;
 	border-radius: 10px;
+}
+
+.NavbarDesktop_scrollableContainer__HLc9D:before {
+	background: var(--main-color);
 }
 /*--------------------------------------------*/
 

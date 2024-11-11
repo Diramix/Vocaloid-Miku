@@ -1,9 +1,11 @@
 {
   "name": "Vocaloid Miku!",
   "image": "image.png",
+  "banner": "banner.png",
   "author": "Diramix",
   "description": "Miku in Museland",
-  "version": "1.5.7",
+  "version": "1.5.8",
   "css": "style.css",
-  "script": "script.js"
+  "script": "script.js",
+  "tags": ["Anime", "Hatsune Miku", "Vocaloid"]
 }
