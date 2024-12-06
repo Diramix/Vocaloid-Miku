@@ -324,6 +324,15 @@ section.PlayerBar_root__cXUnU {
 
 /*Табы*/
 /*--------------------------------------------*/
+.Skeleton_header__1uiIw {
+	height: 0;
+}
+
+.CompositeHeader_static__pZdrc {
+	position: relative;
+	top: -70px;
+}
+
 [data-test-id="MAIN_TABS"] {
 	z-index: 400;
 }
@@ -591,7 +600,9 @@ section.PlayerBar_root__cXUnU {
 .PageHeaderPlaylist_mainControls__k_S_i > button, .PageHeaderPlaylist_downloadControl__ijcAx > button,
 .PageHeaderPlaylist_ugcControls__9q8Ne > button,
 .PageHeaderArtist_controls__U_6g7 > button, [data-test-id="ARTIST_HEADER_CONTEXT_MENU_BUTTON"],
-.PageHeaderArtist_meta__ZAlx_ > div, .PageHeaderArtist_meta__ZAlx_ > button {
+.PageHeaderArtist_meta__ZAlx_ > div, .PageHeaderArtist_meta__ZAlx_ > button,
+.TrackModalControls_root__alpd3 > button,
+.TrackModalControls_menuButton__V6L4c {
 	background: var(--main-color);
 	filter: brightness(1.1);
 }
@@ -613,7 +624,8 @@ section.PlayerBar_root__cXUnU {
 .PageHeaderPlaylist_mainControls__k_S_i > button:hover, .PageHeaderPlaylist_downloadControl__ijcAx > button:hover,
 .PageHeaderPlaylist_ugcControls__9q8Ne > button:hover,
 .PageHeaderArtist_controls__U_6g7 > button:hover, [data-test-id="ARTIST_HEADER_CONTEXT_MENU_BUTTON"]:hover,
-.PageHeaderArtist_meta__ZAlx_ > button:hover {
+.PageHeaderArtist_meta__ZAlx_ > button:hover,
+.TrackModalControls_root__alpd3 > button:hover {
 	background: var(--main-color);
 	filter: brightness(1.15);
 }
@@ -999,5 +1011,53 @@ body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
 .TrackPlaylist_controlsBarCell__6clda > div > svg > use,
 .PageHeaderPlaylist_downloadControl__ijcAx > button * {
 	filter: invert(100%) contrast(190%);
+}
+/*--------------------------------------------*/
+
+/*Очередь*/
+/*--------------------------------------------*/
+.PlayQueue_root__ponhw {
+	background: var(--basic-color);
+}
+
+.PlayQueue_root__ponhw:before {
+	background: linear-gradient(180deg, var(--basic-color, var(--miku-color)), hsla(0, 0%, 5%, 0));
+}
+
+.PlayQueue_root__ponhw:after {
+	background: linear-gradient(0deg, var(--main-color, var(--miku-color)), hsla(0, 0%, 5%, 0));
+	bottom: 90px;
+}
+
+.PlayQueueTitle_heading__JrzQq {
+	color: #fff;
+}
+
+.PlayQueue_scrollContent__2dI0v {
+	padding: 0 100px 0 100px;
+	background: var(--basic-color);
+}
+
+.ControlsBar_root_withSecondaryColor__5TC5D > button{
+	color: var(--main-color);
+}
+
+.ControlsBar_duration__RawSk {
+	color: var(--main-color);
+}
+
+.PlayQueueNowPlayingBlock_important__sxxvA {
+	background: #e1288590;
+}
+
+.PlayQueueNowPlayingBlock_important__sxxvA:hover {
+	background: #e1288599;
+}
+/*--------------------------------------------*/
+
+/*Track Modal*/
+/*--------------------------------------------*/
+.TrackModal_root__QrFg6 {
+	box-shadow: 0 0 10px var(--font-color);
 }
 /*--------------------------------------------*/
