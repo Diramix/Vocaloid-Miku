@@ -333,6 +333,11 @@ section.PlayerBar_root__cXUnU {
 	top: -70px;
 }
 
+.NonMusicPage_landing__kGKTh > header > div > [data-test-id="TAB_CAROUSEL"] {
+	position: relative;
+	top: 32px;
+}
+
 [data-test-id="MAIN_TABS"] {
 	z-index: 400;
 }
@@ -385,13 +390,13 @@ section.PlayerBar_root__cXUnU {
 	border-width: 0;
 }
 
-.SearchPage_filter_selected__FOfyJ {
+[data-test-id="TAB"] {
 	background: var(--main-color);
 	border-color: var(--main-color);
 	filter: brightness(1.1);
 }
 
-.SearchPage_filter_selected__FOfyJ:hover {
+[data-test-id="TAB"]:hover {
 	background: var(--main-color);
 	border-color: var(--main-color);
 	filter: brightness(1.15);
