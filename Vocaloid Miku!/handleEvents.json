@@ -11,8 +11,21 @@
           "buttons": [
             {
               "name": "text",
-              "text": "",
-              "defaultParameter": ""
+              "text": "http://127.0.0.1:2007/assets/fullscreen-lyrics.jpg",
+              "defaultParameter": "http://127.0.0.1:2007/assets/fullscreen-lyrics.jpg"
+            }
+          ]
+        },
+        {
+          "id": "blurFilter",
+          "name": "Blur Filter",
+          "description": "Блюрит фоновую картинку.",
+          "type": "text",
+          "buttons": [
+            {
+              "name": "text",
+              "text": "0",
+              "defaultParameter": "0"
             }
           ]
         },
@@ -23,6 +36,19 @@
           "type": "button",
           "bool": false,
           "defaultParameter": false
+        }
+      ]
+    },
+    {
+      "title": "Очередь",
+      "items": [
+        {
+          "id": "toggleStandardMark",
+          "name": "Standard Mark",
+          "description": "Включение/выключение надписи счёта на странице очереди.",
+          "type": "button",
+          "bool": true,
+          "defaultParameter": true
         }
       ]
     },

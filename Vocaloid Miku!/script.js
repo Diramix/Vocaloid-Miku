@@ -12,11 +12,13 @@ setInterval(() => {
 
     if (imgBackground) {
         const targetElement = document.querySelector('.FullscreenPlayerDesktop_modalContent__Zs_LC');
+        const divaCoverElement = document.querySelector('.Diva-Cover')
         if (targetElement) {
 
             const currentBackground = targetElement.style.background;
 
             const newBackground = `linear-gradient(180deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.75) 100%), url(${imgBackground}) center center / cover no-repeat`;
+            const divaNewBackground = `url(${imgBackground}) center center / cover no-repeat`;
 
             const img = new Image();
             img.src = imgBackground;
@@ -25,6 +27,7 @@ setInterval(() => {
 
                 if (currentBackground !== newBackground) {
                     targetElement.style.background = newBackground;
+                    divaCoverElement.style.background = divaNewBackground
                 }
             };
 
@@ -118,7 +121,7 @@ themeTitleText.textContent = 'Vocaloid Miku!';
 document.body.appendChild(themeTitleText);
 /*--------------------------------------------*/
 
-// CoverImage для исправления багов с обложкой в фуллскрине
+// CoverImage для исправления багов с обложкой в SyncLyricsе
 /*--------------------------------------------*/
 setInterval(function() {
     let container = document.querySelector('.FullscreenPlayerDesktopContent_root__tKNGK');
@@ -149,7 +152,7 @@ setInterval(() => {
 }, 1000);
 /*--------------------------------------------*/
 
-// Элемент для отображения картинок в фуллскрине
+// Элемент для отображения картинок в SyncLyricsе
 /*--------------------------------------------*/
 setInterval(function() {
     let container = document.querySelector('.FullscreenPlayerDesktopContent_root__tKNGK');
@@ -179,6 +182,31 @@ setInterval(() => {
 const newElement = document.createElement('div');
 newElement.className = 'mikuRun';
 document.body.appendChild(newElement);
+/*--------------------------------------------*/
+
+/*Diva Cover*/
+/*--------------------------------------------*/
+setInterval(function() {
+  const playButtonCover = document.querySelector('.PlayButtonWithCover_coverImage__DhS1R');
+  const divaCover = document.querySelector('.Diva-Cover');
+  
+  if (playButtonCover && !divaCover) {
+    const newElement = document.createElement('div');
+    newElement.classList.add('Diva-Cover');
+    document.querySelector('.PlayQueue_root__ponhw').appendChild(newElement);
+  }
+}, 1000);
+
+setInterval(function() {
+  const playButtonCover = document.querySelector('.PlayButtonWithCover_coverImage__DhS1R');
+  const divaStandardMark = document.querySelector('.Diva-Standard-Mark');
+  
+  if (playButtonCover && !divaStandardMark) {
+    const newElement = document.createElement('div');
+    newElement.classList.add('Diva-Standard-Mark');
+    document.querySelector('.PlayQueue_root__ponhw').appendChild(newElement);
+  }
+}, 1000);
 /*--------------------------------------------*/
 
 /*Управление handleEvents.json*/
@@ -213,6 +241,7 @@ async function getSettings() {
 
 let settingsDelay = 1000;
 let baseUrl = 'http://127.0.0.1:2007/assets/fullscreen-lyrics.jpg'
+let baseBlur = 0;
 let updateInterval;
 
 async function setSettings(newSettings) {
@@ -257,6 +286,36 @@ async function setSettings(newSettings) {
         checkBackground();
     } else {
         updateBackground(newUrl);
+    }
+
+    // Blur Filter
+    if (Object.keys(settings).length === 0 || settings['SyncLyrics'].blurFilter.text !== newSettings['SyncLyrics'].blurFilter.text) {
+        const newBlur = parseInt(newSettings['SyncLyrics'].blurFilter.text, 10) || 0;
+        if (baseBlur !== newBlur) {
+            baseBlur = newBlur;
+
+            let style = document.getElementById("blur-style");
+            if (!style) {
+                style = document.createElement("style");
+                style.id = "blur-style";
+                document.head.appendChild(style);
+            }
+            style.textContent = `.SyncLyrics_root__6KZg4::after { backdrop-filter: blur(${baseBlur}px); content: ''; position: absolute; inset: 0; }`;
+        }
+    }
+
+    // Standard Mark
+    const standardMark = document.querySelector('.Diva-Standard-Mark');
+
+    if (Object.keys(settings).length === 0 || settings['Очередь'].toggleStandardMark !== newSettings['Очередь'].toggleStandardMark) {
+        // Создаём или обновляем style элемент
+        const style = document.createElement('style');
+        style.textContent = `
+            .Diva-Standard-Mark {
+                display: ${newSettings['Очередь'].toggleStandardMark ? 'block' : 'none'} !important;
+            }
+        `;
+        document.head.appendChild(style);
     }
 
     // Update theme settings delay

@@ -324,18 +324,17 @@ section.PlayerBar_root__cXUnU {
 
 /*Табы*/
 /*--------------------------------------------*/
-.Skeleton_header__1uiIw {
+.MainPage_root__STXqc > div > header {
 	height: 0;
 }
 
-.CompositeHeader_static__pZdrc {
+.MainPage_root__STXqc > div > header > div.CompositeHeader_static__pZdrc {
 	position: relative;
 	top: -70px;
 }
 
-.NonMusicPage_landing__kGKTh > header > div > [data-test-id="TAB_CAROUSEL"] {
-	position: relative;
-	top: 32px;
+.Skeleton_upperBlocks__V43wi {
+	margin-top: 30px;
 }
 
 [data-test-id="MAIN_TABS"] {
@@ -699,10 +698,22 @@ section.PlayerBar_root__cXUnU {
 }
 
 .FullscreenPlayerDesktopContent_additionalContent__tuuy7 {
-	position: fixed;
-	width: 100%;
-	left: calc(-50% + 44px);
-	z-index: 500;
+    position: fixed;
+    width: 100%;
+    left: calc(-50% + 44px);
+    z-index: 500;
+}
+
+@media (max-width: 1059px) {
+    .FullscreenPlayerDesktopContent_additionalContent__tuuy7 {
+        left: calc(-50% + 20px);
+    }
+}
+
+@media (max-width: 979px) {
+    .FullscreenPlayerDesktopContent_additionalContent__tuuy7 {
+        left: calc(-50% + 10px);
+    }
 }
 
 .SyncLyrics_root__6KZg4:before {
@@ -740,6 +751,17 @@ section.PlayerBar_root__cXUnU {
 	position: fixed;
 	background-size: cover;
 	background-position: center;
+}
+
+.SyncLyrics_root__6KZg4:after {
+	content: "";
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+	pointer-events: none;
 }
 /*--------------------------------------------*/
 
@@ -848,7 +870,7 @@ body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
 	min-height: 13%;
 	background-position: bottom;
 	background-size: contain;
-    bottom: -30px;
+    bottom: -250px;
     right: 0px;
     height: 101px;
     z-index: 2;
@@ -1022,11 +1044,13 @@ body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
 /*Очередь*/
 /*--------------------------------------------*/
 .PlayQueue_root__ponhw {
-	background: var(--basic-color);
+	background-image: url("http://127.0.0.1:2007/assets/Diva-Queue-Background.png");
+	background-position: center;
+	background-size: cover;
 }
 
 .PlayQueue_root__ponhw:before {
-	background: linear-gradient(180deg, var(--basic-color, var(--miku-color)), hsla(0, 0%, 5%, 0));
+	background: 0;
 }
 
 .PlayQueue_root__ponhw:after {
@@ -1034,13 +1058,77 @@ body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
 	bottom: 90px;
 }
 
-.PlayQueueTitle_heading__JrzQq {
-	color: #fff;
+.PlayQueueTitle_root__E2XOW,
+.PlayQueueAfterPlayingBlock_title__nS_nG,
+.PlayQueue_content__zIUvd * .Meta_artists__VnR52,
+.PlayQueueVibeBlock_vibeTitle__C5fWp {
+	display: none;
+}
+
+.PlayQueue_content__zIUvd:before {
+	position: fixed;
+	content: "";
+	height: 70px;
+	width: 48%;
+	background-image: url("http://127.0.0.1:2007/assets/Diva-F-Extreme-Page.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	margin-top: -73px;
+	margin-left: -10px;
+}
+
+.PlayQueue_content__zIUvd {
+	position: fixed;
+	background: #f005;
+	border-style: solid;
+	border-color: #F2647C;
+	border-width: 3px;
+	border-radius: 0px 10px 10px 10px;
+	outline-width: 7px;
+	outline-style: solid;
+	outline-color: #2B2A2B;
+	height: 67%;
+	width: 55%;
+	left: 1%;
+	bottom: 5%;
+	z-index: 2;
+}
+
+@media (max-width: 1079px) {
+    .PlayQueue_content__zIUvd {
+        bottom: 7%;
+    }
 }
 
 .PlayQueue_scrollContent__2dI0v {
-	padding: 0 100px 0 100px;
-	background: var(--basic-color);
+	margin-top: -8.2%;
+}
+
+.PlayQueue_scrollContent__2dI0v:after {
+    position: fixed;
+    content: "";
+    width: 100%;
+    height: 8%;
+    left: 0;
+    top: 0;
+    background-image: url("http://127.0.0.1:2007/assets/Quaue-Header.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 999;
+}
+
+.PlayQueue_scrollContent__2dI0v:before {
+    position: fixed;
+    content: "";
+    width: 100%;
+    height: 8%;
+    top: 0;
+    z-index: 899;
+    background: linear-gradient(
+    	#292929 62%,
+    	#131313 65%
+    );
 }
 
 .ControlsBar_root_withSecondaryColor__5TC5D > button{
@@ -1051,12 +1139,135 @@ body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
 	color: var(--main-color);
 }
 
+.PlayQueueBeforePlayingBlock_root__QIIfB {
+	margin-bottom: -20px;
+}
+
+.PlayQueueNowPlayingBlock_root__aJSb8 {
+	max-height: 80px;
+	min-height: 80px;
+}
+
 .PlayQueueNowPlayingBlock_important__sxxvA {
-	background: #e1288590;
+	background: 
+	    linear-gradient(0deg, #006D76 50%, transparent 50%),
+	    url("http://127.0.0.1:2007/assets/3-poloski.png");
+	background-repeat: repeat-x;
+	background-size: 88px;
+	width: calc(100% - 20px);
+	left: 10px;
+	height: 75px;
+	margin-top: 5px;
+	border-radius: 16px;
+	border-style: solid;
+	border-color: #00FFFF;
+	border-width: 6px;
+	transform: skewX(-12deg);
+	box-shadow: 0 0 10px #00FFFF;
 }
 
 .PlayQueueNowPlayingBlock_important__sxxvA:hover {
-	background: #e1288599;
+	filter: brightness(1.1);
+}
+
+.PlayQueueAfterPlayingBlock_prevTrack__wDAPP > [data-test-id="TRACK_PLAYLIST"],
+.PlayQueueBeforePlayingBlock_prevTrack__5b6o4 > [data-test-id="TRACK_PLAYLIST"],
+.PlayQueueBeforePlayingBlock_animatedContent__C04_K > [data-test-id="TRACK_PLAYLIST"],
+.PlayQueueAfterPlayingBlock_animatedContent__6rvOT > [data-test-id="TRACK_PLAYLIST"],
+.PlayQueueVibeBlock_root__cVjcM,
+.PlayQueueVibeBlock_root__cVjcM:hover {
+	background: #0005;
+	width: calc(100% - 20px);
+    left: 10px;
+    height: 75px;
+    margin-top: 5px;
+    border-radius: 16px;
+    border-style: solid;
+    border-color: #0008;
+    border-width: 4px;
+    transform: skewX(-12deg); /* Наклон краев */
+}
+
+.PlayQueue_content__zIUvd * .ControlsBar_contextMenuWrapper__NHkn_ {
+	background: #0007;
+	height: 100%;
+	width: 65px;
+	margin-right: -8px;
+	border-radius: 10px;
+}
+
+.PlayQueueNowPlayingBlock_important__sxxvA * .ControlsBar_contextMenuWrapper__NHkn_ {
+	background: #00FFFF;
+}
+
+.PlayQueueNowPlayingBlock_important__sxxvA * [data-test-id="TRACK_DURATION"] {
+	color: #000;
+}
+
+.PlayQueue_root__ponhw * .Meta_title__GGBnH {
+	font-size: 20px;
+}
+
+.PlayQueueAfterPlayingBlock_animatedContent__6rvOT > [data-test-id="TRACK_PLAYLIST"] > TrackPlaylist_playButtonCell__Q6YT_ {
+	transform: skewX(6deg);
+}
+
+.Diva-Cover {
+	position: fixed;
+	width: 34%;
+	height: 32%;
+	background: #f00;
+	top: 130px;
+	right: 4.6%;
+	z-index: 99999;
+}
+
+.Diva-Standard-Mark {
+	position: fixed;
+	width: 34%;
+	height: 32%;
+	background-image: url("http://127.0.0.1:2007/assets/Diva-F-Standard-Mark.png");
+	background-size: contain;
+	background-position: center top;
+	top: calc(130px + 35%);
+	right: 4.6%;
+	z-index: 99999;
+}
+
+.PlayQueue_content__zIUvd * .TrackPlaylist_playButtonCell__Q6YT_ {
+	visibility: hidden;
+	position: relative;
+	min-height: 100%;
+	min-width: 50px;
+	transform: skewX(12deg);
+}
+
+.PlayQueue_content__zIUvd * .TrackPlaylist_playButtonCell__Q6YT_:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: visible;
+    background-image: url("http://127.0.0.1:2007/assets/Diva-F-Song-Icon.png");
+    background-size: 50px;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+}
+
+.PlayQueue_content__zIUvd * [data-test-id="TRACK_CONTEXT_MENU_BUTTON"]:hover,
+.PlayQueue_content__zIUvd * [data-test-id="TRACK_CONTEXT_MENU_BUTTON"] {
+	color: #000;
+}
+
+.PlayQueueVibeBlock_title__G3kir {
+	visibility: hidden;
+}
+
+.PlayQueueVibeBlock_title__G3kir:before {
+	visibility: visible;
+	content: "Random";
+	font-size: 20px;
 }
 /*--------------------------------------------*/
 
@@ -1064,5 +1275,13 @@ body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
 /*--------------------------------------------*/
 .TrackModal_root__QrFg6 {
 	box-shadow: 0 0 10px var(--font-color);
+	z-index: 200;
+}
+/*--------------------------------------------*/
+
+/*Анимация играющего трека*/
+/*--------------------------------------------*/
+.PlayButtonWithPosition_playingAnimation__Hy5rC {
+	filter: hue-rotate(150deg) saturate(400%);
 }
 /*--------------------------------------------*/
