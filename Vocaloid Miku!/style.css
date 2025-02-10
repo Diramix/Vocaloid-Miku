@@ -15,11 +15,11 @@
 .SyncLyrics_root__6KZg4:before {
 	background-image: url("http://127.0.0.1:2007/assets/Dilamix.png");
 }
-
+/*
 .SyncLyrics_root__6KZg4 {
 	background-image: url("http://127.0.0.1:2007/assets/fullscreen-lyrics.jpg");
 }
-
+*/
 .LikesAndHistory_carousel__579RD:after {
 	background-image: url("http://127.0.0.1:2007/assets/Main-Page-Miku_End.png");
 }
@@ -738,8 +738,8 @@ section.PlayerBar_root__cXUnU {
 
 .SyncLyrics_root__6KZg4 {
 	position: fixed;
-	background-position: bottom;
 	background-size: cover;
+	background-position: center;
 }
 /*--------------------------------------------*/
 

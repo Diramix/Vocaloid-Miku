@@ -180,3 +180,108 @@ const newElement = document.createElement('div');
 newElement.className = 'mikuRun';
 document.body.appendChild(newElement);
 /*--------------------------------------------*/
+
+/*Управление handleEvents.json*/
+/*--------------------------------------------*/
+let settings = {};
+
+function log(text) {
+    console.log('[Customizable LOG]: ', text)
+}
+
+async function getSettings() {
+    try {
+        const response = await fetch("http://127.0.0.1:2007/get_handle");
+        if (!response.ok) throw new Error(`Ошибка сети: ${response.status}`);
+        const data = await response.json();
+        if (!data?.data?.sections) {
+            console.warn("Структура данных не соответствует ожидаемой.");
+            return {};
+        }
+        return Object.fromEntries(data.data.sections.map(({ title, items }) => [
+            title,
+            Object.fromEntries(items.map(item => [
+                item.id,
+                item.bool ?? item.input ?? Object.fromEntries(item.buttons?.map(b => [b.name, b.text]) || [])
+            ]))
+        ]));
+    } catch (error) {
+        console.error("Ошибка при получении данных:", error);
+        return {};
+    }
+}
+
+let settingsDelay = 1000;
+let baseUrl = 'http://127.0.0.1:2007/assets/fullscreen-lyrics.jpg'
+let updateInterval;
+
+async function setSettings(newSettings) {
+    // Кастом картинка в SyncLyrics
+    const syncLyricsBackground = document.querySelector('.SyncLyrics_root__6KZg4');
+    const style = document.createElement('style');
+    document.head.appendChild(style);
+
+    function updateBackground(url) {
+        style.textContent = `
+            .SyncLyrics_root__6KZg4 {
+                background-image: url("${url}");
+            }
+        `;
+    }
+
+    const newUrl = newSettings?.['SyncLyrics']?.backgroundUrl?.text || baseUrl;
+
+    if (Object.keys(settings).length === 0 || settings['SyncLyrics'].coverImage !== newSettings['SyncLyrics'].coverImage) {
+        if (newSettings['SyncLyrics'].coverImage) {
+            applyBackground = true;
+        } else {
+            applyBackground = false;
+        }
+    }
+
+    if (Object.keys(settings).length === 0 || settings['SyncLyrics'].coverImage !== newSettings['SyncLyrics'].coverImage) {
+        applyBackground = !!newSettings['SyncLyrics'].coverImage;
+    }
+
+    if (applyBackground) {
+        const checkBackground = () => {
+            const img = [...document.querySelectorAll('[class*="FullscreenPlayerDesktopPoster_cover"]')]
+                .find(img => img.src && img.src.includes('/400x400'));
+            
+            if (img) {
+                updateBackground(img.src.replace('/400x400', '/1000x1000'));
+            } else {
+                requestAnimationFrame(checkBackground);
+            }
+        };
+        checkBackground();
+    } else {
+        updateBackground(newUrl);
+    }
+
+    // Update theme settings delay
+    if (Object.keys(settings).length === 0 || settings['Особое'].setInterval.text !== newSettings['Особое'].setInterval.text) {
+        const newDelay = parseInt(newSettings['Особое'].setInterval.text, 10) || 1000;
+        if (settingsDelay !== newDelay) {
+            settingsDelay = newDelay;
+
+            // Обновление интервала
+            clearInterval(updateInterval);
+            updateInterval = setInterval(update, settingsDelay);
+        }
+    }
+}
+
+async function update() {
+    const newSettings = await getSettings();
+    await setSettings(newSettings);
+    settings = newSettings;
+}
+
+function init() {
+    update();
+    updateInterval = setInterval(update, settingsDelay);
+}
+
+init();
+/*--------------------------------------------*/
