@@ -4,11 +4,7 @@
   "banner": "banner.png",
   "author": "Diramix",
   "description": "Hatsune Miku: Project DIRA F",
-<<<<<<< HEAD
   "version": "1.7.0",
-=======
-  "version": "1.6.1",
->>>>>>> 67587bf0e39cf7fe030557b62b650abb85484285
   "css": "style.css",
   "script": "script.js",
   "tags": ["Anime", "Hatsune Miku", "Vocaloid"]

@@ -304,7 +304,6 @@ async function setSettings(newSettings) {
         }
     }
 
-<<<<<<< HEAD
     // Standard Mark
     const standardMark = document.querySelector('.Diva-Standard-Mark');
 
@@ -319,8 +318,6 @@ async function setSettings(newSettings) {
         document.head.appendChild(style);
     }
 
-=======
->>>>>>> 67587bf0e39cf7fe030557b62b650abb85484285
     // Update theme settings delay
     if (Object.keys(settings).length === 0 || settings['Особое'].setInterval.text !== newSettings['Особое'].setInterval.text) {
         const newDelay = parseInt(newSettings['Особое'].setInterval.text, 10) || 1000;
