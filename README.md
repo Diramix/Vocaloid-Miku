@@ -34,6 +34,7 @@
 ## Сриншоты
 ![2](https://github.com/user-attachments/assets/7e81b89c-4c30-4b53-9a82-69d67467f37b)
 ![3](https://github.com/user-attachments/assets/c8aa6337-56f3-4330-a56f-7560e77458aa)
+![4](https://github.com/user-attachments/assets/a158bdc9-8886-4482-9881-8b422b4f113a)
 
 ## Контакты
 ### Discord сервер где вы можете связаться с автором темы.
