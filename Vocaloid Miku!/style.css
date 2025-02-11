@@ -1206,6 +1206,7 @@ body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
 
 .PlayQueueBeforePlayingBlock_animatedContent__C04_K * [data-test-id="TRACK_DURATION"],
 .PlayQueueAfterPlayingBlock_animatedContent__6rvOT * [data-test-id="TRACK_DURATION"],
+.PlayQueueBeforePlayingBlock_animatedContent__C04_K * [data-test-id="TRACK_CONTEXT_MENU_BUTTON"] > .JjlbHZ4FaP9EAcR_1DxF,
 .PlayQueueAfterPlayingBlock_animatedContent__6rvOT * [data-test-id="TRACK_CONTEXT_MENU_BUTTON"] > .JjlbHZ4FaP9EAcR_1DxF {
 	color: var(--main-color);
 	font-weight: 800;
