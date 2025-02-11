@@ -49,6 +49,14 @@
           "type": "button",
           "bool": true,
           "defaultParameter": true
+        },
+        {
+          "id": "toggleDownloadAndVisibleIcon",
+          "name": "Download & Visible Icon",
+          "description": "Включение/выключение иконок скачанного трека и то, что трек можете слушать только вы, на странице очереди.",
+          "type": "button",
+          "bool": false,
+          "defaultParameter": false
         }
       ]
     },

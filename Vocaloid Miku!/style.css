@@ -979,7 +979,11 @@ body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
 .VibeButton_image__GOwKJ,
 .FullscreenPlayerDesktopContent_fullscreenContent__Nvety,
 .QualitySettingsModal_overlay__8pjOO,
-.TrackLyricsModal_overlay__0Ehwu {
+.TrackLyricsModal_overlay__0Ehwu,
+.PlayQueueTitle_root__E2XOW,
+.PlayQueueAfterPlayingBlock_title__nS_nG,
+.PlayQueue_content__zIUvd * .Meta_artists__VnR52,
+.PlayQueueVibeBlock_vibeTitle__C5fWp {
 	display: none;
 }
 /*--------------------------------------------*/
@@ -1056,13 +1060,6 @@ body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
 .PlayQueue_root__ponhw:after {
 	background: linear-gradient(0deg, var(--main-color, var(--miku-color)), hsla(0, 0%, 5%, 0));
 	bottom: 90px;
-}
-
-.PlayQueueTitle_root__E2XOW,
-.PlayQueueAfterPlayingBlock_title__nS_nG,
-.PlayQueue_content__zIUvd * .Meta_artists__VnR52,
-.PlayQueueVibeBlock_vibeTitle__C5fWp {
-	display: none;
 }
 
 .PlayQueue_content__zIUvd:before {
@@ -1313,5 +1310,12 @@ body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
 /*--------------------------------------------*/
 .PlayButtonWithPosition_playingAnimation__Hy5rC {
 	filter: hue-rotate(150deg) saturate(400%);
+}
+/*--------------------------------------------*/
+
+/*Этот трек можете слушать только вы*/
+/*--------------------------------------------*/
+[aria-label="Этот трек можете слушать только вы"] {
+	color: var(--main-color);
 }
 /*--------------------------------------------*/

@@ -296,14 +296,23 @@ async function setSettings(newSettings) {
     }
 
     // Standard Mark
-    const standardMark = document.querySelector('.Diva-Standard-Mark');
-
     if (Object.keys(settings).length === 0 || settings['Очередь'].toggleStandardMark !== newSettings['Очередь'].toggleStandardMark) {
-        // Создаём или обновляем style элемент
         const style = document.createElement('style');
         style.textContent = `
             .Diva-Standard-Mark {
                 display: ${newSettings['Очередь'].toggleStandardMark ? 'block' : 'none'} !important;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    // Download & Visible Icon
+    if (Object.keys(settings).length === 0 || settings['Очередь'].toggleDownloadAndVisibleIcon !== newSettings['Очередь'].toggleDownloadAndVisibleIcon) {
+        const style = document.createElement('style');
+        style.textContent = `
+            [aria-label="Трек скачан"],
+            [aria-label="Этот трек можете слушать только вы"] {
+                display: ${newSettings['Очередь'].toggleDownloadAndVisibleIcon ? 'block' : 'none'} !important;
             }
         `;
         document.head.appendChild(style);
