@@ -25,7 +25,7 @@
 }
 
 .mikuRun {
-	background-image: url("https://github.com/Diramix/Vocaloid-Miku/blob/main/Vocaloid%20Miku!/assets/miku-run.png?raw=true");
+	background-image: url("http://127.0.0.1:2007/assets/miku-run.png");
 }
 /*--------------------------------------------*/
 
@@ -1164,6 +1164,7 @@ body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
 	border-width: 6px;
 	transform: skewX(-12deg);
 	box-shadow: 0 0 10px #00FFFF;
+	filter: brightness(1.04);
 }
 
 .PlayQueueNowPlayingBlock_important__sxxvA:hover {
@@ -1201,7 +1202,17 @@ body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
 }
 
 .PlayQueueNowPlayingBlock_important__sxxvA * [data-test-id="TRACK_DURATION"] {
-	color: #000;
+	color: var(--font-color);
+	font-weight: 800;
+	font-size: 16px;
+}
+
+.PlayQueueBeforePlayingBlock_animatedContent__C04_K * [data-test-id="TRACK_DURATION"],
+.PlayQueueAfterPlayingBlock_animatedContent__6rvOT * [data-test-id="TRACK_DURATION"],
+.PlayQueueAfterPlayingBlock_animatedContent__6rvOT * [data-test-id="TRACK_CONTEXT_MENU_BUTTON"] > .JjlbHZ4FaP9EAcR_1DxF {
+	color: var(--main-color);
+	font-weight: 800;
+	font-size: 16px;
 }
 
 .PlayQueue_root__ponhw * .Meta_title__GGBnH {
@@ -1210,6 +1221,17 @@ body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
 
 .PlayQueueAfterPlayingBlock_animatedContent__6rvOT > [data-test-id="TRACK_PLAYLIST"] > TrackPlaylist_playButtonCell__Q6YT_ {
 	transform: skewX(6deg);
+}
+
+/*Кнопка лайка*/
+.PlayQueue_content__zIUvd * [data-test-id="TRACK_PLAYLIST"] * [data-test-id="LIKE_BUTTON"] {
+	opacity: 0;
+}
+
+.PlayQueue_content__zIUvd * [data-test-id="TRACK_PLAYLIST"]:hover {
+	.PlayQueue_content__zIUvd * [data-test-id="TRACK_PLAYLIST"] * [data-test-id="LIKE_BUTTON"] {
+		opacity: 1;
+	}
 }
 
 .Diva-Cover {
@@ -1268,6 +1290,14 @@ body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
 	visibility: visible;
 	content: "Random";
 	font-size: 20px;
+}
+/*--------------------------------------------*/
+
+/*Обычные временные метки*/
+/*--------------------------------------------*/
+[data-test-id="TRACK_DURATION"],
+[data-test-id="TRACK_DURATION"]:hover {
+	color: var(--font-color);
 }
 /*--------------------------------------------*/
 

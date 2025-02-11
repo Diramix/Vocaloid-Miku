@@ -102,23 +102,26 @@ setInterval(() => {
 
 // Vocaloid Miku!
 /*--------------------------------------------*/
-const themeTitleText = document.createElement('div');
-themeTitleText.className = 'ThemeTitleText';
+const isThemeTitleText = document.querySelector('.themeTitleText')
+if (!isThemeTitleText) {
+    const themeTitleText = document.createElement('div');
+    themeTitleText.className = 'ThemeTitleText';
 
-themeTitleText.style.position = 'fixed';
-themeTitleText.style.visibility = 'visible';
-themeTitleText.style.fontFamily = '"Vocaloid", sans-serif';
-themeTitleText.style.fontSize = '16px';
-themeTitleText.style.fontWeight = '1000';
-themeTitleText.style.left = '50%';
-themeTitleText.style.marginLeft = '-66px';
-themeTitleText.style.top = '10px';
-themeTitleText.style.color = 'var(--main-color)';
-themeTitleText.style.zIndex = '1';
+    themeTitleText.style.position = 'fixed';
+    themeTitleText.style.visibility = 'visible';
+    themeTitleText.style.fontFamily = '"Vocaloid", sans-serif';
+    themeTitleText.style.fontSize = '16px';
+    themeTitleText.style.fontWeight = '1000';
+    themeTitleText.style.left = '50%';
+    themeTitleText.style.marginLeft = '-66px';
+    themeTitleText.style.top = '10px';
+    themeTitleText.style.color = 'var(--main-color)';
+    themeTitleText.style.zIndex = '1';
 
-themeTitleText.textContent = 'Vocaloid Miku!';
+    themeTitleText.textContent = 'Vocaloid Miku!';
 
-document.body.appendChild(themeTitleText);
+    document.body.appendChild(themeTitleText);
+}
 /*--------------------------------------------*/
 
 // CoverImage для исправления багов с обложкой в SyncLyricsе
@@ -152,7 +155,7 @@ setInterval(() => {
 }, 1000);
 /*--------------------------------------------*/
 
-// Элемент для отображения картинок в SyncLyricsе
+// Элемент для отображения картинок в фуллскрине
 /*--------------------------------------------*/
 setInterval(function() {
     let container = document.querySelector('.FullscreenPlayerDesktopContent_root__tKNGK');
@@ -186,27 +189,15 @@ document.body.appendChild(newElement);
 
 /*Diva Cover*/
 /*--------------------------------------------*/
-setInterval(function() {
-  const playButtonCover = document.querySelector('.PlayButtonWithCover_coverImage__DhS1R');
-  const divaCover = document.querySelector('.Diva-Cover');
-  
-  if (playButtonCover && !divaCover) {
-    const newElement = document.createElement('div');
-    newElement.classList.add('Diva-Cover');
-    document.querySelector('.PlayQueue_root__ponhw').appendChild(newElement);
-  }
-}, 1000);
+const observer = new MutationObserver(() => {
+  ['Diva-Cover', 'Diva-Standard-Mark'].forEach(className => {
+    if (document.querySelector('.PlayButtonWithCover_coverImage__DhS1R') && !document.querySelector(`.${className}`)) {
+      document.querySelector('.PlayQueue_root__ponhw')?.appendChild(Object.assign(document.createElement('div'), { className }));
+    }
+  });
+});
 
-setInterval(function() {
-  const playButtonCover = document.querySelector('.PlayButtonWithCover_coverImage__DhS1R');
-  const divaStandardMark = document.querySelector('.Diva-Standard-Mark');
-  
-  if (playButtonCover && !divaStandardMark) {
-    const newElement = document.createElement('div');
-    newElement.classList.add('Diva-Standard-Mark');
-    document.querySelector('.PlayQueue_root__ponhw').appendChild(newElement);
-  }
-}, 1000);
+observer.observe(document.body, { childList: true, subtree: true });
 /*--------------------------------------------*/
 
 /*Управление handleEvents.json*/
