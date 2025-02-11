@@ -238,85 +238,78 @@ let updateInterval;
 async function setSettings(newSettings) {
     // Кастом картинка в SyncLyrics
     const syncLyricsBackground = document.querySelector('.SyncLyrics_root__6KZg4');
-    const style = document.createElement('style');
-    document.head.appendChild(style);
-
-    function updateBackground(url) {
-        style.textContent = `
-            .SyncLyrics_root__6KZg4 {
-                background-image: url("${url}");
-            }
-        `;
+    let style = document.getElementById('sync-lyrics-style');
+    if (!style) {
+        style = document.createElement('style');
+        style.id = 'sync-lyrics-style';
+        document.head.appendChild(style);
     }
 
-    const newUrl = newSettings?.['SyncLyrics']?.backgroundUrl?.text || baseUrl;
-
-    if (Object.keys(settings).length === 0 || settings['SyncLyrics'].coverImage !== newSettings['SyncLyrics'].coverImage) {
-        if (newSettings['SyncLyrics'].coverImage) {
-            applyBackground = true;
-        } else {
-            applyBackground = false;
+    function updateBackground(url) {
+        if (style.textContent !== `.SyncLyrics_root__6KZg4 { background-image: url("${url}"); }`) {
+            style.textContent = `.SyncLyrics_root__6KZg4 { background-image: url("${url}"); }`;
         }
     }
 
-    if (Object.keys(settings).length === 0 || settings['SyncLyrics'].coverImage !== newSettings['SyncLyrics'].coverImage) {
-        applyBackground = !!newSettings['SyncLyrics'].coverImage;
-    }
+    const newUrl = newSettings?.['SyncLyrics']?.backgroundUrl?.text || baseUrl;
+    applyBackground = !!newSettings['SyncLyrics'].coverImage;
 
     if (applyBackground) {
-        const checkBackground = () => {
+        const checkBackground = setInterval(() => {
             const img = [...document.querySelectorAll('[class*="FullscreenPlayerDesktopPoster_cover"]')]
                 .find(img => img.src && img.src.includes('/400x400'));
-            
+
             if (img) {
                 updateBackground(img.src.replace('/400x400', '/1000x1000'));
-            } else {
-                requestAnimationFrame(checkBackground);
+                clearInterval(checkBackground);
             }
-        };
-        checkBackground();
+        }, 1000);
     } else {
         updateBackground(newUrl);
     }
 
     // Blur Filter
-    if (Object.keys(settings).length === 0 || settings['SyncLyrics'].blurFilter.text !== newSettings['SyncLyrics'].blurFilter.text) {
-        const newBlur = parseInt(newSettings['SyncLyrics'].blurFilter.text, 10) || 0;
-        if (baseBlur !== newBlur) {
-            baseBlur = newBlur;
+    let blurStyle = document.getElementById("blur-style");
+    if (!blurStyle) {
+        blurStyle = document.createElement("style");
+        blurStyle.id = "blur-style";
+        document.head.appendChild(blurStyle);
+    }
 
-            let style = document.getElementById("blur-style");
-            if (!style) {
-                style = document.createElement("style");
-                style.id = "blur-style";
-                document.head.appendChild(style);
-            }
-            style.textContent = `.SyncLyrics_root__6KZg4::after { backdrop-filter: blur(${baseBlur}px); content: ''; position: absolute; inset: 0; }`;
-        }
+    const newBlur = parseInt(newSettings['SyncLyrics'].blurFilter.text, 10) || 0;
+    if (baseBlur !== newBlur) {
+        baseBlur = newBlur;
+        blurStyle.textContent = `.SyncLyrics_root__6KZg4::after { backdrop-filter: blur(${baseBlur}px); content: ''; position: absolute; inset: 0; }`;
     }
 
     // Standard Mark
-    if (Object.keys(settings).length === 0 || settings['Очередь'].toggleStandardMark !== newSettings['Очередь'].toggleStandardMark) {
-        const style = document.createElement('style');
-        style.textContent = `
-            .Diva-Standard-Mark {
-                display: ${newSettings['Очередь'].toggleStandardMark ? 'block' : 'none'} !important;
-            }
-        `;
-        document.head.appendChild(style);
+    let standardMarkStyle = document.getElementById('standard-mark-style');
+    if (!standardMarkStyle) {
+        standardMarkStyle = document.createElement('style');
+        standardMarkStyle.id = 'standard-mark-style';
+        document.head.appendChild(standardMarkStyle);
     }
 
+    standardMarkStyle.textContent = `
+        .Diva-Standard-Mark {
+            display: ${newSettings['Очередь'].toggleStandardMark ? 'block' : 'none'} !important;
+        }
+    `;
+
     // Download & Visible Icon
-    if (Object.keys(settings).length === 0 || settings['Очередь'].toggleDownloadAndVisibleIcon !== newSettings['Очередь'].toggleDownloadAndVisibleIcon) {
-        const style = document.createElement('style');
-        style.textContent = `
-            [aria-label="Трек скачан"],
-            [aria-label="Этот трек можете слушать только вы"] {
-                display: ${newSettings['Очередь'].toggleDownloadAndVisibleIcon ? 'block' : 'none'} !important;
-            }
-        `;
-        document.head.appendChild(style);
+    let downloadStyle = document.getElementById('download-style');
+    if (!downloadStyle) {
+        downloadStyle = document.createElement('style');
+        downloadStyle.id = 'download-style';
+        document.head.appendChild(downloadStyle);
     }
+
+    downloadStyle.textContent = `
+        [aria-label="Трек скачан"],
+        [aria-label="Этот трек можете слушать только вы"] {
+            display: ${newSettings['Очередь'].toggleDownloadAndVisibleIcon ? 'block' : 'none'} !important;
+        }
+    `;
 
     // Update theme settings delay
     if (Object.keys(settings).length === 0 || settings['Особое'].setInterval.text !== newSettings['Особое'].setInterval.text) {
@@ -330,6 +323,7 @@ async function setSettings(newSettings) {
         }
     }
 }
+
 
 async function update() {
     const newSettings = await getSettings();
