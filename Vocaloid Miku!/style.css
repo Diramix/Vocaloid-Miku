@@ -258,7 +258,6 @@ section.PlayerBar_root__cXUnU {
 /*Меню параметров качества звука*/
 [data-test-id="QUALITY_SETTINGS_CONTEXT_MENU"] {
 	position: fixed;
-	height: 300px;
 	bottom: 110px;
 	right: 18px;
 	border-radius: 10px;
@@ -271,7 +270,6 @@ section.PlayerBar_root__cXUnU {
 
 .QualitySettingsContextMenu_root_withEqualizer__GPjIg {
 	display: block;
-	height: 302px;
 	overflow: auto;
 }
 
@@ -623,7 +621,6 @@ section.PlayerBar_root__cXUnU {
 .PageHeaderArtist_trailerControl__BWQXJ:hover,
 [aria-label="Закрыть меню настройки звука"]:hover,
 [data-test-id="PLAYLIST_HEADER_CONTEXT_MENU_BUTTON"]:hover,
-.PageHeaderPlaylist_downloadControl__ijcAx:hover,
 .PageHeaderAlbum_controls__e3QCT > button:hover, [data-test-id="ALBUM_HEADER_CONTEXT_MENU_BUTTON"]:hover,
 .PageHeaderPlaylist_mainControls__k_S_i > button:hover, .PageHeaderPlaylist_downloadControl__ijcAx > button:hover,
 .PageHeaderPlaylist_ugcControls__9q8Ne > button:hover,
@@ -1192,6 +1189,7 @@ body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
 	width: 65px;
 	margin-right: -8px;
 	border-radius: 10px;
+	transform: skewX(-12deg); /* Наклон краев */
 }
 
 .PlayQueueNowPlayingBlock_important__sxxvA * .ControlsBar_contextMenuWrapper__NHkn_ {
@@ -1221,6 +1219,13 @@ body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
 	transform: skewX(6deg);
 }
 
+/*skewX fix*/
+.PlayQueue_content__zIUvd * .Meta_root_withSecondaryColor___uENY,
+.PlayQueue_content__zIUvd * .ControlsBar_root_withSecondaryColor__5TC5D,
+.PlayQueue_content__zIUvd * .TrackPlaylist_playButtonCell__Q6YT_ {
+	transform: skewX(12deg);
+}
+
 /*Кнопка лайка*/
 .PlayQueue_content__zIUvd * [data-test-id="TRACK_PLAYLIST"] * [data-test-id="LIKE_BUTTON"] {
 	opacity: 0;
@@ -1236,7 +1241,6 @@ body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
 	position: fixed;
 	width: 34%;
 	height: 32%;
-	background: #f00;
 	top: 130px;
 	right: 4.6%;
 	z-index: 99999;
@@ -1259,7 +1263,6 @@ body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
 	position: relative;
 	min-height: 100%;
 	min-width: 50px;
-	transform: skewX(12deg);
 }
 
 .PlayQueue_content__zIUvd * .TrackPlaylist_playButtonCell__Q6YT_:before {
@@ -1317,6 +1320,10 @@ body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
 /*Этот трек можете слушать только вы*/
 /*--------------------------------------------*/
 [aria-label="Этот трек можете слушать только вы"] {
+	color: var(--font-color);
+}
+
+.PlayQueue_content__zIUvd * [aria-label="Этот трек можете слушать только вы"] {
 	color: var(--main-color);
 }
 /*--------------------------------------------*/

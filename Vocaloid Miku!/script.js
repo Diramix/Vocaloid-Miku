@@ -1,6 +1,28 @@
-// Change fullscreen player background image script
+// Main setInterval
 /*--------------------------------------------*/
 setInterval(() => {
+    yandexThemeUpdate();
+    updateBackgroundImage();
+    updateVibeBackgroundImage();
+    coverAndAssetsImagesElements();
+}, 100);
+/*--------------------------------------------*/
+
+// Скрипт для смены темы
+/*--------------------------------------------*/
+function yandexThemeUpdate() {
+  const body = document.body;
+  if (!body.classList.contains('ym-dark-theme') && !body.classList.contains('ym-light-theme')) {
+    body.classList.add('ym-light-theme');
+  } else if (body.classList.contains('ym-dark-theme')) {
+    body.classList.replace('ym-dark-theme', 'ym-light-theme');
+  }
+};
+/*--------------------------------------------*/
+
+// Change fullscreen player background image script
+/*--------------------------------------------*/
+function updateBackgroundImage() {
     const imgElements = document.querySelectorAll('[class*="FullscreenPlayerDesktopPoster_cover"]');
     let imgBackground = "";
 
@@ -11,37 +33,43 @@ setInterval(() => {
     });
 
     if (imgBackground) {
-        const targetElement = document.querySelector('.FullscreenPlayerDesktop_modalContent__Zs_LC');
-        const divaCoverElement = document.querySelector('.Diva-Cover')
-        if (targetElement) {
+        const newBackgroundWithGradient = `linear-gradient(180deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.75) 100%), url(${imgBackground}) center center / cover no-repeat`;
+        const normalNewBackground = `url(${imgBackground}) center center / cover no-repeat`;
 
-            const currentBackground = targetElement.style.background;
+        const img = new Image();
+        img.src = imgBackground;
 
-            const newBackground = `linear-gradient(180deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.75) 100%), url(${imgBackground}) center center / cover no-repeat`;
-            const divaNewBackground = `url(${imgBackground}) center center / cover no-repeat`;
+        img.onload = () => {
+            const elementsWithGradient = [
+                '.FullscreenPlayerDesktop_modalContent__Zs_LC'
+            ];
 
-            const img = new Image();
-            img.src = imgBackground;
+            const elementsWithoutGradient = [
+                '.Diva-Cover',
+                '.CoverImage'
+            ];
 
-            img.onload = () => {
-
-                if (currentBackground !== newBackground) {
-                    targetElement.style.background = newBackground;
-                    divaCoverElement.style.background = divaNewBackground
+            elementsWithGradient.forEach(selector => {
+                const element = document.querySelector(selector);
+                if (element) {
+                    element.style.background = newBackgroundWithGradient;
                 }
-            };
+            });
 
-            img.onerror = () => {
-                console.error(`Ошибка загрузки изображения: ${imgBackground}`);
-            };
-        }
+            elementsWithoutGradient.forEach(selector => {
+                const element = document.querySelector(selector);
+                if (element) {
+                    element.style.background = normalNewBackground;
+                }
+            });
+        };
     }
-}, 0);
+};
 /*--------------------------------------------*/
 
 // Change vibe block background image script
 /*--------------------------------------------*/
-setInterval(() => {
+function updateVibeBackgroundImage() {
     const imgElements = document.querySelectorAll('[class*="PlayerBarDesktop_cover"]');
     let imgBackground = "";
     const additionalImage = "http://127.0.0.1:2007/assets/My-vibe.png";
@@ -97,7 +125,42 @@ setInterval(() => {
             child.style.zIndex = '3';
         });
     }
-}, 500);
+};
+/*--------------------------------------------*/
+
+// CoverImage для исправления багов с обложкой в фуллскрине
+// Элемент для отображения картинок в фуллскрине
+/*--------------------------------------------*/
+function coverAndAssetsImagesElements() {
+    let container = document.querySelector('.FullscreenPlayerDesktopContent_root__tKNGK');
+    
+    if (container) {
+        if (!container.querySelector('.CoverImage')) {
+            let newElement = document.createElement('div');
+            newElement.classList.add('CoverImage');
+            container.appendChild(newElement);
+        }
+
+        if (!container.querySelector('.AssetsImages')) {
+            let newElement = document.createElement('div');
+            newElement.classList.add('AssetsImages');
+            container.appendChild(newElement);
+        }
+    }
+};
+/*--------------------------------------------*/
+
+// Скрипт для добавления элемента Diva Cover
+/*--------------------------------------------*/
+const observer = new MutationObserver(() => {
+  ['Diva-Cover', 'Diva-Standard-Mark'].forEach(className => {
+    if (document.querySelector('.PlayButtonWithCover_coverImage__DhS1R') && !document.querySelector(`.${className}`)) {
+      document.querySelector('.PlayQueue_root__ponhw')?.appendChild(Object.assign(document.createElement('div'), { className }));
+    }
+  });
+});
+
+observer.observe(document.body, { childList: true, subtree: true });
 /*--------------------------------------------*/
 
 // Vocaloid Miku!
@@ -124,80 +187,11 @@ if (!isThemeTitleText) {
 }
 /*--------------------------------------------*/
 
-// CoverImage для исправления багов с обложкой в SyncLyricsе
-/*--------------------------------------------*/
-setInterval(function() {
-    let container = document.querySelector('.FullscreenPlayerDesktopContent_root__tKNGK');
-    
-    if (container && !container.querySelector('.CoverImage')) {
-        let newElement = document.createElement('div');
-        newElement.classList.add('CoverImage');
-        container.appendChild(newElement);
-    }
-}, 1000);
-
-setInterval(() => {
-    const imgElements = document.querySelectorAll('[class*="PlayerBarDesktop_cover__IYLwR"]');
-    let imgBackground = "";
-
-    imgElements.forEach(img => {
-        if (img.src && img.src.includes('/100x100')) {
-            imgBackground = img.src.replace('/100x100', '/1000x1000');
-        }
-    });
-
-    if (imgBackground) {
-        const targetElement = document.querySelector('.CoverImage');
-        if (targetElement) {
-            targetElement.style.background = `url(${imgBackground}) center center / cover no-repeat`;
-        }
-    }
-}, 1000);
-/*--------------------------------------------*/
-
-// Элемент для отображения картинок в фуллскрине
-/*--------------------------------------------*/
-setInterval(function() {
-    let container = document.querySelector('.FullscreenPlayerDesktopContent_root__tKNGK');
-    
-    if (container && !container.querySelector('.AssetsImages')) {
-        let newElement = document.createElement('div');
-        newElement.classList.add('AssetsImages');
-        container.appendChild(newElement);
-    }
-}, 1000);
-/*--------------------------------------------*/
-
-// Скрипт для смены темы
-/*--------------------------------------------*/
-setInterval(() => {
-  const body = document.body;
-  if (!body.classList.contains('ym-dark-theme') && !body.classList.contains('ym-light-theme')) {
-    body.classList.add('ym-light-theme');
-  } else if (body.classList.contains('ym-dark-theme')) {
-    body.classList.replace('ym-dark-theme', 'ym-light-theme');
-  }
-}, 0);
-/*--------------------------------------------*/
-
 // Скрипт для добавления элемента Miku-Run
 /*--------------------------------------------*/
 const newElement = document.createElement('div');
 newElement.className = 'mikuRun';
 document.body.appendChild(newElement);
-/*--------------------------------------------*/
-
-/*Diva Cover*/
-/*--------------------------------------------*/
-const observer = new MutationObserver(() => {
-  ['Diva-Cover', 'Diva-Standard-Mark'].forEach(className => {
-    if (document.querySelector('.PlayButtonWithCover_coverImage__DhS1R') && !document.querySelector(`.${className}`)) {
-      document.querySelector('.PlayQueue_root__ponhw')?.appendChild(Object.assign(document.createElement('div'), { className }));
-    }
-  });
-});
-
-observer.observe(document.body, { childList: true, subtree: true });
 /*--------------------------------------------*/
 
 /*Управление handleEvents.json*/
@@ -263,7 +257,7 @@ async function setSettings(newSettings) {
                 updateBackground(img.src.replace('/400x400', '/1000x1000'));
                 clearInterval(checkBackground);
             }
-        }, 1000);
+        }, settingsDelay);
     } else {
         updateBackground(newUrl);
     }
@@ -305,8 +299,8 @@ async function setSettings(newSettings) {
     }
 
     downloadStyle.textContent = `
-        [aria-label="Трек скачан"],
-        [aria-label="Этот трек можете слушать только вы"] {
+        .PlayQueue_content__zIUvd * [aria-label="Трек скачан"],
+        .PlayQueue_content__zIUvd * [aria-label="Этот трек можете слушать только вы"] {
             display: ${newSettings['Очередь'].toggleDownloadAndVisibleIcon ? 'block' : 'none'} !important;
         }
     `;
@@ -323,7 +317,6 @@ async function setSettings(newSettings) {
         }
     }
 }
-
 
 async function update() {
     const newSettings = await getSettings();
