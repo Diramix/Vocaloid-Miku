@@ -218,6 +218,7 @@ section.PlayerBar_root__cXUnU {
 	bottom: -13px;
 	z-index: 420;
 	height: 100px;
+	pointer-events: none;
 }
 
 .PlayerBarDesktop_info__56v53,

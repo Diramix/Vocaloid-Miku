@@ -343,9 +343,10 @@ async function setSettings(newSettings) {
     });
 
     // Auto Play
-    if (newSettings['Developer'].devAutoPlayOnStart) {
+    if (newSettings['Developer'].devAutoPlayOnStart && !window.hasRun) {
         document.querySelector(`section.PlayerBar_root__cXUnU * [data-test-id="PLAY_BUTTON"]`)
         ?.click();
+        window.hasRun = true;
     }
 
     // Update theme settings delay
