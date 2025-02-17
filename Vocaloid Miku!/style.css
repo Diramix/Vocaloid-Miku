@@ -674,8 +674,8 @@ section.PlayerBar_root__cXUnU {
 .SyncLyrics_content__lbkWP {
 	width: 63%;
 	min-width: 700px;
-	height: 87%;
-	bottom: -10px;
+	height: 80vh;
+	bottom: 30px;
 	padding: 10px;
 	border-radius: 40px;
 	border-style: solid;
@@ -699,6 +699,7 @@ section.PlayerBar_root__cXUnU {
     position: fixed;
     width: 100%;
     left: calc(-50% + 44px);
+	background-size: cover;
     z-index: 500;
 }
 
@@ -749,6 +750,8 @@ section.PlayerBar_root__cXUnU {
 	position: fixed;
 	background-size: cover;
 	background-position: center;
+	width: 100vw;
+    height: 100vh;
 }
 
 .SyncLyrics_root__6KZg4:after {
@@ -1083,10 +1086,10 @@ body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
 	outline-width: 7px;
 	outline-style: solid;
 	outline-color: #2B2A2B;
-	height: 67%;
+	height: 65vh;
 	width: 55%;
 	left: 1%;
-	bottom: 5%;
+	bottom: 6.5vh;
 	z-index: 2;
 }
 
@@ -1097,7 +1100,8 @@ body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
 }
 
 .PlayQueue_scrollContent__2dI0v {
-	margin-top: -8.2%;
+    padding-block-start: 0;
+    padding-block-end: 0;
 }
 
 .PlayQueue_scrollContent__2dI0v:after {
@@ -1110,6 +1114,7 @@ body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
     background-image: url("http://127.0.0.1:2007/assets/Quaue-Header.png");
     background-size: contain;
     background-repeat: no-repeat;
+	background-position: left top;
     z-index: 999;
 }
 
@@ -1134,8 +1139,8 @@ body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
 	color: var(--main-color);
 }
 
-.PlayQueueBeforePlayingBlock_root__QIIfB {
-	margin-bottom: -20px;
+.PlayQueueBeforePlayingBlock_root__QIIfB:not(:empty) {
+    padding-block-end: 0;
 }
 
 .PlayQueueNowPlayingBlock_root__aJSb8 {
@@ -1242,7 +1247,7 @@ body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
 	position: fixed;
 	width: 34%;
 	height: 32%;
-	top: 130px;
+	top: 15vh;
 	right: 4.6%;
 	z-index: 99999;
 }
@@ -1254,7 +1259,7 @@ body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
 	background-image: url("http://127.0.0.1:2007/assets/Diva-F-Standard-Mark.png");
 	background-size: contain;
 	background-position: center top;
-	top: calc(130px + 35%);
+	top: 50vh;
 	right: 4.6%;
 	z-index: 99999;
 }
@@ -1326,5 +1331,54 @@ body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
 
 .PlayQueue_content__zIUvd * [aria-label="Этот трек можете слушать только вы"] {
 	color: var(--main-color);
+}
+/*--------------------------------------------*/
+
+/*Качество/кодек трека*/
+/*--------------------------------------------*/
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+:has(.PlayerBarDesktop_coverContainer__2Z5nQ:hover) 
+.PlayerBarDesktop_meta__6sm58 > div > span {
+    animation: fadeOut 0.2s forwards;
+}
+
+.PlayerBarDesktop_meta__6sm58 > div > span {
+    animation: fadeIn 0.2s forwards;
+}
+
+:has(.PlayerBarDesktop_coverContainer__2Z5nQ:hover) 
+.PlayerBarDesktop_meta__6sm58 > div > span:hover {
+    animation: fadeIn 0.2s forwards;
+}
+
+div.PlayerBarDesktop_meta__6sm58 > div > span {
+	position: fixed;
+	left: 17px;
+	bottom: 15px;
+	backdrop-filter: blur(20px);
+	font-weight: 600;
+	font-size: 12px;
+	padding: 2px 3px 0px 4px;
+	height: 23px;
+	border-radius: 5px;
+	color: #fff !important;
+	pointer-events: none;
 }
 /*--------------------------------------------*/

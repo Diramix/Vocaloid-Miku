@@ -10,7 +10,7 @@
           "type": "text",
           "buttons": [
             {
-              "name": "text",
+              "name": "URL",
               "text": "http://127.0.0.1:2007/assets/fullscreen-lyrics.jpg",
               "defaultParameter": "http://127.0.0.1:2007/assets/fullscreen-lyrics.jpg"
             }
@@ -23,7 +23,7 @@
           "type": "text",
           "buttons": [
             {
-              "name": "text",
+              "name": "px",
               "text": "0",
               "defaultParameter": "0"
             }
@@ -36,6 +36,19 @@
           "type": "button",
           "bool": false,
           "defaultParameter": false
+        }
+      ]
+    },
+    {
+      "title": "Fullscreen",
+      "items": [
+        {
+          "id": "toggleFullscreenMikuXD",
+          "name": "Fullscreen Miku XD",
+          "description": "Включение/выключение картинки Мику в фуллскрине.",
+          "type": "button",
+          "bool": true,
+          "defaultParameter": true
         }
       ]
     },
@@ -57,24 +70,6 @@
           "type": "button",
           "bool": false,
           "defaultParameter": false
-        }
-      ]
-    },
-    {
-      "title": "Особое",
-      "items": [
-        {
-          "id": "setInterval",
-          "name": "Скорость обновления настроек темы (в миллисекундах)",
-          "description": "Выставляет скорость обновления настроек темы. (Задержка нажатия на кнопку в PulseSync и срабатывание в Яндекс Музыке)",
-          "type": "text",
-          "buttons": [
-            {
-              "name": "text",
-              "text": "1000",
-              "defaultParameter": "1000"
-            }
-          ]
         }
       ]
     },
@@ -129,6 +124,24 @@
           "type": "button",
           "bool": false,
           "defaultParameter": false
+        }
+      ]
+    },
+    {
+      "title": "Особое",
+      "items": [
+        {
+          "id": "setInterval",
+          "name": "Скорость обновления настроек темы (в миллисекундах)",
+          "description": "Выставляет скорость обновления настроек темы. (Задержка нажатия на кнопку в PulseSync и срабатывание в Яндекс Музыке)",
+          "type": "text",
+          "buttons": [
+            {
+              "name": "text",
+              "text": "1000",
+              "defaultParameter": "1000"
+            }
+          ]
         }
       ]
     },

@@ -276,34 +276,27 @@ async function setSettings(newSettings) {
         blurStyle.textContent = `.SyncLyrics_root__6KZg4::after { backdrop-filter: blur(${baseBlur}px); content: ''; position: absolute; inset: 0; }`;
     }
 
-    // Standard Mark
-    let standardMarkStyle = document.getElementById('standard-mark-style');
-    if (!standardMarkStyle) {
-        standardMarkStyle = document.createElement('style');
-        standardMarkStyle.id = 'standard-mark-style';
-        document.head.appendChild(standardMarkStyle);
+    let combinedStyle = document.getElementById('combined-style');
+    if (!combinedStyle) {
+        combinedStyle = document.createElement('style');
+        combinedStyle.id = 'combined-style';
+        document.head.appendChild(combinedStyle);
     }
-
-    standardMarkStyle.textContent = `
+    
+    combinedStyle.textContent = `
         .Diva-Standard-Mark {
             display: ${newSettings['Очередь'].toggleStandardMark ? 'block' : 'none'} !important;
         }
-    `;
-
-    // Download & Visible Icon
-    let downloadStyle = document.getElementById('download-style');
-    if (!downloadStyle) {
-        downloadStyle = document.createElement('style');
-        downloadStyle.id = 'download-style';
-        document.head.appendChild(downloadStyle);
-    }
-
-    downloadStyle.textContent = `
+    
         .PlayQueue_content__zIUvd * [aria-label="Трек скачан"],
         .PlayQueue_content__zIUvd * [aria-label="Этот трек можете слушать только вы"] {
             display: ${newSettings['Очередь'].toggleDownloadAndVisibleIcon ? 'block' : 'none'} !important;
         }
-    `;
+    
+        .AssetsImages:after {
+            display: ${newSettings['Fullscreen'].toggleFullscreenMikuXD ? 'block' : 'none'} !important;
+        }
+    `;    
 
     // Open Blocker
     const modules = [
