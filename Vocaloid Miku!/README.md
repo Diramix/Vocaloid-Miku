@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/e457123d-50db-4f0f-8580-204edc47cd5d)
+![image](https://github.com/user-attachments/assets/80b93603-5bba-4844-b03a-69fd59f774a8)
 
 # Vocaloid Miku!
 

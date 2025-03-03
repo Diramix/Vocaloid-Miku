@@ -1,11 +1,10 @@
 // Main setInterval
 /*--------------------------------------------*/
 setInterval(() => {
-    yandexThemeUpdate();
     updateBackgroundImage();
     updateVibeBackgroundImage();
     coverAndAssetsImagesElements();
-}, 100);
+}, 300);
 /*--------------------------------------------*/
 
 // Скрипт для смены темы
@@ -18,6 +17,7 @@ function yandexThemeUpdate() {
     body.classList.replace('ym-dark-theme', 'ym-light-theme');
   }
 };
+yandexThemeUpdate();
 /*--------------------------------------------*/
 
 // Change fullscreen player background image script
