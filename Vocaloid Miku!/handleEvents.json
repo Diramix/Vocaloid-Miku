@@ -58,8 +58,8 @@
       "title": "Очередь",
       "items": [
         {
-          "id": "toggleStandardMark",
-          "name": "Standard Mark",
+          "id": "togglePerfectMark",
+          "name": "Perfect Mark",
           "description": "Включение/выключение надписи счёта на странице очереди.",
           "type": "button",
           "bool": true,

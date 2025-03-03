@@ -153,7 +153,7 @@ function coverAndAssetsImagesElements() {
 // Скрипт для добавления элемента Diva Cover
 /*--------------------------------------------*/
 const observer = new MutationObserver(() => {
-  ['Diva-Cover', 'Diva-Standard-Mark'].forEach(className => {
+  ['Diva-Cover', 'Diva-Perfect-Mark'].forEach(className => {
     if (document.querySelector('.PlayButtonWithCover_coverImage__DhS1R') && !document.querySelector(`.${className}`)) {
       document.querySelector('.PlayQueue_root__ponhw')?.appendChild(Object.assign(document.createElement('div'), { className }));
     }
@@ -204,7 +204,7 @@ function log(text) {
 
 async function getSettings() {
     try {
-        const response = await fetch("http://127.0.0.1:2007/get_handle");
+        const response = await fetch("http://127.0.0.1:2007/get_handle?name=Vocaloid Miku!");
         if (!response.ok) throw new Error(`Ошибка сети: ${response.status}`);
         const data = await response.json();
         if (!data?.data?.sections) {
@@ -284,8 +284,8 @@ async function setSettings(newSettings) {
     }
     
     combinedStyle.textContent = `
-        .Diva-Standard-Mark {
-            display: ${newSettings['Очередь'].toggleStandardMark ? 'block' : 'none'} !important;
+        .Diva-Perfect-Mark {
+            display: ${newSettings['Очередь'].togglePerfectMark ? 'block' : 'none'} !important;
         }
     
         .PlayQueue_content__zIUvd * [aria-label="Трек скачан"],
