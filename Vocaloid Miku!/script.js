@@ -296,44 +296,18 @@ async function setSettings(newSettings) {
         .AssetsImages:after {
             display: ${newSettings['Fullscreen'].toggleFullscreenMikuXD ? 'block' : 'none'} !important;
         }
-    `;    
 
-    // Open Blocker
-    const modules = [
-        "donations",
-        "concerts",
-        "trailers",
-        "betabutton",
-        "relevantnow",
-        "artistrecommends",
-        "barbelow"
-    ];
-
-    modules.forEach(module => {
-        const settingKey = `OB${module.charAt(0) + module.slice(1)}`;
-        const cssId = `openblocker-${module}`;
-        const existingLink = document.getElementById(cssId);
-        
-        if (Object.keys(settings).length === 0 || settings['Open-Blocker'][settingKey] !== newSettings['Open-Blocker'][settingKey]) {
-            if (newSettings['Open-Blocker'][settingKey]) {
-                if (existingLink) {
-                    existingLink.remove();
-                }
-            } else {
-                if (!existingLink) {
-                    fetch(`https://raw.githubusercontent.com/Open-Blocker-FYM/Open-Blocker/refs/heads/main/blocker-css/${module}.css`)
-                        .then(response => response.text())
-                        .then(css => {
-                            const style = document.createElement("style");
-                            style.id = cssId;
-                            style.textContent = css;
-                            document.head.appendChild(style);
-                        })
-                        .catch(error => console.error(`Ошибка загрузки CSS: ${module}`, error));
-                }
-            }
+        /*Normal Font*/
+        @font-face {
+            font-family: "Montserrat";
+            src: url("http://127.0.0.1:2007/assets/Montserrat.ttf") format("truetype");
         }
-    });
+        .SyncLyricsLine_root__r62BN {
+            font-family: ${newSettings['SyncLyrics'].normalFont ? '"Montserrat", sans-serif' : ''};
+            font-weight: ${newSettings['SyncLyrics'].normalFont ? '700' : ''};
+            font-size: ${newSettings['SyncLyrics'].normalFont ? '35px' : ''};
+        }
+    `;    
 
     // Auto Play
     if (newSettings['Developer'].devAutoPlayOnStart && !window.hasRun) {

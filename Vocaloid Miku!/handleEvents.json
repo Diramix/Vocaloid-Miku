@@ -38,6 +38,14 @@
           "type": "button",
           "bool": false,
           "defaultParameter": false
+        },
+        {
+          "id": "normalFont",
+          "name": "Normal Font",
+          "description": "Делает нормальный шрифт синклирики.",
+          "type": "button",
+          "bool": true,
+          "defaultParameter": true
         }
       ]
     },
@@ -69,60 +77,6 @@
           "id": "toggleDownloadAndVisibleIcon",
           "name": "Download & Visible Icon",
           "description": "Включение/выключение иконок скачанного трека и то, что трек можете слушать только вы, на странице очереди.",
-          "type": "button",
-          "bool": false,
-          "defaultParameter": false
-        }
-      ]
-    },
-    {
-      "title": "Open-Blocker",
-      "items": [
-        {
-          "id": "OBdonations",
-          "name": "Донаты",
-          "type": "button",
-          "bool": true,
-          "defaultParameter": true
-        },
-        {
-          "id": "OBconcerts",
-          "name": "Концерты",
-          "type": "button",
-          "bool": true,
-          "defaultParameter": true
-        },
-        {
-          "id": "OBtrailers",
-          "name": "Трейлеры",
-          "type": "button",
-          "bool": true,
-          "defaultParameter": true
-        },
-        {
-          "id": "OBbetabutton",
-          "name": "Кнопка версии",
-          "type": "button",
-          "bool": true,
-          "defaultParameter": true
-        },
-        {
-          "id": "OBrelevantnow",
-          "name": "Актуально сейчас",
-          "type": "button",
-          "bool": true,
-          "defaultParameter": true
-        },
-        {
-          "id": "OBartistrecommends",
-          "name": "Артист рекомендует",
-          "type": "button",
-          "bool": true,
-          "defaultParameter": true
-        },
-        {
-          "id": "OBbarbelow",
-          "name": "Рекламные беннеры",
           "type": "button",
           "bool": false,
           "defaultParameter": false
