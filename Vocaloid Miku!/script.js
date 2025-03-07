@@ -81,7 +81,7 @@ function updateVibeBackgroundImage() {
     });
 
     const targetElement = document.querySelector('.MainPage_vibe__XEBbh');
-    if (targetElement) {
+    if (targetElement && isElementInViewport(targetElement)) {
         targetElement.style.position = 'relative';
         targetElement.style.overflow = 'hidden';
 
@@ -125,7 +125,13 @@ function updateVibeBackgroundImage() {
             child.style.zIndex = '3';
         });
     }
-};
+}
+
+function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return rect.top >= 0 && rect.left >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && rect.right <= (window.innerWidth || document.documentElement.clientWidth);
+}
+
 /*--------------------------------------------*/
 
 // CoverImage для исправления багов с обложкой в фуллскрине
