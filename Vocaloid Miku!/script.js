@@ -86,8 +86,22 @@ function updateVibeBackgroundImage() {
         targetElement.style.overflow = 'hidden';
 
         let blurElement = targetElement.querySelector('.blur-element');
-        if (blurElement) {
-            targetElement.removeChild(blurElement);
+        if (!blurElement) {
+            blurElement = document.createElement('div');
+            blurElement.classList.add('blur-element');
+            blurElement.style.position = 'absolute';
+            blurElement.style.top = 0;
+            blurElement.style.left = 0;
+            blurElement.style.width = '100%';
+            blurElement.style.height = '100%';
+            blurElement.style.backgroundColor = '#26F4FE';
+            blurElement.style.filter = 'blur(0px) brightness(0.5)';
+            blurElement.style.zIndex = '1';
+            targetElement.appendChild(blurElement);
+        }
+        
+        if (blurElement.style.background !== `url(${imgBackground}) center center / cover no-repeat`) {
+            blurElement.style.background = `url(${imgBackground}) center center / cover no-repeat`;
         }
 
         let additionalImageElement = targetElement.querySelector('.additional-image-element');
@@ -106,23 +120,12 @@ function updateVibeBackgroundImage() {
             targetElement.appendChild(additionalImageElement);
         }
 
-        const newBlurElement = document.createElement('div');
-        newBlurElement.classList.add('blur-element');
-        newBlurElement.style.position = 'absolute';
-        newBlurElement.style.top = 0;
-        newBlurElement.style.left = 0;
-        newBlurElement.style.width = '100%';
-        newBlurElement.style.height = '100%';
-        newBlurElement.style.background = `url(${imgBackground}) center center / cover no-repeat`;
-        newBlurElement.style.backgroundColor = '#26F4FE';
-        newBlurElement.style.filter = 'blur(0px) brightness(0.5)';
-        newBlurElement.style.zIndex = '1';
-        targetElement.appendChild(newBlurElement);
-
         const childElements = targetElement.querySelectorAll(':scope > *:not(.additional-image-element):not(.blur-element)');
         childElements.forEach(child => {
-            child.style.position = 'relative';
-            child.style.zIndex = '3';
+            if (child.style.zIndex !== '3') {
+                child.style.position = 'relative';
+                child.style.zIndex = '3';
+            }
         });
     }
 }
@@ -131,7 +134,6 @@ function isElementInViewport(el) {
     const rect = el.getBoundingClientRect();
     return rect.top >= 0 && rect.left >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && rect.right <= (window.innerWidth || document.documentElement.clientWidth);
 }
-
 /*--------------------------------------------*/
 
 // CoverImage для исправления багов с обложкой в фуллскрине
