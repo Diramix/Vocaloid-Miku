@@ -145,6 +145,7 @@
 /*--------------------------------------------*/
 
 /*Update нотификейшон*/
+/*--------------------------------------------*/
 .NotificationUpdate_important___0WHj {
 	position: fixed;
 	display: flex;
@@ -153,6 +154,7 @@
 	min-width: 280px;
 	margin-left: -135px;
 }
+/*--------------------------------------------*/
 
 /*Релиз нотес*/
 /*--------------------------------------------*/
@@ -967,7 +969,7 @@ body > .DevPanel_root__Gu7qn > .qU2apWBO1yyEK0lZ3lPO:hover {
 }
 /*--------------------------------------------*/
 
-/*Only display:  none;*/
+/*Only display: none;*/
 /*--------------------------------------------*/
 .VibeAnimation_root_visible__S7kXl,
 .NavbarDesktop_pinsList___jXIM:before,
