@@ -2,11 +2,17 @@
   "name": "Vocaloid Miku!",
   "image": "image.png",
   "banner": "banner.png",
-  "author": ["diram1x"],
+  "author": [
+    "diram1x"
+  ],
   "description": "Hatsune Miku: Project DIRA F",
   "type": "theme",
-  "version": "1.7.14",
+  "version": "1.7.15",
   "css": "style.css",
   "script": "script.js",
-  "tags": ["Anime", "Hatsune Miku", "Vocaloid"]
+  "tags": [
+    "Anime",
+    "Hatsune Miku",
+    "Vocaloid"
+  ]
 }

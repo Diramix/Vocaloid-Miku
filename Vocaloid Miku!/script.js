@@ -10,12 +10,12 @@ setInterval(() => {
 // Скрипт для смены темы
 /*--------------------------------------------*/
 function yandexThemeUpdate() {
-  const body = document.body;
-  if (!body.classList.contains('ym-dark-theme') && !body.classList.contains('ym-light-theme')) {
-    body.classList.add('ym-light-theme');
-  } else if (body.classList.contains('ym-dark-theme')) {
-    body.classList.replace('ym-dark-theme', 'ym-light-theme');
-  }
+    const body = document.body;
+    if (!body.classList.contains('ym-dark-theme') && !body.classList.contains('ym-light-theme')) {
+        body.classList.add('ym-light-theme');
+    } else if (body.classList.contains('ym-dark-theme')) {
+        body.classList.replace('ym-dark-theme', 'ym-light-theme');
+    }
 };
 yandexThemeUpdate();
 /*--------------------------------------------*/
@@ -99,7 +99,7 @@ function updateVibeBackgroundImage() {
             blurElement.style.zIndex = '1';
             targetElement.appendChild(blurElement);
         }
-        
+
         if (blurElement.style.background !== `url(${imgBackground}) center center / cover no-repeat`) {
             blurElement.style.background = `url(${imgBackground}) center center / cover no-repeat`;
         }
@@ -141,7 +141,7 @@ function isElementInViewport(el) {
 /*--------------------------------------------*/
 function coverAndAssetsImagesElements() {
     let container = document.querySelector('.FullscreenPlayerDesktopContent_root__tKNGK');
-    
+
     if (container) {
         if (!container.querySelector('.CoverImage')) {
             let newElement = document.createElement('div');
@@ -161,11 +161,11 @@ function coverAndAssetsImagesElements() {
 // Скрипт для добавления элемента Diva Cover
 /*--------------------------------------------*/
 const observer = new MutationObserver(() => {
-  ['Diva-Cover', 'Diva-Perfect-Mark'].forEach(className => {
-    if (document.querySelector('.PlayButtonWithCover_coverImage__DhS1R') && !document.querySelector(`.${className}`)) {
-      document.querySelector('.PlayQueue_root__ponhw')?.appendChild(Object.assign(document.createElement('div'), { className }));
-    }
-  });
+    ['Diva-Cover', 'Diva-Perfect-Mark'].forEach(className => {
+        if (document.querySelector('.PlayButtonWithCover_coverImage__DhS1R') && !document.querySelector(`.${className}`)) {
+            document.querySelector('.PlayQueue_root__ponhw')?.appendChild(Object.assign(document.createElement('div'), { className }));
+        }
+    });
 });
 
 observer.observe(document.body, { childList: true, subtree: true });
@@ -173,24 +173,24 @@ observer.observe(document.body, { childList: true, subtree: true });
 
 // Vocaloid Miku!
 /*--------------------------------------------*/
-const isThemeTitleText = document.querySelector('.themeTitleText')
-if (!isThemeTitleText) {
+if (!document.querySelector('.ThemeTitleText')) {
     const themeTitleText = document.createElement('div');
     themeTitleText.className = 'ThemeTitleText';
 
-    themeTitleText.style.position = 'fixed';
-    themeTitleText.style.visibility = 'visible';
-    themeTitleText.style.fontFamily = '"Vocaloid", sans-serif';
-    themeTitleText.style.fontSize = '16px';
-    themeTitleText.style.fontWeight = '1000';
-    themeTitleText.style.left = '50%';
-    themeTitleText.style.marginLeft = '-66px';
-    themeTitleText.style.top = '10px';
-    themeTitleText.style.color = 'var(--main-color)';
-    themeTitleText.style.zIndex = '1';
+    Object.assign(themeTitleText.style, {
+        position: 'fixed',
+        visibility: 'visible',
+        fontFamily: '"Vocaloid", sans-serif',
+        fontSize: '16px',
+        fontWeight: '1000',
+        left: '50%',
+        marginLeft: '-66px',
+        top: '10px',
+        color: 'var(--main-color)',
+        zIndex: '1'
+    });
 
     themeTitleText.textContent = 'Vocaloid Miku!';
-
     document.body.appendChild(themeTitleText);
 }
 /*--------------------------------------------*/
@@ -200,6 +200,24 @@ if (!isThemeTitleText) {
 const newElement = document.createElement('div');
 newElement.className = 'mikuRun';
 document.body.appendChild(newElement);
+/*--------------------------------------------*/
+
+// Возвращение иконки настроек качества трека
+/*--------------------------------------------*/
+const target = document.querySelector('[data-test-id="SOUND_QUALITY_BUTTON"] > span');
+if (target) {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("class", "J9wTKytjOWG73QMoN5WP UwnL5AJBMMAp6NwMDdZk");
+    svg.setAttribute("focusable", "false");
+    svg.setAttribute("aria-hidden", "true");
+    svg.setAttribute("style", "padding: var(--ym-icon-padding, 2px);");
+
+    const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+    use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#settings");
+
+    svg.appendChild(use);
+    target.appendChild(svg);
+}
 /*--------------------------------------------*/
 
 /*Управление handleEvents.json*/
@@ -290,7 +308,7 @@ async function setSettings(newSettings) {
         combinedStyle.id = 'combined-style';
         document.head.appendChild(combinedStyle);
     }
-    
+
     combinedStyle.textContent = `
         .Diva-Perfect-Mark {
             display: ${newSettings['Очередь'].togglePerfectMark ? 'block' : 'none'} !important;
@@ -315,12 +333,12 @@ async function setSettings(newSettings) {
             font-weight: ${newSettings['SyncLyrics'].normalFont ? '700' : ''};
             font-size: ${newSettings['SyncLyrics'].normalFont ? '35px' : ''};
         }
-    `;    
+    `;
 
     // Auto Play
     if (newSettings['Developer'].devAutoPlayOnStart && !window.hasRun) {
         document.querySelector(`section.PlayerBar_root__cXUnU * [data-test-id="PLAY_BUTTON"]`)
-        ?.click();
+            ?.click();
         window.hasRun = true;
     }
 
