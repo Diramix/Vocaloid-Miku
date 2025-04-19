@@ -205,6 +205,7 @@ document.body.appendChild(newElement);
 // Возвращение иконки настроек качества трека
 /*--------------------------------------------*/
 const target = document.querySelector('[data-test-id="SOUND_QUALITY_BUTTON"] > span');
+
 if (target) {
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute("class", "J9wTKytjOWG73QMoN5WP UwnL5AJBMMAp6NwMDdZk");
@@ -218,6 +219,25 @@ if (target) {
     svg.appendChild(use);
     target.appendChild(svg);
 }
+
+const qualityBack = new MutationObserver(() => {
+    const target = document.querySelector('[data-test-id="SOUND_QUALITY_BUTTON"] > span');
+    if (target && !target.querySelector('svg')) {
+        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttribute("class", "J9wTKytjOWG73QMoN5WP UwnL5AJBMMAp6NwMDdZk");
+        svg.setAttribute("focusable", "false");
+        svg.setAttribute("aria-hidden", "true");
+        svg.setAttribute("style", "padding: var(--ym-icon-padding, 2px);");
+
+        const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+        use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#settings");
+
+        svg.appendChild(use);
+        target.appendChild(svg);
+    }
+});
+
+qualityBack.observe(document.body, { childList: true, subtree: true });
 /*--------------------------------------------*/
 
 /*Управление handleEvents.json*/
