@@ -70,9 +70,9 @@ function updateBackgroundImage() {
 // Change vibe block background image script
 /*--------------------------------------------*/
 function updateVibeBackgroundImage() {
-    const imgElements = document.querySelectorAll('[class*="PlayerBarDesktop_cover"]');
+    const imgElements = document.querySelectorAll('[class*="PlayerBarDesktopWithBackgroundProgressBar_cover"]');
     let imgBackground = "";
-    const additionalImage = "http://127.0.0.1:2007/assets/My-vibe.png";
+    const additionalImage = "http://127.0.0.1:2007/assets/My-vibe.png?name=Vocaloid Miku!";
 
     imgElements.forEach(img => {
         if (img.src && img.src.includes('/100x100')) {
@@ -96,7 +96,7 @@ function updateVibeBackgroundImage() {
             blurElement.style.height = '100%';
             blurElement.style.backgroundColor = '#26F4FE';
             blurElement.style.filter = 'blur(0px) brightness(0.5)';
-            blurElement.style.zIndex = '1';
+            blurElement.style.zIndex = '0';
             targetElement.appendChild(blurElement);
         }
 
@@ -113,8 +113,9 @@ function updateVibeBackgroundImage() {
             additionalImageElement.style.left = 0;
             additionalImageElement.style.width = '100%';
             additionalImageElement.style.height = '100%';
-            additionalImageElement.style.background = `url(${additionalImage}) center center / cover no-repeat`;
+            additionalImageElement.style.background = `url("${additionalImage}") center center / cover no-repeat`;
             additionalImageElement.style.borderRadius = '10px';
+            additionalImageElement.style.pointerEvents = 'none';
             additionalImageElement.style.zIndex = '2';
             additionalImageElement.style.imageRendering = 'crisp-edges';
             targetElement.appendChild(additionalImageElement);
@@ -197,9 +198,11 @@ if (!document.querySelector('.ThemeTitleText')) {
 
 // Скрипт для добавления элемента Miku-Run
 /*--------------------------------------------*/
-const newElement = document.createElement('div');
-newElement.className = 'mikuRun';
-document.body.appendChild(newElement);
+if (!document.querySelector('.mikuRun')) {
+    const newElement = document.createElement('div');
+    newElement.className = 'mikuRun';
+    document.body.appendChild(newElement);
+}
 /*--------------------------------------------*/
 
 // Возвращение иконки настроек качества трека
@@ -271,7 +274,7 @@ async function getSettings() {
 }
 
 let settingsDelay = 1000;
-let baseUrl = 'http://127.0.0.1:2007/assets/fullscreen-lyrics.jpg'
+let baseUrl = 'http://127.0.0.1:2007/assets/fullscreen-lyrics.jpg?name=Vocaloid Miku!'
 let baseBlur = 0;
 let updateInterval;
 
@@ -346,7 +349,7 @@ async function setSettings(newSettings) {
         /*Normal Font*/
         @font-face {
             font-family: "Montserrat";
-            src: url("http://127.0.0.1:2007/assets/Montserrat.ttf") format("truetype");
+            src: url("http://127.0.0.1:2007/assets/Montserrat.ttf?name=Vocaloid Miku!") format("truetype");
         }
         .SyncLyricsLine_root__r62BN {
             font-family: ${newSettings['SyncLyrics'].normalFont ? '"Montserrat", sans-serif' : ''};

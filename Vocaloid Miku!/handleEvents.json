@@ -1,118 +1,118 @@
 {
-  "sections": [
-    {
-      "title": "SyncLyrics",
-      "items": [
+    "sections": [
         {
-          "id": "backgroundUrl",
-          "name": "Custom URL",
-          "description": "URL картинки, которая будет отображаться на фоне в синк лирике. Можно использовать папку assets. http://127.0.0.1:2007/assets/<название файла картинки>",
-          "type": "text",
-          "buttons": [
-            {
-              "name": "text",
-              "text": "http://127.0.0.1:2007/assets/fullscreen-lyrics.jpg",
-              "defaultParameter": "http://127.0.0.1:2007/assets/fullscreen-lyrics.jpg",
-              "id": ""
-            }
-          ]
+            "title": "SyncLyrics",
+            "items": [
+                {
+                    "id": "backgroundUrl",
+                    "name": "Custom URL",
+                    "description": "URL картинки, которая будет отображаться на фоне в синк лирике. Можно использовать папку assets. http://127.0.0.1:2007/assets/<название файла картинки>?name=Vocaloid Miku!",
+                    "type": "text",
+                    "buttons": [
+                        {
+                            "name": "text",
+                            "text": "http://127.0.0.1:2007/assets/fullscreen-lyrics.jpg?name=Vocaloid Miku!",
+                            "defaultParameter": "http://127.0.0.1:2007/assets/fullscreen-lyrics.jpg?name=Vocaloid Miku!",
+                            "id": ""
+                        }
+                    ]
+                },
+                {
+                    "id": "blurFilter",
+                    "name": "Blur Filter",
+                    "description": "Блюрит фоновую картинку.",
+                    "type": "text",
+                    "buttons": [
+                        {
+                            "name": "text",
+                            "text": "0",
+                            "defaultParameter": "0",
+                            "id": ""
+                        }
+                    ]
+                },
+                {
+                    "id": "coverImage",
+                    "name": "Cover Image",
+                    "description": "Картинка трека на фон синк лирики.",
+                    "type": "button",
+                    "bool": true,
+                    "defaultParameter": false
+                },
+                {
+                    "id": "normalFont",
+                    "name": "Normal Font",
+                    "description": "Делает нормальный шрифт синклирики.",
+                    "type": "button",
+                    "bool": true,
+                    "defaultParameter": true
+                }
+            ]
         },
         {
-          "id": "blurFilter",
-          "name": "Blur Filter",
-          "description": "Блюрит фоновую картинку.",
-          "type": "text",
-          "buttons": [
-            {
-              "name": "text",
-              "text": "0",
-              "defaultParameter": "0",
-              "id": ""
-            }
-          ]
+            "title": "Fullscreen",
+            "items": [
+                {
+                    "id": "toggleFullscreenMikuXD",
+                    "name": "Fullscreen Miku XD",
+                    "description": "Включение/выключение картинки Мику в фуллскрине.",
+                    "type": "button",
+                    "bool": true,
+                    "defaultParameter": true
+                }
+            ]
         },
         {
-          "id": "coverImage",
-          "name": "Cover Image",
-          "description": "Картинка трека на фон синк лирики.",
-          "type": "button",
-          "bool": false,
-          "defaultParameter": false
+            "title": "Очередь",
+            "items": [
+                {
+                    "id": "togglePerfectMark",
+                    "name": "Perfect Mark",
+                    "description": "Включение/выключение надписи счёта на странице очереди.",
+                    "type": "button",
+                    "bool": true,
+                    "defaultParameter": true
+                },
+                {
+                    "id": "toggleDownloadAndVisibleIcon",
+                    "name": "Download & Visible Icon",
+                    "description": "Включение/выключение иконок скачанного трека и то, что трек можете слушать только вы, на странице очереди.",
+                    "type": "button",
+                    "bool": false,
+                    "defaultParameter": false
+                }
+            ]
         },
         {
-          "id": "normalFont",
-          "name": "Normal Font",
-          "description": "Делает нормальный шрифт синклирики.",
-          "type": "button",
-          "bool": true,
-          "defaultParameter": true
-        }
-      ]
-    },
-    {
-      "title": "Fullscreen",
-      "items": [
-        {
-          "id": "toggleFullscreenMikuXD",
-          "name": "Fullscreen Miku XD",
-          "description": "Включение/выключение картинки Мику в фуллскрине.",
-          "type": "button",
-          "bool": true,
-          "defaultParameter": true
-        }
-      ]
-    },
-    {
-      "title": "Очередь",
-      "items": [
-        {
-          "id": "togglePerfectMark",
-          "name": "Perfect Mark",
-          "description": "Включение/выключение надписи счёта на странице очереди.",
-          "type": "button",
-          "bool": true,
-          "defaultParameter": true
+            "title": "Особое",
+            "items": [
+                {
+                    "id": "setInterval",
+                    "name": "Скорость обновления настроек темы (в миллисекундах)",
+                    "description": "Выставляет скорость обновления настроек темы. (Задержка нажатия на кнопку в PulseSync и срабатывание в Яндекс Музыке)",
+                    "type": "text",
+                    "buttons": [
+                        {
+                            "name": "text",
+                            "text": "1000",
+                            "defaultParameter": "1000"
+                        }
+                    ]
+                }
+            ]
         },
         {
-          "id": "toggleDownloadAndVisibleIcon",
-          "name": "Download & Visible Icon",
-          "description": "Включение/выключение иконок скачанного трека и то, что трек можете слушать только вы, на странице очереди.",
-          "type": "button",
-          "bool": false,
-          "defaultParameter": false
+            "title": "Developer",
+            "items": [
+                {
+                    "id": "devAutoPlayOnStart",
+                    "name": "Автоплей",
+                    "description": "Запускает трек сразу после запуска Яндекс Музыки и при нажатии ctrl + r.",
+                    "type": "button",
+                    "bool": false,
+                    "defaultParameter": false
+                }
+            ]
         }
-      ]
-    },
-    {
-      "title": "Особое",
-      "items": [
-        {
-          "id": "setInterval",
-          "name": "Скорость обновления настроек темы (в миллисекундах)",
-          "description": "Выставляет скорость обновления настроек темы. (Задержка нажатия на кнопку в PulseSync и срабатывание в Яндекс Музыке)",
-          "type": "text",
-          "buttons": [
-            {
-              "name": "text",
-              "text": "1000",
-              "defaultParameter": "1000"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "Developer",
-      "items": [
-        {
-          "id": "devAutoPlayOnStart",
-          "name": "Автоплей",
-          "description": "Запускает трек сразу после запуска Яндекс Музыки и при нажатии ctrl + r.",
-          "type": "button",
-          "bool": false,
-          "defaultParameter": false
-        }
-      ]
-    }
-  ]
+    ]
 }

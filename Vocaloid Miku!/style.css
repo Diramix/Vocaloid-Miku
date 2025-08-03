@@ -1,33 +1,33 @@
 /*Images for Legacy patcher Support*/
 /*--------------------------------------------*/
 .AssetsImages:after {
-	background-image: url("http://127.0.0.1:2007/assets/fullscreen-miku-XD.png");
+	background-image: url("http://127.0.0.1:2007/assets/fullscreen-miku-XD.png?name=Vocaloid Miku!");
 }
 
 .AssetsImages:before {
-	content: url("http://127.0.0.1:2007/assets/Kagamine-Rin.png");
+	content: url("http://127.0.0.1:2007/assets/Kagamine-Rin.png?name=Vocaloid Miku!");
 }
 
 /*
 .VibeBlock_root__z7LtR {
-	background-image: url("http://127.0.0.1:2007/assets/My-vibe.png");
+	background-image: url("http://127.0.0.1:2007/assets/My-vibe.png?name=Vocaloid Miku!");
 }
 */
-.SyncLyrics_root__6KZg4:before {
-	background-image: url("http://127.0.0.1:2007/assets/Dilamix.png");
+[class*="SyncLyrics_root"]:before {
+	background-image: url("http://127.0.0.1:2007/assets/Dilamix.png?name=Vocaloid Miku!");
 }
 
 /*
 .SyncLyrics_root__6KZg4 {
-	background-image: url("http://127.0.0.1:2007/assets/fullscreen-lyrics.jpg");
+	background-image: url("http://127.0.0.1:2007/assets/fullscreen-lyrics.jpg?name=Vocaloid Miku!");
 }
 */
-.LikesAndHistory_carousel__579RD:after {
-	background-image: url("http://127.0.0.1:2007/assets/Main-Page-Miku_End.png");
+[class*="LikesAndHistory_carousel"]:after {
+	background-image: url("http://127.0.0.1:2007/assets/Main-Page-Miku_End.png?name=Vocaloid Miku!");
 }
 
 .mikuRun {
-	background-image: url("http://127.0.0.1:2007/assets/miku-run.png");
+	background-image: url("http://127.0.0.1:2007/assets/miku-run.png?name=Vocaloid Miku!");
 }
 
 /*--------------------------------------------*/
@@ -186,13 +186,6 @@ body>div>p {
 	visibility: hidden;
 }
 
-.ChangeVolume_root__HDxtA {
-	position: fixed;
-	right: 25px;
-	bottom: 12px;
-	height: 33px;
-}
-
 body>div>section>div>button {
 	margin-left: 7px;
 	right: 5px;
@@ -202,25 +195,30 @@ body>div>section>div>button {
 
 /*Плеер*/
 /*--------------------------------------------*/
+[class*="DefaultLayout_root"] {
+	grid-template: 'navbar content' minmax(auto,
+			calc(100% - var(--player-bar-height) - var(--ym-spacer-size-m))) 'playerbar playerbar' auto 'barBelow barBelow' auto/auto 1fr !important;
+}
+
 section.PlayerBar_root__cXUnU {
-	background: var(--main-color);
-	position: fixed;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	height: 90px;
-	z-index: 410;
-	border-radius: 0;
-	border-width: 0;
+	position: fixed !important;
+	left: 0 !important;
+	right: 0 !important;
+	bottom: 0 !important;
+	height: 90px !important;
+	z-index: 410 !important;
+	border-radius: 0 !important;
+	border-width: 0 !important;
 }
 
-.PlayerBarDesktop_meta__6sm58 {
-	display: block;
+[class*="PlayerBarDesktopWithBackgroundProgressBar_root"] {
+	background: var(--main-color) !important;
 }
 
-.PlayerBarDesktop_meta__6sm58 span {
-	display: block;
-	width: fit-content;
+[class*="PlayerBarDesktopWithBackgroundProgressBar_player"] {
+	position: unset;
+	border-radius: 0 !important;
+	border-width: 0 !important;
 }
 
 .mikuRun {
@@ -234,22 +232,30 @@ section.PlayerBar_root__cXUnU {
 	pointer-events: none;
 }
 
-.PlayerBarDesktop_info__56v53,
-.PlayerBarDesktop_sonata__sJHY_,
-.PlayerBarDesktop_meta__6sm58 {
+.PlayerBarDesktopWithBackgroundProgressBar_info__YnvZ_,
+.PlayerBarDesktopWithBackgroundProgressBar_sonata__mGFb_,
+.PlayerBarDesktopWithBackgroundProgressBar_meta__FhKTC {
 	background: var(--basic-color);
 	padding: 7px;
-	border-radius: 10px;
-	height: 76px;
+	border-radius: 0;
+	height: 77px;
 }
 
+.PlayerBarDesktopWithBackgroundProgressBar_info__YnvZ_ {
+	border-radius: 10px 0 0 10px;
+}
+
+.PlayerBarDesktopWithBackgroundProgressBar_meta__FhKTC {
+	border-radius: 0 10px 10px 0;
+}
+/* 
 .PlayerBarDesktop_meta__6sm58 {
 	position: fixed;
 	width: 129px;
 	right: 8px;
-}
+} */
 
-[data-test-id="SOUND_QUALITY_BUTTON"] {
+/* [data-test-id="SOUND_QUALITY_BUTTON"] {
 	position: fixed;
 	right: 20px;
 	bottom: 46px;
@@ -267,7 +273,7 @@ section.PlayerBar_root__cXUnU {
 
 [data-test-id="SOUND_QUALITY_BUTTON"][aria-expanded="true"] {
 	color: #fff;
-}
+} */
 
 /*Меню параметров качества звука*/
 [data-test-id="QUALITY_SETTINGS_CONTEXT_MENU"] {
@@ -419,7 +425,7 @@ section.PlayerBar_root__cXUnU {
 
 /*Дефолт Лойаут*/
 /*--------------------------------------------*/
-.DefaultLayout_content__md70Z {
+[class*="CommonLayout_content"] {
 	position: fixed;
 	margin-top: 10px;
 	margin-right: 8px;
@@ -440,9 +446,9 @@ section.PlayerBar_root__cXUnU {
 
 /*Навбар*/
 /*--------------------------------------------*/
-.NavbarDesktop_collapseButton__XQh9d {
+[class*="NavbarDesktop_collapseButton"] {
 	position: fixed;
-	margin-top: -3px;
+	margin-top: 7px;
 	margin-left: 14px;
 	border-radius: 9999px;
 	width: 43px;
@@ -460,6 +466,14 @@ section.PlayerBar_root__cXUnU {
 	border-radius: 10px 10px 0px 0px;
 }
 
+.NavbarDesktop_logoWrapper__89ce6 * {
+	color: var(--font-color);
+}
+
+[class*="NavbarDesktop_logoLink"] {
+	margin-top: 10px;
+}
+
 .xfFtKQpgAYvC2jI1tBtS {
 	background: var(--main-color);
 	bottom: 90px;
@@ -475,20 +489,20 @@ section.PlayerBar_root__cXUnU {
 	z-index: 10;
 }
 
-.UserProfile_root__vFuOj {
+[class*="UserProfile_root"] {
 	margin-top: 13px;
 }
 
-.UserProfile_userName__PTRuJ {
+[class*="UserProfile_userName"] {
 	color: #fff;
 	width: 120px;
 }
 
-.UserProfile_plusLink__NhVsU {
+[class*="UserProfile_plusLink"] {
 	display: none;
 }
 
-.UserProfile_dialog_desktop__0p006 {
+[class*="UserProfile_dialog_desktop"] {
 	position: fixed;
 	bottom: 100px;
 	left: 50%;
@@ -496,7 +510,7 @@ section.PlayerBar_root__cXUnU {
 	border-radius: 10px;
 }
 
-.NavbarDesktop_scrollableContainer__HLc9D:before {
+[class*="NavbarDesktop_scrollableContainer"]:before {
 	background: var(--main-color);
 }
 
@@ -767,11 +781,6 @@ section.PlayerBar_root__cXUnU {
 	margin-bottom: -0px;
 }
 
-.frsl0v3Y0m7IvVEtEnT8,
-.yvGpKZBZLwidMfMcVMR3 {
-	color: var(--font-color);
-}
-
 .SyncLyricsCard_root__92qn_,
 .FullscreenPlayerDesktop_poster_withSyncLyricsAnimation__bPO0o {
 	display: none;
@@ -1012,22 +1021,23 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 
 /*Only display: none;*/
 /*--------------------------------------------*/
-.VibeAnimation_root_visible__S7kXl,
-.NavbarDesktop_pinsList___jXIM:before,
-.NavbarDesktop_pinsList___jXIM:after,
-.SyncLyrics_content__lbkWP:before,
-.SyncLyrics_content__lbkWP:after,
-.ArtistPage_averageColorBackground__wXTSY,
-.PlaylistPage_averageColorBackground__3wEkw,
-.AlbumPage_averageColorBackground__PmVaF,
-.VibeButton_image__GOwKJ,
-.FullscreenPlayerDesktopContent_fullscreenContent__Nvety,
-.QualitySettingsModal_overlay__8pjOO,
-.TrackLyricsModal_overlay__0Ehwu,
-.PlayQueueTitle_root__E2XOW,
-.PlayQueueAfterPlayingBlock_title__nS_nG,
-.PlayQueue_content__zIUvd * .Meta_artists__VnR52,
-.PlayQueueVibeBlock_vibeTitle__C5fWp {
+.VibeAnimation_root__UKMJy,
+[class*="NavbarDesktop_pinsList"]:before,
+[class*="NavbarDesktop_pinsList"]:after,
+[class*="SyncLyrics_content"]:before,
+[class*="SyncLyrics_content"]:after,
+[class*="ArtistPage_averageColorBackground"],
+[class*="PlaylistPage_averageColorBackground"],
+[class*="AlbumPage_averageColorBackground"],
+[class*="VibeButton_image"],
+[class*="FullscreenPlayerDesktopContent_fullscreenContent"],
+[class*="QualitySettingsModal_overlay"],
+[class*="TrackLyricsModal_overlay"],
+[class*="PlayQueueTitle_root"],
+[class*="PlayQueueAfterPlayingBlock_title"],
+[class*="PlayQueue_content"] * [class*="Meta_artists"],
+[class*="PlayQueueVibeBlock_vibeTitle"],
+[class*="NavbarDesktop_subTitle"] {
 	display: none;
 }
 
@@ -1098,7 +1108,7 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 /*Очередь*/
 /*--------------------------------------------*/
 .PlayQueue_root__ponhw {
-	background-image: url("http://127.0.0.1:2007/assets/Diva-Queue-Background.png");
+	background-image: url("http://127.0.0.1:2007/assets/Diva-Queue-Background.png?name=Vocaloid Miku!");
 	background-position: center;
 	background-size: cover;
 }
@@ -1117,7 +1127,7 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 	content: "";
 	height: 70px;
 	width: 48%;
-	background-image: url("http://127.0.0.1:2007/assets/Diva-F-Extreme-Page.png");
+	background-image: url("http://127.0.0.1:2007/assets/Diva-F-Extreme-Page.png?name=Vocaloid Miku!");
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: left bottom;
@@ -1160,7 +1170,7 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 	height: 8%;
 	left: 0;
 	top: 0;
-	background-image: url("http://127.0.0.1:2007/assets/Quaue-Header.png");
+	background-image: url("http://127.0.0.1:2007/assets/Quaue-Header.png?name=Vocaloid Miku!");
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: left top;
@@ -1198,7 +1208,7 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 .PlayQueueNowPlayingBlock_important__sxxvA {
 	background:
 		linear-gradient(0deg, #006D76 50%, transparent 50%),
-		url("http://127.0.0.1:2007/assets/3-poloski.png");
+		url("http://127.0.0.1:2007/assets/3-poloski.png?name=Vocaloid Miku!");
 	background-repeat: repeat-x;
 	background-size: 88px;
 	width: calc(100% - 20px);
@@ -1305,7 +1315,7 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 	position: fixed;
 	width: 34%;
 	height: 32%;
-	background-image: url("http://127.0.0.1:2007/assets/Diva-F-Perfect-Mark.png");
+	background-image: url("http://127.0.0.1:2007/assets/Diva-F-Perfect-Mark.png?name=Vocaloid Miku!");
 	background-size: contain;
 	background-position: center top;
 	top: 50vh;
@@ -1326,7 +1336,7 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 	top: 0;
 	left: 0;
 	visibility: visible;
-	background-image: url("http://127.0.0.1:2007/assets/Diva-F-Song-Icon.png");
+	background-image: url("http://127.0.0.1:2007/assets/Diva-F-Song-Icon.png?name=Vocaloid Miku!");
 	background-size: 50px;
 	background-position: center;
 	width: 100%;
@@ -1436,6 +1446,14 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 [id=":r8i:"] {
 	pointer-events: none;
 	background-color: var(--main-color);
+}
+
+/*--------------------------------------------*/
+
+/* Loader Icon */
+/*--------------------------------------------*/
+[class*="MainSuspenseLoader_icon"] {
+	filter: hue-rotate(125deg);
 }
 
 /*--------------------------------------------*/
