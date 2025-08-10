@@ -182,10 +182,6 @@ body>div>div>div>div>section>div>div>span>span.RestrictionButton_title__UZn0O {
 	color: var(--font-color);
 }
 
-body>div>p {
-	visibility: hidden;
-}
-
 body>div>section>div>button {
 	margin-left: 7px;
 	right: 5px;
@@ -1037,7 +1033,8 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 [class*="PlayQueueAfterPlayingBlock_title"],
 [class*="PlayQueue_content"] * [class*="Meta_artists"],
 [class*="PlayQueueVibeBlock_vibeTitle"],
-[class*="NavbarDesktop_subTitle"] {
+[class*="NavbarDesktop_subTitle"],
+.PSB-text {
 	display: none;
 }
 
