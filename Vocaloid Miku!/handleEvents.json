@@ -36,7 +36,7 @@
                     "name": "Cover Image",
                     "description": "Картинка трека на фон синк лирики.",
                     "type": "button",
-                    "bool": true,
+                    "bool": false,
                     "defaultParameter": false
                 },
                 {
