@@ -11,8 +11,9 @@
   "css": "style.css",
   "script": "script.js",
   "allowedUrls": [
+    "http://127.0.0.1:2007/",
     "https://diram1x.ru/src/assets/",
-    "http://127.0.0.1:2007/"
+    "https://images.weserv.nl/?url="
   ],
   "tags": [
     "Anime",

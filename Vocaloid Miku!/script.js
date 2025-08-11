@@ -289,8 +289,14 @@ async function setSettings(newSettings) {
     }
 
     function updateBackground(url) {
-        if (style.textContent !== `.SyncLyrics_root__6KZg4 { background-image: url("${url}"); }`) {
-            style.textContent = `.SyncLyrics_root__6KZg4 { background-image: url("${url}"); }`;
+        if (url.startsWith('http://127.0.0.1:2007')) {
+            if (style.textContent !== `.SyncLyrics_root__6KZg4 { background-image: url("${url}"); }`) {
+                style.textContent = `.SyncLyrics_root__6KZg4 { background-image: url("${url}"); }`;
+            }
+        } else {
+            if (style.textContent !== `.SyncLyrics_root__6KZg4 { background-image: url("https://images.weserv.nl/?url=${url}"); }`) {
+                style.textContent = `.SyncLyrics_root__6KZg4 { background-image: url("https://images.weserv.nl/?url=${url}"); }`;
+            }
         }
     }
 
