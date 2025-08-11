@@ -366,9 +366,19 @@ async function setSettings(newSettings) {
 
     // Auto Play
     if (newSettings['Developer'].devAutoPlayOnStart && !window.hasRun) {
-        document.querySelector(`section.PlayerBar_root__cXUnU * [data-test-id="PLAY_BUTTON"]`)
-            ?.click();
-        window.hasRun = true;
+        const tryClickPlay = () => {
+            const playBtn = document.querySelector(`section.PlayerBar_root__cXUnU * [data-test-id="PLAY_BUTTON"]`);
+            const pauseBtn = document.querySelector(`section.PlayerBar_root__cXUnU * [data-test-id="PAUSE_BUTTON"]`);
+            if (pauseBtn) {
+                window.hasRun = true;
+                return;
+            }
+            if (playBtn) {
+                playBtn.click();
+                setTimeout(tryClickPlay, 200);
+            }
+        };
+        tryClickPlay();
     }
 
     // Update theme settings delay
