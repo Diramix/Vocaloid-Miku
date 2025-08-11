@@ -12,7 +12,7 @@
   "script": "script.js",
   "allowedUrls": [
     "https://diram1x.ru/src/assets/",
-    "http://127.0.0.1:2007/assets/"
+    "http://127.0.0.1:2007/"
   ],
   "tags": [
     "Anime",
