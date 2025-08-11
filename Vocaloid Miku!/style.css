@@ -442,6 +442,10 @@ section.PlayerBar_root__cXUnU {
 
 /*Навбар*/
 /*--------------------------------------------*/
+[data-test-id="NAVBAR"] {
+	height: calc(100% + 28px);
+}
+
 [class*="NavbarDesktop_collapseButton"] {
 	position: fixed;
 	margin-top: 7px;
@@ -508,6 +512,16 @@ section.PlayerBar_root__cXUnU {
 
 [class*="NavbarDesktop_scrollableContainer"]:before {
 	background: var(--main-color);
+}
+
+[class*="NavbarDesktopUserWidget_userProfileContainer"] {
+	display: none;
+}
+
+@media (max-height: 650px) {
+	[class*="NavbarDesktopUserWidget_userProfileContainer"] {
+		display: block;
+	}
 }
 
 /*--------------------------------------------*/

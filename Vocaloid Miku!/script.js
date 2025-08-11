@@ -196,13 +196,13 @@ if (!document.querySelector('.ThemeTitleText')) {
 }
 /*--------------------------------------------*/
 
-// Скрипт для добавления элемента Miku-Run
+// Скрипт для добавления элемента Miku-Run (Отключён в vm!-v1.8.0)
 /*--------------------------------------------*/
-if (!document.querySelector('.mikuRun')) {
-    const newElement = document.createElement('div');
-    newElement.className = 'mikuRun';
-    document.body.appendChild(newElement);
-}
+// if (!document.querySelector('.mikuRun')) {
+//     const newElement = document.createElement('div');
+//     newElement.className = 'mikuRun';
+//     document.body.appendChild(newElement);
+// }
 /*--------------------------------------------*/
 
 // Возвращение иконки настроек качества трека
