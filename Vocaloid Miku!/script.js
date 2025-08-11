@@ -236,7 +236,7 @@ async function getSettings() {
 }
 
 let settingsDelay = 1000;
-let baseUrl = 'http://127.0.0.1:2007/assets/fullscreen-lyrics.jpg?name=Vocaloid Miku!'
+let baseUrl = 'http://127.0.0.1:2007/assets/fullscreen-lyrics.png?name=Vocaloid Miku!'
 let baseBlur = 0;
 let updateInterval;
 

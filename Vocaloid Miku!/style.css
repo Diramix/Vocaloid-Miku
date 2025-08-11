@@ -5,7 +5,7 @@
 }
 
 .AssetsImages:before {
-	content: url("http://127.0.0.1:2007/assets/Kagamine-Rin.png?name=Vocaloid Miku!");
+	content: url("http://127.0.0.1:2007/assets/Kagamine-Rin.webp?name=Vocaloid Miku!");
 }
 
 /*
@@ -19,11 +19,11 @@
 
 /*
 .SyncLyrics_root__6KZg4 {
-	background-image: url("http://127.0.0.1:2007/assets/fullscreen-lyrics.jpg?name=Vocaloid Miku!");
+	background-image: url("http://127.0.0.1:2007/assets/fullscreen-lyrics.png?name=Vocaloid Miku!");
 }
 */
 [class*="LikesAndHistory_carousel"]:after {
-	background-image: url("http://127.0.0.1:2007/assets/Main-Page-Miku_End.png?name=Vocaloid Miku!");
+	background-image: url("http://127.0.0.1:2007/assets/Main-Page-Miku_End.webp?name=Vocaloid Miku!");
 }
 
 .mikuRun {
@@ -1119,7 +1119,7 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 /*Очередь*/
 /*--------------------------------------------*/
 .PlayQueue_root__ponhw {
-	background-image: url("http://127.0.0.1:2007/assets/Diva-Queue-Background.png?name=Vocaloid Miku!");
+	background-image: url("http://127.0.0.1:2007/assets/Diva-Queue-Background.jpg?name=Vocaloid Miku!");
 	background-position: center;
 	background-size: cover;
 }
@@ -1326,7 +1326,7 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 	position: fixed;
 	width: 34%;
 	height: 32%;
-	background-image: url("http://127.0.0.1:2007/assets/Diva-F-Perfect-Mark.png?name=Vocaloid Miku!");
+	background-image: url("http://127.0.0.1:2007/assets/Diva-F-Perfect-Mark.webp?name=Vocaloid Miku!");
 	background-size: contain;
 	background-position: center top;
 	top: 50vh;
