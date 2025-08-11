@@ -518,7 +518,7 @@ section.PlayerBar_root__cXUnU {
 	display: none;
 }
 
-@media (max-height: 650px) {
+@media (max-height: 750px) {
 	[class*="NavbarDesktopUserWidget_userProfileContainer"] {
 		display: block;
 	}
