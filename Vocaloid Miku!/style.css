@@ -57,7 +57,7 @@
 
 @font-face {
 	font-family: "Vocaloid";
-	src: url("http://127.0.0.1:2007/assets/VOC-RE.ttf") format("truetype");
+	src: url("http://127.0.0.1:2007/assets/VOC-RE.ttf?name=Vocaloid Miku!") format("truetype");
 }
 
 /*--------------------------------------------*/
