@@ -43,8 +43,7 @@
 	--miku-color: #e12885;
 }
 
-.ym-light-theme,
-.ym-dark-theme {
+.ym-light-theme {
 	--ym-background-color-primary-enabled-content: var(--main-color);
 	--ym-background-color-primary-enabled-basic: var(--font-color);
 	--ym-background-color-primary-enabled-player: #121212;
@@ -53,6 +52,9 @@
 	--ym-controls-color-primary-outline-selected_stroke: var(--light-main-color);
 	--ym-controls-color-primary-text-enabled_variant: var(--font-color);
 	--ym-background-color-primary-enabled-popover: var(--main-color);
+	--ym-controls-color-primary-on_outline-enabled: var(--main-color);
+	--ym-shadow-xl: var(--basic-color);
+	--ym-shadow-s: var(--basic-color);
 }
 
 @font-face {
@@ -98,7 +100,6 @@
 /*--------------------------------------------*/
 .VibeSettings_root__ufZlV {
 	background: var(--main-color);
-	box-shadow: 0 0 10px 5px var(--basic-color);
 }
 
 .VibeContext_context__Z_82k,
@@ -135,7 +136,6 @@
 /*--------------------------------------------*/
 .ReleaseNotesModal_root__RSw1p {
 	background: var(--main-color);
-	box-shadow: 0 0 10px 5px var(--basic-color);
 }
 
 .BaseNotification_cover__vpBEb {
@@ -168,18 +168,8 @@
 
 /*Релиз нотес*/
 /*--------------------------------------------*/
-.RestrictionButton_title__UZn0O {
-	color: var(--hatsune-light);
-}
-
-body>div>div>div>div>section>div>div>span>span.RestrictionButton_title__UZn0O {
-	color: var(--font-color);
-}
-
-.ReleaseNotesModal_item___CYml,
-.ReleaseNotesModal_paragraph___laDJ,
-.ReleaseNotesModal_date__s3_ux {
-	color: var(--font-color);
+[data-test-id="VIBE_SETTINGS_MOOD_ENERGY_BUTTON"] * [class*="RestrictionButton_title"] {
+	color: var(--basic-color);
 }
 
 body>div>section>div>button {
@@ -281,8 +271,6 @@ section.PlayerBar_root__cXUnU {
 	background: var(--main-color);
 	border-width: 5px;
 	border-color: var(--basic-color);
-
-	box-shadow: 0px 0px 0px 0px black;
 }
 
 .QualitySettingsContextMenu_root_withEqualizer__GPjIg {
@@ -444,7 +432,7 @@ section.PlayerBar_root__cXUnU {
 /*Навбар*/
 /*--------------------------------------------*/
 [data-test-id="NAVBAR"] {
-	height: calc(100% + 28px);
+	height: calc(100% + 24px);
 }
 
 [class*="NavbarDesktop_collapseButton"] {
