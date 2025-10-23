@@ -244,6 +244,7 @@ section.PlayerBar_root__cXUnU {
 .PlayerBarDesktopWithBackgroundProgressBar_meta__FhKTC {
 	border-radius: 0 10px 10px 0;
 }
+
 /* 
 .PlayerBarDesktop_meta__6sm58 {
 	position: fixed;
@@ -1048,7 +1049,7 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 [class*="PlayQueue_content"] * [class*="Meta_artists"],
 [class*="PlayQueueVibeBlock_vibeTitle"],
 [class*="NavbarDesktop_subTitle"],
-.PSB-text {
+[class*="pulseText"] {
 	display: none;
 }
 
