@@ -48,11 +48,12 @@
 	--ym-background-color-primary-enabled-basic: var(--font-color);
 	--ym-background-color-primary-enabled-player: #121212;
 	--ym-controls-color-primary-default-hovered: var(--main-color);
-	--ym-controls-color-primary-default-enabled: var(--main-color);
+	--ym-controls-color-primary-default-enabled: var(--basic-color);
 	--ym-controls-color-primary-outline-selected_stroke: var(--light-main-color);
 	--ym-controls-color-primary-text-enabled_variant: var(--font-color);
 	--ym-background-color-primary-enabled-popover: var(--main-color);
 	--ym-controls-color-primary-on_outline-enabled: var(--main-color);
+	--ym-controls-color-secondary-on_outline-enabled: var(--basic-color);
 	--ym-shadow-xl: var(--basic-color);
 	--ym-shadow-s: var(--basic-color);
 }
