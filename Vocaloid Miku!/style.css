@@ -646,7 +646,6 @@ section.PlayerBar_root__cXUnU {
 [class*="PageHeaderArtist_trailerControl"],
 [class*="QualitySettings_headerWithCloseButton"]>button,
 [data-test-id="PLAYLIST_HEADER_CONTEXT_MENU_BUTTON"],
-[class*="PageHeaderPlaylist_downloadControl"],
 [class*="PageHeaderAlbum_controls"]>button,
 [data-test-id="ALBUM_HEADER_CONTEXT_MENU_BUTTON"],
 [class*="PageHeaderPlaylist_mainControls"]>button,
