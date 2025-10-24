@@ -164,7 +164,7 @@ function coverAndAssetsImagesElements() {
 const observer = new MutationObserver(() => {
     ['Diva-Cover', 'Diva-Perfect-Mark'].forEach(className => {
         if (document.querySelector('.PlayButtonWithCover_coverImage__DhS1R') && !document.querySelector(`.${className}`)) {
-            document.querySelector('.PlayQueue_root__ponhw')?.appendChild(Object.assign(document.createElement('div'), { className }));
+            document.querySelector('[class*="PlayQueue_root"]')?.appendChild(Object.assign(document.createElement('div'), { className }));
         }
     });
 });
@@ -242,7 +242,7 @@ let updateInterval;
 
 async function setSettings(newSettings) {
     // Кастом картинка в SyncLyrics
-    const syncLyricsBackground = document.querySelector('.SyncLyrics_root__6KZg4');
+    const syncLyricsBackground = document.querySelector('[class*="SyncLyrics_root"]');
     let style = document.getElementById('sync-lyrics-style');
     if (!style) {
         style = document.createElement('style');
@@ -252,12 +252,12 @@ async function setSettings(newSettings) {
 
     function updateBackground(url) {
         if (url.startsWith('http://127.0.0.1:2007')) {
-            if (style.textContent !== `.SyncLyrics_root__6KZg4 { background-image: url("${url}"); }`) {
-                style.textContent = `.SyncLyrics_root__6KZg4 { background-image: url("${url}"); }`;
+            if (style.textContent !== `[class*="SyncLyrics_root"] { background-image: url("${url}"); }`) {
+                style.textContent = `[class*="SyncLyrics_root"] { background-image: url("${url}"); }`;
             }
         } else {
-            if (style.textContent !== `.SyncLyrics_root__6KZg4 { background-image: url("https://images.weserv.nl/?url=${url}"); }`) {
-                style.textContent = `.SyncLyrics_root__6KZg4 { background-image: url("https://images.weserv.nl/?url=${url}"); }`;
+            if (style.textContent !== `[class*="SyncLyrics_root"] { background-image: url("https://images.weserv.nl/?url=${url}"); }`) {
+                style.textContent = `[class*="SyncLyrics_root"] { background-image: url("https://images.weserv.nl/?url=${url}"); }`;
             }
         }
     }
@@ -290,7 +290,7 @@ async function setSettings(newSettings) {
     const newBlur = parseInt(newSettings['SyncLyrics'].blurFilter.text, 10) || 0;
     if (baseBlur !== newBlur) {
         baseBlur = newBlur;
-        blurStyle.textContent = `.SyncLyrics_root__6KZg4::after { backdrop-filter: blur(${baseBlur}px); content: ''; position: absolute; inset: 0; }`;
+        blurStyle.textContent = `[class*="SyncLyrics_root"]::after { backdrop-filter: blur(${baseBlur}px); content: ''; position: absolute; inset: 0; }`;
     }
 
     let combinedStyle = document.getElementById('combined-style');
@@ -305,8 +305,8 @@ async function setSettings(newSettings) {
             display: ${newSettings['Очередь'].togglePerfectMark ? 'block' : 'none'} !important;
         }
     
-        .PlayQueue_content__zIUvd * [aria-label="Трек скачан"],
-        .PlayQueue_content__zIUvd * [aria-label="Этот трек можете слушать только вы"] {
+        [class*="PlayQueue_content"] * [aria-label="Трек скачан"],
+        [class*="PlayQueue_content"] * [aria-label="Этот трек можете слушать только вы"] {
             display: ${newSettings['Очередь'].toggleDownloadAndVisibleIcon ? 'block' : 'none'} !important;
         }
     
@@ -319,7 +319,7 @@ async function setSettings(newSettings) {
             font-family: "Montserrat";
             src: url("http://127.0.0.1:2007/assets/Montserrat.ttf?name=Vocaloid Miku!") format("truetype");
         }
-        .SyncLyricsLine_root__r62BN {
+        [class*="SyncLyricsLine_root"] {
             font-family: ${newSettings['SyncLyrics'].normalFont ? '"Montserrat", sans-serif' : ''};
             font-weight: ${newSettings['SyncLyrics'].normalFont ? '700' : ''};
             font-size: ${newSettings['SyncLyrics'].normalFont ? '35px' : ''};

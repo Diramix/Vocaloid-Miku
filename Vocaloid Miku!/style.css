@@ -18,7 +18,7 @@
 }
 
 /*
-.SyncLyrics_root__6KZg4 {
+[class*="SyncLyrics_root"] {
 	background-image: url("http://127.0.0.1:2007/assets/fullscreen-lyrics.png?name=Vocaloid Miku!");
 }
 */
@@ -636,53 +636,53 @@ section.PlayerBar_root__cXUnU {
 
 .zmtVwO34EPppZErNrlIC[data-test-id="PLAYLIST_HEADER_CONTEXT_MENU"],
 .zmtVwO34EPppZErNrlIC[data-test-id="ALBUM_HEADER_CONTEXT_MENU"],
-.PageHeaderAlbum_playControl__fFyS9,
-.PageHeaderAlbumControls_likeControl__eohAO,
-.PageHeaderAlbumControls_pinControl__kq6_T,
+[class*="PageHeaderAlbum_playControl"],
+[class*="PageHeaderAlbumControls_likeControl"],
+[class*="PageHeaderAlbumControls_pinControl"],
 [data-test-id="TRAILER_LISTEN_FULL_VERSION_BUTTON"],
 [data-test-id="NAVIGATION_FORWARD_BUTTON"],
 [data-test-id="NAVIGATION_BACKWARD_BUTTON"],
 [data-test-id="TRAILER_CLOSE_BUTTON"],
-.PageHeaderArtist_trailerControl__BWQXJ,
+[class*="PageHeaderArtist_trailerControl"],
 [class*="QualitySettings_headerWithCloseButton"]>button,
 [data-test-id="PLAYLIST_HEADER_CONTEXT_MENU_BUTTON"],
-.PageHeaderPlaylist_downloadControl__ijcAxб,
-.PageHeaderAlbum_controls__e3QCT>button,
+[class*="PageHeaderPlaylist_downloadControl"],
+[class*="PageHeaderAlbum_controls"]>button,
 [data-test-id="ALBUM_HEADER_CONTEXT_MENU_BUTTON"],
-.PageHeaderPlaylist_mainControls__k_S_i>button,
-.PageHeaderPlaylist_downloadControl__ijcAx>button,
-.PageHeaderPlaylist_ugcControls__9q8Ne>button,
-.PageHeaderArtist_controls__U_6g7>button,
+[class*="PageHeaderPlaylist_mainControls"]>button,
+[class*="PageHeaderPlaylist_downloadControl"]>button,
+[class*="PageHeaderPlaylist_ugcControls"]>button,
+[class*="PageHeaderArtist_controls"]>button,
 [data-test-id="ARTIST_HEADER_CONTEXT_MENU_BUTTON"],
-.PageHeaderArtist_meta__ZAlx_>div,
-.PageHeaderArtist_meta__ZAlx_>button,
-.TrackModalControls_root__alpd3>button,
-.TrackModalControls_menuButton__V6L4c {
+[class*="PageHeaderArtist_meta"]>div,
+[class*="PageHeaderArtist_meta"]>button,
+[class*="TrackModalControls_root"]>button,
+[class*="TrackModalControls_menuButton"] {
 	background: var(--main-color);
 	filter: brightness(1.1);
 }
 
 .zmtVwO34EPppZErNrlIC[data-test-id="PLAYLIST_HEADER_CONTEXT_MENU"]:hover,
 .zmtVwO34EPppZErNrlIC[data-test-id="ALBUM_HEADER_CONTEXT_MENU"]:hover,
-.PageHeaderAlbum_playControl__fFyS9:hover,
-.PageHeaderAlbumControls_likeControl__eohAO:hover,
-.PageHeaderAlbumControls_pinControl__kq6_T:hover,
+[class*="PageHeaderAlbum_playControl"]:hover,
+[class*="PageHeaderAlbumControls_likeControl"]:hover,
+[class*="PageHeaderAlbumControls_pinControl"]:hover,
 [data-test-id="TRAILER_LISTEN_FULL_VERSION_BUTTON"]:hover,
 [data-test-id="NAVIGATION_FORWARD_BUTTON"]:enabled:hover,
 [data-test-id="NAVIGATION_BACKWARD_BUTTON"]:enabled:hover,
 [data-test-id="TRAILER_CLOSE_BUTTON"]:hover,
-.PageHeaderArtist_trailerControl__BWQXJ:hover,
+[class*="PageHeaderArtist_trailerControl"]:hover,
 [class*="QualitySettings_headerWithCloseButton"]>button:hover,
 [data-test-id="PLAYLIST_HEADER_CONTEXT_MENU_BUTTON"]:hover,
-.PageHeaderAlbum_controls__e3QCT>button:hover,
+[class*="PageHeaderAlbum_controls"]>button:hover,
 [data-test-id="ALBUM_HEADER_CONTEXT_MENU_BUTTON"]:hover,
-.PageHeaderPlaylist_mainControls__k_S_i>button:hover,
-.PageHeaderPlaylist_downloadControl__ijcAx>button:hover,
-.PageHeaderPlaylist_ugcControls__9q8Ne>button:hover,
-.PageHeaderArtist_controls__U_6g7>button:hover,
+[class*="PageHeaderPlaylist_mainControls"]>button:hover,
+[class*="PageHeaderPlaylist_downloadControl"]>button:hover,
+[class*="PageHeaderPlaylist_ugcControls"]>button:hover,
+[class*="PageHeaderArtist_controls"]>button:hover,
 [data-test-id="ARTIST_HEADER_CONTEXT_MENU_BUTTON"]:hover,
-.PageHeaderArtist_meta__ZAlx_>button:hover,
-.TrackModalControls_root__alpd3>button:hover {
+[class*="PageHeaderArtist_meta"]>button:hover,
+[class*="TrackModalControls_root"]>button:hover {
 	background: var(--main-color);
 	filter: brightness(1.15);
 }
@@ -744,7 +744,7 @@ section.PlayerBar_root__cXUnU {
 	margin-bottom: 12px;
 }
 
-.FullscreenPlayerDesktopContent_additionalContent_enter__WQmXC {
+[class*="FullscreenPlayerDesktopContent_additionalContent_enter"] {
 	position: fixed;
 	left: calc(-50% + 44px);
 	width: 100%;
@@ -752,7 +752,7 @@ section.PlayerBar_root__cXUnU {
 	z-index: 500;
 }
 
-.FullscreenPlayerDesktopContent_additionalContent__tuuy7 {
+[class*="FullscreenPlayerDesktopContent_additionalContent"] {
 	position: fixed;
 	width: 100%;
 	left: calc(-50% + 44px);
@@ -761,18 +761,18 @@ section.PlayerBar_root__cXUnU {
 }
 
 @media (max-width: 1059px) {
-	.FullscreenPlayerDesktopContent_additionalContent__tuuy7 {
+	[class*="FullscreenPlayerDesktopContent_additionalContent"] {
 		left: calc(-50% + 20px);
 	}
 }
 
 @media (max-width: 979px) {
-	.FullscreenPlayerDesktopContent_additionalContent__tuuy7 {
+	[class*="FullscreenPlayerDesktopContent_additionalContent"] {
 		left: calc(-50% + 10px);
 	}
 }
 
-.SyncLyrics_root__6KZg4:before {
+[class*="SyncLyrics_root"]:before {
 	visibility: visible;
 	content: "";
 	background-repeat: no-repeat;
@@ -788,17 +788,17 @@ section.PlayerBar_root__cXUnU {
 	height: 20%;
 }
 
-.SyncLyricsLine_root__r62BN {
+[class*="SyncLyricsLine_root"] {
 	color: #bec8d1;
 	margin-bottom: -0px;
 }
 
-.SyncLyricsCard_root__92qn_,
-.FullscreenPlayerDesktop_poster_withSyncLyricsAnimation__bPO0o {
+[class*="SyncLyricsCard_root"],
+[class*="FullscreenPlayerDesktop_poster_withSyncLyricsAnimation"] {
 	display: none;
 }
 
-.SyncLyrics_root__6KZg4 {
+[class*="SyncLyrics_root"] {
 	position: fixed;
 	background-size: cover;
 	background-position: center;
@@ -806,7 +806,7 @@ section.PlayerBar_root__cXUnU {
 	height: 100vh;
 }
 
-.SyncLyrics_root__6KZg4:after {
+[class*="SyncLyrics_root"]:after {
 	content: "";
 	position: fixed;
 	left: 0;
@@ -821,15 +821,15 @@ section.PlayerBar_root__cXUnU {
 
 /*Track Lyrics*/
 /*--------------------------------------------*/
-.TrackLyricsModal_root__KsVRf {
+[class*="TrackLyricsModal_root"] {
 	background: var(--main-color);
 	box-shadow: 0 0;
 	border-width: 5px;
 	border-color: var(--basic-color);
 }
 
-.TrackLyricsModal_header__nWar3,
-.TrackLyricsModal_content__Cstzi {
+[class*="TrackLyricsModal_header"],
+[class*="TrackLyricsModal_content"] {
 	color: var(--font-color);
 }
 
@@ -837,7 +837,7 @@ section.PlayerBar_root__cXUnU {
 
 /*Полноэкранный плеер*/
 /*--------------------------------------------*/
-.FullscreenPlayerDesktop_important__dGfiL {
+[class*="FullscreenPlayerDesktop_important"] {
 	border-width: 0;
 }
 
@@ -855,7 +855,7 @@ section.PlayerBar_root__cXUnU {
 
 /*DevPanel*/
 /*--------------------------------------------*/
-body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO {
+body>[class*="DevPanel_root"]>.qU2apWBO1yyEK0lZ3lPO {
 	backdrop-filter: blur(0px);
 	z-index: 99999;
 	background: var(--miku-color);
@@ -869,7 +869,7 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO {
 	color: #000;
 }
 
-body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
+body>[class*="DevPanel_root"]>.qU2apWBO1yyEK0lZ3lPO:hover {
 	backdrop-filter: blur(0px);
 	z-index: 99999;
 	background: var(--miku-color);
@@ -882,7 +882,7 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 	filter: brightness(1.2);
 }
 
-.DevPanel_panel__LnoO2 {
+[class*="DevPanel_panel"] {
 	background: var(--main-color);
 	bottom: 85px;
 	right: -5px;
@@ -891,12 +891,12 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 	border-color: var(--basic-color);
 }
 
-.DevPanel_block__SJ_76 {
+[class*="DevPanel_block"] {
 	background: var(--basic-color);
 	color: var(--main-color);
 }
 
-.DevPanel_block__SJ_76:hover {
+[class*="DevPanel_block"]:hover {
 	background: var(--basic-color);
 	color: #fff;
 }
@@ -922,7 +922,7 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 
 /*Miku-Chan!*/
 /*--------------------------------------------*/
-.LikesAndHistory_carousel__579RD:after {
+[class*="LikesAndHistory_carousel"]:after {
 	content: "";
 	position: absolute;
 	width: 25%;
@@ -939,16 +939,16 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 
 /*Любимое и история*/
 /*--------------------------------------------*/
-.LikesAndHistory_historyIcon__2FAMu {
+[class*="LikesAndHistory_historyIcon"] {
 	color: var(--main-color);
 }
 
-.LikesAndHistoryItem_root__oI1gk {
+[class*="LikesAndHistoryItem_root"] {
 	background: #137a7f80;
 }
 
 [data-test-id="LIKES_HISTORY_TITLE"],
-.LikesAndHistoryItem_titleIcon__2D_yS {
+[class*="LikesAndHistoryItem_titleIcon"] {
 	color: #e6e6e6;
 }
 
@@ -960,7 +960,7 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 
 /*Beta button*/
 /*--------------------------------------------*/
-.MainPage_beta__y32vb {
+[class*="MainPage_beta"] {
 	background: var(--main-color);
 	border-color: var(--basic-color);
 	border-width: 3px;
@@ -968,7 +968,7 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 	border-radius: 10px;
 }
 
-.MainPage_beta__y32vb:hover {
+[class*="MainPage_beta"]:hover {
 	background: var(--main-color);
 	border-color: var(--basic-color);
 	border-width: 3px;
@@ -981,16 +981,16 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 
 /*Vibe and neuromusic buttons*/
 /*--------------------------------------------*/
-.VibeButton_button__tXFAm,
-.NeuromusicButton_button__kT4GN,
+[class*="VibeButton_button"],
+[class*="NeuromusicButton_button"],
 .MixCard_root__9tPLV {
 	border-radius: 10px;
 	background: var(--basic-color);
 	border-color: var(--basic-color);
 }
 
-.VibeButton_button__tXFAm:hover,
-.NeuromusicButton_button__kT4GN:hover,
+[class*="VibeButton_button"]:hover,
+[class*="NeuromusicButton_button"]:hover,
 .MixCard_root__9tPLV:hover {
 	border-radius: 10px;
 	background: var(--basic-color);
@@ -998,12 +998,12 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 	filter: brightness(1.2);
 }
 
-.MixCard_title__nhghp {
+[class*="MixCard_title"] {
 	color: var(--hatsune-light);
 }
 
-.VibeButton_title__sLC0I,
-.NeuromusicButton_title__mTAB8 {
+[class*="VibeButton_title"],
+[class*="NeuromusicButton_title"] {
 	color: var(--ym-controls-color-secondary-text-enabled_variant);
 }
 
@@ -1011,9 +1011,9 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 
 /*ControlsBar*/
 /*--------------------------------------------*/
-.ControlsBar_likeIcon__mrNiz,
-.ControlsBar_item__I_p99,
-.ControlsBar_dislikeIcon__ENXh_ {
+[class*="ControlsBar_likeIcon"],
+[class*="ControlsBar_item"],
+[class*="ControlsBar_dislikeIcon"] {
 	color: var(--basic-color);
 }
 
@@ -1021,11 +1021,11 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 
 /*Slider*/
 /*--------------------------------------------*/
-.ChangeTimecode_slider__P4qmT {
+[class*="ChangeTimecode_slider"] {
 	--slider-thumb-box-shadow-color: #0000;
 }
 
-.ChangeVolume_root__HDxtA {
+[class*="ChangeVolume_root"] {
 	--slider-thumb-box-shadow-color: #0000;
 }
 
@@ -1033,7 +1033,7 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 
 /*Only display: none;*/
 /*--------------------------------------------*/
-.VibeAnimation_root__UKMJy,
+[data-test-id="VIBE_ANIMATION"],
 [class*="NavbarDesktop_pinsList"]:before,
 [class*="NavbarDesktop_pinsList"]:after,
 [class*="SyncLyrics_content"]:before,
@@ -1066,7 +1066,7 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 
 /*Trailer Modal*/
 /*--------------------------------------------*/
-.TrailerModal_root__T4ZJ8 {
+[class*="TrailerModal_root"] {
 	border-radius: 10px;
 	border-style: solid;
 	border-color: var(--main-color);
@@ -1078,18 +1078,18 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 
 /*Эксперементы*/
 /*--------------------------------------------*/
-.OverwrittenExperimentsModal_submitButton___VRmz,
-.OverwrittenExperimentsModal_closeModalButton__k0LqG,
-.OverwrittenExperimentsModal_reloadButton__bskTH,
-.OverwrittenExperimentsModal_overrideForm__cJ8PH>.qU2apWBO1yyEK0lZ3lPO {
+[class*="OverwrittenExperimentsModal_submitButton"],
+[class*="OverwrittenExperimentsModal_closeModalButton"],
+[class*="OverwrittenExperimentsModal_reloadButton"],
+[class*="OverwrittenExperimentsModal_overrideForm"]>.qU2apWBO1yyEK0lZ3lPO {
 	background: var(--basic-color);
 	color: #fff;
 }
 
-.OverwrittenExperimentsModal_submitButton___VRmz:hover,
-.OverwrittenExperimentsModal_closeModalButton__k0LqG:hover,
-.OverwrittenExperimentsModal_reloadButton__bskTH:hover,
-.OverwrittenExperimentsModal_overrideForm__cJ8PH>.qU2apWBO1yyEK0lZ3lPO:hover {
+[class*="OverwrittenExperimentsModal_submitButton"]:hover,
+[class*="OverwrittenExperimentsModal_closeModalButton"]:hover,
+[class*="OverwrittenExperimentsModal_reloadButton"]:hover,
+[class*="OverwrittenExperimentsModal_overrideForm"]>.qU2apWBO1yyEK0lZ3lPO:hover {
 	background: var(--basic-color);
 	color: #fff;
 	filter: brightness(1.1);
@@ -1099,11 +1099,11 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 
 /*Попрошайки*/
 /*--------------------------------------------*/
-.Donation_root__nwHCN {
+[class*="Donation_root"] {
 	background: var(--basic-color);
 }
 
-.Donation_root__nwHCN * {
+[class*="Donation_root"] * {
 	color: #E6E6E6;
 }
 
@@ -1111,8 +1111,8 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 
 /*download button*/
 /*--------------------------------------------*/
-.TrackPlaylist_controlsBarCell__6clda>div>svg>use,
-.PageHeaderPlaylist_downloadControl__ijcAx>button * {
+[class*="TrackPlaylist_controlsBarCell"]>div>svg>use,
+[class*="PageHeaderPlaylist_downloadControl"]>button * {
 	filter: invert(100%) contrast(190%);
 }
 
@@ -1120,22 +1120,22 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 
 /*Очередь*/
 /*--------------------------------------------*/
-.PlayQueue_root__ponhw {
+[class*="PlayQueue_root"] {
 	background-image: url("http://127.0.0.1:2007/assets/Diva-Queue-Background.jpg?name=Vocaloid Miku!");
 	background-position: center;
 	background-size: cover;
 }
 
-.PlayQueue_root__ponhw:before {
+[class*="PlayQueue_root"]:before {
 	background: 0;
 }
 
-.PlayQueue_root__ponhw:after {
+[class*="PlayQueue_root"]:after {
 	background: linear-gradient(0deg, var(--main-color, var(--miku-color)), hsla(0, 0%, 5%, 0));
 	bottom: 90px;
 }
 
-.PlayQueue_content__zIUvd:before {
+[class*="PlayQueue_content"]:before {
 	position: fixed;
 	content: "";
 	height: 70px;
@@ -1148,7 +1148,7 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 	margin-left: -10px;
 }
 
-.PlayQueue_content__zIUvd {
+[class*="PlayQueue_content"] {
 	position: fixed;
 	background: #f005;
 	border-style: solid;
@@ -1166,17 +1166,17 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 }
 
 @media (max-width: 1079px) {
-	.PlayQueue_content__zIUvd {
+	[class*="PlayQueue_content"] {
 		bottom: 7%;
 	}
 }
 
-.PlayQueue_scrollContent__2dI0v {
+[class*="PlayQueue_scrollContent"] {
 	padding-block-start: 0;
 	padding-block-end: 0;
 }
 
-.PlayQueue_scrollContent__2dI0v:after {
+[class*="PlayQueue_scrollContent"]:after {
 	position: fixed;
 	content: "";
 	width: 100%;
@@ -1190,7 +1190,7 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 	z-index: 999;
 }
 
-.PlayQueue_scrollContent__2dI0v:before {
+[class*="PlayQueue_scrollContent"]:before {
 	position: fixed;
 	content: "";
 	width: 100%;
@@ -1201,24 +1201,24 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 			#131313 65%);
 }
 
-.ControlsBar_root_withSecondaryColor__5TC5D>button {
+[class*="ControlsBar_root_withSecondaryColor"]>button {
 	color: var(--main-color);
 }
 
-.ControlsBar_duration__RawSk {
+[class*="ControlsBar_duration"] {
 	color: var(--main-color);
 }
 
-.PlayQueueBeforePlayingBlock_root__QIIfB:not(:empty) {
+[class*="PlayQueueBeforePlayingBlock_root"]:not(:empty) {
 	padding-block-end: 0;
 }
 
-.PlayQueueNowPlayingBlock_root__aJSb8 {
+[class*="PlayQueueNowPlayingBlock_root"] {
 	max-height: 80px;
 	min-height: 80px;
 }
 
-.PlayQueueNowPlayingBlock_important__sxxvA {
+[class*="PlayQueueNowPlayingBlock_important"] {
 	background:
 		linear-gradient(0deg, #006D76 50%, transparent 50%),
 		url("http://127.0.0.1:2007/assets/3-poloski.png?name=Vocaloid Miku!");
@@ -1237,16 +1237,16 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 	filter: brightness(1.04);
 }
 
-.PlayQueueNowPlayingBlock_important__sxxvA:hover {
+[class*="PlayQueueNowPlayingBlock_important"]:hover {
 	filter: brightness(1.1);
 }
 
-.PlayQueueAfterPlayingBlock_prevTrack__wDAPP>[data-test-id="TRACK_PLAYLIST"],
-.PlayQueueBeforePlayingBlock_prevTrack__5b6o4>[data-test-id="TRACK_PLAYLIST"],
-.PlayQueueBeforePlayingBlock_animatedContent__C04_K>[data-test-id="TRACK_PLAYLIST"],
-.PlayQueueAfterPlayingBlock_animatedContent__6rvOT>[data-test-id="TRACK_PLAYLIST"],
-.PlayQueueVibeBlock_root__cVjcM,
-.PlayQueueVibeBlock_root__cVjcM:hover {
+[class*="PlayQueueAfterPlayingBlock_prevTrack"]>[data-test-id="TRACK_PLAYLIST"],
+[class*="PlayQueueBeforePlayingBlock_prevTrack"]>[data-test-id="TRACK_PLAYLIST"],
+[class*="PlayQueueBeforePlayingBlock_animatedContent"]>[data-test-id="TRACK_PLAYLIST"],
+[class*="PlayQueueAfterPlayingBlock_animatedContent"]>[data-test-id="TRACK_PLAYLIST"],
+[class*="PlayQueueVibeBlock_root"],
+[class*="PlayQueueVibeBlock_root"]:hover {
 	background: #0005;
 	width: calc(100% - 20px);
 	left: 10px;
@@ -1260,7 +1260,7 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 	/* Наклон краев */
 }
 
-.PlayQueue_content__zIUvd * .ControlsBar_contextMenuWrapper__NHkn_ {
+[class*="PlayQueue_content"] * [class*="ControlsBar_contextMenuWrapper"] {
 	background: #0007;
 	height: 100%;
 	width: 65px;
@@ -1270,47 +1270,47 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 	/* Наклон краев */
 }
 
-.PlayQueueNowPlayingBlock_important__sxxvA * .ControlsBar_contextMenuWrapper__NHkn_ {
+[class*="PlayQueueNowPlayingBlock_important"] * [class*="ControlsBar_contextMenuWrapper"] {
 	background: #00FFFF;
 }
 
-.PlayQueueNowPlayingBlock_important__sxxvA * [data-test-id="TRACK_DURATION"] {
+[class*="PlayQueueNowPlayingBlock_important"] * [data-test-id="TRACK_DURATION"] {
 	color: var(--font-color);
 	font-weight: 800;
 	font-size: 16px;
 }
 
-.PlayQueueBeforePlayingBlock_animatedContent__C04_K * [data-test-id="TRACK_DURATION"],
-.PlayQueueAfterPlayingBlock_animatedContent__6rvOT * [data-test-id="TRACK_DURATION"],
-.PlayQueueBeforePlayingBlock_animatedContent__C04_K * [data-test-id="TRACK_CONTEXT_MENU_BUTTON"]>.JjlbHZ4FaP9EAcR_1DxF,
-.PlayQueueAfterPlayingBlock_animatedContent__6rvOT * [data-test-id="TRACK_CONTEXT_MENU_BUTTON"]>.JjlbHZ4FaP9EAcR_1DxF {
+[class*="PlayQueueBeforePlayingBlock_animatedContent"] * [data-test-id="TRACK_DURATION"],
+[class*="PlayQueueAfterPlayingBlock_animatedContent"] * [data-test-id="TRACK_DURATION"],
+[class*="PlayQueueBeforePlayingBlock_animatedContent"] * [data-test-id="TRACK_CONTEXT_MENU_BUTTON"]>.JjlbHZ4FaP9EAcR_1DxF,
+[class*="PlayQueueAfterPlayingBlock_animatedContent"] * [data-test-id="TRACK_CONTEXT_MENU_BUTTON"]>.JjlbHZ4FaP9EAcR_1DxF {
 	color: var(--main-color);
 	font-weight: 800;
 	font-size: 16px;
 }
 
-.PlayQueue_root__ponhw * .Meta_title__GGBnH {
+[class*="PlayQueue_root"] * [class*="Meta_title"] {
 	font-size: 20px;
 }
 
-.PlayQueueAfterPlayingBlock_animatedContent__6rvOT>[data-test-id="TRACK_PLAYLIST"]>TrackPlaylist_playButtonCell__Q6YT_ {
+[class*="PlayQueueAfterPlayingBlock_animatedContent"]>[data-test-id="TRACK_PLAYLIST"]>TrackPlaylist_playButtonCell__Q6YT_ {
 	transform: skewX(6deg);
 }
 
 /*skewX fix*/
-.PlayQueue_content__zIUvd * .Meta_root_withSecondaryColor___uENY,
-.PlayQueue_content__zIUvd * .ControlsBar_root_withSecondaryColor__5TC5D,
-.PlayQueue_content__zIUvd * .TrackPlaylist_playButtonCell__Q6YT_ {
+[class*="PlayQueue_content"] * [class*="Meta_root_withSecondaryColor"],
+[class*="PlayQueue_content"] * [class*="ControlsBar_root_withSecondaryColor"],
+[class*="PlayQueue_content"] * [class*="TrackPlaylist_playButtonCell"] {
 	transform: skewX(12deg);
 }
 
 /*Кнопка лайка*/
-.PlayQueue_content__zIUvd * [data-test-id="TRACK_PLAYLIST"] * [data-test-id="LIKE_BUTTON"] {
+[class*="PlayQueue_content"] * [data-test-id="TRACK_PLAYLIST"] * [data-test-id="LIKE_BUTTON"] {
 	opacity: 0;
 }
 
-.PlayQueue_content__zIUvd * [data-test-id="TRACK_PLAYLIST"]:hover {
-	.PlayQueue_content__zIUvd * [data-test-id="TRACK_PLAYLIST"] * [data-test-id="LIKE_BUTTON"] {
+[class*="PlayQueue_content"] * [data-test-id="TRACK_PLAYLIST"]:hover {
+	[class*="PlayQueue_content"] * [data-test-id="TRACK_PLAYLIST"] * [data-test-id="LIKE_BUTTON"] {
 		opacity: 1;
 	}
 }
@@ -1336,14 +1336,14 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 	z-index: 99999;
 }
 
-.PlayQueue_content__zIUvd * .TrackPlaylist_playButtonCell__Q6YT_ {
+[class*="PlayQueue_content"] * [class*="TrackPlaylist_playButtonCell"] {
 	visibility: hidden;
 	position: relative;
 	min-height: 100%;
 	min-width: 50px;
 }
 
-.PlayQueue_content__zIUvd * .TrackPlaylist_playButtonCell__Q6YT_:before {
+[class*="PlayQueue_content"] * [class*="TrackPlaylist_playButtonCell"]:before {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -1356,16 +1356,16 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 	height: 100%;
 }
 
-.PlayQueue_content__zIUvd * [data-test-id="TRACK_CONTEXT_MENU_BUTTON"]:hover,
-.PlayQueue_content__zIUvd * [data-test-id="TRACK_CONTEXT_MENU_BUTTON"] {
+[class*="PlayQueue_content"] * [data-test-id="TRACK_CONTEXT_MENU_BUTTON"]:hover,
+[class*="PlayQueue_content"] * [data-test-id="TRACK_CONTEXT_MENU_BUTTON"] {
 	color: #000;
 }
 
-.PlayQueueVibeBlock_title__G3kir {
+[class*="PlayQueueVibeBlock_title"] {
 	visibility: hidden;
 }
 
-.PlayQueueVibeBlock_title__G3kir:before {
+[class*="PlayQueueVibeBlock_title"]:before {
 	visibility: visible;
 	content: "Random";
 	font-size: 20px;
@@ -1384,7 +1384,7 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 
 /*Track Modal*/
 /*--------------------------------------------*/
-.TrackModal_root__QrFg6 {
+[class*="TrackModal_root"] {
 	box-shadow: 0 0 10px var(--font-color);
 	z-index: 200;
 }
@@ -1393,7 +1393,7 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 
 /*Анимация играющего трека*/
 /*--------------------------------------------*/
-.PlayButtonWithPosition_playingAnimation__Hy5rC {
+[class*="PlayButtonWithPosition_playingAnimation"] {
 	filter: hue-rotate(150deg) saturate(400%);
 }
 
