@@ -181,10 +181,10 @@ body>div>section>div>button {
 
 /*Плеер*/
 /*--------------------------------------------*/
-[class*="DefaultLayout_root"] {
+/* [class*="DefaultLayout_root"] {
 	grid-template: 'navbar content' minmax(auto,
 			calc(100% - var(--player-bar-height) - var(--ym-spacer-size-m))) 'playerbar playerbar' auto 'barBelow barBelow' auto/auto 1fr !important;
-}
+} */
 
 section.PlayerBar_root__cXUnU {
 	position: fixed !important;
@@ -202,6 +202,7 @@ section.PlayerBar_root__cXUnU {
 }
 
 [class*="PlayerBarDesktopWithBackgroundProgressBar_player"] {
+	margin-top: 0.06%;
 	position: unset;
 	border-radius: 0 !important;
 	border-width: 0 !important;
@@ -432,7 +433,13 @@ section.PlayerBar_root__cXUnU {
 /*Навбар*/
 /*--------------------------------------------*/
 [data-test-id="NAVBAR"] {
-	height: calc(100% + 24px);
+	height: calc(100% - 66px);
+}
+
+@media (max-width: 1080px) {
+	[data-test-id="NAVBAR"] {
+		height: calc(100% + 24px);
+	}
 }
 
 [class*="NavbarDesktop_collapseButton"] {
