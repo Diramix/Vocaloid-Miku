@@ -329,13 +329,20 @@ section.PlayerBar_root__cXUnU {
 
 /*Табы*/
 /*--------------------------------------------*/
-.MainPage_root__STXqc>div>header {
+[class*="MainPage_root"]>div>header {
 	height: 0;
 }
 
-.MainPage_root__STXqc>div>header>div.CompositeHeader_static__pZdrc {
+[class*="MainPage_root"]>div>header>div[class*="CompositeHeader_static"] {
 	position: relative;
 	top: -70px;
+	left: 0px;
+}
+
+@media (max-width: 768px) {
+	[class*="MainPage_root"]>div>header>div[class*="CompositeHeader_static"] {
+		left: 8px;
+	}
 }
 
 .Skeleton_upperBlocks__V43wi {
