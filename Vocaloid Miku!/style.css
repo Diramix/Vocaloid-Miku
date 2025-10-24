@@ -202,8 +202,7 @@ section.PlayerBar_root__cXUnU {
 }
 
 [class*="PlayerBarDesktopWithBackgroundProgressBar_player"] {
-	margin-top: 0.06%;
-	position: unset;
+	height: 100%;
 	border-radius: 0 !important;
 	border-width: 0 !important;
 }
