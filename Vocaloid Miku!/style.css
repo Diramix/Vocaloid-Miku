@@ -640,11 +640,11 @@ section.PlayerBar_root__cXUnU {
 .PageHeaderAlbumControls_likeControl__eohAO,
 .PageHeaderAlbumControls_pinControl__kq6_T,
 [data-test-id="TRAILER_LISTEN_FULL_VERSION_BUTTON"],
-[aria-label="Вернуться вперед"],
-[aria-label="Вернуться назад"],
+[data-test-id="NAVIGATION_FORWARD_BUTTON"],
+[data-test-id="NAVIGATION_BACKWARD_BUTTON"],
 [data-test-id="TRAILER_CLOSE_BUTTON"],
 .PageHeaderArtist_trailerControl__BWQXJ,
-[aria-label="Закрыть меню настройки звука"],
+[class*="QualitySettings_headerWithCloseButton"]>button,
 [data-test-id="PLAYLIST_HEADER_CONTEXT_MENU_BUTTON"],
 .PageHeaderPlaylist_downloadControl__ijcAxб,
 .PageHeaderAlbum_controls__e3QCT>button,
@@ -668,11 +668,11 @@ section.PlayerBar_root__cXUnU {
 .PageHeaderAlbumControls_likeControl__eohAO:hover,
 .PageHeaderAlbumControls_pinControl__kq6_T:hover,
 [data-test-id="TRAILER_LISTEN_FULL_VERSION_BUTTON"]:hover,
-[aria-label="Вернуться вперед"]:enabled:hover,
-[aria-label="Вернуться назад"]:enabled:hover,
+[data-test-id="NAVIGATION_FORWARD_BUTTON"]:enabled:hover,
+[data-test-id="NAVIGATION_BACKWARD_BUTTON"]:enabled:hover,
 [data-test-id="TRAILER_CLOSE_BUTTON"]:hover,
 .PageHeaderArtist_trailerControl__BWQXJ:hover,
-[aria-label="Закрыть меню настройки звука"]:hover,
+[class*="QualitySettings_headerWithCloseButton"]>button:hover,
 [data-test-id="PLAYLIST_HEADER_CONTEXT_MENU_BUTTON"]:hover,
 .PageHeaderAlbum_controls__e3QCT>button:hover,
 [data-test-id="ALBUM_HEADER_CONTEXT_MENU_BUTTON"]:hover,
@@ -1401,11 +1401,11 @@ body>.DevPanel_root__Gu7qn>.qU2apWBO1yyEK0lZ3lPO:hover {
 
 /*Этот трек можете слушать только вы*/
 /*--------------------------------------------*/
-[aria-label="Этот трек можете слушать только вы"] {
+[data-test-id="UGC_TRACK_ICON"] {
 	color: var(--font-color);
 }
 
-.PlayQueue_content__zIUvd * [aria-label="Этот трек можете слушать только вы"] {
+[class*="PlayQueue_content"] * [data-test-id="UGC_TRACK_ICON"] {
 	color: var(--main-color);
 }
 
