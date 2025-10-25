@@ -755,8 +755,9 @@ section.PlayerBar_root__cXUnU {
 [class*="FullscreenPlayerDesktopContent_additionalContent"] {
 	position: fixed;
 	width: 100%;
-	left: calc(-50% + 44px);
+	left: 0;
 	background-size: cover;
+	transform: unset;
 	z-index: 500;
 }
 
