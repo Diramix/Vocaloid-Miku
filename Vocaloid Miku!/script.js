@@ -1,3 +1,34 @@
+// Feature Flags Loader
+/*--------------------------------------------*/
+fetch('https://github.com/Diramix/Vocaloid-Miku/releases/download/feature-flags/flags.json')
+    .then(r => {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+    })
+    .then(data => {
+        if (data.helloween === true) {
+            document.styleSheets[0].insertRule(`
+        .AssetsImages:before {
+          content: url("http://127.0.0.1:2007/assets/Kagamine-Rin-Helloween.webp?name=Vocaloid Miku!");
+        }
+      `);
+        } else {
+            document.styleSheets[0].insertRule(`
+        .AssetsImages:before {
+          content: url("http://127.0.0.1:2007/assets/Kagamine-Rin.webp?name=Vocaloid Miku!");
+        }
+      `);
+        }
+    })
+    .catch(() => {
+        document.styleSheets[0].insertRule(`
+      .AssetsImages:before {
+        content: url("http://127.0.0.1:2007/assets/Kagamine-Rin.webp?name=Vocaloid Miku!");
+      }
+    `);
+    });
+/*--------------------------------------------*/
+
 // Main setInterval
 /*--------------------------------------------*/
 setInterval(() => {
