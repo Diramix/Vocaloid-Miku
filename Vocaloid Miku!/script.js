@@ -2,6 +2,48 @@
 /*--------------------------------------------*/
 let myVibeMiku, kagamineRinStyle, fullscreenMikuXDStyle;
 
+// --- БАЗОВАЯ ТЕМА ---
+function applyDefaultTheme() {
+    const root = document.documentElement;
+
+    root.style.setProperty('--main-color', '#86cecb');
+    root.style.setProperty('--light-main-color', '#AEFFFF');
+    root.style.setProperty('--basic-color', '#137a7f');
+    root.style.setProperty('--hatsune-light', '#bec8d1');
+    root.style.setProperty('--font-color', '#373b3e');
+    root.style.setProperty('--miku-color', '#e12885');
+
+    kagamineRinStyle = 'http://127.0.0.1:2007/assets/Kagamine-Rin.webp?name=Vocaloid Miku!';
+    fullscreenMikuXDStyle = 'http://127.0.0.1:2007/assets/fullscreen-miku-XD.png?name=Vocaloid Miku!';
+    myVibeMiku = 'http://127.0.0.1:2007/assets/My-vibe.png?name=Vocaloid Miku!';
+
+    let oldStyle = document.getElementById('dynamic-style');
+    if (oldStyle) oldStyle.remove();
+
+    const styleTag = document.createElement('style');
+    styleTag.id = 'dynamic-style';
+    styleTag.textContent = `
+        :root {
+            --main-color: ${getComputedStyle(root).getPropertyValue('--main-color')};
+            --light-main-color: ${getComputedStyle(root).getPropertyValue('--light-main-color')};
+            --basic-color: ${getComputedStyle(root).getPropertyValue('--basic-color')};
+            --hatsune-light: ${getComputedStyle(root).getPropertyValue('--hatsune-light')};
+            --font-color: ${getComputedStyle(root).getPropertyValue('--font-color')};
+            --miku-color: ${getComputedStyle(root).getPropertyValue('--miku-color')};
+        }
+
+        .AssetsImages:before {
+            content: url("${kagamineRinStyle}");
+        }
+
+        .AssetsImages:after {
+            background-image: url("${fullscreenMikuXDStyle}");
+        }
+    `;
+    document.head.appendChild(styleTag);
+}
+
+// --- ПРИМЕНЕНИЕ ТЕМЫ ИЗ JSON ---
 async function applyTheme() {
     const themeTitleText = document.querySelector('.ThemeTitleText');
     if (!themeTitleText) return;
@@ -14,19 +56,10 @@ async function applyTheme() {
         const style = data.style?.toLowerCase();
         const root = document.documentElement;
 
-        kagamineRinStyle = 'http://127.0.0.1:2007/assets/Kagamine-Rin.webp?name=Vocaloid Miku!';
-        fullscreenMikuXDStyle = 'http://127.0.0.1:2007/assets/fullscreen-miku-XD.png?name=Vocaloid Miku!';
-        myVibeMiku = 'http://127.0.0.1:2007/assets/My-vibe.png?name=Vocaloid Miku!';
+        // Сначала — базовая тема
+        applyDefaultTheme();
 
-        // стандартные цвета
-        root.style.setProperty('--main-color', '#86cecb');
-        root.style.setProperty('--light-main-color', '#AEFFFF');
-        root.style.setProperty('--basic-color', '#137a7f');
-        root.style.setProperty('--hatsune-light', '#bec8d1');
-        root.style.setProperty('--font-color', '#373b3e');
-        root.style.setProperty('--miku-color', '#e12885');
-
-        // helloween
+        // Потом, если есть тематическая — меняем
         if (style === 'helloween') {
             themeTitleText.textContent = 'Miku-Miku Boo!';
             myVibeMiku = 'http://127.0.0.1:2007/assets/My-vibe-helloween.png?name=Vocaloid Miku!';
@@ -41,13 +74,11 @@ async function applyTheme() {
             root.style.setProperty('--miku-color', '#B556A6');
         }
 
-        // christmas
         else if (style === 'christmas') {
             themeTitleText.textContent = 'Happy Miku Year!';
             kagamineRinStyle = 'http://127.0.0.1:2007/assets/Kagamine-Rin-Christmas.webp?name=Vocaloid Miku!';
         }
 
-        // teto
         else if (style === 'teto') {
             themeTitleText.textContent = 'Kasane Teto!';
             fullscreenMikuXDStyle = 'https://raw.githubusercontent.com/Diramix/Kasane-Teto/refs/heads/main/Kasane%20Teto!/assets/Fullscreen/fullscreen-miku-XD.png';
@@ -61,21 +92,20 @@ async function applyTheme() {
             root.style.setProperty('--miku-color', '#D46A83');
         }
 
-        // Удаляем старый стиль
+        // Перезаписываем CSS после изменений
         let oldStyle = document.getElementById('dynamic-style');
         if (oldStyle) oldStyle.remove();
 
-        // Добавляем новый
         const styleTag = document.createElement('style');
         styleTag.id = 'dynamic-style';
         styleTag.textContent = `
             :root {
-                --main-color: ${getComputedStyle(root).getPropertyValue('--main-color')} !important;
-                --light-main-color: ${getComputedStyle(root).getPropertyValue('--light-main-color')} !important;
-                --basic-color: ${getComputedStyle(root).getPropertyValue('--basic-color')} !important;
-                --hatsune-light: ${getComputedStyle(root).getPropertyValue('--hatsune-light')} !important;
-                --font-color: ${getComputedStyle(root).getPropertyValue('--font-color')} !important;
-                --miku-color: ${getComputedStyle(root).getPropertyValue('--miku-color')} !important;
+                --main-color: ${getComputedStyle(root).getPropertyValue('--main-color')};
+                --light-main-color: ${getComputedStyle(root).getPropertyValue('--light-main-color')};
+                --basic-color: ${getComputedStyle(root).getPropertyValue('--basic-color')};
+                --hatsune-light: ${getComputedStyle(root).getPropertyValue('--hatsune-light')};
+                --font-color: ${getComputedStyle(root).getPropertyValue('--font-color')};
+                --miku-color: ${getComputedStyle(root).getPropertyValue('--miku-color')};
             }
 
             .AssetsImages:before {
@@ -90,6 +120,8 @@ async function applyTheme() {
 
     } catch (err) {
         console.error('Ошибка при загрузке стилей:', err);
+        // В случае ошибки всё равно ставим дефолт
+        applyDefaultTheme();
     }
 }
 
@@ -100,7 +132,7 @@ function waitForThemeReady() {
         if (title && document.head) {
             clearInterval(checkInterval);
             applyTheme().then(() => {
-                console.log('🎨 Тема успешно применена!');
+                console.log('🎨 The theme is successfully applied!');
             });
         }
     }, 300);
