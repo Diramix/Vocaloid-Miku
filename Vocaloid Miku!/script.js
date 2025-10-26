@@ -382,10 +382,8 @@ async function getSettings() {
     }
 }
 
-let settingsDelay = 1000;
 let baseUrl = 'http://127.0.0.1:2007/assets/fullscreen-lyrics.png?name=Vocaloid Miku!'
 let baseBlur = 0;
-let updateInterval;
 
 async function setSettings(newSettings) {
     // Кастом картинка в SyncLyrics
@@ -489,18 +487,6 @@ async function setSettings(newSettings) {
         };
         tryClickPlay();
     }
-
-    // Update theme settings delay
-    if (Object.keys(settings).length === 0 || settings['Особое'].setInterval.text !== newSettings['Особое'].setInterval.text) {
-        const newDelay = parseInt(newSettings['Особое'].setInterval.text, 10) || 1000;
-        if (settingsDelay !== newDelay) {
-            settingsDelay = newDelay;
-
-            // Обновление интервала
-            clearInterval(updateInterval);
-            updateInterval = setInterval(update, settingsDelay);
-        }
-    }
 }
 
 async function update() {
@@ -510,8 +496,9 @@ async function update() {
 }
 
 function init() {
-    update();
-    updateInterval = setInterval(update, settingsDelay);
+    setInterval(() => {
+        update();
+    }, 1000);
 }
 
 init();
