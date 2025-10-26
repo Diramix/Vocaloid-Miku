@@ -1,8 +1,8 @@
 /*Images for Legacy patcher Support*/
 /*--------------------------------------------*/
-.AssetsImages:after {
+/* .AssetsImages:after {
 	background-image: url("http://127.0.0.1:2007/assets/fullscreen-miku-XD.png?name=Vocaloid Miku!");
-}
+} */
 
 /* .AssetsImages:before {
 	content: url("http://127.0.0.1:2007/assets/Kagamine-Rin.webp?name=Vocaloid Miku!");
@@ -34,15 +34,6 @@
 
 /*БАЗА*/
 /*--------------------------------------------*/
-:root {
-	--main-color: #86cecb;
-	--light-main-color: #AEFFFF;
-	--basic-color: #137a7f;
-	--hatsune-light: #bec8d1;
-	--font-color: #373b3e;
-	--miku-color: #e12885;
-}
-
 .ym-light-theme {
 	--ym-background-color-primary-enabled-content: var(--main-color);
 	--ym-background-color-primary-enabled-basic: var(--font-color);

@@ -1,31 +1,90 @@
 // Feature Flags Loader
 /*--------------------------------------------*/
+let isImageRewrite, rewriteImage, kagamineRinStyle, fullscreenMikuXDStyle;
+const themeTitleText = document.querySelector('.ThemeTitleText')
+
 fetch('https://github.com/Diramix/Vocaloid-Miku/releases/download/feature-flags/flags.json')
     .then(r => {
         if (!r.ok) throw new Error('HTTP ' + r.status);
         return r.json();
     })
     .then(data => {
-        if (data.helloween === true) {
-            document.styleSheets[0].insertRule(`
-        .AssetsImages:before {
-          content: url("http://127.0.0.1:2007/assets/Kagamine-Rin-Helloween.webp?name=Vocaloid Miku!");
+        const style = data.style?.toLowerCase();
+        const root = document.documentElement;
+
+        kagamineRinStyle = 'http://127.0.0.1:2007/assets/Kagamine-Rin.webp?name=Vocaloid Miku!';
+        fullscreenMikuXDStyle = 'http://127.0.0.1:2007/assets/fullscreen-miku-XD.png?name=Vocaloid Miku!';
+        rewriteImage = 'http://127.0.0.1:2007/assets/My-vibe.png?name=Vocaloid Miku!';
+        isImageRewrite = false;
+
+        // стандартные цвета
+        root.style.setProperty('--main-color', '#86cecb');
+        root.style.setProperty('--light-main-color', '#AEFFFF');
+        root.style.setProperty('--basic-color', '#137a7f');
+        root.style.setProperty('--hatsune-light', '#bec8d1');
+        root.style.setProperty('--font-color', '#373b3e');
+        root.style.setProperty('--miku-color', '#e12885');
+
+        // helloween
+        if (style === 'helloween') {
+            themeTitleText.textContent = 'Miku-Miku Boo!';
+
+            isImageRewrite = true;
+            rewriteImage = 'http://127.0.0.1:2007/assets/My-vibe-helloween.png?name=Vocaloid Miku!';
+            kagamineRinStyle = 'http://127.0.0.1:2007/assets/Kagamine-Rin-Helloween.webp?name=Vocaloid Miku!';
+            fullscreenMikuXDStyle = 'http://127.0.0.1:2007/assets/fullscreen-miku-XD-helloween.png?name=Vocaloid Miku!';
+
+            root.style.setProperty('--main-color', '#E48742');
+            root.style.setProperty('--light-main-color', '#FFCB63');
+            root.style.setProperty('--basic-color', '#A75245');
+            root.style.setProperty('--hatsune-light', '#ffae44');
+            root.style.setProperty('--font-color', '#000009');
+            root.style.setProperty('--miku-color', '#B556A6');
         }
-      `);
-        } else {
-            document.styleSheets[0].insertRule(`
-        .AssetsImages:before {
-          content: url("http://127.0.0.1:2007/assets/Kagamine-Rin.webp?name=Vocaloid Miku!");
+
+        // christmas
+        else if (style === 'christmas') {
+            themeTitleText.textContent = 'Happy Miku Year!';
+            isImageRewrite = true;
+            kagamineRinStyle = 'http://127.0.0.1:2007/assets/Kagamine-Rin-Christmas.webp?name=Vocaloid Miku!';
         }
-      `);
-        }
+
+        // Удаляем старый стиль, если есть
+        let oldStyle = document.getElementById('dynamic-style');
+        if (oldStyle) oldStyle.remove();
+
+        // Создаём новый <style> и вставляем в <head>
+        const styleTag = document.createElement('style');
+        styleTag.id = 'dynamic-style';
+        styleTag.textContent = `
+            :root {
+                --main-color: ${getComputedStyle(root).getPropertyValue('--main-color')};
+                --light-main-color: ${getComputedStyle(root).getPropertyValue('--light-main-color')};
+                --basic-color: ${getComputedStyle(root).getPropertyValue('--basic-color')};
+                --hatsune-light: ${getComputedStyle(root).getPropertyValue('--hatsune-light')};
+                --font-color: ${getComputedStyle(root).getPropertyValue('--font-color')};
+                --miku-color: ${getComputedStyle(root).getPropertyValue('--miku-color')};
+            }
+
+            .AssetsImages:before {
+                content: url("${kagamineRinStyle}");
+            }
+
+            .AssetsImages:after {
+                background-image: url("${fullscreenMikuXDStyle}");
+            }
+        `;
+        document.head.appendChild(styleTag);
     })
-    .catch(() => {
-        document.styleSheets[0].insertRule(`
-      .AssetsImages:before {
-        content: url("http://127.0.0.1:2007/assets/Kagamine-Rin.webp?name=Vocaloid Miku!");
-      }
-    `);
+    .catch(err => {
+        console.error('Ошибка при загрузке стилей:', err);
+        const fallback = document.createElement('style');
+        fallback.textContent = `
+            .AssetsImages:before {
+                content: url("http://127.0.0.1:2007/assets/Kagamine-Rin.webp?name=Vocaloid Miku!");
+            }
+        `;
+        document.head.appendChild(fallback);
     });
 /*--------------------------------------------*/
 
@@ -103,7 +162,10 @@ function updateBackgroundImage() {
 function updateVibeBackgroundImage() {
     const imgElements = document.querySelectorAll('[class*="PlayerBarDesktopWithBackgroundProgressBar_cover"]');
     let imgBackground = "";
-    const additionalImage = "http://127.0.0.1:2007/assets/My-vibe.png?name=Vocaloid Miku!";
+    additionalImage = "http://127.0.0.1:2007/assets/My-vibe.png?name=Vocaloid Miku!";
+    if (isImageRewrite) {
+        additionalImage = rewriteImage;
+    }
 
     imgElements.forEach(img => {
         if (img.src && img.src.includes('/100x100')) {
