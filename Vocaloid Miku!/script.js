@@ -49,7 +49,7 @@ async function applyTheme() {
     if (!themeTitleText) return;
 
     try {
-        const response = await fetch('http://192.168.0.15:1941/flags.json');
+        const response = await fetch('https://github.com/Diramix/Vocaloid-Miku/releases/download/feature-flags/flags.json');
         if (!response.ok) throw new Error('HTTP ' + response.status);
         const data = await response.json();
 
