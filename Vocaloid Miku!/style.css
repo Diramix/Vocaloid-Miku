@@ -41,6 +41,7 @@
 	--ym-controls-color-primary-default-hovered: var(--main-color);
 	--ym-controls-color-primary-default-enabled: var(--basic-color);
 	--ym-controls-color-primary-outline-selected_stroke: var(--light-main-color);
+	--ym-controls-color-primary-text-enabled: #0007;
 	--ym-controls-color-primary-text-enabled_variant: var(--font-color);
 	--ym-background-color-primary-enabled-popover: var(--main-color);
 	--ym-controls-color-primary-on_outline-enabled: var(--main-color);
