@@ -60,11 +60,11 @@ async function applyTheme() {
         applyDefaultTheme();
 
         // Потом, если есть тематическая — меняем
-        if (style === 'helloween') {
+        if (style === 'halloween') {
             themeTitleText.textContent = 'Miku-Miku Boo!';
-            myVibeMiku = 'http://127.0.0.1:2007/assets/My-vibe-helloween.png?name=Vocaloid Miku!';
-            kagamineRinStyle = 'http://127.0.0.1:2007/assets/Kagamine-Rin-Helloween.webp?name=Vocaloid Miku!';
-            fullscreenMikuXDStyle = 'http://127.0.0.1:2007/assets/fullscreen-miku-XD-helloween.png?name=Vocaloid Miku!';
+            myVibeMiku = 'http://127.0.0.1:2007/assets/My-vibe-halloween.png?name=Vocaloid Miku!';
+            kagamineRinStyle = 'http://127.0.0.1:2007/assets/Kagamine-Rin-Halloween.webp?name=Vocaloid Miku!';
+            fullscreenMikuXDStyle = 'http://127.0.0.1:2007/assets/fullscreen-miku-XD-halloween.png?name=Vocaloid Miku!';
 
             root.style.setProperty('--main-color', '#E48742');
             root.style.setProperty('--light-main-color', '#FFCB63');
