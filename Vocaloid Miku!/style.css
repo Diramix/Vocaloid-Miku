@@ -475,9 +475,9 @@ section.PlayerBar_root__cXUnU {
 	border-radius: 0px;
 }
 
-.NavbarDesktop_pinsList___jXIM {
+[data-test-id="PIN_LIST"] {
 	background: var(--main-color);
-	margin-top: -8px;
+	margin-top: -9px;
 	border-radius: 0px 0px 10px 10px;
 	margin-bottom: -4px;
 	/*Navbar size*/
