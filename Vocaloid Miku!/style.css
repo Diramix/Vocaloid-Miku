@@ -683,7 +683,7 @@ section.PlayerBar_root__cXUnU {
 
 /*Vibe - Вайб*/
 /*--------------------------------------------*/
-.VibeBlock_root__z7LtR {
+[class*="VibeBlock_root"] {
 	background-size: cover;
 	background-position: center;
 	margin-top: 20px;
