@@ -22,9 +22,9 @@
 	background-image: url("http://127.0.0.1:2007/assets/fullscreen-lyrics.png?name=Vocaloid Miku!");
 }
 */
-[class*="LikesAndHistory_carousel"]:after {
+/* [class*="LikesAndHistory_carousel"]:after {
 	background-image: url("http://127.0.0.1:2007/assets/Main-Page-Miku_End.webp?name=Vocaloid Miku!");
-}
+} */
 
 .mikuRun {
 	background-image: url("http://127.0.0.1:2007/assets/miku-run.png?name=Vocaloid Miku!");
