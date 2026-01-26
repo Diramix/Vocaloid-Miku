@@ -1,26 +1,20 @@
 {
-  "name": "Vocaloid Miku!",
-  "image": "image.jpg",
-  "banner": "banner.jpg",
-  "author": [
-    "diram1x"
-  ],
-  "description": "Hatsune Miku: Project DIRA F",
-  "type": "theme",
-  "version": "1.9.3",
-  "css": "style.css",
-  "script": "script.js",
-  "allowedUrls": [
-    "http://127.0.0.1:2007/",
-    "https://diram1x.ru/src/assets/",
-    "https://images.weserv.nl/?url=",
-    "https://release-assets.githubusercontent.com/",
-    "https://raw.githubusercontent.com/",
-    "https://github.com/"
-  ],
-  "tags": [
-    "Anime",
-    "Hatsune Miku",
-    "Vocaloid"
-  ]
+    "name": "Vocaloid Miku!",
+    "image": "image.jpg",
+    "banner": "banner.jpg",
+    "author": ["diram1x"],
+    "description": "Hatsune Miku: Project DIRA F",
+    "type": "theme",
+    "version": "0.0.0",
+    "css": "style.css",
+    "script": "script.js",
+    "allowedUrls": [
+        "http://127.0.0.1:2007/",
+        "https://diram1x.ru/src/assets/",
+        "https://images.weserv.nl/?url=",
+        "https://release-assets.githubusercontent.com/",
+        "https://raw.githubusercontent.com/",
+        "https://github.com/"
+    ],
+    "tags": ["Anime", "Hatsune Miku", "Vocaloid"]
 }
