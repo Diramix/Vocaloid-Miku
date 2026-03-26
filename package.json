@@ -19,15 +19,15 @@
     },
     "nextmusic": {
         "zip": {
-            "artifactName": "${theme.name}_${theme.version}_${build.package}.zip"
+            "artifactName": "Vocaloid-Miku_${theme.version}_${build.package}.zip"
         }
     },
     "pulsesync": {
         "zip": {
-            "artifactName": "${theme.name}_${theme.version}_${build.package}.zip"
+            "artifactName": "Vocaloid-Miku_${theme.version}_${build.package}.zip"
         },
         "pext": {
-            "artifactName": "${theme.name}_${theme.version}_${build.package}.pext"
+            "artifactName": "Vocaloid-Miku_${theme.version}_${build.package}.pext"
         }
     },
     "dependencies": {
