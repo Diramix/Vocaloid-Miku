@@ -31,6 +31,6 @@
         }
     },
     "dependencies": {
-        "ymtm": "github:Diramix/ymtm#1.1.1"
+        "ymtm": "github:Diramix/ymtm#1.2.0"
     }
 }
