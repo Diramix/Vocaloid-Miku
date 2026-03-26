@@ -1,0 +1,36 @@
+{
+    "name": "vocaloid-miku",
+    "description": "Hatsune Miku: Project DIRA F",
+    "author": "Diramix",
+    "license": "CC0-1.0",
+    "directories": {
+        "doc": "doc"
+    },
+    "scripts": {
+        "build": "ymtm build",
+        "build:nextmusic": "ymtm build nextmusic",
+        "build:pulsesync": "ymtm build pulsesync"
+    },
+    "build": {
+        "package": [
+            "nextmusic",
+            "pulsesync"
+        ]
+    },
+    "nextmusic": {
+        "zip": {
+            "artifactName": "${theme.name}_${theme.version}_${build.package}.zip"
+        }
+    },
+    "pulsesync": {
+        "zip": {
+            "artifactName": "${theme.name}_${theme.version}_${build.package}.zip"
+        },
+        "pext": {
+            "artifactName": "${theme.name}_${theme.version}_${build.package}.pext"
+        }
+    },
+    "dependencies": {
+        "ymtm": "github:Diramix/ymtm#1.1.1"
+    }
+}

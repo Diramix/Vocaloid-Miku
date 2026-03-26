@@ -1,6 +1,6 @@
 // Feature Flags Loader
 /*--------------------------------------------*/
-let myVibeMiku, kagamineRinStyle, fullscreenMikuXDStyle;
+let mikuRun, myVibeMiku, kagamineRinStyle, fullscreenMikuXDStyle;
 
 // --- БАЗОВАЯ ТЕМА ---
 function applyDefaultTheme() {
@@ -8,11 +8,13 @@ function applyDefaultTheme() {
 
     root.style.setProperty("--main-color", "#86cecb");
     root.style.setProperty("--light-main-color", "#AEFFFF");
+    root.style.setProperty("--buttons-color", "#93e2df");
     root.style.setProperty("--basic-color", "#137a7f");
     root.style.setProperty("--hatsune-light", "#bec8d1");
     root.style.setProperty("--font-color", "#373b3e");
     root.style.setProperty("--miku-color", "#e12885");
 
+    mikuRun = "http://127.0.0.1:2007/assets/miku-run.png?name=Vocaloid Miku!";
     kagamineRinStyle =
         "http://127.0.0.1:2007/assets/Kagamine-Rin.webp?name=Vocaloid Miku!";
     fullscreenMikuXDStyle =
@@ -33,6 +35,10 @@ function applyDefaultTheme() {
             --font-color: ${getComputedStyle(root).getPropertyValue("--font-color")};
             --miku-color: ${getComputedStyle(root).getPropertyValue("--miku-color")};
         }
+
+        /*.mikuRun {
+            background-image: url("${mikuRun}");
+        }*/
 
         .AssetsImages:before {
             content: url("${kagamineRinStyle}");
@@ -75,6 +81,7 @@ async function applyTheme() {
 
             root.style.setProperty("--main-color", "#E48742");
             root.style.setProperty("--light-main-color", "#FFCB63");
+            root.style.setProperty("--buttons-color", "#ff9b4c");
             root.style.setProperty("--basic-color", "#A75245");
             root.style.setProperty("--hatsune-light", "#ffae44");
             root.style.setProperty("--font-color", "#000009");
@@ -89,6 +96,8 @@ async function applyTheme() {
                 "http://127.0.0.1:2007/assets/fullscreen-miku-XD-Christmas.png?name=Vocaloid Miku!";
         } else if (applyStlTheme === "teto") {
             themeTitleText.textContent = "Kasane Teto!";
+            mikuRun =
+                "https://raw.githubusercontent.com/Diramix/Kasane-Teto/refs/heads/main/Kasane%20Teto!/assets/MainPage/miku-run.png";
             fullscreenMikuXDStyle =
                 "https://raw.githubusercontent.com/Diramix/Kasane-Teto/refs/heads/main/Kasane%20Teto!/assets/Fullscreen/fullscreen-miku-XD.png";
             myVibeMiku =
@@ -96,6 +105,7 @@ async function applyTheme() {
 
             root.style.setProperty("--main-color", "#D46A83");
             root.style.setProperty("--light-main-color", "#FF9FC4");
+            root.style.setProperty("--buttons-color", "#f47a97");
             root.style.setProperty("--basic-color", "#854462");
             root.style.setProperty("--hatsune-light", "#0b0c0c");
             root.style.setProperty("--font-color", "#2A2433");
@@ -116,6 +126,10 @@ async function applyTheme() {
                 --hatsune-light: ${getComputedStyle(root).getPropertyValue("--hatsune-light")};
                 --font-color: ${getComputedStyle(root).getPropertyValue("--font-color")};
                 --miku-color: ${getComputedStyle(root).getPropertyValue("--miku-color")};
+            }
+
+            .mikuRun {
+                background-image: url("${mikuRun}");
             }
 
             .AssetsImages:before {
@@ -340,7 +354,9 @@ function coverAndAssetsImagesElements() {
 const observer = new MutationObserver(() => {
     ["Diva-Cover", "Diva-Perfect-Mark"].forEach((className) => {
         if (
-            document.querySelector(".PlayButtonWithCover_coverImage__DhS1R") &&
+            document.querySelector(
+                `[class*="PlayButtonWithCover_coverImage"`,
+            ) &&
             !document.querySelector(`.${className}`)
         ) {
             document
@@ -357,35 +373,52 @@ observer.observe(document.body, { childList: true, subtree: true });
 
 // Vocaloid Miku!
 /*--------------------------------------------*/
-if (!document.querySelector(".ThemeTitleText")) {
-    const themeTitleText = document.createElement("div");
-    themeTitleText.className = "ThemeTitleText";
+function addThemeTitle() {
+    if (!document.querySelector(".ThemeTitleText")) {
+        const themeTitleText = document.createElement("div");
+        themeTitleText.className = "ThemeTitleText";
+        Object.assign(themeTitleText.style, {
+            position: "fixed",
+            visibility: "visible",
+            fontFamily: '"Vocaloid", sans-serif',
+            fontSize: "16px",
+            fontWeight: "1000",
+            left: "50%",
+            marginLeft: "-66px",
+            top: "10px",
+            color: "var(--main-color)",
+            zIndex: "1",
+        });
+        themeTitleText.textContent = "Vocaloid Miku!";
+        document.body.appendChild(themeTitleText);
+        return true;
+    }
+}
 
-    Object.assign(themeTitleText.style, {
-        position: "fixed",
-        visibility: "visible",
-        fontFamily: '"Vocaloid", sans-serif',
-        fontSize: "16px",
-        fontWeight: "1000",
-        left: "50%",
-        marginLeft: "-66px",
-        top: "10px",
-        color: "var(--main-color)",
-        zIndex: "1",
+if (!addThemeTitle()) {
+    const observer = new MutationObserver(function (_, obs) {
+        if (addThemeTitle()) obs.disconnect();
     });
-
-    themeTitleText.textContent = "Vocaloid Miku!";
-    document.body.appendChild(themeTitleText);
+    observer.observe(document.body, { childList: true, subtree: true });
 }
 /*--------------------------------------------*/
 
-// Скрипт для добавления элемента Miku-Run (Отключён в vm!-v1.8.0)
+// Скрипт для добавления элемента Miku-Run (Ликуем в vm!-v1.10.0)
 /*--------------------------------------------*/
-// if (!document.querySelector('.mikuRun')) {
-//     const newElement = document.createElement('div');
-//     newElement.className = 'mikuRun';
-//     document.body.appendChild(newElement);
-// }
+const mikuRunObserver = new MutationObserver(() => {
+    const target = document.querySelector(
+        '[class*="PlayerBarDesktopWithBackgroundProgressBar_sonata"]',
+    );
+    const already = document.querySelector(".mikuRun");
+
+    if (target && !already) {
+        const newElement = document.createElement("div");
+        newElement.className = "mikuRun";
+        target.insertAdjacentElement("afterend", newElement);
+    }
+});
+
+mikuRunObserver.observe(document.body, { childList: true, subtree: true });
 /*--------------------------------------------*/
 
 /*Управление handleEvents.json*/

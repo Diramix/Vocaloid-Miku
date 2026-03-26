@@ -1,55 +1,60 @@
-/*Images for Legacy patcher Support*/
+/* Images for Legacy patcher Support */
 /*--------------------------------------------*/
-/* .AssetsImages:after {
+/*.AssetsImages:after {
 	background-image: url("http://127.0.0.1:2007/assets/fullscreen-miku-XD.png?name=Vocaloid Miku!");
-} */
+}*/
 
-/* .AssetsImages:before {
+/*.AssetsImages:before {
 	content: url("http://127.0.0.1:2007/assets/Kagamine-Rin.webp?name=Vocaloid Miku!");
-} */
+}*/
 
-/*
-.VibeBlock_root__z7LtR {
+/*.VibeBlock_root__z7LtR {
 	background-image: url("http://127.0.0.1:2007/assets/My-vibe.png?name=Vocaloid Miku!");
-}
-*/
+}*/
+
 [class*="SyncLyrics_root"]:before {
     background-image: url("http://127.0.0.1:2007/assets/Dilamix.png?name=Vocaloid Miku!");
 }
 
-/*
-[class*="SyncLyrics_root"] {
+/*[class*="SyncLyrics_root"] {
 	background-image: url("http://127.0.0.1:2007/assets/fullscreen-lyrics.png?name=Vocaloid Miku!");
-}
-*/
-/* [class*="LikesAndHistory_carousel"]:after {
+}*/
+
+/*[class*="LikesAndHistory_carousel"]:after {
 	background-image: url("http://127.0.0.1:2007/assets/Main-Page-Miku_End.webp?name=Vocaloid Miku!");
-} */
+}*/
 
-.mikuRun {
+/*.mikuRun {
     background-image: url("http://127.0.0.1:2007/assets/miku-run.png?name=Vocaloid Miku!");
-}
-
+}*/
 /*--------------------------------------------*/
 
-/*БАЗА*/
+/* БАЗА */
 /*--------------------------------------------*/
 .ym-light-theme {
+    --vmt-border-radius: 10px;
+    --ym-radius-size-xl: 10px;
+
+    --ym-controls-color-secondary-default-hovered: var(--light-main-color);
     --ym-background-color-primary-enabled-content: var(--main-color);
     --ym-background-color-primary-enabled-basic: var(--font-color);
     --ym-background-color-primary-enabled-player: #121212;
-    --ym-controls-color-primary-default-hovered: var(--main-color);
-    --ym-controls-color-primary-default-enabled: var(--basic-color);
+    --ym-controls-color-primary-default-hovered: var(--light-main-color);
+    --ym-controls-color-primary-default-enabled: var(--buttons-color);
     --ym-controls-color-primary-outline-selected_stroke: var(
         --light-main-color
     );
+    /*--ym-controls-color-primary-on_default-enabled: var(--light-main-color);*/
     --ym-controls-color-primary-text-enabled: #0007;
     --ym-controls-color-primary-text-enabled_variant: var(--font-color);
     --ym-background-color-primary-enabled-popover: var(--main-color);
-    --ym-controls-color-primary-on_outline-enabled: var(--main-color);
+    --ym-controls-color-primary-on_outline-enabled: var(--font-color);
     --ym-controls-color-secondary-on_outline-enabled: var(--basic-color);
+    --ym-controls-color-primary-outline-enabled: var(--buttons-color);
+    --ym-controls-color-secondary-default-enabled: var(--buttons-color);
     --ym-shadow-xl: var(--basic-color);
     --ym-shadow-s: var(--basic-color);
+    --ym-spacer-size-xxxl: 40px !important;
 }
 
 @font-face {
@@ -57,87 +62,34 @@
     src: url("http://127.0.0.1:2007/assets/VOC-RE.ttf?name=Vocaloid Miku!")
         format("truetype");
 }
-
 /*--------------------------------------------*/
 
-/*Затемнение фона*/
+/* TitleBar */
 /*--------------------------------------------*/
-.l66GiFKS1Ux_BNd603Cu {
-    background: #0005;
+[class*="TitleBar_root"] * {
+    color: var(--main-color) !important;
 }
 
+[class*="CommonLayout_root"] {
+    padding-block-start: 40px !important;
+    padding-left: 12px;
+}
+
+[class*="TitleBar"][class*="Text"] {
+    font-weight: 600 !important;
+}
 /*--------------------------------------------*/
 
-/*Font color*/
+/* Logo Color */
 /*--------------------------------------------*/
-.BlockHeader_heading__4iqvS,
-.nSU6fV9y80WrZEfafvww,
-.PageHeaderTitle_title__caKyB {
+[class*="NavbarDesktop_logo"] * {
     color: var(--font-color);
 }
-
 /*--------------------------------------------*/
 
-/*Vibe Settings*/
+/* Update нотификейшон */
 /*--------------------------------------------*/
-[class*="VibeSettings_root"] {
-    background: var(--main-color);
-}
-
-[class*="VibeContext_context"],
-[class*="VibeContext_pinButton"] {
-    background: var(--main-color);
-}
-
-[class*="VibeContext_pinButton"]:hover {
-    background: var(--main-color);
-    filter: brightness(1.1);
-}
-
-[class*="VibeSettingsBlock_moodEnergy"] {
-    background: var(--basic-color);
-    border-radius: 15px;
-    padding: 23px;
-    width: 100%;
-}
-
-[class*="RestrictionButton_diversityButton"],
-[class*="RestrictionButton_textButton"] {
-    background: var(--basic-color);
-}
-
-[class*="RestrictionButton_diversityButton"]:hover,
-[class*="RestrictionButton_textButton"]:hover {
-    background: var(--basic-color);
-    filter: brightness(1.1);
-}
-
-/*--------------------------------------------*/
-
-/*Бэйс лайн нотификейшон*/
-/*--------------------------------------------*/
-.ReleaseNotesModal_root__RSw1p {
-    background: var(--main-color);
-}
-
-.BaseNotification_cover__vpBEb {
-    background: var(--basic-color);
-    color: #fff;
-}
-
-.NotificationChangeQuality_icon__bOfQO {
-    color: var(--hatsune-light);
-}
-
-.BaseNotification_root__FwcCd {
-    background: var(--main-color);
-}
-
-/*--------------------------------------------*/
-
-/*Update нотификейшон*/
-/*--------------------------------------------*/
-.NotificationUpdate_important___0WHj {
+[class*="NotificationUpdate_important"] {
     position: fixed;
     display: flex;
     flex-direction: column;
@@ -145,30 +97,11 @@
     min-width: 280px;
     margin-left: -135px;
 }
-
 /*--------------------------------------------*/
 
-/*Релиз нотес*/
+/* Плеер */
 /*--------------------------------------------*/
-[class*="VibeSettings_popover"] * [class*="RestrictionButton_title"] {
-    color: var(--basic-color);
-}
-
-body > div > section > div > button {
-    margin-left: 7px;
-    right: 5px;
-}
-
-/*--------------------------------------------*/
-
-/*Плеер*/
-/*--------------------------------------------*/
-/* [class*="DefaultLayout_root"] {
-	grid-template: 'navbar content' minmax(auto,
-			calc(100% - var(--player-bar-height) - var(--ym-spacer-size-m))) 'playerbar playerbar' auto 'barBelow barBelow' auto/auto 1fr !important;
-} */
-
-section.PlayerBar_root__cXUnU {
+section[class*="PlayerBar_root"] {
     position: fixed !important;
     left: 0 !important;
     right: 0 !important;
@@ -189,127 +122,66 @@ section.PlayerBar_root__cXUnU {
     border-width: 0 !important;
 }
 
+[class*="ChangeTimecodeBackground_backgroundProgressbar"]:before {
+    border-radius: 0;
+    opacity: 0.5;
+    --ym-slider-color-primary-progress: var(--light-main-color);
+}
+
+[class*="PlayerBarDesktopWithBackgroundProgressBar_info"] {
+    background: var(--basic-color);
+    padding: 7px 7px 7px 4px;
+    border-radius: 10px 0 0 10px;
+    height: 77px;
+}
+
+[class*="PlayerBarDesktopWithBackgroundProgressBar_sonata_"] {
+    background: var(--basic-color);
+    padding: 7px 7px 7px 4px;
+    border-radius: 0 10px 10px 0;
+    height: 77px;
+}
+
+@media (min-width: 1023px) {
+    [class*="PlayerBarDesktopWithBackgroundProgressBar_info"] {
+        border-radius: 10px;
+    }
+
+    [class*="PlayerBarDesktopWithBackgroundProgressBar_sonata_"] {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
 .mikuRun {
-    position: fixed;
     text-align: center;
-    right: 18.3%;
-    width: 89px;
+    width: 20vw;
+    min-width: 89px;
     bottom: -13px;
     z-index: 420;
     height: 100px;
     pointer-events: none;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-.PlayerBarDesktopWithBackgroundProgressBar_info__YnvZ_,
-.PlayerBarDesktopWithBackgroundProgressBar_sonata__mGFb_,
-.PlayerBarDesktopWithBackgroundProgressBar_meta__FhKTC {
+[class*="PlayerBarDesktopWithBackgroundProgressBar_meta"] {
     background: var(--basic-color);
-    padding: 7px;
-    border-radius: 0;
-    height: 77px;
-}
-
-.PlayerBarDesktopWithBackgroundProgressBar_info__YnvZ_ {
-    border-radius: 10px 0 0 10px;
-}
-
-.PlayerBarDesktopWithBackgroundProgressBar_meta__FhKTC {
-    border-radius: 0 10px 10px 0;
-}
-
-/*
-.PlayerBarDesktop_meta__6sm58 {
-	position: fixed;
-	width: 129px;
-	right: 8px;
-} */
-
-/* [data-test-id="SOUND_QUALITY_BUTTON"] {
-	position: fixed;
-	right: 20px;
-	bottom: 46px;
-	width: 30px;
-	height: 30px;
-}
-
-[data-test-id="PLAYERBAR_DESKTOP_PLAY_QUEUE_BUTTON"] {
-	position: fixed;
-	right: 60px;
-	bottom: 46px;
-	width: 30px;
-	height: 30px;
-}
-
-[data-test-id="SOUND_QUALITY_BUTTON"][aria-expanded="true"] {
-	color: #fff;
-} */
-
-/*Меню параметров качества звука*/
-[class*="QualitySettingsModal_root"] {
-    position: fixed;
-    bottom: 110px;
-    right: 18px;
+    padding: 7px 7px 7px 4px;
     border-radius: 10px;
-    background: var(--main-color);
-    border-width: 5px;
-    border-color: var(--basic-color);
+    height: 77px;
+    display: inline-grid;
+    grid-template-rows: repeat(2, auto);
+    grid-auto-flow: column;
+    gap: 5px;
+    flex: 0 0 auto;
+    /*margin-left: 25vw;*/
+    /*max-width: 122px;*/
 }
-
-[class*="QualitySettingsContextMenu_root_withEqualizer"] {
-    display: block;
-    overflow: auto;
-}
-
-[class*="EqualizerPresets_container"] {
-    background: var(--main-color);
-}
-
-[class*="EqualizerPresets_container"] * {
-    color: var(--font-color);
-}
-
 /*--------------------------------------------*/
 
-/*Контекстное меню*/
-/*--------------------------------------------*/
-[data-test-id="virtuoso-scroller"] {
-    background: var(--main-color);
-}
-
-.EiyUV4aCJzpfNzuihfMM:hover,
-.EiyUV4aCJzpfNzuihfMM[data-nested][data-open] {
-    --ym-surface-color-primary-enabled-list: var(--light-main-color);
-}
-
-.NOqNiasunvfLvvi75zl9 {
-    z-index: 500;
-}
-
-.s7_MO4NdsYs7nPQALD8W {
-    z-index: 402;
-    background: var(--main-color);
-    border-width: 3px;
-    border-color: var(--basic-color);
-    border-style: solid;
-    background: 0;
-    backdrop-filter: blur(60px);
-}
-
-.cM0M40YHieFFCTYRgOZa {
-    color: var(--font-color);
-}
-
-[data-test-id="PLAYERBAR_DESKTOP_CONTEXT_MENU_BUTTON"][aria-expanded="true"] {
-    color: #fff;
-}
-
-.EiyUV4aCJzpfNzuihfMM {
-    background: var(--main-color);
-}
-
-/*--------------------------------------------*/
-
-/*Табы*/
+/* Табы */
 /*--------------------------------------------*/
 [class*="MainPage_root"] > div > header {
     height: 0;
@@ -337,192 +209,74 @@ section.PlayerBar_root__cXUnU {
 [class*="Skeleton_tab"] {
     z-index: 400;
 }
-
+/* Объединено: базовый стиль + min/max-height */
 [class*="Tab_tab_withCovers"] {
     background: var(--main-color);
     z-index: 10;
     bottom: 0px;
-}
-
-[class*="Tab_tab_withCovers"]:hover {
-    background: var(--main-color);
-    z-index: 10;
-    bottom: 0px;
-    filter: brightness(1.1);
-}
-
-[class*="MusicHistoryPage_tab_selected"] {
-    background: var(--main-color);
-    filter: brightness(1.1);
-}
-
-[class*="MusicHistoryPage_tab_selected"]:hover {
-    background: var(--main-color);
-    filter: brightness(1.15);
-}
-
-[class*="PlaylistFiltersTabs_filter_selected"] {
-    background: var(--main-color);
-    filter: brightness(1.1);
-}
-
-[class*="PlaylistFiltersTabs_filter_selected"]:hover {
-    background: var(--main-color);
-    filter: brightness(1.1);
-}
-
-[class*="MusicHistoryPage_tab_selected"] {
-    background: var(--main-color);
-    border-color: var(--basic-color);
-}
-
-[class*="Tab_tab_withCovers"] {
     min-height: 63px;
     max-height: 63px;
 }
+/*--------------------------------------------*/
 
-[class*="SearchPage_filter"] {
+/* Контекстное меню */
+/*--------------------------------------------*/
+.EiyUV4aCJzpfNzuihfMM:hover,
+.EiyUV4aCJzpfNzuihfMM[data-nested][data-open] {
+    --ym-surface-color-primary-enabled-list: var(--light-main-color);
+}
+
+.NOqNiasunvfLvvi75zl9 {
+    z-index: 500;
+}
+
+.s7_MO4NdsYs7nPQALD8W {
+    z-index: 402;
+    background: var(--main-color);
+    border-width: 3px;
+    border-color: var(--basic-color);
+    border-style: solid;
     background: 0;
-    border-width: 0;
+    backdrop-filter: blur(60px);
 }
 
-[class*="Tab_root"] {
-    background: var(--main-color);
-    border-color: var(--main-color);
-    filter: brightness(1.1);
-}
-
-[class*="Tab_root"]:hover {
-    background: var(--main-color);
-    border-color: var(--main-color);
-    filter: brightness(1.15);
-}
-
-/*--------------------------------------------*/
-
-/*Дефолт Лойаут*/
-/*--------------------------------------------*/
-[class*="CommonLayout_content"] {
-    position: fixed;
-    margin-top: 10px;
-    margin-right: 8px;
-    margin-bottom: 100px;
-    border-radius: 10px;
-    border-width: 0;
-    width: -webkit-fill-available;
-    height: -webkit-fill-available;
-    margin-left: -3px;
-    z-index: 0;
-}
-
-[class*="Content_main"] {
-    border-radius: 10px;
-    margin-top: 16px;
-}
-
-/*--------------------------------------------*/
-
-/*Навбар*/
-/*--------------------------------------------*/
-[class*="NavbarDesktop_root"] {
-    height: calc(100% + 12px);
-}
-
-@media (max-width: 1080px) {
-    [class*="NavbarDesktop_root"] {
-        height: calc(100% + 24px);
-    }
-}
-
-[class*="NavbarDesktop_collapseButton"] {
-    position: fixed;
-    margin-top: 7px;
-    margin-left: 14px;
-    border-radius: 9999px;
-    width: 43px;
-    height: 43px;
-    backdrop-filter: blur(3px);
-    background: 0;
-    color: #fff6;
-}
-
-[class*="NavbarDesktop_logoWrapper"] {
-    position: static;
-    margin-top: 26px;
-    margin-bottom: 0;
-    background: var(--main-color);
-    border-radius: 10px 10px 0px 0px;
-}
-
-[class*="NavbarDesktop_logoWrapper"] * {
+.cM0M40YHieFFCTYRgOZa {
     color: var(--font-color);
 }
 
-[class*="NavbarDesktop_logoLink"] {
-    margin-top: 10px;
-}
-
-.xfFtKQpgAYvC2jI1tBtS {
-    background: var(--main-color);
-    bottom: 90px;
-    border-radius: 0px;
-}
-
-[class*="NavbarDesktop_pinsList"] {
-    background: var(--main-color);
-    margin-top: -9px;
-    border-radius: 0px 0px 10px 10px;
-    margin-bottom: -4px;
-    /*Navbar size*/
-    z-index: 10;
-}
-
-[class*="UserProfile_root"] {
-    margin-top: 13px;
-}
-
-[class*="UserProfile_userName"] {
-    color: #fff;
-    width: 120px;
-}
-
-[class*="UserProfile_plusLink"] {
-    display: none;
-}
-
-[class*="UserProfile_dialog_desktop"] {
-    position: fixed;
-    bottom: 100px;
-    left: 50%;
-    margin-left: -150px;
-    border-radius: 10px;
-}
-
-[class*="NavbarDesktop_scrollableContainer"]:before {
+.EiyUV4aCJzpfNzuihfMM {
     background: var(--main-color);
 }
-
-[class*="NavbarDesktopUserWidget_userProfileContainer"] {
-    display: none;
-}
-
-@media (max-height: 750px) {
-    [class*="NavbarDesktopUserWidget_userProfileContainer"] {
-        display: block;
-    }
-}
-
 /*--------------------------------------------*/
 
-/*Background*/
+/* Дефолт Лойаут */
+/*--------------------------------------------*/
+[class*="DefaultLayout_root_applicationPreserveTitleBar"] {
+    padding-block-start: 40px;
+}
+
+[class*="Content_main"] {
+    border-radius: var(--vmt-border-radius);
+}
+/*--------------------------------------------*/
+
+/* Навбар */
+/*--------------------------------------------*/
+[class*="Navbar_root"] {
+    background-color: var(--main-color);
+    border-radius: var(--vmt-border-radius);
+    margin-block-start: 0;
+}
+/*--------------------------------------------*/
+
+/* Background */
 /*--------------------------------------------*/
 [class*="InnerHeader_root_showColor"] {
     background: 0;
 }
-
 /*--------------------------------------------*/
 
-/*Fullscreen Player Desktop*/
+/* Fullscreen Player Desktop */
 /*--------------------------------------------*/
 .AssetsImages:after {
     visibility: visible;
@@ -572,109 +326,21 @@ section.PlayerBar_root__cXUnU {
 [class*="FullscreenPlayerDesktop_header"] {
     z-index: 99999;
 }
-
 /*--------------------------------------------*/
 
-/*play button*/
+/* play button */
 /*--------------------------------------------*/
-[class*="VibeBlock_pauseButton"] {
-    background: var(--miku-color);
-    color: #000;
-}
-
-[class*="VibeBlock_pauseButton"]:hover {
-    background: var(--miku-color);
-    filter: brightness(1.1);
-    color: #000;
-}
-
 [class*="VibeBlock_playButton"] {
-    background: var(--main-color);
-    filter: brightness(1.1);
+    background: var(--buttons-color);
     color: #000;
 }
 
 [class*="VibeBlock_playButton"]:hover {
-    background: var(--main-color);
-    filter: brightness(1.2);
-    color: #000;
+    background: var(--light-main-color);
 }
-
-[class*="SonataControlsDesktop_sonataButton"] {
-    background: 0;
-}
-
-[class*="SonataControlsDesktop_sonataButton"]:hover {
-    background: 0;
-}
-
 /*--------------------------------------------*/
 
-/*Playlist Page*/
-/*--------------------------------------------*/
-/*
-.PageHeaderPlaylist_controls__uSwwK {
-	background: var(--font-color);
-	padding: 10px;
-	border-radius: 10px;
-}
-*/
-
-.zmtVwO34EPppZErNrlIC[data-test-id="PLAYLIST_HEADER_CONTEXT_MENU"],
-.zmtVwO34EPppZErNrlIC[data-test-id="ALBUM_HEADER_CONTEXT_MENU"],
-[class*="PageHeaderAlbum_playControl"],
-[class*="PageHeaderAlbumControls_likeControl"],
-[class*="PageHeaderAlbumControls_pinControl"],
-[data-test-id="TRAILER_LISTEN_FULL_VERSION_BUTTON"],
-[data-test-id="NAVIGATION_FORWARD_BUTTON"],
-[data-test-id="NAVIGATION_BACKWARD_BUTTON"],
-[data-test-id="TRAILER_CLOSE_BUTTON"],
-[class*="PageHeaderArtist_trailerControl"],
-[class*="QualitySettings_headerWithCloseButton"] > button,
-[data-test-id="PLAYLIST_HEADER_CONTEXT_MENU_BUTTON"],
-[class*="PageHeaderAlbum_controls"] > button,
-[data-test-id="ALBUM_HEADER_CONTEXT_MENU_BUTTON"],
-[class*="PageHeaderPlaylist_mainControls"] > button,
-[class*="PageHeaderPlaylist_downloadControl"] > button,
-[class*="PageHeaderPlaylist_ugcControls"] > button,
-[class*="PageHeaderArtist_controls"] > button,
-[data-test-id="ARTIST_HEADER_CONTEXT_MENU_BUTTON"],
-[class*="PageHeaderArtist_meta"] > div,
-[class*="PageHeaderArtist_meta"] > button,
-[class*="TrackModalControls_root"] > button,
-[class*="TrackModalControls_menuButton"] {
-    background: var(--main-color);
-    filter: brightness(1.1);
-}
-
-.zmtVwO34EPppZErNrlIC[data-test-id="PLAYLIST_HEADER_CONTEXT_MENU"]:hover,
-.zmtVwO34EPppZErNrlIC[data-test-id="ALBUM_HEADER_CONTEXT_MENU"]:hover,
-[class*="PageHeaderAlbum_playControl"]:hover,
-[class*="PageHeaderAlbumControls_likeControl"]:hover,
-[class*="PageHeaderAlbumControls_pinControl"]:hover,
-[data-test-id="TRAILER_LISTEN_FULL_VERSION_BUTTON"]:hover,
-[data-test-id="NAVIGATION_FORWARD_BUTTON"]:enabled:hover,
-[data-test-id="NAVIGATION_BACKWARD_BUTTON"]:enabled:hover,
-[data-test-id="TRAILER_CLOSE_BUTTON"]:hover,
-[class*="PageHeaderArtist_trailerControl"]:hover,
-[class*="QualitySettings_headerWithCloseButton"] > button:hover,
-[data-test-id="PLAYLIST_HEADER_CONTEXT_MENU_BUTTON"]:hover,
-[class*="PageHeaderAlbum_controls"] > button:hover,
-[data-test-id="ALBUM_HEADER_CONTEXT_MENU_BUTTON"]:hover,
-[class*="PageHeaderPlaylist_mainControls"] > button:hover,
-[class*="PageHeaderPlaylist_downloadControl"] > button:hover,
-[class*="PageHeaderPlaylist_ugcControls"] > button:hover,
-[class*="PageHeaderArtist_controls"] > button:hover,
-[data-test-id="ARTIST_HEADER_CONTEXT_MENU_BUTTON"]:hover,
-[class*="PageHeaderArtist_meta"] > button:hover,
-[class*="TrackModalControls_root"] > button:hover {
-    background: var(--main-color);
-    filter: brightness(1.15);
-}
-
-/*--------------------------------------------*/
-
-/*Vibe - Вайб*/
+/* Vibe - Вайб */
 /*--------------------------------------------*/
 [class*="VibeBlock_root"] {
     background-size: cover;
@@ -684,34 +350,9 @@ section.PlayerBar_root__cXUnU {
     border-radius: 10px;
     background-color: var(--basic-color);
 }
-
-[class*="VibeSettings_toggleSettingsButton"],
-[class*="VibeBlock_pauseButton"] {
-    background: var(--main-color);
-    color: #000;
-}
-
-[class*="VibeSettings_toggleSettingsButton"]:hover,
-[class*="VibeBlock_pauseButton"]:hover {
-    background: var(--main-color);
-    color: #000;
-    filter: brightness(1.1);
-}
-
-[class*="VibeBlock_playButton"] {
-    background: var(--miku-color);
-    color: #000;
-}
-
-[class*="VibeBlock_playButton"]:hover {
-    background: var(--miku-color);
-    color: #000;
-    filter: brightness(1.1);
-}
-
 /*--------------------------------------------*/
 
-/*Синк лирика*/
+/* Синк лирика */
 /*--------------------------------------------*/
 [class*="SyncLyrics_content"] {
     width: 63%;
@@ -744,18 +385,6 @@ section.PlayerBar_root__cXUnU {
     background-size: cover;
     transform: unset;
     z-index: 500;
-}
-
-@media (max-width: 1059px) {
-    [class*="FullscreenPlayerDesktopContent_additionalContent"] {
-        left: calc(-50% + 20px);
-    }
-}
-
-@media (max-width: 979px) {
-    [class*="FullscreenPlayerDesktopContent_additionalContent"] {
-        left: calc(-50% + 10px);
-    }
 }
 
 [class*="SyncLyrics_root"]:before {
@@ -802,44 +431,25 @@ section.PlayerBar_root__cXUnU {
     z-index: -1;
     pointer-events: none;
 }
-
 /*--------------------------------------------*/
 
-/*Track Lyrics*/
-/*--------------------------------------------*/
-[class*="TrackLyricsModal_root"] {
-    background: var(--main-color);
-    box-shadow: 0 0;
-    border-width: 5px;
-    border-color: var(--basic-color);
-}
-
-[class*="TrackLyricsModal_header"],
-[class*="TrackLyricsModal_content"] {
-    color: var(--font-color);
-}
-
-/*--------------------------------------------*/
-
-/*Полноэкранный плеер*/
+/* Полноэкранный плеер */
 /*--------------------------------------------*/
 [class*="FullscreenPlayerDesktop_important"] {
     border-width: 0;
 }
-
 /*--------------------------------------------*/
 
-/*FULLSCREEN_PLAYER_CLOSE_BUTTON*/
+/* FULLSCREEN_PLAYER_CLOSE_BUTTON */
 /*--------------------------------------------*/
-[data-test-id="FULLSCREEN_PLAYER_CLOSE_BUTTON"] {
+[class*="FullscreenPlayerDesktop_closeButton"] {
     background: #0003;
     backdrop-filter: blur(10px);
     top: 11px;
 }
-
 /*--------------------------------------------*/
 
-/*DevPanel*/
+/* DevPanel */
 /*--------------------------------------------*/
 body > [class*="DevPanel_root"] > .qU2apWBO1yyEK0lZ3lPO {
     backdrop-filter: blur(0px);
@@ -886,10 +496,9 @@ body > [class*="DevPanel_root"] > .qU2apWBO1yyEK0lZ3lPO:hover {
     background: var(--basic-color);
     color: #fff;
 }
-
 /*--------------------------------------------*/
 
-/*Miku-Chan!*/
+/* Miku-Chan!*/
 /*--------------------------------------------*/
 [class*="LikesAndHistory_carousel"]:after {
     content: "";
@@ -903,10 +512,9 @@ body > [class*="DevPanel_root"] > .qU2apWBO1yyEK0lZ3lPO:hover {
     height: 101px;
     z-index: 2;
 }
-
 /*--------------------------------------------*/
 
-/*Любимое и история*/
+/* Любимое и история */
 /*--------------------------------------------*/
 [class*="LikesAndHistory_historyIcon"] {
     color: var(--main-color);
@@ -916,18 +524,17 @@ body > [class*="DevPanel_root"] > .qU2apWBO1yyEK0lZ3lPO:hover {
     background: #137a7f80;
 }
 
-[data-test-id="LIKES_HISTORY_TITLE"],
+[class*="LikesAndHistoryItem_title"],
 [class*="LikesAndHistoryItem_titleIcon"] {
     color: #e6e6e6;
 }
 
-[data-test-id="LIKES_HISTORY_SUBTITLE"] {
+[class*="LikesAndHistoryItem_subtitle"] {
     color: #e3e3e3;
 }
-
 /*--------------------------------------------*/
 
-/*Vibe and neuromusic buttons*/
+/* Vibe and neuromusic buttons */
 /*--------------------------------------------*/
 [class*="VibeButton_button"],
 [class*="NeuromusicButton_button"],
@@ -954,20 +561,18 @@ body > [class*="DevPanel_root"] > .qU2apWBO1yyEK0lZ3lPO:hover {
 [class*="NeuromusicButton_title"] {
     color: var(--ym-controls-color-secondary-text-enabled_variant);
 }
-
 /*--------------------------------------------*/
 
-/*ControlsBar*/
+/* ControlsBar */
 /*--------------------------------------------*/
 [class*="ControlsBar_likeIcon"],
 [class*="ControlsBar_item"],
 [class*="ControlsBar_dislikeIcon"] {
     color: var(--basic-color);
 }
-
 /*--------------------------------------------*/
 
-/*Slider*/
+/* Slider */
 /*--------------------------------------------*/
 [class*="ChangeTimecode_slider"] {
     --slider-thumb-box-shadow-color: #0000;
@@ -976,43 +581,9 @@ body > [class*="DevPanel_root"] > .qU2apWBO1yyEK0lZ3lPO:hover {
 [class*="ChangeVolume_root"] {
     --slider-thumb-box-shadow-color: #0000;
 }
-
 /*--------------------------------------------*/
 
-/*Only display: none;*/
-/*--------------------------------------------*/
-[class*="VibeAnimation_root"],
-[class*="NavbarDesktop_pinsList"]:before,
-[class*="NavbarDesktop_pinsList"]:after,
-[class*="SyncLyrics_content"]:before,
-[class*="SyncLyrics_content"]:after,
-[class*="ArtistPage_averageColorBackground"],
-[class*="PlaylistPage_averageColorBackground"],
-[class*="AlbumPage_averageColorBackground"],
-[class*="VibeButton_image"],
-[class*="FullscreenPlayerDesktopContent_fullscreenContent"],
-[class*="QualitySettingsModal_overlay"],
-[class*="TrackLyricsModal_overlay"],
-[class*="PlayQueueTitle_root"],
-[class*="PlayQueueAfterPlayingBlock_title"],
-[class*="PlayQueue_content"] * [class*="Meta_artists"],
-[class*="PlayQueueVibeBlock_vibeTitle"],
-[class*="NavbarDesktop_subTitle"],
-[class*="pulseText"] {
-    display: none;
-}
-
-/*--------------------------------------------*/
-
-/*Концерты*/
-/*--------------------------------------------*/
-[data-test-id="CONCERT_TITLE"] {
-    color: #fff;
-}
-
-/*--------------------------------------------*/
-
-/*Trailer Modal*/
+/* Trailer Modal */
 /*--------------------------------------------*/
 [class*="TrailerModal_root"] {
     border-radius: 10px;
@@ -1021,10 +592,9 @@ body > [class*="DevPanel_root"] > .qU2apWBO1yyEK0lZ3lPO:hover {
     border-width: 8px;
     box-shadow: 0 25px 40px 20px #0004;
 }
-
 /*--------------------------------------------*/
 
-/*Эксперементы*/
+/* Эксперементы */
 /*--------------------------------------------*/
 [class*="OverwrittenExperimentsModal_submitButton"],
 [class*="OverwrittenExperimentsModal_closeModalButton"],
@@ -1043,10 +613,9 @@ body > [class*="DevPanel_root"] > .qU2apWBO1yyEK0lZ3lPO:hover {
     color: #fff;
     filter: brightness(1.1);
 }
-
 /*--------------------------------------------*/
 
-/*Попрошайки*/
+/* Попрошайки */
 /*--------------------------------------------*/
 [class*="Donation_root"] {
     background: var(--basic-color);
@@ -1055,19 +624,17 @@ body > [class*="DevPanel_root"] > .qU2apWBO1yyEK0lZ3lPO:hover {
 [class*="Donation_root"] * {
     color: #e6e6e6;
 }
-
 /*--------------------------------------------*/
 
-/*download button*/
+/* download button */
 /*--------------------------------------------*/
 [class*="TrackPlaylist_controlsBarCell"] > div > svg > use,
 [class*="PageHeaderPlaylist_downloadControl"] > button * {
     filter: invert(100%) contrast(190%);
 }
-
 /*--------------------------------------------*/
 
-/*Очередь*/
+/* Очередь */
 /*--------------------------------------------*/
 [class*="PlayQueue_root"] {
     background-image: url("http://127.0.0.1:2007/assets/Diva-Queue-Background.jpg?name=Vocaloid Miku!");
@@ -1193,14 +760,12 @@ body > [class*="DevPanel_root"] > .qU2apWBO1yyEK0lZ3lPO:hover {
     filter: brightness(1.1);
 }
 
-[class*="PlayQueueAfterPlayingBlock_prevTrack"]
-    > [data-test-id="TRACK_PLAYLIST"],
-[class*="PlayQueueBeforePlayingBlock_prevTrack"]
-    > [data-test-id="TRACK_PLAYLIST"],
+[class*="PlayQueueAfterPlayingBlock_prevTrack"] > [class*="CommonTrack_root"],
+[class*="PlayQueueBeforePlayingBlock_prevTrack"] > [class*="CommonTrack_root"],
 [class*="PlayQueueBeforePlayingBlock_animatedContent"]
-    > [data-test-id="TRACK_PLAYLIST"],
+    > [class*="CommonTrack_root"],
 [class*="PlayQueueAfterPlayingBlock_animatedContent"]
-    > [data-test-id="TRACK_PLAYLIST"],
+    > [class*="CommonTrack_root"],
 [class*="PlayQueueVibeBlock_root"],
 [class*="PlayQueueVibeBlock_root"]:hover {
     background: #0005;
@@ -1213,7 +778,6 @@ body > [class*="DevPanel_root"] > .qU2apWBO1yyEK0lZ3lPO:hover {
     border-color: #0008;
     border-width: 4px;
     transform: skewX(-12deg);
-    /* Наклон краев */
 }
 
 [class*="PlayQueue_content"] * [class*="ControlsBar_contextMenuWrapper"] {
@@ -1223,7 +787,6 @@ body > [class*="DevPanel_root"] > .qU2apWBO1yyEK0lZ3lPO:hover {
     margin-right: -8px;
     border-radius: 10px;
     transform: skewX(-12deg);
-    /* Наклон краев */
 }
 
 [class*="PlayQueueNowPlayingBlock_important"]
@@ -1234,7 +797,7 @@ body > [class*="DevPanel_root"] > .qU2apWBO1yyEK0lZ3lPO:hover {
 
 [class*="PlayQueueNowPlayingBlock_important"]
     *
-    [data-test-id="TRACK_DURATION"] {
+    [class*="CommonControlsBar_duration"] {
     color: var(--font-color);
     font-weight: 800;
     font-size: 16px;
@@ -1242,17 +805,17 @@ body > [class*="DevPanel_root"] > .qU2apWBO1yyEK0lZ3lPO:hover {
 
 [class*="PlayQueueBeforePlayingBlock_animatedContent"]
     *
-    [data-test-id="TRACK_DURATION"],
+    [class*="CommonControlsBar_duration"],
 [class*="PlayQueueAfterPlayingBlock_animatedContent"]
     *
-    [data-test-id="TRACK_DURATION"],
+    [class*="CommonControlsBar_duration"],
 [class*="PlayQueueBeforePlayingBlock_animatedContent"]
     *
-    [data-test-id="TRACK_CONTEXT_MENU_BUTTON"]
+    [class*="CommonControlsBar_contextMenu"]
     > .JjlbHZ4FaP9EAcR_1DxF,
 [class*="PlayQueueAfterPlayingBlock_animatedContent"]
     *
-    [data-test-id="TRACK_CONTEXT_MENU_BUTTON"]
+    [class*="CommonControlsBar_contextMenu"]
     > .JjlbHZ4FaP9EAcR_1DxF {
     color: var(--main-color);
     font-weight: 800;
@@ -1264,33 +827,33 @@ body > [class*="DevPanel_root"] > .qU2apWBO1yyEK0lZ3lPO:hover {
 }
 
 [class*="PlayQueueAfterPlayingBlock_animatedContent"]
-    > [data-test-id="TRACK_PLAYLIST"]
+    > [class*="CommonTrack_root"]
     > TrackPlaylist_playButtonCell__Q6YT_ {
     transform: skewX(6deg);
 }
 
-/*skewX fix*/
+/* skewX fix */
 [class*="PlayQueue_content"] * [class*="Meta_root_withSecondaryColor"],
 [class*="PlayQueue_content"] * [class*="ControlsBar_root_withSecondaryColor"],
 [class*="PlayQueue_content"] * [class*="TrackPlaylist_playButtonCell"] {
     transform: skewX(12deg);
 }
 
-/*Кнопка лайка*/
+/* Кнопка лайка */
 [class*="PlayQueue_content"]
     *
-    [data-test-id="TRACK_PLAYLIST"]
+    [class*="CommonTrack_root"]
     *
-    [data-test-id="LIKE_BUTTON"] {
+    [class*="CommonControlsBar_likeIcon"] {
     opacity: 0;
 }
 
-[class*="PlayQueue_content"] * [data-test-id="TRACK_PLAYLIST"]:hover {
+[class*="PlayQueue_content"] * [class*="CommonTrack_root"]:hover {
     [class*="PlayQueue_content"]
         *
-        [data-test-id="TRACK_PLAYLIST"]
+        [class*="CommonTrack_root"]
         *
-        [data-test-id="LIKE_BUTTON"] {
+        [class*="CommonControlsBar_likeIcon"] {
         opacity: 1;
     }
 }
@@ -1336,8 +899,8 @@ body > [class*="DevPanel_root"] > .qU2apWBO1yyEK0lZ3lPO:hover {
     height: 100%;
 }
 
-[class*="PlayQueue_content"] * [data-test-id="TRACK_CONTEXT_MENU_BUTTON"]:hover,
-[class*="PlayQueue_content"] * [data-test-id="TRACK_CONTEXT_MENU_BUTTON"] {
+[class*="PlayQueue_content"] * [class*="CommonControlsBar_contextMenu"]:hover,
+[class*="PlayQueue_content"] * [class*="CommonControlsBar_contextMenu"] {
     color: #000;
 }
 
@@ -1350,103 +913,142 @@ body > [class*="DevPanel_root"] > .qU2apWBO1yyEK0lZ3lPO:hover {
     content: "Random";
     font-size: 20px;
 }
-
 /*--------------------------------------------*/
 
-/*Обычные временные метки*/
+/* Обычные временные метки */
 /*--------------------------------------------*/
-[data-test-id="TRACK_DURATION"],
-[data-test-id="TRACK_DURATION"]:hover {
+[class*="CommonControlsBar_duration"],
+[class*="CommonControlsBar_duration"]:hover {
     color: var(--font-color);
 }
-
 /*--------------------------------------------*/
 
-/*Track Modal*/
-/*--------------------------------------------*/
-[class*="TrackModal_root"] {
-    box-shadow: 0 0 10px var(--font-color);
-    z-index: 200;
-}
-
-/*--------------------------------------------*/
-
-/*Анимация играющего трека*/
+/* Анимация играющего трека */
 /*--------------------------------------------*/
 [class*="PlayButtonWithPosition_playingAnimation"] {
     filter: hue-rotate(150deg) saturate(400%);
 }
-
 /*--------------------------------------------*/
 
-/*Этот трек можете слушать только вы*/
+/* User Profile Container */
 /*--------------------------------------------*/
-[data-test-id="UGC_TRACK_ICON"] {
-    color: var(--font-color);
+[class*="NavbarDesktopUserWidget_userProfileContainer"] {
+    display: flex;
 }
 
-[class*="PlayQueue_content"] * [data-test-id="UGC_TRACK_ICON"] {
-    color: var(--main-color);
+@media (min-width: 1023px) {
+    [class*="NavbarDesktopUserWidget_userProfileContainer"] {
+        display: none;
+    }
 }
-
-/*--------------------------------------------*/
-
-/*Качество/кодек трека*/
-/*--------------------------------------------*/
-/* @keyframes fadeOut {
-	from {
-		opacity: 1;
-	}
-
-	to {
-		opacity: 0;
-	}
-}
-
-@keyframes fadeIn {
-	from {
-		opacity: 0;
-	}
-
-	to {
-		opacity: 1;
-	}
-}
-
-:has(.PlayerBarDesktop_coverContainer__2Z5nQ:hover) [data-test-id="SOUND_QUALITY_BUTTON"]>span>span {
-	animation: fadeOut 0.2s forwards;
-}
-
-:has(.PlayerBarDesktop_coverContainer__2Z5nQ:hover) [data-test-id="SOUND_QUALITY_BUTTON"]>span>span:hover {
-	animation: fadeIn 0.2s forwards;
-}
-
-[data-test-id="SOUND_QUALITY_BUTTON"]>span>span {
-	position: fixed;
-	left: 17px;
-	bottom: 15px;
-	backdrop-filter: blur(20px);
-	font-weight: 600;
-	font-size: 12px;
-	padding: 2px 3px 0px 4px;
-	height: 23px !important;
-	border-radius: 5px;
-	color: #fff !important;
-	pointer-events: none;
-	animation: fadeIn 0.2s forwards;
-}
-
-[id=":r8i:"] {
-	pointer-events: none;
-	background-color: var(--main-color);
-} */
-
 /*--------------------------------------------*/
 
-/* Loader Icon */
+/* Only display: none; */
 /*--------------------------------------------*/
-[class*="MainSuspenseLoader_icon"] {
-    filter: hue-rotate(125deg);
+[class*="VibeAnimation_root"],
+[class*="NavbarDesktop_pinsList"]:before,
+[class*="NavbarDesktop_pinsList"]:after,
+[class*="SyncLyrics_content"]:before,
+[class*="SyncLyrics_content"]:after,
+[class*="ArtistPage_averageColorBackground"],
+[class*="PlaylistPage_averageColorBackground"],
+[class*="AlbumPage_averageColorBackground"],
+[class*="VibeButton_image"],
+[class*="FullscreenPlayerDesktopContent_fullscreenContent"],
+[class*="QualitySettingsModal_overlay"],
+[class*="TrackLyricsModal_overlay"],
+[class*="PlayQueueTitle_root"],
+[class*="PlayQueueAfterPlayingBlock_title"],
+[class*="PlayQueue_content"] * [class*="Meta_artists"],
+[class*="PlayQueueVibeBlock_vibeTitle"],
+[class*="NavbarDesktop_subTitle"],
+[class*="UserProfile_plusLink"],
+[class*="UserID-Avatar"]:after {
+    display: none;
 }
+/*--------------------------------------------*/
 
+/* No Auto Zoom v1.0.0 */
+/*--------------------------------------------*/
+:root {
+    --ym-font-line-height-headline-xs: 1.375rem !important;
+    --ym-icon-size-xxs: 1.25rem !important;
+    --header-height: 3.75rem !important;
+    --ym-font-size-label-l: 1rem !important;
+    --ym-font-line-height-label-l: 1.5rem !important;
+    --ym-font-line-height-headline-xxxxl: 4.25rem !important;
+    --ym-radius-size-round: 50% !important;
+    --ym-font-size-headline-l: 1.625rem !important;
+    --ym-spacer-size-l: 1rem !important;
+    --ym-radius-size-l: 0.75rem !important;
+    --ym-spacer-size-xxl: 1.5rem !important;
+    --ym-icon-size-xs: 1.5rem !important;
+    --toastify-toast-max-height: 50rem !important;
+    --ym-font-size-headline-xxxxxl: 5rem !important;
+    --ym-radius-size-xs: 0.25rem !important;
+    --ym-spacer-size-s: 0.625rem !important;
+    --ym-font-line-height-headline-xxxl: 3.5rem !important;
+    --toastify-toast-min-height: 4rem !important;
+    --ym-font-line-height-label-xs: 0.625rem !important;
+    --ym-font-line-height-headline-m: 1.625rem !important;
+    --ym-spacer-size-xxs: 0.375rem !important;
+    --ym-font-size-headline-xs: 1.25rem !important;
+    --toastify-toast-width: 20rem !important;
+    --ym-font-size-label-xs: 0.75rem !important;
+    --ym-icon-size-s: 1.75rem !important;
+    --subpage-sticky-header-height: 6rem !important;
+    --player-bar-height: 5rem !important;
+    --ym-font-size-label-xxs: 0.5rem !important;
+    --ym-spacer-size-xxxxxl: 3rem !important;
+    --ym-font-line-height-headline-xxxxxl: 5rem !important;
+    --ym-font-line-height-headline-xxl: 3rem !important;
+    --ym-radius-size-xxxl: 6.25rem !important;
+    --ym-spacer-size-xxxl: 2rem !important;
+    --ym-spacer-size-xxxs: 0.25rem !important;
+    --collection-header-with-tabs-height: 9.25rem !important;
+    --ym-spacer-size-m: 0.75rem !important;
+    --ym-font-size-headline-xl: 2rem !important;
+    --ym-font-size-headline-xxl: 3rem !important;
+    --ym-font-size-headline-xxxxl: 4.25rem !important;
+    --ym-font-size-headline-s: 1.375rem !important;
+    --ym-font-size-vibe-m: 2.125rem !important;
+    --html-font-size: 1rem !important;
+    --ym-radius-size-xl: 1rem !important;
+    --ym-icon-size-xxxl: 4.5rem !important;
+    --ym-font-size-headline-m: 1.5rem !important;
+    --ym-font-line-height-label-s: 1.125rem !important;
+    --ym-spacer-size-xs: 0.5rem !important;
+    --ym-font-size-label-s: 0.8125rem !important;
+    --ym-icon-size-l: 2.5rem !important;
+    --ym-radius-size-m: 0.5rem !important;
+    --ym-icon-size-xl: 3rem !important;
+    --ym-font-line-height-headline-s: 2rem !important;
+    --ym-radius-size-s: 0.375rem !important;
+    --ym-font-size-headline-xxxl: 3.5rem !important;
+    --ym-font-line-height-headline-xl: 2rem !important;
+    --ym-font-line-height-headline-l: 1.75rem !important;
+    --ym-icon-size-xxxs: 1.125rem !important;
+    --ym-icon-size-xxl: 4rem !important;
+    --ym-spacer-size-xxxxl: 2.5rem !important;
+    --ym-font-size-label-m: 0.875rem !important;
+    --balbelow-height: 5rem !important;
+    --ym-font-line-height-vibe: 3rem !important;
+    --ym-font-line-height-label-m: 1.25rem !important;
+    --ym-font-size-vibe-s: 2rem !important;
+    --ym-spacer-size-xl: 1.25rem !important;
+    --ym-radius-size-xxl: 1.5rem !important;
+    --ym-icon-size-m: 2rem !important;
+}
+/*--------------------------------------------*/
+
+/* Always Expanded Player */
+/*--------------------------------------------*/
+[class*="DefaultLayout_root"] {
+    grid-template:
+        "navbar content" minmax(
+            auto,
+            calc(100% - var(--player-bar-height) - var(--ym-spacer-size-m))
+        )
+        "playerbar playerbar" auto "barBelow barBelow" auto/auto 1fr !important;
+}
 /*--------------------------------------------*/
