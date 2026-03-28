@@ -29,11 +29,14 @@
 }*/
 /*--------------------------------------------*/
 
-/* БАЗА */
+/* Базовый минимум */
 /*--------------------------------------------*/
 .ym-light-theme {
     --vmt-border-radius: 10px;
     --ym-radius-size-xl: 10px;
+    --ym-shadow-xl: var(--basic-color);
+    --ym-shadow-s: var(--basic-color);
+    --ym-spacer-size-xxxl: 40px !important;
 
     --ym-controls-color-secondary-default-hovered: var(--light-main-color);
     --ym-background-color-primary-enabled-content: var(--main-color);
@@ -41,9 +44,7 @@
     --ym-background-color-primary-enabled-player: #121212;
     --ym-controls-color-primary-default-hovered: var(--light-main-color);
     --ym-controls-color-primary-default-enabled: var(--buttons-color);
-    --ym-controls-color-primary-outline-selected_stroke: var(
-        --light-main-color
-    );
+    --ym-controls-color-secondary-outline-selected: var(--main-color);
     --ym-controls-color-primary-text-enabled: #0007;
     --ym-controls-color-primary-text-enabled_variant: var(--font-color);
     --ym-background-color-primary-enabled-popover: var(--main-color);
@@ -52,9 +53,9 @@
     --ym-controls-color-primary-outline-enabled: var(--buttons-color);
     --ym-controls-color-secondary-default-enabled: var(--buttons-color);
     --ym-controls-color-primary-on_default-enabled: var(--light-main-color);
-    --ym-shadow-xl: var(--basic-color);
-    --ym-shadow-s: var(--basic-color);
-    --ym-spacer-size-xxxl: 40px !important;
+    --ym-controls-color-primary-outline-selected_stroke: var(
+        --light-main-color
+    );
 }
 
 * {
