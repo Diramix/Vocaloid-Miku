@@ -183,8 +183,6 @@ section[class*="PlayerBar_root"] {
     grid-auto-flow: column;
     gap: 5px;
     flex: 0 0 auto;
-    /*margin-left: 25vw;*/
-    /*max-width: 122px;*/
 }
 /*--------------------------------------------*/
 
