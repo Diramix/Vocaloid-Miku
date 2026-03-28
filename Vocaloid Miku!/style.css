@@ -44,7 +44,6 @@
     --ym-controls-color-primary-outline-selected_stroke: var(
         --light-main-color
     );
-    /*--ym-controls-color-primary-on_default-enabled: var(--light-main-color);*/
     --ym-controls-color-primary-text-enabled: #0007;
     --ym-controls-color-primary-text-enabled_variant: var(--font-color);
     --ym-background-color-primary-enabled-popover: var(--main-color);
@@ -52,6 +51,7 @@
     --ym-controls-color-secondary-on_outline-enabled: var(--basic-color);
     --ym-controls-color-primary-outline-enabled: var(--buttons-color);
     --ym-controls-color-secondary-default-enabled: var(--buttons-color);
+    --ym-controls-color-primary-on_default-enabled: var(--light-main-color);
     --ym-shadow-xl: var(--basic-color);
     --ym-shadow-s: var(--basic-color);
     --ym-spacer-size-xxxl: 40px !important;
