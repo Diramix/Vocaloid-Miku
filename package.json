@@ -18,8 +18,8 @@
         ]
     },
     "nextmusic": {
-        "zip": {
-            "artifactName": "Vocaloid-Miku_${theme.version}_${build.package}.zip"
+        "tarGz": {
+            "artifactName": "Vocaloid-Miku_${theme.version}_${build.package}.tar.gz"
         }
     },
     "pulsesync": {
@@ -30,7 +30,7 @@
             "artifactName": "Vocaloid-Miku_${theme.version}_${build.package}.pext"
         }
     },
-    "devDependencies": {
+    "dependencies": {
         "ymtm": "github:Diramix/ymtm#2.1.0"
     }
 }
