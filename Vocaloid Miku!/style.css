@@ -52,7 +52,7 @@
     --ym-controls-color-secondary-on_outline-enabled: var(--basic-color);
     --ym-controls-color-primary-outline-enabled: var(--buttons-color);
     --ym-controls-color-secondary-default-enabled: var(--buttons-color);
-    --ym-controls-color-primary-on_default-enabled: var(--light-main-color);
+    --ym-controls-color-primary-on_default-enabled: var(--font-color);
     --ym-controls-color-primary-outline-selected_stroke: var(
         --light-main-color
     );
