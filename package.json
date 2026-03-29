@@ -30,7 +30,7 @@
             "artifactName": "Vocaloid-Miku_${theme.version}_${build.package}.pext"
         }
     },
-    "dependencies": {
-        "ymtm": "github:Diramix/ymtm#2.0.1"
+    "devDependencies": {
+        "ymtm": "github:Diramix/ymtm#2.1.0"
     }
 }
