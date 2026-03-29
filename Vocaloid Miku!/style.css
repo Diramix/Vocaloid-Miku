@@ -186,6 +186,14 @@ section[class*="PlayerBar_root"] {
 }
 /*--------------------------------------------*/
 
+/* Beta button */
+/*--------------------------------------------*/
+[class*="MainPage_beta_withReleaseNotes"] {
+    border: 3px solid var(--font-color);
+    color: var(--font-color);
+}
+/*--------------------------------------------*/
+
 /* Табы */
 /*--------------------------------------------*/
 [class*="MainPage_root"] > div > header {
