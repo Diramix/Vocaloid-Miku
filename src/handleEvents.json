@@ -63,7 +63,7 @@
 			]
 		},
 		{
-			"title": "Очередь",
+			"title": "Queue",
 			"items": [
 				{
 					"id": "togglePerfectMark",

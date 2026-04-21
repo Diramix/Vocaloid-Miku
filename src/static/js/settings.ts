@@ -126,12 +126,12 @@ async function setSettings(newSettings: { [x: string]: any }) {
 
 	combinedStyle.textContent = `
         .Diva-Perfect-Mark {
-            display: ${newSettings["Очередь"].togglePerfectMark ? "block" : "none"} !important;
+            display: ${newSettings["Queue"].togglePerfectMark ? "block" : "none"} !important;
         }
 
         [class*="PlayQueue_content"] * [aria-label="Трек скачан"],
         [class*="PlayQueue_content"] * [aria-label="Этот трек можете слушать только вы"] {
-            display: ${newSettings["Очередь"].toggleDownloadAndVisibleIcon ? "block" : "none"} !important;
+            display: ${newSettings["Queue"].toggleDownloadAndVisibleIcon ? "block" : "none"} !important;
         }
 
         .AssetsImages:after {
