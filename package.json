@@ -17,15 +17,15 @@
 	},
 	"nextmusic": {
 		"tarGz": {
-			"artifactName": "Vocaloid-Miku_${theme.version}_${build.package}.tar.gz"
+			"artifactName": "Vocaloid-Miku_${addon.version}_${build.package}.tar.gz"
 		}
 	},
 	"pulsesync": {
 		"zip": {
-			"artifactName": "Vocaloid-Miku_${theme.version}_${build.package}.zip"
+			"artifactName": "Vocaloid-Miku_${addon.version}_${build.package}.zip"
 		},
 		"pext": {
-			"artifactName": "Vocaloid-Miku_${theme.version}_${build.package}.pext"
+			"artifactName": "Vocaloid-Miku_${addon.version}_${build.package}.pext"
 		}
 	},
 	"devDependencies": {
