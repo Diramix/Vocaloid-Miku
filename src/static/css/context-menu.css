@@ -1,0 +1,29 @@
+/* Context menu */
+/*--------------------------------------------*/
+.EiyUV4aCJzpfNzuihfMM:hover,
+.EiyUV4aCJzpfNzuihfMM[data-nested][data-open] {
+	--ym-surface-color-primary-enabled-list: var(--light-main-color);
+}
+
+.NOqNiasunvfLvvi75zl9 {
+	z-index: 500;
+}
+
+.s7_MO4NdsYs7nPQALD8W {
+	z-index: 402;
+	background: var(--main-color);
+	border-width: 3px;
+	border-color: var(--basic-color);
+	border-style: solid;
+	background: 0;
+	backdrop-filter: blur(60px);
+}
+
+.cM0M40YHieFFCTYRgOZa {
+	color: var(--font-color);
+}
+
+.EiyUV4aCJzpfNzuihfMM {
+	background: var(--main-color);
+}
+/*--------------------------------------------*/

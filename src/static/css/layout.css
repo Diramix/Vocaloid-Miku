@@ -1,0 +1,61 @@
+/* TitleBar */
+/*--------------------------------------------*/
+[class*="TitleBar_root"] * {
+	color: var(--main-color) !important;
+}
+
+[class*="CommonLayout_root"] {
+	padding-block-start: 40px !important;
+	padding-left: 12px;
+}
+
+[class*="TitleBar"][class*="Text"] {
+	font-weight: 600 !important;
+}
+/*--------------------------------------------*/
+
+/* Logo Color */
+/*--------------------------------------------*/
+[class*="NavbarDesktop_logo"] * {
+	color: var(--font-color);
+}
+/*--------------------------------------------*/
+
+/* Update notification */
+/*--------------------------------------------*/
+[class*="NotificationUpdate_important"] {
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	max-width: 280px;
+	min-width: 280px;
+	margin-left: -135px;
+}
+/*--------------------------------------------*/
+
+/* Default Layout */
+/*--------------------------------------------*/
+[class*="DefaultLayout_root_applicationPreserveTitleBar"] {
+	padding-block-start: 40px;
+}
+
+[class*="Content_main"] {
+	border-radius: var(--vmt-border-radius);
+}
+/*--------------------------------------------*/
+
+/* Navbar */
+/*--------------------------------------------*/
+[class*="Navbar_root"] {
+	background-color: var(--main-color);
+	border-radius: var(--vmt-border-radius);
+	margin-block-start: 0;
+}
+/*--------------------------------------------*/
+
+/* Background */
+/*--------------------------------------------*/
+[class*="InnerHeader_root_showColor"] {
+	background: 0;
+}
+/*--------------------------------------------*/

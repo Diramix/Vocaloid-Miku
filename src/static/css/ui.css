@@ -1,0 +1,240 @@
+/* Beta button */
+/*--------------------------------------------*/
+[class*="MainPage_beta_withReleaseNotes"] {
+	border: 3px solid var(--font-color);
+	color: var(--font-color);
+}
+/*--------------------------------------------*/
+
+/* play button */
+/*--------------------------------------------*/
+[class*="VibeBlock_playButton"] {
+	background: var(--buttons-color);
+	color: #000;
+}
+
+[class*="VibeBlock_playButton"]:hover {
+	background: var(--light-main-color);
+}
+/*--------------------------------------------*/
+
+/* Vibe block */
+/*--------------------------------------------*/
+[class*="VibeBlock_root"] {
+	background-size: cover;
+	background-position: center;
+	margin-top: 20px;
+	margin-left: 20px;
+	border-radius: 10px;
+	background-color: var(--basic-color);
+}
+/*--------------------------------------------*/
+
+/* Vibe and neuromusic buttons */
+/*--------------------------------------------*/
+[class*="VibeButton_button"],
+[class*="NeuromusicButton_button"],
+[class*="MixCard_root"] {
+	border-radius: 10px;
+	background: var(--basic-color);
+	border-color: var(--basic-color);
+}
+
+[class*="VibeButton_button"]:hover,
+[class*="NeuromusicButton_button"]:hover,
+[class*="MixCard_root"]:hover {
+	border-radius: 10px;
+	background: var(--basic-color);
+	border-color: var(--basic-color);
+	filter: brightness(1.2);
+}
+
+[class*="MixCard_title"] {
+	color: var(--hatsune-light);
+}
+
+[class*="VibeButton_title"],
+[class*="NeuromusicButton_title"] {
+	color: var(--ym-controls-color-secondary-text-enabled_variant);
+}
+/*--------------------------------------------*/
+
+/* ControlsBar */
+/*--------------------------------------------*/
+[class*="ControlsBar_likeIcon"],
+[class*="ControlsBar_item"],
+[class*="ControlsBar_dislikeIcon"] {
+	color: var(--basic-color);
+}
+/*--------------------------------------------*/
+
+/* Trailer Modal */
+/*--------------------------------------------*/
+[class*="TrailerModal_root"] {
+	border-radius: 10px;
+	border-style: solid;
+	border-color: var(--main-color);
+	border-width: 8px;
+	box-shadow: 0 25px 40px 20px #0004;
+}
+/*--------------------------------------------*/
+
+/* Experiments */
+/*--------------------------------------------*/
+[class*="OverwrittenExperimentsModal_submitButton"],
+[class*="OverwrittenExperimentsModal_closeModalButton"],
+[class*="OverwrittenExperimentsModal_reloadButton"],
+[class*="OverwrittenExperimentsModal_overrideForm"] > .qU2apWBO1yyEK0lZ3lPO {
+	background: var(--basic-color);
+	color: #fff;
+}
+
+[class*="OverwrittenExperimentsModal_submitButton"]:hover,
+[class*="OverwrittenExperimentsModal_closeModalButton"]:hover,
+[class*="OverwrittenExperimentsModal_reloadButton"]:hover,
+[class*="OverwrittenExperimentsModal_overrideForm"]
+	> .qU2apWBO1yyEK0lZ3lPO:hover {
+	background: var(--basic-color);
+	color: #fff;
+	filter: brightness(1.1);
+}
+/*--------------------------------------------*/
+
+/* Donations */
+/*--------------------------------------------*/
+[class*="Donation_root"] {
+	background: var(--basic-color);
+}
+
+[class*="Donation_root"] * {
+	color: #e6e6e6;
+}
+/*--------------------------------------------*/
+
+/* download button */
+/*--------------------------------------------*/
+[class*="TrackPlaylist_controlsBarCell"] > div > svg > use,
+[class*="PageHeaderPlaylist_downloadControl"] > button * {
+	filter: invert(100%) contrast(190%);
+}
+/*--------------------------------------------*/
+
+/* Miku-Chan! */
+/*--------------------------------------------*/
+[class*="LikesAndHistory_carousel"]:after {
+	content: "";
+	position: absolute;
+	width: 25%;
+	min-height: 13%;
+	background-position: bottom;
+	background-size: contain;
+	bottom: -250px;
+	right: 0px;
+	height: 101px;
+	z-index: 2;
+}
+/*--------------------------------------------*/
+
+/* Likes and history */
+/*--------------------------------------------*/
+[class*="LikesAndHistory_historyIcon"] {
+	color: var(--main-color);
+}
+
+[class*="LikesAndHistoryItem_root"] {
+	background: #137a7f80;
+}
+
+[class*="LikesAndHistoryItem_title"],
+[class*="LikesAndHistoryItem_titleIcon"] {
+	color: #e6e6e6;
+}
+
+[class*="LikesAndHistoryItem_subtitle"] {
+	color: #e3e3e3;
+}
+/*--------------------------------------------*/
+
+/* DevPanel */
+/*--------------------------------------------*/
+body > [class*="DevPanel_root"] > .qU2apWBO1yyEK0lZ3lPO {
+	backdrop-filter: blur(0px);
+	z-index: 99999;
+	background: var(--miku-color);
+	border-color: var(--font-color);
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 50px;
+	width: 36px;
+	height: 36px;
+	filter: brightness(1.1);
+	color: #000;
+}
+
+body > [class*="DevPanel_root"] > .qU2apWBO1yyEK0lZ3lPO:hover {
+	backdrop-filter: blur(0px);
+	z-index: 99999;
+	background: var(--miku-color);
+	border-color: var(--font-color);
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 50px;
+	width: 36px;
+	height: 36px;
+	filter: brightness(1.2);
+}
+
+[class*="DevPanel_panel"] {
+	background: var(--main-color);
+	bottom: 85px;
+	right: -5px;
+	border-radius: 10px 0px 0px 0px;
+	border-width: 5px 0px 0px 5px;
+	border-color: var(--basic-color);
+}
+
+[class*="DevPanel_block"] {
+	background: var(--basic-color);
+	color: var(--main-color);
+}
+
+[class*="DevPanel_block"]:hover {
+	background: var(--basic-color);
+	color: #fff;
+}
+/*--------------------------------------------*/
+
+/* Track duration timestamps */
+/*--------------------------------------------*/
+[class*="CommonControlsBar_duration"],
+[class*="CommonControlsBar_duration"]:hover {
+	color: var(--font-color);
+}
+/*--------------------------------------------*/
+
+/* Now playing animation */
+/*--------------------------------------------*/
+[class*="PlayButtonWithPosition_playingAnimation"] {
+	filter: hue-rotate(150deg) saturate(400%);
+}
+/*--------------------------------------------*/
+
+/* User Profile Container */
+/*--------------------------------------------*/
+[class*="NavbarDesktopUserWidget_userProfileContainer"] {
+	display: flex;
+}
+
+@media (min-width: 1023px) {
+	[class*="NavbarDesktopUserWidget_userProfileContainer"] {
+		display: none;
+	}
+}
+/*--------------------------------------------*/
+
+/* Yandex Music Time */
+/*--------------------------------------------*/
+#yandex-music-timer {
+	visibility: hidden;
+}
+/*--------------------------------------------*/

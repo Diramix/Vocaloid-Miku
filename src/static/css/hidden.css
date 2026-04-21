@@ -1,0 +1,24 @@
+/* Only display: none; */
+/*--------------------------------------------*/
+[class*="VibeAnimation_root"],
+[class*="NavbarDesktop_pinsList"]:before,
+[class*="NavbarDesktop_pinsList"]:after,
+[class*="SyncLyrics_content"]:before,
+[class*="SyncLyrics_content"]:after,
+[class*="ArtistPage_averageColorBackground"],
+[class*="PlaylistPage_averageColorBackground"],
+[class*="AlbumPage_averageColorBackground"],
+[class*="VibeButton_image"],
+[class*="FullscreenPlayerDesktopContent_fullscreenContent"],
+[class*="QualitySettingsModal_overlay"],
+[class*="TrackLyricsModal_overlay"],
+[class*="PlayQueueTitle_root"],
+[class*="PlayQueueAfterPlayingBlock_title"],
+[class*="PlayQueue_content"] * [class*="Meta_artists"],
+[class*="PlayQueueVibeBlock_vibeTitle"],
+[class*="NavbarDesktop_subTitle"],
+[class*="UserProfile_plusLink"],
+[class*="UserID-Avatar"]:after {
+	display: none;
+}
+/*--------------------------------------------*/

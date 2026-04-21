@@ -1,0 +1,90 @@
+/* Player */
+/*--------------------------------------------*/
+section[class*="PlayerBar_root"] {
+	position: fixed !important;
+	left: 0 !important;
+	right: 0 !important;
+	bottom: 0 !important;
+	height: 90px !important;
+	z-index: 410 !important;
+	border-radius: 0 !important;
+	border-width: 0 !important;
+}
+
+[class*="PlayerBarDesktopWithBackgroundProgressBar_root"] {
+	background: var(--main-color) !important;
+}
+
+[class*="PlayerBarDesktopWithBackgroundProgressBar_player"] {
+	height: 100%;
+	border-radius: 0 !important;
+	border-width: 0 !important;
+}
+
+[class*="ChangeTimecodeBackground_backgroundProgressbar"]:before {
+	border-radius: 0;
+	opacity: 0.5;
+	--ym-slider-color-primary-progress: var(--light-main-color);
+}
+
+[class*="PlayerBarDesktopWithBackgroundProgressBar_info"] {
+	background: var(--basic-color);
+	padding: 7px 7px 7px 4px;
+	border-radius: 10px 0 0 10px;
+	height: 77px;
+}
+
+[class*="PlayerBarDesktopWithBackgroundProgressBar_sonata_"] {
+	background: var(--basic-color);
+	padding: 7px 7px 7px 4px;
+	border-radius: 0 10px 10px 0;
+	height: 77px;
+}
+
+@media (min-width: 1023px) {
+	[class*="PlayerBarDesktopWithBackgroundProgressBar_info"] {
+		border-radius: 10px;
+	}
+
+	[class*="PlayerBarDesktopWithBackgroundProgressBar_sonata_"] {
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+
+.mikuRun {
+	text-align: center;
+	width: 20vw;
+	min-width: 89px;
+	bottom: -13px;
+	z-index: 420;
+	height: 100px;
+	pointer-events: none;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+[class*="PlayerBarDesktopWithBackgroundProgressBar_meta"] {
+	background: var(--basic-color);
+	padding: 7px 7px 7px 4px;
+	border-radius: 10px;
+	height: 77px;
+	display: inline-grid;
+	grid-template-rows: repeat(2, auto);
+	grid-auto-flow: column;
+	gap: 5px;
+	flex: 0 0 auto;
+}
+/*--------------------------------------------*/
+
+/* Slider */
+/*--------------------------------------------*/
+[class*="ChangeTimecode_slider"] {
+	--slider-thumb-box-shadow-color: #0000;
+}
+
+[class*="ChangeVolume_root"] {
+	--slider-thumb-box-shadow-color: #0000;
+}
+/*--------------------------------------------*/

@@ -1,0 +1,38 @@
+/* Tabs */
+/*--------------------------------------------*/
+[class*="MainPage_root"] > div > header {
+	height: 0;
+}
+
+[class*="MainPage_root"] > div > header > div[class*="CompositeHeader_static"] {
+	position: relative;
+	top: -70px;
+	left: 0px;
+}
+
+@media (max-width: 768px) {
+	[class*="MainPage_root"]
+		> div
+		> header
+		> div[class*="CompositeHeader_static"] {
+		left: 8px;
+	}
+}
+
+[class*="Skeleton_upperBlocks"] {
+	margin-top: 30px;
+}
+
+[class*="Skeleton_tab"] {
+	z-index: 400;
+}
+
+/* Combined: base style + min/max-height */
+[class*="Tab_tab_withCovers"] {
+	background: var(--main-color);
+	z-index: 10;
+	bottom: 0px;
+	min-height: 63px;
+	max-height: 63px;
+}
+/*--------------------------------------------*/

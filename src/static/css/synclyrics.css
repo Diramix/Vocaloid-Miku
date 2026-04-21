@@ -1,0 +1,81 @@
+/* Sync lyrics */
+/*--------------------------------------------*/
+[class*="SyncLyrics_content"] {
+	width: 63%;
+	min-width: 700px;
+	height: 80vh;
+	bottom: 30px;
+	padding: 10px;
+	border-radius: 40px;
+	border-style: solid;
+	border-color: var(--main-color);
+	border-width: 8px;
+	box-shadow: 0 25px 40px 20px #0009;
+	backdrop-filter: blur(20px);
+	background: #0009;
+	margin-bottom: 12px;
+}
+
+[class*="FullscreenPlayerDesktopContent_additionalContent_enter"] {
+	position: fixed;
+	left: calc(-50% + 44px);
+	width: 100%;
+	height: 100%;
+	z-index: 500;
+}
+
+[class*="FullscreenPlayerDesktopContent_additionalContent"] {
+	position: fixed;
+	width: 100%;
+	left: 0;
+	background-size: cover;
+	transform: unset;
+	z-index: 500;
+}
+
+[class*="SyncLyrics_root"]:before {
+	visibility: visible;
+	content: "";
+	background-image: url("http://127.0.0.1:2007/assets/Dilamix.png?name=Vocaloid Miku!");
+	background-repeat: no-repeat;
+	position: fixed;
+	z-index: 1;
+	background-size: contain;
+	background-position: center;
+	top: -1.5%;
+	left: 50%;
+	margin-left: 5%;
+	width: 30%;
+	min-width: 330px;
+	height: 20%;
+}
+
+[class*="SyncLyricsLine_root"] {
+	color: #bec8d1;
+	margin-bottom: -0px;
+}
+
+[class*="SyncLyricsCard_root"],
+[class*="FullscreenPlayerDesktop_poster_withSyncLyricsAnimation"] {
+	display: none;
+}
+
+[class*="SyncLyrics_root"] {
+	position: fixed;
+	background-size: cover;
+	background-position: center;
+	width: 100vw;
+	height: 100vh;
+}
+
+[class*="SyncLyrics_root"]:after {
+	content: "";
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+	pointer-events: none;
+}
+/*--------------------------------------------*/
