@@ -1,3 +1,5 @@
+import { myVibeMiku } from "./theme";
+
 // Main setInterval
 setInterval(() => {
 	updateBackgroundImage();
@@ -7,7 +9,7 @@ setInterval(() => {
 
 // Change fullscreen player background image script
 function updateBackgroundImage() {
-	const imgElements = document.querySelectorAll(
+	const imgElements = document.querySelectorAll<HTMLImageElement>(
 		'[class*="FullscreenPlayerDesktopPoster_cover"]',
 	);
 	let imgBackground = "";
@@ -33,14 +35,14 @@ function updateBackgroundImage() {
 			const elementsWithoutGradient = [".Diva-Cover", ".CoverImage"];
 
 			elementsWithGradient.forEach((selector) => {
-				const element = document.querySelector(selector);
+				const element = document.querySelector<HTMLDivElement>(selector);
 				if (element) {
 					element.style.background = newBackgroundWithGradient;
 				}
 			});
 
 			elementsWithoutGradient.forEach((selector) => {
-				const element = document.querySelector(selector);
+				const element = document.querySelector<HTMLDivElement>(selector);
 				if (element) {
 					element.style.background = normalNewBackground;
 				}
@@ -51,7 +53,7 @@ function updateBackgroundImage() {
 
 // Change vibe block background image script
 function updateVibeBackgroundImage() {
-	const imgElements = document.querySelectorAll(
+	const imgElements = document.querySelectorAll<HTMLImageElement>(
 		'[class*="PlayerBarDesktopWithBackgroundProgressBar_cover"]',
 	);
 	let imgBackground = "";
@@ -62,18 +64,21 @@ function updateVibeBackgroundImage() {
 		}
 	});
 
-	const targetElement = document.querySelector(".MainPage_vibe__XEBbh");
+	const targetElement = document.querySelector<HTMLDivElement>(
+		`[class*="MainPage_vibe"]`,
+	);
 	if (targetElement && isElementInViewport(targetElement)) {
 		targetElement.style.position = "relative";
 		targetElement.style.overflow = "hidden";
 
-		let blurElement = targetElement.querySelector(".blur-element");
+		let blurElement =
+			targetElement.querySelector<HTMLDivElement>(".blur-element");
 		if (!blurElement) {
 			blurElement = document.createElement("div");
 			blurElement.classList.add("blur-element");
 			blurElement.style.position = "absolute";
-			blurElement.style.top = 0;
-			blurElement.style.left = 0;
+			blurElement.style.top = "0";
+			blurElement.style.left = "0";
 			blurElement.style.width = "100%";
 			blurElement.style.height = "100%";
 			blurElement.style.backgroundColor = "#26F4FE";
@@ -89,18 +94,18 @@ function updateVibeBackgroundImage() {
 			blurElement.style.background = `url(${imgBackground}) center center / cover no-repeat`;
 		}
 
-		let myVibeMikuElement = targetElement.querySelector(
+		let myVibeMikuElement = targetElement.querySelector<HTMLDivElement>(
 			".additional-image-element",
 		);
 		if (!myVibeMikuElement) {
 			myVibeMikuElement = document.createElement("div");
 			myVibeMikuElement.classList.add("additional-image-element");
 			myVibeMikuElement.style.position = "absolute";
-			myVibeMikuElement.style.top = 0;
-			myVibeMikuElement.style.left = 0;
+			myVibeMikuElement.style.top = "0";
+			myVibeMikuElement.style.left = "0";
 			myVibeMikuElement.style.width = "100%";
 			myVibeMikuElement.style.height = "100%";
-			myVibeMikuElement.style.background = `url("${window.myVibeMiku}") center center / cover no-repeat`;
+			myVibeMikuElement.style.background = `url("${myVibeMiku}") center center / cover no-repeat`;
 			myVibeMikuElement.style.borderRadius = "10px";
 			myVibeMikuElement.style.pointerEvents = "none";
 			myVibeMikuElement.style.zIndex = "2";
@@ -108,7 +113,7 @@ function updateVibeBackgroundImage() {
 			targetElement.appendChild(myVibeMikuElement);
 		}
 
-		const childElements = targetElement.querySelectorAll(
+		const childElements = targetElement.querySelectorAll<HTMLDivElement>(
 			":scope > *:not(.additional-image-element):not(.blur-element)",
 		);
 		childElements.forEach((child) => {
@@ -120,7 +125,7 @@ function updateVibeBackgroundImage() {
 	}
 }
 
-function isElementInViewport(el) {
+function isElementInViewport(el: HTMLDivElement) {
 	const rect = el.getBoundingClientRect();
 	return (
 		rect.top >= 0 &&

@@ -1,5 +1,5 @@
 // Force Yandex Music to use the light theme
-function yandexThemeUpdate() {
+function yandexThemeUpdate(): void {
 	const body = document.body;
 	if (
 		!body.classList.contains("ym-dark-theme") &&
@@ -16,7 +16,7 @@ yandexThemeUpdate();
 (() => {
 	const targetClass = "modSettings_alwaysWideBar";
 
-	function removeFrom(el) {
+	function removeFrom(el: Element): void {
 		if (!el || el.nodeType !== 1) return;
 		if (el.classList && el.classList.contains(targetClass)) {
 			el.classList.remove(targetClass);
@@ -24,11 +24,12 @@ yandexThemeUpdate();
 		}
 	}
 
-	function removeFromTree(root) {
+	function removeFromTree(root: Node): void {
 		if (!root) return;
-		if (root.nodeType === 1) removeFrom(root);
-		root.querySelectorAll &&
-			root.querySelectorAll("." + targetClass).forEach(removeFrom);
+		if (root.nodeType === 1) removeFrom(root as Element);
+		const asEl = root as Element;
+		asEl.querySelectorAll &&
+			asEl.querySelectorAll("." + targetClass).forEach(removeFrom);
 	}
 
 	document.addEventListener("DOMContentLoaded", () => {
@@ -37,13 +38,17 @@ yandexThemeUpdate();
 
 	removeFromTree(document);
 
-	const observer = new MutationObserver((mutations) => {
+	const observer = new MutationObserver((mutations: MutationRecord[]) => {
 		for (const m of mutations) {
 			if (m.type === "childList") {
-				m.addedNodes.forEach((node) => {
+				m.addedNodes.forEach((node: Node) => {
 					if (node.nodeType === 1) removeFromTree(node);
 				});
-			} else if (m.type === "attributes" && m.attributeName === "class") {
+			} else if (
+				m.type === "attributes" &&
+				m.attributeName === "class" &&
+				m.target instanceof Element
+			) {
 				removeFrom(m.target);
 			}
 		}
@@ -55,6 +60,4 @@ yandexThemeUpdate();
 		attributes: true,
 		attributeFilter: ["class"],
 	});
-
-	const interval = setInterval(() => removeFromTree(document), 2000);
 })();

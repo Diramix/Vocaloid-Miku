@@ -1,5 +1,11 @@
+import { ymTimerInteger } from "./ymtimer";
+
 // Feature Flags Loader
-let mikuRun, kagamineRinStyle, fullscreenMikuXDStyle;
+let mikuRun: string,
+	kagamineRinStyle: string,
+	fullscreenMikuXDStyle: string,
+	myVibeMiku: string,
+	applyStlTheme: string;
 
 // --- DEFAULT THEME ---
 function applyDefaultTheme() {
@@ -18,8 +24,7 @@ function applyDefaultTheme() {
 		"http://127.0.0.1:2007/assets/Kagamine-Rin.webp?name=Vocaloid Miku!";
 	fullscreenMikuXDStyle =
 		"http://127.0.0.1:2007/assets/fullscreen-miku-XD.png?name=Vocaloid Miku!";
-	window.myVibeMiku =
-		"http://127.0.0.1:2007/assets/My-vibe.png?name=Vocaloid Miku!";
+	myVibeMiku = "http://127.0.0.1:2007/assets/My-vibe.png?name=Vocaloid Miku!";
 
 	let oldStyle = document.getElementById("dynamic-style");
 	if (oldStyle) oldStyle.remove();
@@ -63,16 +68,16 @@ async function applyTheme() {
 		if (!response.ok) throw new Error("HTTP " + response.status);
 		const data = await response.json();
 
-		window.applyStlTheme = data.style?.toLowerCase();
+		applyStlTheme = data.style?.toLowerCase() ?? "";
 		const root = document.documentElement;
 
 		// Apply default theme first
 		applyDefaultTheme();
 
 		// Override with seasonal theme if set
-		if (window.applyStlTheme === "halloween") {
+		if (applyStlTheme === "halloween") {
 			themeTitleText.textContent = "Miku-Miku Boo!";
-			window.myVibeMiku =
+			myVibeMiku =
 				"http://127.0.0.1:2007/assets/My-vibe-halloween.png?name=Vocaloid Miku!";
 			kagamineRinStyle =
 				"http://127.0.0.1:2007/assets/Kagamine-Rin-Halloween.webp?name=Vocaloid Miku!";
@@ -86,21 +91,21 @@ async function applyTheme() {
 			root.style.setProperty("--hatsune-light", "#ffae44");
 			root.style.setProperty("--font-color", "#000009");
 			root.style.setProperty("--miku-color", "#B556A6");
-		} else if (window.applyStlTheme === "christmas") {
+		} else if (applyStlTheme === "christmas") {
 			themeTitleText.textContent = "Happy Miku Year!";
-			window.myVibeMiku =
+			myVibeMiku =
 				"http://127.0.0.1:2007/assets/My-vibe-Christmas.png?name=Vocaloid Miku!";
 			kagamineRinStyle =
 				"http://127.0.0.1:2007/assets/Kagamine-Rin-Christmas.webp?name=Vocaloid Miku!";
 			fullscreenMikuXDStyle =
 				"http://127.0.0.1:2007/assets/fullscreen-miku-XD-Christmas.png?name=Vocaloid Miku!";
-		} else if (window.applyStlTheme === "teto") {
+		} else if (applyStlTheme === "teto") {
 			themeTitleText.textContent = "Kasane Teto!";
 			mikuRun =
 				"https://raw.githubusercontent.com/Diramix/Kasane-Teto/refs/heads/main/Kasane%20Teto!/assets/MainPage/miku-run.png";
 			fullscreenMikuXDStyle =
 				"https://raw.githubusercontent.com/Diramix/Kasane-Teto/refs/heads/main/Kasane%20Teto!/assets/Fullscreen/fullscreen-miku-XD.png";
-			window.myVibeMiku =
+			myVibeMiku =
 				"https://raw.githubusercontent.com/Diramix/Kasane-Teto/refs/heads/main/Kasane%20Teto!/assets/MainPage/My-vibe.png";
 
 			root.style.setProperty("--main-color", "#D46A83");
@@ -157,7 +162,7 @@ function waitForThemeReady() {
 			clearInterval(checkInterval);
 			applyTheme().then(() => {
 				console.log("🎨 The theme is successfully applied!");
-				window.ymTimerInteger?.();
+				ymTimerInteger?.();
 			});
 		}
 	}, 300);
@@ -169,3 +174,5 @@ if (document.readyState === "complete") {
 } else {
 	window.addEventListener("load", waitForThemeReady);
 }
+
+export { myVibeMiku, applyStlTheme };

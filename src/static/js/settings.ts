@@ -1,7 +1,8 @@
-// handleEvents.json settings management
+import { Button, Item } from "./types/settings";
+
 let settings = {};
 
-function log(text) {
+function log(text: any) {
 	console.log("[Customizable LOG]: ", text);
 }
 
@@ -11,25 +12,36 @@ async function getSettings() {
 			"http://127.0.0.1:2007/get_handle?name=Vocaloid Miku!",
 		);
 		if (!response.ok) throw new Error(`Network error: ${response.status}`);
+
 		const data = await response.json();
 		if (!data?.data?.sections) {
 			console.warn("Unexpected data structure.");
 			return {};
 		}
+
 		return Object.fromEntries(
-			data.data.sections.map(({ title, items }) => [
-				title,
-				Object.fromEntries(
-					items.map((item) => [
-						item.id,
-						item.bool ??
-							item.input ??
-							Object.fromEntries(
-								item.buttons?.map((b) => [b.name, b.text]) || [],
-							),
-					]),
-				),
-			]),
+			data.data.sections.map(
+				({ title, items }: { title: string; items: Item[] }) => [
+					title,
+					Object.fromEntries(
+						items.map(
+							(item: {
+								id: string;
+								bool: boolean;
+								input: string;
+								buttons: { name: string; text: string }[];
+							}) => [
+								item.id,
+								item.bool ??
+									item.input ??
+									Object.fromEntries(
+										item.buttons?.map((b) => [b.name, b.text]) || [],
+									),
+							],
+						),
+					),
+				],
+			),
 		);
 	} catch (error) {
 		console.error("Failed to fetch settings:", error);
@@ -41,19 +53,19 @@ let baseUrl =
 	"http://127.0.0.1:2007/assets/fullscreen-lyrics.png?name=Vocaloid Miku!";
 let baseBlur = 0;
 
-async function setSettings(newSettings) {
+async function setSettings(newSettings: { [x: string]: any }) {
 	// Custom background image for SyncLyrics
 	const syncLyricsBackground = document.querySelector(
 		'[class*="SyncLyrics_root"]',
 	);
-	let style = document.getElementById("sync-lyrics-style");
+	let style = document.getElementById("sync-lyrics-style") as HTMLStyleElement;
 	if (!style) {
 		style = document.createElement("style");
 		style.id = "sync-lyrics-style";
 		document.head.appendChild(style);
 	}
 
-	function updateBackground(url) {
+	function updateBackground(url: string) {
 		if (url.startsWith("http://127.0.0.1:2007")) {
 			if (
 				style.textContent !==
@@ -72,12 +84,12 @@ async function setSettings(newSettings) {
 	}
 
 	const newUrl = newSettings?.["SyncLyrics"]?.backgroundUrl?.text || baseUrl;
-	applyBackground = !!newSettings["SyncLyrics"].coverImage;
+	const applyBackground = !!newSettings["SyncLyrics"].coverImage;
 
 	if (applyBackground) {
 		const checkBackground = setInterval(() => {
 			const img = [
-				...document.querySelectorAll(
+				...document.querySelectorAll<HTMLImageElement>(
 					'[class*="FullscreenPlayerDesktopPoster_cover"]',
 				),
 			].find((img) => img.src && img.src.includes("/400x400"));
@@ -86,7 +98,7 @@ async function setSettings(newSettings) {
 				updateBackground(img.src.replace("/400x400", "/1000x1000"));
 				clearInterval(checkBackground);
 			}
-		}, settingsDelay);
+		}, 1000);
 	} else {
 		updateBackground(newUrl);
 	}
@@ -141,11 +153,11 @@ async function setSettings(newSettings) {
 	// Auto Play
 	if (newSettings["Developer"].devAutoPlayOnStart && !window.hasRun) {
 		const tryClickPlay = () => {
-			const playBtn = document.querySelector(
-				`section.PlayerBar_root__cXUnU * [data-test-id="PLAY_BUTTON"]`,
+			const playBtn = document.querySelector<HTMLButtonElement>(
+				`section[class*="PlayerBar_root"] * [data-test-id="PLAY_BUTTON"]`,
 			);
 			const pauseBtn = document.querySelector(
-				`section.PlayerBar_root__cXUnU * [data-test-id="PAUSE_BUTTON"]`,
+				`section[class*="PlayerBar_root"] * [data-test-id="PAUSE_BUTTON"]`,
 			);
 			if (pauseBtn) {
 				window.hasRun = true;

@@ -1,16 +1,18 @@
-// Snowflakes (active only for the christmas theme)
+import { applyStlTheme } from "./theme";
+import { Flake } from "./types/snow";
+
 (function () {
 	const TARGET_SELECTOR = '[class*="DefaultLayout_root"]';
 	const SNOW_ID = "___snow_background___";
 
-	function ensureSnow(parentEl) {
+	function ensureSnow(parentEl: HTMLDivElement) {
 		if (getComputedStyle(parentEl).position === "static") {
 			parentEl.style.position = "relative";
 		}
 
-		let snowContainer = parentEl.querySelector("#" + SNOW_ID);
+		let snowContainer = parentEl.querySelector<HTMLDivElement>("#" + SNOW_ID);
 
-		if (!snowContainer && window.applyStlTheme === "christmas") {
+		if (!snowContainer && applyStlTheme === "christmas") {
 			snowContainer = document.createElement("div");
 			snowContainer.id = SNOW_ID;
 			snowContainer.style.position = "absolute";
@@ -27,7 +29,7 @@
 			const canvas = document.createElement("canvas");
 			snowContainer.appendChild(canvas);
 
-			const ctx = canvas.getContext("2d");
+			const ctx = canvas.getContext("2d") as CanvasRenderingContext2D | null;
 
 			function resizeCanvas() {
 				canvas.width = parentEl.clientWidth;
@@ -35,7 +37,7 @@
 			}
 			resizeCanvas();
 
-			let flakes = [];
+			let flakes: Flake[] = [];
 			for (let i = 0; i < 150; i++) {
 				flakes.push({
 					x: Math.random() * canvas.width,
@@ -47,7 +49,7 @@
 			}
 
 			function drawSnow() {
-				if (!parentEl.contains(snowContainer)) return;
+				if (!parentEl.contains(snowContainer) || !ctx) return;
 
 				ctx.clearRect(0, 0, canvas.width, canvas.height);
 				ctx.fillStyle = "white";
@@ -84,7 +86,7 @@
 	}
 
 	const snowObserver = new MutationObserver(() => {
-		const parentEl = document.querySelector(TARGET_SELECTOR);
+		const parentEl = document.querySelector<HTMLDivElement>(TARGET_SELECTOR);
 		if (parentEl) {
 			ensureSnow(parentEl);
 		}
@@ -95,6 +97,6 @@
 		subtree: true,
 	});
 
-	const initial = document.querySelector(TARGET_SELECTOR);
+	const initial = document.querySelector<HTMLDivElement>(TARGET_SELECTOR);
 	if (initial) ensureSnow(initial);
 })();

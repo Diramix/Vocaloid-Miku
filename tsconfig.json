@@ -1,0 +1,12 @@
+{
+	"compilerOptions": {
+		"strict": true,
+		"allowSyntheticDefaultImports": true,
+		"isolatedModules": true,
+		"noUncheckedSideEffectImports": true,
+		"moduleDetection": "force",
+		"skipLibCheck": false,
+		"module": "ESNext",
+		"moduleResolution": "bundler"
+	}
+}

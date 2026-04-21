@@ -3,7 +3,7 @@ function ymTimerInteger() {
 	const TIMER_ID = "yandex-music-timer";
 	const TARGET_SELECTOR = ".ThemeTitleText";
 
-	function syncText(timerEl) {
+	function syncText(timerEl: HTMLDivElement) {
 		const targetEl = document.querySelector(TARGET_SELECTOR);
 		if (targetEl) {
 			targetEl.textContent = timerEl.textContent;
@@ -12,7 +12,7 @@ function ymTimerInteger() {
 		}
 	}
 
-	function handleTimerElement(timerEl) {
+	function handleTimerElement(timerEl: HTMLDivElement) {
 		timerEl.style.display = "none";
 		syncText(timerEl);
 
@@ -24,15 +24,15 @@ function ymTimerInteger() {
 		});
 	}
 
-	function checkMutations(mutations) {
+	function checkMutations(mutations: MutationRecord[]) {
 		for (const mutation of mutations) {
 			for (const node of mutation.addedNodes) {
-				if (!(node instanceof HTMLElement)) continue;
+				if (!(node instanceof HTMLDivElement)) continue;
 				if (node.id === TIMER_ID) {
 					handleTimerElement(node);
 					return;
 				}
-				const nested = node.querySelector("#" + TIMER_ID);
+				const nested = node.querySelector<HTMLDivElement>("#" + TIMER_ID);
 				if (nested) {
 					handleTimerElement(nested);
 					return;
@@ -42,7 +42,7 @@ function ymTimerInteger() {
 	}
 
 	const existing = document.getElementById(TIMER_ID);
-	if (existing) {
+	if (existing instanceof HTMLDivElement) {
 		handleTimerElement(existing);
 	}
 
@@ -51,5 +51,4 @@ function ymTimerInteger() {
 	return ymTimerObserver;
 }
 
-// Expose on window so 01-theme.js can call it after applyTheme
-window.ymTimerInteger = ymTimerInteger;
+export { ymTimerInteger };
