@@ -1,11 +1,28 @@
 import { myVibeMiku } from "./theme";
 
-// Main setInterval
-setInterval(() => {
-	updateBackgroundImage();
-	updateVibeBackgroundImage();
-	coverAndAssetsImagesElements();
-}, 300);
+let rafPending = false;
+
+const playerObserver = new MutationObserver(() => {
+	if (rafPending) return;
+	rafPending = true;
+	requestAnimationFrame(() => {
+		rafPending = false;
+		updateBackgroundImage();
+		updateVibeBackgroundImage();
+		coverAndAssetsImagesElements();
+	});
+});
+
+playerObserver.observe(document.body, {
+	childList: true,
+	subtree: true,
+	attributes: true,
+	attributeFilter: ["src"],
+});
+
+updateBackgroundImage();
+updateVibeBackgroundImage();
+coverAndAssetsImagesElements();
 
 // Change fullscreen player background image script
 function updateBackgroundImage() {

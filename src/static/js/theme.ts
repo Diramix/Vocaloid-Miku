@@ -156,16 +156,28 @@ async function applyTheme() {
 // --- Wait for page and required elements to be ready ---
 // Consolidates both waitForThemeReady calls: runs applyTheme + ymTimerInteger
 function waitForThemeReady() {
-	const checkInterval = setInterval(() => {
-		const title = document.querySelector(".ThemeTitleText");
-		if (title && document.head) {
-			clearInterval(checkInterval);
-			applyTheme().then(() => {
-				console.log("🎨 The theme is successfully applied!");
-				ymTimerInteger?.();
-			});
+	const run = () => {
+		applyTheme().then(() => {
+			console.log("🎨 The theme is successfully applied!");
+			ymTimerInteger?.();
+		});
+	};
+
+	if (document.querySelector(".ThemeTitleText") && document.head) {
+		run();
+		return;
+	}
+
+	const observer = new MutationObserver(() => {
+		if (document.querySelector(".ThemeTitleText") && document.head) {
+			observer.disconnect();
+			run();
 		}
-	}, 300);
+	});
+	observer.observe(document.body ?? document.documentElement, {
+		childList: true,
+		subtree: true,
+	});
 }
 
 // Entry point

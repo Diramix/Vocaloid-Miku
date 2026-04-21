@@ -1,6 +1,7 @@
 import { Button, Item } from "./types/settings";
 
 let settings = {};
+let coverArtObserver: MutationObserver | null = null;
 
 function log(text: any) {
 	console.log("[Customizable LOG]: ", text);
@@ -53,11 +54,19 @@ let baseUrl =
 	"http://127.0.0.1:2007/assets/fullscreen-lyrics.png?name=Vocaloid Miku!";
 let baseBlur = 0;
 
+function applyBackgroundUrl(url: string) {
+	const style = document.getElementById(
+		"sync-lyrics-style",
+	) as HTMLStyleElement;
+	if (!style) return;
+	const next = url.startsWith("http://127.0.0.1:2007")
+		? `[class*="SyncLyrics_root"] { background-image: url("${url}"); }`
+		: `[class*="SyncLyrics_root"] { background-image: url("https://images.weserv.nl/?url=${url}"); }`;
+	if (style.textContent !== next) style.textContent = next;
+}
+
 async function setSettings(newSettings: { [x: string]: any }) {
 	// Custom background image for SyncLyrics
-	const syncLyricsBackground = document.querySelector(
-		'[class*="SyncLyrics_root"]',
-	);
 	let style = document.getElementById("sync-lyrics-style") as HTMLStyleElement;
 	if (!style) {
 		style = document.createElement("style");
@@ -87,19 +96,36 @@ async function setSettings(newSettings: { [x: string]: any }) {
 	const applyBackground = !!newSettings["SyncLyrics"].coverImage;
 
 	if (applyBackground) {
-		const checkBackground = setInterval(() => {
-			const img = [
-				...document.querySelectorAll<HTMLImageElement>(
-					'[class*="FullscreenPlayerDesktopPoster_cover"]',
-				),
-			].find((img) => img.src && img.src.includes("/400x400"));
-
-			if (img) {
-				updateBackground(img.src.replace("/400x400", "/1000x1000"));
-				clearInterval(checkBackground);
-			}
-		}, 1000);
+		// Persistent observer that updates SyncLyrics background on cover art changes
+		if (!coverArtObserver) {
+			coverArtObserver = new MutationObserver(() => {
+				const img = [
+					...document.querySelectorAll<HTMLImageElement>(
+						'[class*="FullscreenPlayerDesktopPoster_cover"]',
+					),
+				].find((img) => img.src?.includes("/400x400"));
+				if (img) {
+					applyBackgroundUrl(img.src.replace("/400x400", "/1000x1000"));
+				}
+			});
+			coverArtObserver.observe(document.body, {
+				subtree: true,
+				attributes: true,
+				attributeFilter: ["src"],
+			});
+		}
+		// Immediate check
+		const img = [
+			...document.querySelectorAll<HTMLImageElement>(
+				'[class*="FullscreenPlayerDesktopPoster_cover"]',
+			),
+		].find((img) => img.src?.includes("/400x400"));
+		updateBackground(
+			img ? img.src.replace("/400x400", "/1000x1000") : newUrl,
+		);
 	} else {
+		coverArtObserver?.disconnect();
+		coverArtObserver = null;
 		updateBackground(newUrl);
 	}
 
@@ -174,14 +200,15 @@ async function setSettings(newSettings: { [x: string]: any }) {
 
 async function update() {
 	const newSettings = await getSettings();
-	await setSettings(newSettings);
-	settings = newSettings;
+	if (JSON.stringify(newSettings) !== JSON.stringify(settings)) {
+		await setSettings(newSettings);
+		settings = newSettings;
+	}
 }
 
 function init() {
-	setInterval(() => {
-		update();
-	}, 1000);
+	update();
+	setInterval(update, 1000);
 }
 
 init();
