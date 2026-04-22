@@ -1,4 +1,3 @@
-// Yandex Music Time integration
 function ymTimerInteger() {
 	const TIMER_ID = "yandex-music-timer";
 	const TARGET_SELECTOR = ".ThemeTitleText";

@@ -6,7 +6,7 @@
 				{
 					"id": "backgroundUrl",
 					"name": "Custom URL",
-					"description": "URL картинки, которая будет отображаться на фоне в синк лирике. Можно использовать папку assets. http://127.0.0.1:2007/assets/<название файла картинки>?name=Vocaloid Miku!",
+					"description": "Image URL to display as the SyncLyrics background. You can use the assets folder: http://127.0.0.1:2007/assets/<image filename>?name=Vocaloid Miku!",
 					"type": "text",
 					"buttons": [
 						{
@@ -20,7 +20,7 @@
 				{
 					"id": "blurFilter",
 					"name": "Blur Filter",
-					"description": "Блюрит фоновую картинку.",
+					"description": "Blurs the background image.",
 					"type": "text",
 					"buttons": [
 						{
@@ -34,7 +34,7 @@
 				{
 					"id": "coverImage",
 					"name": "Cover Image",
-					"description": "Картинка трека на фон синк лирики.",
+					"description": "Uses the current track cover as the SyncLyrics background.",
 					"type": "button",
 					"bool": false,
 					"defaultParameter": false
@@ -42,7 +42,7 @@
 				{
 					"id": "normalFont",
 					"name": "Normal Font",
-					"description": "Делает нормальный шрифт синклирики.",
+					"description": "Applies a normal font to the SyncLyrics.",
 					"type": "button",
 					"bool": true,
 					"defaultParameter": true
@@ -55,7 +55,7 @@
 				{
 					"id": "toggleFullscreenMikuXD",
 					"name": "Fullscreen Miku XD",
-					"description": "Включение/выключение картинки Мику в фуллскрине.",
+					"description": "Toggles the Miku image in the fullscreen player.",
 					"type": "button",
 					"bool": true,
 					"defaultParameter": true
@@ -68,7 +68,7 @@
 				{
 					"id": "togglePerfectMark",
 					"name": "Perfect Mark",
-					"description": "Включение/выключение надписи счёта на странице очереди.",
+					"description": "Toggles the score label on the queue page.",
 					"type": "button",
 					"bool": true,
 					"defaultParameter": true
@@ -76,20 +76,7 @@
 				{
 					"id": "toggleDownloadAndVisibleIcon",
 					"name": "Download & Visible Icon",
-					"description": "Включение/выключение иконок скачанного трека и то, что трек можете слушать только вы, на странице очереди.",
-					"type": "button",
-					"bool": false,
-					"defaultParameter": false
-				}
-			]
-		},
-		{
-			"title": "Developer",
-			"items": [
-				{
-					"id": "devAutoPlayOnStart",
-					"name": "Автоплей",
-					"description": "Запускает трек сразу после запуска Яндекс Музыки и при нажатии ctrl + r.",
+					"description": "Toggles the downloaded track and private track icons on the queue page.",
 					"type": "button",
 					"bool": false,
 					"defaultParameter": false

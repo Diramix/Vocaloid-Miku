@@ -11,11 +11,11 @@ body = """
 footer = """
 ## DONATE
 
-Если вам понравилась тема и вы хотите поддержать её автора, то [**Welcome to Boosty!**](https://boosty.to/diramix)
+If you liked the theme and want to support its author, [**Welcome to Boosty!**](https://boosty.to/diramix)
 
 <p>
     <a href="https://boosty.to/diramix">
-      <img width="300" alt="ᓚᘏᗢ котик ждёт твоей монетки" src="https://github.com/Diramix/Vocaloid-Miku/blob/main/doc/boosty_button.png?raw=true">
+      <img width="300" alt="ᓚᘏᗢ the cat is waiting for your coin" src="https://github.com/Diramix/Vocaloid-Miku/blob/main/doc/boosty_button.png?raw=true">
     </a>
 </p>
 """

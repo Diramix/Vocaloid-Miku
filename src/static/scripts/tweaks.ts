@@ -1,25 +1,10 @@
-// Force Yandex Music to use the light theme
-function yandexThemeUpdate(): void {
-	const body = document.body;
-	if (
-		!body.classList.contains("ym-dark-theme") &&
-		!body.classList.contains("ym-light-theme")
-	) {
-		body.classList.add("ym-light-theme");
-	} else if (body.classList.contains("ym-dark-theme")) {
-		body.classList.replace("ym-dark-theme", "ym-light-theme");
-	}
-}
-yandexThemeUpdate();
-
-// Remove always-expanded player class
 (() => {
-	const targetClass = "modSettings_alwaysWideBar";
+	const modSettingsClass = "modSettings_alwaysWideBar";
 
 	function removeFrom(el: Element): void {
 		if (!el || el.nodeType !== 1) return;
-		if (el.classList && el.classList.contains(targetClass)) {
-			el.classList.remove(targetClass);
+		if (el.classList && el.classList.contains(modSettingsClass)) {
+			el.classList.remove(modSettingsClass);
 			console.log("Class removed from:", el);
 		}
 	}
@@ -29,7 +14,7 @@ yandexThemeUpdate();
 		if (root.nodeType === 1) removeFrom(root as Element);
 		const asEl = root as Element;
 		asEl.querySelectorAll &&
-			asEl.querySelectorAll("." + targetClass).forEach(removeFrom);
+			asEl.querySelectorAll("." + modSettingsClass).forEach(removeFrom);
 	}
 
 	document.addEventListener("DOMContentLoaded", () => {

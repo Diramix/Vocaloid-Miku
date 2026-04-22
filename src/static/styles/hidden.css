@@ -1,5 +1,3 @@
-/* Only display: none; */
-/*--------------------------------------------*/
 [class*="VibeAnimation_root"],
 [class*="NavbarDesktop_pinsList"]:before,
 [class*="NavbarDesktop_pinsList"]:after,
@@ -21,4 +19,3 @@
 [class*="UserID-Avatar"]:after {
 	display: none;
 }
-/*--------------------------------------------*/

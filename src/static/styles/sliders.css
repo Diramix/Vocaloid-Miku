@@ -1,0 +1,7 @@
+[class*="ChangeTimecode_slider"] {
+	--slider-thumb-box-shadow-color: #0000;
+}
+
+[class*="ChangeVolume_root"] {
+	--slider-thumb-box-shadow-color: #0000;
+}

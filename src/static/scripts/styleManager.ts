@@ -5,9 +5,9 @@ let mikuRun: string,
 	kagamineRinStyle: string,
 	fullscreenMikuXDStyle: string,
 	myVibeMiku: string,
-	applyStlTheme: string;
+	applyStyleTheme: string;
 
-// --- DEFAULT THEME ---
+// DEFAULT THEME
 function applyDefaultTheme() {
 	const root = document.documentElement;
 
@@ -56,7 +56,7 @@ function applyDefaultTheme() {
 	document.head.appendChild(styleTag);
 }
 
-// --- APPLY THEME FROM JSON ---
+// Apply theme from JSON
 async function applyTheme() {
 	const themeTitleText = document.querySelector(".ThemeTitleText");
 	if (!themeTitleText) return;
@@ -68,14 +68,14 @@ async function applyTheme() {
 		if (!response.ok) throw new Error("HTTP " + response.status);
 		const data = await response.json();
 
-		applyStlTheme = data.style?.toLowerCase() ?? "";
+		applyStyleTheme = data.style?.toLowerCase() ?? "";
 		const root = document.documentElement;
 
 		// Apply default theme first
 		applyDefaultTheme();
 
 		// Override with seasonal theme if set
-		if (applyStlTheme === "halloween") {
+		if (applyStyleTheme === "halloween") {
 			themeTitleText.textContent = "Miku-Miku Boo!";
 			myVibeMiku =
 				"http://127.0.0.1:2007/assets/My-vibe-halloween.png?name=Vocaloid Miku!";
@@ -91,7 +91,7 @@ async function applyTheme() {
 			root.style.setProperty("--hatsune-light", "#ffae44");
 			root.style.setProperty("--font-color", "#000009");
 			root.style.setProperty("--miku-color", "#B556A6");
-		} else if (applyStlTheme === "christmas") {
+		} else if (applyStyleTheme === "christmas") {
 			themeTitleText.textContent = "Happy Miku Year!";
 			myVibeMiku =
 				"http://127.0.0.1:2007/assets/My-vibe-Christmas.png?name=Vocaloid Miku!";
@@ -99,7 +99,7 @@ async function applyTheme() {
 				"http://127.0.0.1:2007/assets/Kagamine-Rin-Christmas.webp?name=Vocaloid Miku!";
 			fullscreenMikuXDStyle =
 				"http://127.0.0.1:2007/assets/fullscreen-miku-XD-Christmas.png?name=Vocaloid Miku!";
-		} else if (applyStlTheme === "teto") {
+		} else if (applyStyleTheme === "teto") {
 			themeTitleText.textContent = "Kasane Teto!";
 			mikuRun =
 				"https://raw.githubusercontent.com/Diramix/Kasane-Teto/refs/heads/main/Kasane%20Teto!/assets/MainPage/miku-run.png";
@@ -153,7 +153,6 @@ async function applyTheme() {
 	}
 }
 
-// --- Wait for page and required elements to be ready ---
 // Consolidates both waitForThemeReady calls: runs applyTheme + ymTimerInteger
 function waitForThemeReady() {
 	const run = () => {
@@ -187,4 +186,4 @@ if (document.readyState === "complete") {
 	window.addEventListener("load", waitForThemeReady);
 }
 
-export { myVibeMiku, applyStlTheme };
+export { myVibeMiku, applyStyleTheme };

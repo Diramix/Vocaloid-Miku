@@ -1,5 +1,3 @@
-/* Sync lyrics */
-/*--------------------------------------------*/
 [class*="SyncLyrics_content"] {
 	width: 63%;
 	min-width: 700px;
@@ -78,4 +76,3 @@
 	z-index: -1;
 	pointer-events: none;
 }
-/*--------------------------------------------*/

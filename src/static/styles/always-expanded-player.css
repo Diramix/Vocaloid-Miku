@@ -1,5 +1,3 @@
-/* Always Expanded Player */
-/*--------------------------------------------*/
 [class*="DefaultLayout_root"] {
 	grid-template:
 		"navbar content" minmax(
@@ -8,4 +6,3 @@
 		)
 		"playerbar playerbar" auto "barBelow barBelow" auto/auto 1fr !important;
 }
-/*--------------------------------------------*/

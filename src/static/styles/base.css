@@ -1,32 +1,3 @@
-/* Images for Legacy patcher Support */
-/*--------------------------------------------*/
-/*.AssetsImages:after {
-	background-image: url("http://127.0.0.1:2007/assets/fullscreen-miku-XD.png?name=Vocaloid Miku!");
-}*/
-
-/*.AssetsImages:before {
-	content: url("http://127.0.0.1:2007/assets/Kagamine-Rin.webp?name=Vocaloid Miku!");
-}*/
-
-/*.VibeBlock_root__z7LtR {
-	background-image: url("http://127.0.0.1:2007/assets/My-vibe.png?name=Vocaloid Miku!");
-}*/
-
-/*[class*="SyncLyrics_root"] {
-	background-image: url("http://127.0.0.1:2007/assets/fullscreen-lyrics.png?name=Vocaloid Miku!");
-}*/
-
-/*[class*="LikesAndHistory_carousel"]:after {
-	background-image: url("http://127.0.0.1:2007/assets/Main-Page-Miku_End.webp?name=Vocaloid Miku!");
-}*/
-
-/*.mikuRun {
-    background-image: url("http://127.0.0.1:2007/assets/miku-run.png?name=Vocaloid Miku!");
-}*/
-/*--------------------------------------------*/
-
-/* Base */
-/*--------------------------------------------*/
 .ym-light-theme {
 	--vmt-border-radius: 10px;
 	--ym-radius-size-xl: 10px;
@@ -63,4 +34,3 @@
 	src: url("http://127.0.0.1:2007/assets/VOC-RE.ttf?name=Vocaloid Miku!")
 		format("truetype");
 }
-/*--------------------------------------------*/

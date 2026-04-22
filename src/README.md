@@ -2,7 +2,7 @@
 
 # Vocaloid Miku!
 
-## Ссылки
+## Links
 
 **Boosty:** https://boosty.to/diramix
 

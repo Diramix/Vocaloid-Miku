@@ -1,4 +1,4 @@
-import { applyStlTheme } from "./theme";
+import { applyStyleTheme } from "./styleManager";
 import { Flake } from "./types/snow";
 
 (function () {
@@ -12,7 +12,7 @@ import { Flake } from "./types/snow";
 
 		let snowContainer = parentEl.querySelector<HTMLDivElement>("#" + SNOW_ID);
 
-		if (!snowContainer && applyStlTheme === "christmas") {
+		if (!snowContainer && applyStyleTheme === "christmas") {
 			snowContainer = document.createElement("div");
 			snowContainer.id = SNOW_ID;
 			snowContainer.style.position = "absolute";

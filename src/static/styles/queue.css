@@ -1,5 +1,3 @@
-/* Play queue */
-/*--------------------------------------------*/
 [class*="PlayQueue_root"] {
 	background-image: url("http://127.0.0.1:2007/assets/Diva-Queue-Background.jpg?name=Vocaloid Miku!");
 	background-position: center;
@@ -277,4 +275,3 @@
 	content: "Random";
 	font-size: 20px;
 }
-/*--------------------------------------------*/
