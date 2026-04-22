@@ -122,7 +122,7 @@ function updateVibeBackgroundImage() {
 // Inject CoverImage and AssetsImages elements for fullscreen
 function coverAndAssetsImagesElements() {
 	const container = document.querySelector(
-		".FullscreenPlayerDesktopContent_root__tKNGK",
+		`[class*="FullscreenPlayerDesktopContent_root"]`,
 	);
 	if (!container) return;
 
