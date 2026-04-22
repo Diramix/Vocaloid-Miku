@@ -2,6 +2,7 @@ import { Item } from "./types/settings";
 import { update as updateSyncLyrics } from "./settings/syncLyrics";
 import { update as updateQueue } from "./settings/queue";
 import { update as updateFullscreen } from "./settings/fullscreen";
+import { update as updatePlayer } from "./settings/player";
 
 function parseItemValue(item: Item): boolean | string | Record<string, string> {
 	if (item.bool !== undefined) return item.bool;
@@ -53,7 +54,12 @@ export async function getSettings(): Promise<Record<string, any>> {
 }
 
 async function tick() {
-	await Promise.all([updateSyncLyrics(), updateQueue(), updateFullscreen()]);
+	await Promise.all([
+		updateSyncLyrics(),
+		updateFullscreen(),
+		updatePlayer(),
+		updateQueue(),
+	]);
 }
 
 tick();

@@ -1,0 +1,11 @@
+#vocaloid-settings-btn {
+	color: var(--ym-controls-color-secondary-text-enabled);
+	background: transparent;
+	border: 0 solid;
+	z-index: 1;
+
+	&:hover {
+		color: var(--ym-controls-color-secondary-on_default-hovered);
+		cursor: pointer;
+	}
+}

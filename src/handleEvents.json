@@ -63,6 +63,19 @@
 			]
 		},
 		{
+			"title": "Player",
+			"items": [
+				{
+					"id": "toggleVocaloidSettingsButton",
+					"name": "Settings Button",
+					"description": "Display settings button in player menu.",
+					"type": "button",
+					"bool": true,
+					"defaultParameter": true
+				}
+			]
+		},
+		{
 			"title": "Queue",
 			"items": [
 				{
