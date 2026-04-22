@@ -11,10 +11,10 @@
 [class*="VibeBlock_playButton"] {
 	background: var(--buttons-color);
 	color: #000;
-}
 
-[class*="VibeBlock_playButton"]:hover {
-	background: var(--light-main-color);
+	&:hover {
+		background: var(--light-main-color);
+	}
 }
 /*--------------------------------------------*/
 
@@ -38,15 +38,13 @@
 	border-radius: 10px;
 	background: var(--basic-color);
 	border-color: var(--basic-color);
-}
 
-[class*="VibeButton_button"]:hover,
-[class*="NeuromusicButton_button"]:hover,
-[class*="MixCard_root"]:hover {
-	border-radius: 10px;
-	background: var(--basic-color);
-	border-color: var(--basic-color);
-	filter: brightness(1.2);
+	&:hover {
+		border-radius: 10px;
+		background: var(--basic-color);
+		border-color: var(--basic-color);
+		filter: brightness(1.2);
+	}
 }
 
 [class*="MixCard_title"] {
@@ -87,16 +85,12 @@
 [class*="OverwrittenExperimentsModal_overrideForm"] > .qU2apWBO1yyEK0lZ3lPO {
 	background: var(--basic-color);
 	color: #fff;
-}
 
-[class*="OverwrittenExperimentsModal_submitButton"]:hover,
-[class*="OverwrittenExperimentsModal_closeModalButton"]:hover,
-[class*="OverwrittenExperimentsModal_reloadButton"]:hover,
-[class*="OverwrittenExperimentsModal_overrideForm"]
-	> .qU2apWBO1yyEK0lZ3lPO:hover {
-	background: var(--basic-color);
-	color: #fff;
-	filter: brightness(1.1);
+	&:hover {
+		background: var(--basic-color);
+		color: #fff;
+		filter: brightness(1.1);
+	}
 }
 /*--------------------------------------------*/
 
@@ -104,10 +98,10 @@
 /*--------------------------------------------*/
 [class*="Donation_root"] {
 	background: var(--basic-color);
-}
 
-[class*="Donation_root"] * {
-	color: #e6e6e6;
+	* {
+		color: #e6e6e6;
+	}
 }
 /*--------------------------------------------*/
 
@@ -169,19 +163,19 @@ body > [class*="DevPanel_root"] > .qU2apWBO1yyEK0lZ3lPO {
 	height: 36px;
 	filter: brightness(1.1);
 	color: #000;
-}
 
-body > [class*="DevPanel_root"] > .qU2apWBO1yyEK0lZ3lPO:hover {
-	backdrop-filter: blur(0px);
-	z-index: 99999;
-	background: var(--miku-color);
-	border-color: var(--font-color);
-	border-width: 1px;
-	border-style: solid;
-	border-radius: 50px;
-	width: 36px;
-	height: 36px;
-	filter: brightness(1.2);
+	&:hover {
+		backdrop-filter: blur(0px);
+		z-index: 99999;
+		background: var(--miku-color);
+		border-color: var(--font-color);
+		border-width: 1px;
+		border-style: solid;
+		border-radius: 50px;
+		width: 36px;
+		height: 36px;
+		filter: brightness(1.2);
+	}
 }
 
 [class*="DevPanel_panel"] {
@@ -196,19 +190,22 @@ body > [class*="DevPanel_root"] > .qU2apWBO1yyEK0lZ3lPO:hover {
 [class*="DevPanel_block"] {
 	background: var(--basic-color);
 	color: var(--main-color);
-}
 
-[class*="DevPanel_block"]:hover {
-	background: var(--basic-color);
-	color: #fff;
+	&:hover {
+		background: var(--basic-color);
+		color: #fff;
+	}
 }
 /*--------------------------------------------*/
 
 /* Track duration timestamps */
 /*--------------------------------------------*/
-[class*="CommonControlsBar_duration"],
-[class*="CommonControlsBar_duration"]:hover {
+[class*="CommonControlsBar_duration"] {
 	color: var(--font-color);
+
+	&:hover {
+		color: var(--font-color);
+	}
 }
 /*--------------------------------------------*/
 
@@ -223,10 +220,8 @@ body > [class*="DevPanel_root"] > .qU2apWBO1yyEK0lZ3lPO:hover {
 /*--------------------------------------------*/
 [class*="NavbarDesktopUserWidget_userProfileContainer"] {
 	display: flex;
-}
 
-@media (min-width: 1023px) {
-	[class*="NavbarDesktopUserWidget_userProfileContainer"] {
+	@media (min-width: 1023px) {
 		display: none;
 	}
 }

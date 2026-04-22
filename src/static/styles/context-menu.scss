@@ -1,6 +1,10 @@
-.EiyUV4aCJzpfNzuihfMM:hover,
-.EiyUV4aCJzpfNzuihfMM[data-nested][data-open] {
-	--ym-surface-color-primary-enabled-list: var(--light-main-color);
+.EiyUV4aCJzpfNzuihfMM {
+	background: var(--main-color);
+
+	&:hover,
+	&[data-nested][data-open] {
+		--ym-surface-color-primary-enabled-list: var(--light-main-color);
+	}
 }
 
 .NOqNiasunvfLvvi75zl9 {
@@ -19,8 +23,4 @@
 
 .cM0M40YHieFFCTYRgOZa {
 	color: var(--font-color);
-}
-
-.EiyUV4aCJzpfNzuihfMM {
-	background: var(--main-color);
 }

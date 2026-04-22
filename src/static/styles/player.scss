@@ -30,6 +30,10 @@ section[class*="PlayerBar_root"] {
 	padding: 7px 7px 7px 4px;
 	border-radius: 10px 0 0 10px;
 	height: 77px;
+
+	@media (min-width: 1023px) {
+		border-radius: 10px;
+	}
 }
 
 [class*="PlayerBarDesktopWithBackgroundProgressBar_sonata_"] {
@@ -37,14 +41,8 @@ section[class*="PlayerBar_root"] {
 	padding: 7px 7px 7px 4px;
 	border-radius: 0 10px 10px 0;
 	height: 77px;
-}
 
-@media (min-width: 1023px) {
-	[class*="PlayerBarDesktopWithBackgroundProgressBar_info"] {
-		border-radius: 10px;
-	}
-
-	[class*="PlayerBarDesktopWithBackgroundProgressBar_sonata_"] {
+	@media (min-width: 1023px) {
 		position: absolute;
 		left: 50%;
 		transform: translateX(-50%);

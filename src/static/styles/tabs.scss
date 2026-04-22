@@ -1,19 +1,16 @@
-[class*="MainPage_root"] > div > header {
-	height: 0;
-}
+[class*="MainPage_root"] {
+	> div > header {
+		height: 0;
 
-[class*="MainPage_root"] > div > header > div[class*="CompositeHeader_static"] {
-	position: relative;
-	top: -70px;
-	left: 0px;
-}
-
-@media (max-width: 768px) {
-	[class*="MainPage_root"]
-		> div
-		> header
 		> div[class*="CompositeHeader_static"] {
-		left: 8px;
+			position: relative;
+			top: -70px;
+			left: 0px;
+
+			@media (max-width: 768px) {
+				left: 8px;
+			}
+		}
 	}
 }
 

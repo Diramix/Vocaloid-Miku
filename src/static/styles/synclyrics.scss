@@ -31,21 +31,40 @@
 	z-index: 500;
 }
 
-[class*="SyncLyrics_root"]:before {
-	visibility: visible;
-	content: "";
-	background-image: url("http://127.0.0.1:2007/assets/Dilamix.png?name=Vocaloid Miku!");
-	background-repeat: no-repeat;
+[class*="SyncLyrics_root"] {
 	position: fixed;
-	z-index: 1;
-	background-size: contain;
+	background-size: cover;
 	background-position: center;
-	top: -1.5%;
-	left: 50%;
-	margin-left: 5%;
-	width: 30%;
-	min-width: 330px;
-	height: 20%;
+	width: 100vw;
+	height: 100vh;
+
+	&:before {
+		visibility: visible;
+		content: "";
+		background-image: url("http://127.0.0.1:2007/assets/Dilamix.png?name=Vocaloid Miku!");
+		background-repeat: no-repeat;
+		position: fixed;
+		z-index: 1;
+		background-size: contain;
+		background-position: center;
+		top: -1.5%;
+		left: 50%;
+		margin-left: 5%;
+		width: 30%;
+		min-width: 330px;
+		height: 20%;
+	}
+
+	&:after {
+		content: "";
+		position: fixed;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		z-index: -1;
+		pointer-events: none;
+	}
 }
 
 [class*="SyncLyricsLine_root"] {
@@ -56,23 +75,4 @@
 [class*="SyncLyricsCard_root"],
 [class*="FullscreenPlayerDesktop_poster_withSyncLyricsAnimation"] {
 	display: none;
-}
-
-[class*="SyncLyrics_root"] {
-	position: fixed;
-	background-size: cover;
-	background-position: center;
-	width: 100vw;
-	height: 100vh;
-}
-
-[class*="SyncLyrics_root"]:after {
-	content: "";
-	position: fixed;
-	left: 0;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	z-index: -1;
-	pointer-events: none;
 }

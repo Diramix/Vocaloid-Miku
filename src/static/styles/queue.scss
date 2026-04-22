@@ -1,0 +1,256 @@
+[class*="PlayQueue_root"] {
+	background-image: url("http://127.0.0.1:2007/assets/Diva-Queue-Background.jpg?name=Vocaloid Miku!");
+	background-position: center;
+	background-size: cover;
+
+	&:before {
+		background: 0;
+	}
+
+	&:after {
+		background: linear-gradient(
+			0deg,
+			var(--main-color, var(--miku-color)),
+			hsla(0, 0%, 5%, 0)
+		);
+		bottom: 90px;
+	}
+
+	* [class*="Meta_title"] {
+		font-size: 20px;
+	}
+
+	* [class*="ControlsBar_contextMenuWrapper"] {
+		background: #0007;
+		height: 100%;
+		width: 65px;
+		margin-right: -8px;
+		border-radius: 10px;
+		transform: skewX(-12deg);
+	}
+
+	* [class*="Meta_root_withSecondaryColor"],
+	* [class*="ControlsBar_root_withSecondaryColor"],
+	* [class*="TrackPlaylist_playButtonCell"] {
+		transform: skewX(12deg);
+	}
+
+	* [class*="CommonTrack_root"] {
+		* [class*="CommonControlsBar_likeIcon"] {
+			opacity: 0;
+		}
+
+		&:hover {
+			* [class*="CommonControlsBar_likeIcon"] {
+				opacity: 1;
+			}
+		}
+	}
+
+	* [class*="TrackPlaylist_playButtonCell"] {
+		visibility: hidden;
+		position: relative;
+		min-height: 100%;
+		min-width: 50px;
+
+		&:before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			visibility: visible;
+			background-image: url("http://127.0.0.1:2007/assets/Diva-F-Song-Icon.png?name=Vocaloid Miku!");
+			background-size: 50px;
+			background-position: center;
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	* [class*="CommonControlsBar_contextMenu"] {
+		color: #000;
+
+		&:hover {
+			color: #000;
+		}
+	}
+}
+
+[class*="PlayQueue_content"] {
+	position: fixed;
+	background: #f005;
+	border-style: solid;
+	border-color: #f2647c;
+	border-width: 3px;
+	border-radius: 0px 10px 10px 10px;
+	outline-width: 7px;
+	outline-style: solid;
+	outline-color: #2b2a2b;
+	height: 65vh;
+	width: 55%;
+	left: 1%;
+	bottom: 6.5vh;
+	z-index: 2;
+
+	@media (max-width: 1079px) {
+		bottom: 7%;
+	}
+
+	&:before {
+		position: fixed;
+		content: "";
+		height: 70px;
+		width: 48%;
+		background-image: url("http://127.0.0.1:2007/assets/Diva-F-Extreme-Page.png?name=Vocaloid Miku!");
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: left bottom;
+		margin-top: -73px;
+		margin-left: -10px;
+	}
+}
+
+[class*="PlayQueue_scrollContent"] {
+	padding-block-start: 0;
+	padding-block-end: 0;
+
+	&:after {
+		position: fixed;
+		content: "";
+		width: 100%;
+		height: 8%;
+		left: 0;
+		top: 0;
+		background-image: url("http://127.0.0.1:2007/assets/Queue-Header.png?name=Vocaloid Miku!");
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: left top;
+		z-index: 999;
+	}
+
+	&:before {
+		position: fixed;
+		content: "";
+		width: 100%;
+		height: 8%;
+		top: 0;
+		z-index: 899;
+		background: linear-gradient(#292929 62%, #131313 65%);
+	}
+}
+
+[class*="ControlsBar_root_withSecondaryColor"] > button {
+	color: var(--main-color);
+}
+
+[class*="ControlsBar_duration"] {
+	color: var(--main-color);
+}
+
+[class*="PlayQueueBeforePlayingBlock_root"]:not(:empty) {
+	padding-block-end: 0;
+}
+
+[class*="PlayQueueNowPlayingBlock_root"] {
+	max-height: 80px;
+	min-height: 80px;
+}
+
+[class*="PlayQueueNowPlayingBlock_important"] {
+	background:
+		linear-gradient(0deg, #006d76 50%, transparent 50%),
+		url("http://127.0.0.1:2007/assets/3-poloski.png?name=Vocaloid Miku!");
+	background-repeat: repeat-x;
+	background-size: 88px;
+	width: calc(100% - 20px);
+	left: 10px;
+	height: 75px;
+	margin-top: 5px;
+	border-radius: 16px;
+	border-style: solid;
+	border-color: #00ffff;
+	border-width: 6px;
+	transform: skewX(-12deg);
+	box-shadow: 0 0 10px #00ffff;
+	filter: brightness(1.04);
+
+	&:hover {
+		filter: brightness(1.1);
+	}
+
+	* [class*="ControlsBar_contextMenuWrapper"] {
+		background: #00ffff;
+	}
+
+	* [class*="CommonControlsBar_duration"] {
+		color: var(--font-color);
+		font-weight: 800;
+		font-size: 16px;
+	}
+}
+
+[class*="PlayQueueAfterPlayingBlock_prevTrack"] > [class*="CommonTrack_root"],
+[class*="PlayQueueBeforePlayingBlock_prevTrack"] > [class*="CommonTrack_root"],
+[class*="PlayQueueBeforePlayingBlock_animatedContent"]
+	> [class*="CommonTrack_root"],
+[class*="PlayQueueAfterPlayingBlock_animatedContent"]
+	> [class*="CommonTrack_root"],
+[class*="PlayQueueVibeBlock_root"],
+[class*="PlayQueueVibeBlock_root"]:hover {
+	background: #0005;
+	width: calc(100% - 20px);
+	left: 10px;
+	height: 75px;
+	margin-top: 5px;
+	border-radius: 16px;
+	border-style: solid;
+	border-color: #0008;
+	border-width: 4px;
+	transform: skewX(-12deg);
+}
+
+[class*="PlayQueueBeforePlayingBlock_animatedContent"],
+[class*="PlayQueueAfterPlayingBlock_animatedContent"] {
+	* [class*="CommonControlsBar_duration"] {
+		color: var(--main-color);
+		font-weight: 800;
+		font-size: 16px;
+	}
+
+	* [class*="CommonControlsBar_contextMenu"] > .JjlbHZ4FaP9EAcR_1DxF {
+		color: var(--main-color);
+		font-weight: 800;
+		font-size: 16px;
+	}
+}
+
+.Diva-Cover {
+	position: fixed;
+	width: 34%;
+	height: 32%;
+	top: 15vh;
+	right: 4.6%;
+	z-index: 99999;
+}
+
+.Diva-Perfect-Mark {
+	position: fixed;
+	width: 34%;
+	height: 32%;
+	background-image: url("http://127.0.0.1:2007/assets/Diva-F-Perfect-Mark.webp?name=Vocaloid Miku!");
+	background-size: contain;
+	background-position: center top;
+	top: 50vh;
+	right: 4.6%;
+	z-index: 99999;
+}
+
+[class*="PlayQueueVibeBlock_title"] {
+	visibility: hidden;
+
+	&:before {
+		visibility: visible;
+		content: "Random";
+		font-size: 20px;
+	}
+}
