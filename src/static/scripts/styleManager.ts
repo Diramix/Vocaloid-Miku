@@ -1,5 +1,7 @@
 import { ymTimerInteger } from "./ymtimer";
 
+const themeOverride: string = "";
+
 // Feature Flags Loader
 let mikuRun: string,
 	kagamineRinStyle: string,
@@ -61,19 +63,28 @@ async function applyTheme() {
 	const themeTitleText = document.querySelector(".ThemeTitleText");
 	if (!themeTitleText) return;
 
+	// Apply default theme first
+	applyDefaultTheme();
+
+	const root = document.documentElement;
+
+	if (themeOverride) {
+		applyStyleTheme = themeOverride.toLowerCase();
+	} else {
+		try {
+			const response = await fetch(
+				"https://github.com/Diramix/Vocaloid-Miku/releases/download/feature-flags/flags.json",
+			);
+			if (!response.ok) throw new Error("HTTP " + response.status);
+			const data = await response.json();
+			applyStyleTheme = data.style?.toLowerCase() ?? "";
+		} catch (err) {
+			console.error("Failed to load theme:", err);
+			return;
+		}
+	}
+
 	try {
-		const response = await fetch(
-			"https://github.com/Diramix/Vocaloid-Miku/releases/download/feature-flags/flags.json",
-		);
-		if (!response.ok) throw new Error("HTTP " + response.status);
-		const data = await response.json();
-
-		applyStyleTheme = data.style?.toLowerCase() ?? "";
-		const root = document.documentElement;
-
-		// Apply default theme first
-		applyDefaultTheme();
-
 		// Override with seasonal theme if set
 		if (applyStyleTheme === "halloween") {
 			themeTitleText.textContent = "Miku-Miku Boo!";
@@ -147,9 +158,7 @@ async function applyTheme() {
         `;
 		document.head.appendChild(styleTag);
 	} catch (err) {
-		console.error("Failed to load theme:", err);
-		// Fall back to default theme on error
-		applyDefaultTheme();
+		console.error("Failed to apply theme:", err);
 	}
 }
 
