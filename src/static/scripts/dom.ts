@@ -1,4 +1,10 @@
-const observer = new MutationObserver(() => {
+let debounceTimer: NodeJS.Timeout;
+const debounce = () => {
+	clearTimeout(debounceTimer);
+	debounceTimer = setTimeout(processDOM, 100);
+};
+
+function processDOM() {
 	// Diva Cover & Diva Perfect Mark
 	if (document.querySelector('[class*="PlayButtonWithCover_coverImage"]')) {
 		["Diva-Cover", "Diva-Perfect-Mark"].forEach((className) => {
@@ -21,7 +27,9 @@ const observer = new MutationObserver(() => {
 		newElement.className = "mikuRun";
 		target.insertAdjacentElement("afterend", newElement);
 	}
-});
+}
+
+const observer = new MutationObserver(debounce);
 
 observer.observe(document.body, { childList: true, subtree: true });
 

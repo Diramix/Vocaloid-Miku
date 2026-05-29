@@ -28,7 +28,11 @@ function removeSettingsButton(): void {
 	document.getElementById(SETTINGS_BTN_ID)?.remove();
 }
 
-const observer = new MutationObserver(() => injectSettingsButton());
+let debounceTimer: NodeJS.Timeout;
+const observer = new MutationObserver(() => {
+	clearTimeout(debounceTimer);
+	debounceTimer = setTimeout(injectSettingsButton, 100);
+});
 observer.observe(document.body, { childList: true, subtree: true });
 
 async function update() {

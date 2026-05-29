@@ -176,15 +176,17 @@ function waitForThemeReady() {
 		return;
 	}
 
+	let debounceTimer: NodeJS.Timeout;
 	const observer = new MutationObserver(() => {
 		if (document.querySelector(".ThemeTitleText") && document.head) {
+			clearTimeout(debounceTimer);
 			observer.disconnect();
 			run();
 		}
 	});
 	observer.observe(document.body ?? document.documentElement, {
 		childList: true,
-		subtree: true,
+		subtree: false,
 	});
 }
 

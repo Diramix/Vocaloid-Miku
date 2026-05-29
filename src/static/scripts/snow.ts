@@ -85,11 +85,15 @@ import { Flake } from "./types/snow";
 		}
 	}
 
+	let debounceTimer: NodeJS.Timeout;
 	const snowObserver = new MutationObserver(() => {
-		const parentEl = document.querySelector<HTMLDivElement>(TARGET_SELECTOR);
-		if (parentEl) {
-			ensureSnow(parentEl);
-		}
+		clearTimeout(debounceTimer);
+		debounceTimer = setTimeout(() => {
+			const parentEl = document.querySelector<HTMLDivElement>(TARGET_SELECTOR);
+			if (parentEl) {
+				ensureSnow(parentEl);
+			}
+		}, 100);
 	});
 
 	snowObserver.observe(document.documentElement, {

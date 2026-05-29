@@ -23,20 +23,24 @@
 
 	removeFromTree(document);
 
+	let debounceTimer: NodeJS.Timeout;
 	const observer = new MutationObserver((mutations: MutationRecord[]) => {
-		for (const m of mutations) {
-			if (m.type === "childList") {
-				m.addedNodes.forEach((node: Node) => {
-					if (node.nodeType === 1) removeFromTree(node);
-				});
-			} else if (
-				m.type === "attributes" &&
-				m.attributeName === "class" &&
-				m.target instanceof Element
-			) {
-				removeFrom(m.target);
+		clearTimeout(debounceTimer);
+		debounceTimer = setTimeout(() => {
+			for (const m of mutations) {
+				if (m.type === "childList") {
+					m.addedNodes.forEach((node: Node) => {
+						if (node.nodeType === 1) removeFromTree(node);
+					});
+				} else if (
+					m.type === "attributes" &&
+					m.attributeName === "class" &&
+					m.target instanceof Element
+				) {
+					removeFrom(m.target);
+				}
 			}
-		}
+		}, 50);
 	});
 
 	observer.observe(document.documentElement || document.body, {

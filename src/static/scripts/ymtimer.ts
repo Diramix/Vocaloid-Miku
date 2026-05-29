@@ -15,7 +15,11 @@ function ymTimerInteger() {
 		timerEl.style.display = "none";
 		syncText(timerEl);
 
-		const textObserver = new MutationObserver(() => syncText(timerEl));
+		let debounceTimer: NodeJS.Timeout;
+		const textObserver = new MutationObserver(() => {
+			clearTimeout(debounceTimer);
+			debounceTimer = setTimeout(() => syncText(timerEl), 50);
+		});
 		textObserver.observe(timerEl, {
 			characterData: true,
 			childList: true,
