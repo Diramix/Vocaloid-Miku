@@ -31,10 +31,9 @@ function removeSettingsButton(): void {
 const observer = new MutationObserver(() => injectSettingsButton());
 observer.observe(document.body, { childList: true, subtree: true });
 
-async function update() {
-	const s = await getSettings();
-	const section = s["Player"];
-	const shouldShow = !!section?.toggleVocaloidSettingsButton;
+function update() {
+	const s = getSettings();
+	const shouldShow = !!(s.toggleVocaloidSettingsButton?.value);
 
 	if (shouldShow === enabled) return;
 	enabled = shouldShow;

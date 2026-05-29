@@ -1,7 +1,7 @@
 {
 	"name": "vocaloid-miku",
 	"license": "CC0-1.0",
-	"packageManager": "pnpm@11.4.0",
+	"packageManager": "pnpm@11.5.0",
 	"scripts": {
 		"dev": "ymtm dev",
 		"build": "ymtm build",
@@ -30,7 +30,7 @@
 		}
 	},
 	"devDependencies": {
-		"@diram1x/ymtm": "^3.3.1",
+		"@diram1x/ymtm": "^3.6.0",
 		"prettier": "^3.8.3",
 		"typescript": "^6.0.3"
 	}

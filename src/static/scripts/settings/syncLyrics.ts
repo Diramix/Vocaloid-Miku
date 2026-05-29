@@ -26,15 +26,13 @@ function applyBackground(url: string) {
 	if (style.textContent !== next) style.textContent = next;
 }
 
-async function update() {
-	const s = await getSettings();
-	const section = s["SyncLyrics"];
-	if (!section) return;
+function update() {
+	const s = getSettings();
 
-	const newUrl = section.backgroundUrl?.text || BASE_URL;
-	const useCover = !!section.coverImage;
-	const newBlur = parseInt(section.blurFilter?.text, 10) || 0;
-	const normalFont = !!section.normalFont;
+	const newUrl = String(s.backgroundUrl?.value || BASE_URL);
+	const useCover = !!(s.coverImage?.value);
+	const newBlur = parseInt(String(s.blurFilter?.value ?? 0), 10) || 0;
+	const normalFont = !!(s.normalFont?.value);
 	const key = JSON.stringify({ newUrl, useCover, newBlur, normalFont });
 
 	// Background

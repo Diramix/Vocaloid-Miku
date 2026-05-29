@@ -12,19 +12,16 @@ function getOrCreateStyle(id: string): HTMLStyleElement {
 	return el;
 }
 
-async function update() {
-	const s = await getSettings();
-	const section = s["Fullscreen"];
-	if (!section) return;
-
-	const key = JSON.stringify(section);
+function update() {
+	const s = getSettings();
+	const key = JSON.stringify(s);
 	if (key === lastKey) return;
 	lastKey = key;
 
 	const style = getOrCreateStyle("fullscreen-style");
 	style.textContent = `
 		.AssetsImages:after {
-			display: ${section.toggleFullscreenMikuXD ? "block" : "none"} !important;
+			display: ${s.toggleFullscreenMikuXD?.value ? "block" : "none"} !important;
 		}
 	`;
 }

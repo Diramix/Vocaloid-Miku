@@ -12,23 +12,20 @@ function getOrCreateStyle(id: string): HTMLStyleElement {
 	return el;
 }
 
-async function update() {
-	const s = await getSettings();
-	const section = s["Queue"];
-	if (!section) return;
-
-	const key = JSON.stringify(section);
+function update() {
+	const s = getSettings();
+	const key = JSON.stringify(s);
 	if (key === lastKey) return;
 	lastKey = key;
 
 	const style = getOrCreateStyle("queue-style");
 	style.textContent = `
 		.Diva-Perfect-Mark {
-			display: ${section.togglePerfectMark ? "block" : "none"} !important;
+			display: ${s.togglePerfectMark?.value ? "block" : "none"} !important;
 		}
 		[class*="PlayQueue_content"] * [aria-label="Трек скачан"],
 		[class*="PlayQueue_content"] * [aria-label="Этот трек можете слушать только вы"] {
-			display: ${section.toggleDownloadAndVisibleIcon ? "block" : "none"} !important;
+			display: ${s.toggleDownloadAndVisibleIcon?.value ? "block" : "none"} !important;
 		}
 	`;
 }
