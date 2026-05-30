@@ -6,5 +6,6 @@ declare global {
 		getCurrentModClient: () => string;
 		nextmusicApi: any;
 		pulsesyncApi: any;
+		desktopEvents: any;
 	}
 }
