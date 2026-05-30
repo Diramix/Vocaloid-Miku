@@ -23,14 +23,15 @@ function applyAll() {
 }
 
 function subscribe(): void {
-	const source = (window as any).pulsesyncApi?.getSettings?.(metadata.name);
+	const w = window as any;
+	const source =
+		w.pulsesyncApi?.getSettings?.(metadata.name) ??
+		w.nextmusicApi?.getSettings?.(metadata.name);
 	if (!source?.onChange) {
 		setTimeout(subscribe, 500);
 		return;
 	}
 
-	// Fires immediately if settings are already cached,
-	// then on every ADDON_SETTINGS_UPDATE from PulseSync.
 	source.onChange((settings: AddonSettings) => {
 		_settings = settings;
 		applyAll();
@@ -39,6 +40,4 @@ function subscribe(): void {
 
 subscribe();
 
-// DOM tick: re-applies settings to elements that appear dynamically on the page.
-// Settings themselves are kept up-to-date by onChange above.
 setInterval(applyAll, 1000);
