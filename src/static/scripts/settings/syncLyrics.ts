@@ -30,9 +30,9 @@ function update() {
 	const s = getSettings();
 
 	const newUrl = String(s.backgroundUrl?.value || BASE_URL);
-	const useCover = !!(s.coverImage?.value);
+	const useCover = !!s.coverImage?.value;
 	const newBlur = parseInt(String(s.blurFilter?.value ?? 0), 10) || 0;
-	const normalFont = !!(s.normalFont?.value);
+	const normalFont = !!s.normalFont?.value;
 	const key = JSON.stringify({ newUrl, useCover, newBlur, normalFont });
 
 	// Background
@@ -71,5 +71,16 @@ function update() {
 
 	lastKey = key;
 }
+
+setInterval(() => {
+	const s = getSettings();
+	if (!s.coverImage?.value) return;
+
+	const coverUrl = getPlayerBarCoverUrl();
+	if (coverUrl && coverUrl !== lastCoverUrl) {
+		lastCoverUrl = coverUrl;
+		applyBackground(coverUrl);
+	}
+}, 1000);
 
 export { update };

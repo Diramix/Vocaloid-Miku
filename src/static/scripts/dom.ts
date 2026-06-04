@@ -1,4 +1,4 @@
-const observer = new MutationObserver(() => {
+function syncInjectedElements() {
 	// Diva Cover & Diva Perfect Mark
 	if (document.querySelector('[class*="PlayButtonWithCover_coverImage"]')) {
 		["Diva-Cover", "Diva-Perfect-Mark"].forEach((className) => {
@@ -21,6 +21,16 @@ const observer = new MutationObserver(() => {
 		newElement.className = "mikuRun";
 		target.insertAdjacentElement("afterend", newElement);
 	}
+}
+
+let rafPending = false;
+const observer = new MutationObserver(() => {
+	if (rafPending) return;
+	rafPending = true;
+	requestAnimationFrame(() => {
+		rafPending = false;
+		syncInjectedElements();
+	});
 });
 
 observer.observe(document.body, { childList: true, subtree: true });

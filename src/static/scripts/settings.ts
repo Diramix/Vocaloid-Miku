@@ -36,8 +36,8 @@ function subscribe(): void {
 		_settings = settings;
 		applyAll();
 	});
+
+	applyAll();
 }
 
 subscribe();
-
-setInterval(applyAll, 1000);

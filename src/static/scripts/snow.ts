@@ -49,7 +49,7 @@ import { Flake } from "./types/snow";
 			}
 
 			function drawSnow() {
-				if (!parentEl.contains(snowContainer) || !ctx) return;
+				if (!ctx) return;
 
 				ctx.clearRect(0, 0, canvas.width, canvas.height);
 				ctx.fillStyle = "white";
@@ -77,7 +77,8 @@ import { Flake } from "./types/snow";
 			}
 
 			(function animate() {
-				drawSnow();
+				if (!parentEl.contains(snowContainer)) return;
+				if (!document.hidden) drawSnow();
 				requestAnimationFrame(animate);
 			})();
 

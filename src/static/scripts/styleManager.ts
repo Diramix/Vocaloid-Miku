@@ -2,59 +2,128 @@ import { ymTimerInteger } from "./ymtimer";
 
 const themeOverride: string = "";
 
-// Feature Flags Loader
-let mikuRun: string,
-	kagamineRinStyle: string,
-	fullscreenMikuXDStyle: string,
-	myVibeMiku: string,
-	applyStyleTheme: string;
+const FLAGS_URL =
+	"https://github.com/Diramix/Vocaloid-Miku/releases/download/feature-flags/flags.json";
 
-// DEFAULT THEME
-function applyDefaultTheme() {
+const LOCAL = "http://127.0.0.1:2007/assets/";
+const Q = "?name=Vocaloid Miku!";
+const TETO_BASE =
+	"https://raw.githubusercontent.com/Diramix/Kasane-Teto/refs/heads/main/Kasane%20Teto!/assets";
+
+type Palette = Record<string, string>;
+type Assets = {
+	mikuRun: string;
+	kagamineRin: string;
+	fullscreenMikuXD: string;
+	myVibe: string;
+};
+
+const DEFAULT_PALETTE: Palette = {
+	"--main-color": "#86cecb",
+	"--light-main-color": "#AEFFFF",
+	"--buttons-color": "#93e2df",
+	"--basic-color": "#137a7f",
+	"--hatsune-light": "#bec8d1",
+	"--font-color": "#373b3e",
+	"--miku-color": "#e12885",
+};
+
+const DEFAULT_ASSETS: Assets = {
+	mikuRun: `${LOCAL}miku-run.png${Q}`,
+	kagamineRin: `${LOCAL}Kagamine-Rin.webp${Q}`,
+	fullscreenMikuXD: `${LOCAL}fullscreen-miku-XD.png${Q}`,
+	myVibe: `${LOCAL}My-vibe.png${Q}`,
+};
+
+type Theme = { title: string; palette: Palette; assets: Assets };
+
+const THEMES: Record<string, Theme> = {
+	halloween: {
+		title: "Miku-Miku Boo!",
+		palette: {
+			"--main-color": "#E48742",
+			"--light-main-color": "#FFCB63",
+			"--buttons-color": "#ff9b4c",
+			"--basic-color": "#A75245",
+			"--hatsune-light": "#ffae44",
+			"--font-color": "#000009",
+			"--miku-color": "#B556A6",
+		},
+		assets: {
+			mikuRun: DEFAULT_ASSETS.mikuRun,
+			kagamineRin: `${LOCAL}Kagamine-Rin-Halloween.webp${Q}`,
+			fullscreenMikuXD: `${LOCAL}fullscreen-miku-XD-halloween.png${Q}`,
+			myVibe: `${LOCAL}My-vibe-halloween.png${Q}`,
+		},
+	},
+	christmas: {
+		title: "Happy Miku Year!",
+		palette: DEFAULT_PALETTE,
+		assets: {
+			mikuRun: DEFAULT_ASSETS.mikuRun,
+			kagamineRin: `${LOCAL}Kagamine-Rin-Christmas.webp${Q}`,
+			fullscreenMikuXD: `${LOCAL}fullscreen-miku-XD-Christmas.png${Q}`,
+			myVibe: `${LOCAL}My-vibe-Christmas.png${Q}`,
+		},
+	},
+	teto: {
+		title: "Kasane Teto!",
+		palette: {
+			"--main-color": "#D46A83",
+			"--light-main-color": "#FF9FC4",
+			"--buttons-color": "#f47a97",
+			"--basic-color": "#854462",
+			"--hatsune-light": "#0b0c0c",
+			"--font-color": "#2A2433",
+			"--miku-color": "#D46A83",
+		},
+		assets: {
+			mikuRun: `${TETO_BASE}/MainPage/miku-run.png`,
+			kagamineRin: DEFAULT_ASSETS.kagamineRin,
+			fullscreenMikuXD: `${TETO_BASE}/Fullscreen/fullscreen-miku-XD.png`,
+			myVibe: `${TETO_BASE}/MainPage/My-vibe.png`,
+		},
+	},
+};
+
+let myVibeMiku: string = DEFAULT_ASSETS.myVibe;
+let applyStyleTheme: string;
+
+function buildDynamicStyle(palette: Palette, assets: Assets): string {
+	const vars = Object.entries(palette)
+		.map(([k, v]) => `                ${k}: ${v};`)
+		.join("\n");
+
+	return `
+            :root {
+${vars}
+            }
+
+            .mikuRun {
+                background-image: url("${assets.mikuRun}");
+            }
+
+            .AssetsImages:before {
+                content: url("${assets.kagamineRin}");
+            }
+
+            .AssetsImages:after {
+                background-image: url("${assets.fullscreenMikuXD}");
+            }
+        `;
+}
+
+function applyStyle(palette: Palette, assets: Assets): void {
 	const root = document.documentElement;
+	for (const [k, v] of Object.entries(palette)) {
+		root.style.setProperty(k, v);
+	}
 
-	root.style.setProperty("--main-color", "#86cecb");
-	root.style.setProperty("--light-main-color", "#AEFFFF");
-	root.style.setProperty("--buttons-color", "#93e2df");
-	root.style.setProperty("--basic-color", "#137a7f");
-	root.style.setProperty("--hatsune-light", "#bec8d1");
-	root.style.setProperty("--font-color", "#373b3e");
-	root.style.setProperty("--miku-color", "#e12885");
-
-	mikuRun = "http://127.0.0.1:2007/assets/miku-run.png?name=Vocaloid Miku!";
-	kagamineRinStyle =
-		"http://127.0.0.1:2007/assets/Kagamine-Rin.webp?name=Vocaloid Miku!";
-	fullscreenMikuXDStyle =
-		"http://127.0.0.1:2007/assets/fullscreen-miku-XD.png?name=Vocaloid Miku!";
-	myVibeMiku = "http://127.0.0.1:2007/assets/My-vibe.png?name=Vocaloid Miku!";
-
-	let oldStyle = document.getElementById("dynamic-style");
-	if (oldStyle) oldStyle.remove();
+	document.getElementById("dynamic-style")?.remove();
 
 	const styleTag = document.createElement("style");
 	styleTag.id = "dynamic-style";
-	styleTag.textContent = `
-        :root {
-            --main-color: ${getComputedStyle(root).getPropertyValue("--main-color")};
-            --light-main-color: ${getComputedStyle(root).getPropertyValue("--light-main-color")};
-            --basic-color: ${getComputedStyle(root).getPropertyValue("--basic-color")};
-            --hatsune-light: ${getComputedStyle(root).getPropertyValue("--hatsune-light")};
-            --font-color: ${getComputedStyle(root).getPropertyValue("--font-color")};
-            --miku-color: ${getComputedStyle(root).getPropertyValue("--miku-color")};
-        }
-
-        /*.mikuRun {
-            background-image: url("${mikuRun}");
-        }*/
-
-        .AssetsImages:before {
-            content: url("${kagamineRinStyle}");
-        }
-
-        .AssetsImages:after {
-            background-image: url("${fullscreenMikuXDStyle}");
-        }
-    `;
+	styleTag.textContent = buildDynamicStyle(palette, assets);
 	document.head.appendChild(styleTag);
 }
 
@@ -63,103 +132,30 @@ async function applyTheme() {
 	const themeTitleText = document.querySelector(".ThemeTitleText");
 	if (!themeTitleText) return;
 
-	// Apply default theme first
-	applyDefaultTheme();
+	myVibeMiku = DEFAULT_ASSETS.myVibe;
+	applyStyle(DEFAULT_PALETTE, DEFAULT_ASSETS);
 
-	const root = document.documentElement;
-
-	if (themeOverride) {
-		applyStyleTheme = themeOverride.toLowerCase();
-	} else {
+	let style = themeOverride.toLowerCase();
+	if (!themeOverride) {
 		try {
-			const response = await fetch(
-				"https://github.com/Diramix/Vocaloid-Miku/releases/download/feature-flags/flags.json",
-			);
+			const response = await fetch(FLAGS_URL);
 			if (!response.ok) throw new Error("HTTP " + response.status);
 			const data = await response.json();
-			applyStyleTheme = data.style?.toLowerCase() ?? "";
+			style = data.style?.toLowerCase() ?? "";
 		} catch (err) {
 			console.error("Failed to load theme:", err);
 			return;
 		}
 	}
 
-	try {
-		// Override with seasonal theme if set
-		if (applyStyleTheme === "halloween") {
-			themeTitleText.textContent = "Miku-Miku Boo!";
-			myVibeMiku =
-				"http://127.0.0.1:2007/assets/My-vibe-halloween.png?name=Vocaloid Miku!";
-			kagamineRinStyle =
-				"http://127.0.0.1:2007/assets/Kagamine-Rin-Halloween.webp?name=Vocaloid Miku!";
-			fullscreenMikuXDStyle =
-				"http://127.0.0.1:2007/assets/fullscreen-miku-XD-halloween.png?name=Vocaloid Miku!";
+	applyStyleTheme = style;
 
-			root.style.setProperty("--main-color", "#E48742");
-			root.style.setProperty("--light-main-color", "#FFCB63");
-			root.style.setProperty("--buttons-color", "#ff9b4c");
-			root.style.setProperty("--basic-color", "#A75245");
-			root.style.setProperty("--hatsune-light", "#ffae44");
-			root.style.setProperty("--font-color", "#000009");
-			root.style.setProperty("--miku-color", "#B556A6");
-		} else if (applyStyleTheme === "christmas") {
-			themeTitleText.textContent = "Happy Miku Year!";
-			myVibeMiku =
-				"http://127.0.0.1:2007/assets/My-vibe-Christmas.png?name=Vocaloid Miku!";
-			kagamineRinStyle =
-				"http://127.0.0.1:2007/assets/Kagamine-Rin-Christmas.webp?name=Vocaloid Miku!";
-			fullscreenMikuXDStyle =
-				"http://127.0.0.1:2007/assets/fullscreen-miku-XD-Christmas.png?name=Vocaloid Miku!";
-		} else if (applyStyleTheme === "teto") {
-			themeTitleText.textContent = "Kasane Teto!";
-			mikuRun =
-				"https://raw.githubusercontent.com/Diramix/Kasane-Teto/refs/heads/main/Kasane%20Teto!/assets/MainPage/miku-run.png";
-			fullscreenMikuXDStyle =
-				"https://raw.githubusercontent.com/Diramix/Kasane-Teto/refs/heads/main/Kasane%20Teto!/assets/Fullscreen/fullscreen-miku-XD.png";
-			myVibeMiku =
-				"https://raw.githubusercontent.com/Diramix/Kasane-Teto/refs/heads/main/Kasane%20Teto!/assets/MainPage/My-vibe.png";
+	const theme = THEMES[style];
+	if (!theme) return;
 
-			root.style.setProperty("--main-color", "#D46A83");
-			root.style.setProperty("--light-main-color", "#FF9FC4");
-			root.style.setProperty("--buttons-color", "#f47a97");
-			root.style.setProperty("--basic-color", "#854462");
-			root.style.setProperty("--hatsune-light", "#0b0c0c");
-			root.style.setProperty("--font-color", "#2A2433");
-			root.style.setProperty("--miku-color", "#D46A83");
-		}
-
-		// Rewrite dynamic CSS after theme changes
-		let oldStyle = document.getElementById("dynamic-style");
-		if (oldStyle) oldStyle.remove();
-
-		const styleTag = document.createElement("style");
-		styleTag.id = "dynamic-style";
-		styleTag.textContent = `
-            :root {
-                --main-color: ${getComputedStyle(root).getPropertyValue("--main-color")};
-                --light-main-color: ${getComputedStyle(root).getPropertyValue("--light-main-color")};
-                --basic-color: ${getComputedStyle(root).getPropertyValue("--basic-color")};
-                --hatsune-light: ${getComputedStyle(root).getPropertyValue("--hatsune-light")};
-                --font-color: ${getComputedStyle(root).getPropertyValue("--font-color")};
-                --miku-color: ${getComputedStyle(root).getPropertyValue("--miku-color")};
-            }
-
-            .mikuRun {
-                background-image: url("${mikuRun}");
-            }
-
-            .AssetsImages:before {
-                content: url("${kagamineRinStyle}");
-            }
-
-            .AssetsImages:after {
-                background-image: url("${fullscreenMikuXDStyle}");
-            }
-        `;
-		document.head.appendChild(styleTag);
-	} catch (err) {
-		console.error("Failed to apply theme:", err);
-	}
+	themeTitleText.textContent = theme.title;
+	myVibeMiku = theme.assets.myVibe;
+	applyStyle(theme.palette, theme.assets);
 }
 
 // Consolidates both waitForThemeReady calls: runs applyTheme + ymTimerInteger

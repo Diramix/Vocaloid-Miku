@@ -5,7 +5,6 @@
 		if (!el || el.nodeType !== 1) return;
 		if (el.classList && el.classList.contains(modSettingsClass)) {
 			el.classList.remove(modSettingsClass);
-			console.log("Class removed from:", el);
 		}
 	}
 

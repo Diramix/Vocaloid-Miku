@@ -26,33 +26,43 @@ updateVibeBackgroundImage();
 coverAndAssetsImagesElements();
 
 // Change fullscreen player background image script
+let lastBgUrl: string | null = null;
+
+function applyBg(imgBackground: string) {
+	const withGradient = `linear-gradient(180deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.75) 100%), url(${imgBackground}) center center / cover no-repeat`;
+	const plain = `url(${imgBackground}) center center / cover no-repeat`;
+
+	const gradientEl = document.querySelector<HTMLDivElement>(
+		`[class*="FullscreenPlayerDesktop_modalContent"]`,
+	);
+	if (gradientEl && gradientEl.style.background !== withGradient) {
+		gradientEl.style.background = withGradient;
+	}
+
+	[".Diva-Cover", ".CoverImage"].forEach((selector) => {
+		const element = document.querySelector<HTMLDivElement>(selector);
+		if (element && element.style.background !== plain) {
+			element.style.background = plain;
+		}
+	});
+}
+
 function updateBackgroundImage() {
 	const imgBackground = getPlayerBarCoverUrl();
 	if (!imgBackground) return;
 
-	const newBackgroundWithGradient = `linear-gradient(180deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.75) 100%), url(${imgBackground}) center center / cover no-repeat`;
-	const normalNewBackground = `url(${imgBackground}) center center / cover no-repeat`;
+	// Preload only when the cover actually changed (avoids recreating an Image
+	// on every mutation).
+	if (imgBackground !== lastBgUrl) {
+		lastBgUrl = imgBackground;
+		const img = new Image();
+		img.src = imgBackground;
+	}
 
-	const img = new Image();
-	img.src = imgBackground;
-
-	img.onload = () => {
-		const elementsWithGradient = [
-			`[class*="FullscreenPlayerDesktop_modalContent"]`,
-		];
-
-		const elementsWithoutGradient = [".Diva-Cover", ".CoverImage"];
-
-		elementsWithGradient.forEach((selector) => {
-			const element = document.querySelector<HTMLDivElement>(selector);
-			if (element) element.style.background = newBackgroundWithGradient;
-		});
-
-		elementsWithoutGradient.forEach((selector) => {
-			const element = document.querySelector<HTMLDivElement>(selector);
-			if (element) element.style.background = normalNewBackground;
-		});
-	};
+	// Always (re)apply: elements like .CoverImage are injected in a later step
+	// of the same frame and React can remount the fullscreen nodes, so we must
+	// re-fill them on every pass. The guarded writes make this cheap.
+	applyBg(imgBackground);
 }
 
 // Change vibe block background image script
