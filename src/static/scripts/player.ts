@@ -51,17 +51,12 @@ function updateBackgroundImage() {
 	const imgBackground = getPlayerBarCoverUrl();
 	if (!imgBackground) return;
 
-	// Preload only when the cover actually changed (avoids recreating an Image
-	// on every mutation).
 	if (imgBackground !== lastBgUrl) {
 		lastBgUrl = imgBackground;
 		const img = new Image();
 		img.src = imgBackground;
 	}
 
-	// Always (re)apply: elements like .CoverImage are injected in a later step
-	// of the same frame and React can remount the fullscreen nodes, so we must
-	// re-fill them on every pass. The guarded writes make this cheap.
 	applyBg(imgBackground);
 }
 
