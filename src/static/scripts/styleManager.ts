@@ -50,7 +50,7 @@ const THEMES: Record<string, Theme> = {
 			"--miku-color": "#B556A6",
 		},
 		assets: {
-			mikuRun: DEFAULT_ASSETS.mikuRun,
+			mikuRun: `${LOCAL}miku-run-halloween.png${Q}`,
 			kagamineRin: `${LOCAL}Kagamine-Rin-Halloween.webp${Q}`,
 			fullscreenMikuXD: `${LOCAL}fullscreen-miku-XD-halloween.png${Q}`,
 			myVibe: `${LOCAL}My-vibe-halloween.png${Q}`,
