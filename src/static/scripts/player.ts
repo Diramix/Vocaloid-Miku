@@ -1,29 +1,24 @@
 import { myVibeMiku } from "./styleManager";
-import { getPlayerBarCoverUrl, isElementInViewport } from "./utils";
+import {
+	getPlayerBarCoverUrl,
+	isElementInViewport,
+	observeWithRaf,
+} from "./utils";
 
-let rafPending = false;
+function refreshPlayerVisuals() {
+	updateBackgroundImage();
+	updateVibeBackgroundImage();
+	coverAndAssetsImagesElements();
+}
 
-const playerObserver = new MutationObserver(() => {
-	if (rafPending) return;
-	rafPending = true;
-	requestAnimationFrame(() => {
-		rafPending = false;
-		updateBackgroundImage();
-		updateVibeBackgroundImage();
-		coverAndAssetsImagesElements();
-	});
-});
-
-playerObserver.observe(document.body, {
+observeWithRaf(document.body, refreshPlayerVisuals, {
 	childList: true,
 	subtree: true,
 	attributes: true,
 	attributeFilter: ["src"],
 });
 
-updateBackgroundImage();
-updateVibeBackgroundImage();
-coverAndAssetsImagesElements();
+refreshPlayerVisuals();
 
 // Change fullscreen player background image script
 let lastBgUrl: string | null = null;
@@ -77,14 +72,16 @@ function updateVibeBackgroundImage() {
 	if (!dynamicBG_Blur) {
 		dynamicBG_Blur = document.createElement("div");
 		dynamicBG_Blur.classList.add("blur-element");
-		dynamicBG_Blur.style.position = "absolute";
-		dynamicBG_Blur.style.top = "0";
-		dynamicBG_Blur.style.left = "0";
-		dynamicBG_Blur.style.width = "100%";
-		dynamicBG_Blur.style.height = "100%";
-		dynamicBG_Blur.style.backgroundColor = "#26F4FE";
-		dynamicBG_Blur.style.filter = "blur(0px) brightness(0.5)";
-		dynamicBG_Blur.style.zIndex = "0";
+		Object.assign(dynamicBG_Blur.style, {
+			position: "absolute",
+			top: "0",
+			left: "0",
+			width: "100%",
+			height: "100%",
+			backgroundColor: "#26F4FE",
+			filter: "blur(0px) brightness(0.5)",
+			zIndex: "0",
+		});
 		dynamicBG.appendChild(dynamicBG_Blur);
 	}
 
@@ -99,15 +96,17 @@ function updateVibeBackgroundImage() {
 	if (!myVibeMikuElement) {
 		myVibeMikuElement = document.createElement("div");
 		myVibeMikuElement.classList.add("additional-image-element");
-		myVibeMikuElement.style.position = "absolute";
-		myVibeMikuElement.style.top = "0";
-		myVibeMikuElement.style.left = "0";
-		myVibeMikuElement.style.width = "100%";
-		myVibeMikuElement.style.height = "100%";
-		myVibeMikuElement.style.background = `url("${myVibeMiku}") center center / cover no-repeat`;
-		myVibeMikuElement.style.borderRadius = "10px";
-		myVibeMikuElement.style.pointerEvents = "none";
-		myVibeMikuElement.style.zIndex = "2";
+		Object.assign(myVibeMikuElement.style, {
+			position: "absolute",
+			top: "0",
+			left: "0",
+			width: "100%",
+			height: "100%",
+			background: `url("${myVibeMiku}") center center / cover no-repeat`,
+			borderRadius: "10px",
+			pointerEvents: "none",
+			zIndex: "2",
+		});
 		dynamicBG.appendChild(myVibeMikuElement);
 	}
 

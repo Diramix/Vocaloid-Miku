@@ -15,14 +15,16 @@ import { Flake } from "./types/snow";
 		if (!snowContainer && applyStyleTheme === "christmas") {
 			snowContainer = document.createElement("div");
 			snowContainer.id = SNOW_ID;
-			snowContainer.style.position = "absolute";
-			snowContainer.style.top = "0";
-			snowContainer.style.left = "0";
-			snowContainer.style.width = "100%";
-			snowContainer.style.height = "100%";
-			snowContainer.style.pointerEvents = "none";
-			snowContainer.style.zIndex = "0";
-			snowContainer.style.overflow = "hidden";
+			Object.assign(snowContainer.style, {
+				position: "absolute",
+				top: "0",
+				left: "0",
+				width: "100%",
+				height: "100%",
+				pointerEvents: "none",
+				zIndex: "0",
+				overflow: "hidden",
+			});
 
 			parentEl.prepend(snowContainer);
 

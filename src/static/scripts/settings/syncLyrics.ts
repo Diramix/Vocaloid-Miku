@@ -1,5 +1,5 @@
 import { getSettings } from "../settings";
-import { getPlayerBarCoverUrl } from "../utils";
+import { getPlayerBarCoverUrl, getOrCreateStyle } from "../utils";
 
 const BASE_URL =
 	"http://127.0.0.1:2007/assets/fullscreen-lyrics.png?name=Vocaloid Miku!";
@@ -8,22 +8,21 @@ let baseBlur = 0;
 let lastCoverUrl: string | null = null;
 let lastKey: string | null = null;
 
-function getOrCreateStyle(id: string): HTMLStyleElement {
-	let el = document.getElementById(id) as HTMLStyleElement | null;
-	if (!el) {
-		el = document.createElement("style");
-		el.id = id;
-		document.head.appendChild(el);
-	}
-	return el;
-}
-
 function applyBackground(url: string) {
 	const style = getOrCreateStyle("sync-lyrics-style");
-	const next = url.startsWith("http://127.0.0.1:2007")
-		? `[class*="SyncLyrics_root"] { background-image: url("${url}"); }`
-		: `[class*="SyncLyrics_root"] { background-image: url("https://images.weserv.nl/?url=${url}"); }`;
+	const imageUrl = url.startsWith("http://127.0.0.1:2007")
+		? url
+		: `https://images.weserv.nl/?url=${url}`;
+	const next = `[class*="SyncLyrics_root"] { background-image: url("${imageUrl}"); }`;
 	if (style.textContent !== next) style.textContent = next;
+}
+
+function syncCoverBackground() {
+	const coverUrl = getPlayerBarCoverUrl();
+	if (coverUrl && coverUrl !== lastCoverUrl) {
+		lastCoverUrl = coverUrl;
+		applyBackground(coverUrl);
+	}
 }
 
 function update() {
@@ -37,11 +36,7 @@ function update() {
 
 	// Background
 	if (useCover) {
-		const coverUrl = getPlayerBarCoverUrl();
-		if (coverUrl && coverUrl !== lastCoverUrl) {
-			lastCoverUrl = coverUrl;
-			applyBackground(coverUrl);
-		}
+		syncCoverBackground();
 	} else if (key !== lastKey) {
 		applyBackground(newUrl);
 	}
@@ -73,14 +68,8 @@ function update() {
 }
 
 setInterval(() => {
-	const s = getSettings();
-	if (!s.coverImage?.value) return;
-
-	const coverUrl = getPlayerBarCoverUrl();
-	if (coverUrl && coverUrl !== lastCoverUrl) {
-		lastCoverUrl = coverUrl;
-		applyBackground(coverUrl);
-	}
+	if (!getSettings().coverImage?.value) return;
+	syncCoverBackground();
 }, 1000);
 
 export { update };

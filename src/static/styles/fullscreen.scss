@@ -7,6 +7,7 @@
 		width: 100%;
 		height: 80%;
 		left: 16.8%;
+		background-image: var(--assets-after-image);
 		background-repeat: no-repeat;
 		background-size: contain;
 		background-position: bottom;
@@ -16,6 +17,7 @@
 	&:before {
 		visibility: visible;
 		position: fixed;
+		content: var(--assets-before-image);
 		left: 121px;
 		bottom: 432px;
 		z-index: 412;

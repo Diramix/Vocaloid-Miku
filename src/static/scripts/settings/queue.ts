@@ -1,16 +1,7 @@
 import { getSettings } from "../settings";
+import { getOrCreateStyle } from "../utils";
 
 let lastKey: string | null = null;
-
-function getOrCreateStyle(id: string): HTMLStyleElement {
-	let el = document.getElementById(id) as HTMLStyleElement | null;
-	if (!el) {
-		el = document.createElement("style");
-		el.id = id;
-		document.head.appendChild(el);
-	}
-	return el;
-}
 
 function update() {
 	const s = getSettings();

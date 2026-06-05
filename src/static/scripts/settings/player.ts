@@ -33,7 +33,7 @@ observer.observe(document.body, { childList: true, subtree: true });
 
 function update() {
 	const s = getSettings();
-	const shouldShow = !!(s.toggleVocaloidSettingsButton?.value);
+	const shouldShow = !!s.toggleVocaloidSettingsButton?.value;
 
 	if (shouldShow === enabled) return;
 	enabled = shouldShow;

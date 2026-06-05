@@ -56,6 +56,7 @@ const THEMES: Record<string, Theme> = {
 			myVibe: `${LOCAL}My-vibe-halloween.png${Q}`,
 		},
 	},
+
 	christmas: {
 		title: "Happy Miku Year!",
 		palette: DEFAULT_PALETTE,
@@ -66,6 +67,7 @@ const THEMES: Record<string, Theme> = {
 			myVibe: `${LOCAL}My-vibe-Christmas.png${Q}`,
 		},
 	},
+
 	teto: {
 		title: "Kasane Teto!",
 		palette: {
@@ -89,45 +91,24 @@ const THEMES: Record<string, Theme> = {
 let myVibeMiku: string = DEFAULT_ASSETS.myVibe;
 let applyStyleTheme: string;
 
-function buildDynamicStyle(palette: Palette, assets: Assets): string {
-	const vars = Object.entries(palette)
-		.map(([k, v]) => `                ${k}: ${v};`)
-		.join("\n");
-
-	return `
-            :root {
-${vars}
-            }
-
-            .mikuRun {
-                background-image: url("${assets.mikuRun}");
-            }
-
-            .AssetsImages:before {
-                content: url("${assets.kagamineRin}");
-            }
-
-            .AssetsImages:after {
-                background-image: url("${assets.fullscreenMikuXD}");
-            }
-        `;
-}
-
 function applyStyle(palette: Palette, assets: Assets): void {
 	const root = document.documentElement;
-	for (const [k, v] of Object.entries(palette)) {
-		root.style.setProperty(k, v);
+
+	for (const [name, value] of Object.entries(palette)) {
+		root.style.setProperty(name, value);
 	}
 
-	document.getElementById("dynamic-style")?.remove();
-
-	const styleTag = document.createElement("style");
-	styleTag.id = "dynamic-style";
-	styleTag.textContent = buildDynamicStyle(palette, assets);
-	document.head.appendChild(styleTag);
+	root.style.setProperty("--miku-run-image", `url("${assets.mikuRun}")`);
+	root.style.setProperty(
+		"--assets-before-image",
+		`url("${assets.kagamineRin}")`,
+	);
+	root.style.setProperty(
+		"--assets-after-image",
+		`url("${assets.fullscreenMikuXD}")`,
+	);
 }
 
-// Apply theme from JSON
 async function applyTheme() {
 	const themeTitleText = document.querySelector(".ThemeTitleText");
 	if (!themeTitleText) return;
@@ -158,11 +139,9 @@ async function applyTheme() {
 	applyStyle(theme.palette, theme.assets);
 }
 
-// Consolidates both waitForThemeReady calls: runs applyTheme + ymTimerInteger
 function waitForThemeReady() {
 	const run = () => {
 		applyTheme().then(() => {
-			console.log("🎨 The theme is successfully applied!");
 			ymTimerInteger?.();
 		});
 	};
@@ -184,7 +163,6 @@ function waitForThemeReady() {
 	});
 }
 
-// Entry point
 if (document.readyState === "complete") {
 	waitForThemeReady();
 } else {

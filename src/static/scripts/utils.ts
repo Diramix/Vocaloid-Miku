@@ -27,3 +27,31 @@ export function isElementInViewport(el: Element): boolean {
 		rect.right <= (window.innerWidth || document.documentElement.clientWidth)
 	);
 }
+
+export function getOrCreateStyle(id: string): HTMLStyleElement {
+	let el = document.getElementById(id) as HTMLStyleElement | null;
+	if (!el) {
+		el = document.createElement("style");
+		el.id = id;
+		document.head.appendChild(el);
+	}
+	return el;
+}
+
+export function observeWithRaf(
+	target: Node,
+	callback: () => void,
+	options: MutationObserverInit,
+): MutationObserver {
+	let rafPending = false;
+	const observer = new MutationObserver(() => {
+		if (rafPending) return;
+		rafPending = true;
+		requestAnimationFrame(() => {
+			rafPending = false;
+			callback();
+		});
+	});
+	observer.observe(target, options);
+	return observer;
+}

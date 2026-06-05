@@ -1,3 +1,5 @@
+import { observeWithRaf } from "./utils";
+
 function syncInjectedElements() {
 	// Diva Cover & Diva Perfect Mark
 	if (document.querySelector('[class*="PlayButtonWithCover_coverImage"]')) {
@@ -23,17 +25,10 @@ function syncInjectedElements() {
 	}
 }
 
-let rafPending = false;
-const observer = new MutationObserver(() => {
-	if (rafPending) return;
-	rafPending = true;
-	requestAnimationFrame(() => {
-		rafPending = false;
-		syncInjectedElements();
-	});
+observeWithRaf(document.body, syncInjectedElements, {
+	childList: true,
+	subtree: true,
 });
-
-observer.observe(document.body, { childList: true, subtree: true });
 
 // Vocaloid Miku! - theme title element
 const themeTitleText = Object.assign(document.createElement("div"), {
