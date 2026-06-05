@@ -1,7 +1,7 @@
 {
 	"name": "vocaloid-miku",
 	"license": "CC0-1.0",
-	"packageManager": "pnpm@11.5.0",
+	"packageManager": "pnpm@11.5.2",
 	"scripts": {
 		"dev": "ymtm dev",
 		"build": "ymtm build",
