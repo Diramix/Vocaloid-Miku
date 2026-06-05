@@ -113,7 +113,6 @@ function updateVibeBackgroundImage() {
 		myVibeMikuElement.style.borderRadius = "10px";
 		myVibeMikuElement.style.pointerEvents = "none";
 		myVibeMikuElement.style.zIndex = "2";
-		myVibeMikuElement.style.imageRendering = "crisp-edges";
 		dynamicBG.appendChild(myVibeMikuElement);
 	}
 
