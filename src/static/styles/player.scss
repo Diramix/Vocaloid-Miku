@@ -44,8 +44,20 @@ section[class*="PlayerBar_root"] {
 
 	@media (min-width: 1023px) {
 		position: absolute;
-		left: 50%;
-		transform: translateX(-50%);
+		left: 0;
+		right: 0;
+		width: fit-content;
+		margin-inline: auto;
+		background: transparent;
+
+		&:before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: var(--basic-color);
+			border-radius: inherit;
+			z-index: -1;
+		}
 	}
 }
 
