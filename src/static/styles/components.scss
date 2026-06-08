@@ -136,7 +136,7 @@
 }
 
 [class*="LikesAndHistoryItem_root"] {
-	background: #137a7f80;
+	background: color-mix(in srgb, var(--buttons-color) 75%, black);
 }
 
 [class*="LikesAndHistoryItem_title"],
