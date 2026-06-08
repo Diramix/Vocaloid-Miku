@@ -11,8 +11,8 @@
 					"buttons": [
 						{
 							"name": "text",
-							"text": "http://127.0.0.1:2007/assets/fullscreen-lyrics.jpg?name=Vocaloid Miku!",
-							"defaultParameter": "http://127.0.0.1:2007/assets/fullscreen-lyrics.jpg?name=Vocaloid Miku!",
+							"text": "default",
+							"defaultParameter": "default",
 							"id": ""
 						}
 					]

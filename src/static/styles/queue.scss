@@ -1,5 +1,5 @@
 [class*="PlayQueue_root"] {
-	background-image: url("http://127.0.0.1:2007/assets/Diva-Queue-Background.jpg?name=Vocaloid Miku!");
+	background-image: var(--queue-background-image);
 	background-position: center;
 	background-size: cover;
 
@@ -237,7 +237,7 @@
 	position: fixed;
 	width: 34%;
 	height: 32%;
-	background-image: url("http://127.0.0.1:2007/assets/Diva-F-Perfect-Mark.webp?name=Vocaloid Miku!");
+	background-image: var(--perfect-mark-image);
 	background-size: contain;
 	background-position: center top;
 	top: 50vh;

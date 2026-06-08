@@ -1,8 +1,6 @@
 import { getSettings } from "../settings";
 import { getPlayerBarCoverUrl, getOrCreateStyle } from "../utils";
-
-const BASE_URL =
-	"http://127.0.0.1:2007/assets/fullscreen-lyrics.png?name=Vocaloid Miku!";
+import { syncLyricsBackgroundDefault } from "../styleManager";
 
 let baseBlur = 0;
 let lastCoverUrl: string | null = null;
@@ -28,7 +26,8 @@ function syncCoverBackground() {
 function update() {
 	const s = getSettings();
 
-	const newUrl = String(s.backgroundUrl?.value || BASE_URL);
+	const rawUrl = String(s.backgroundUrl?.value || "default");
+	const newUrl = rawUrl === "default" ? syncLyricsBackgroundDefault : rawUrl;
 	const useCover = !!s.coverImage?.value;
 	const newBlur = parseInt(String(s.blurFilter?.value ?? 0), 10) || 0;
 	const normalFont = !!s.normalFont?.value;

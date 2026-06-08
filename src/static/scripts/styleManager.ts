@@ -19,6 +19,9 @@ type Assets = {
 	kagamineRin: string;
 	fullscreenMikuXD: string;
 	myVibe: string;
+	syncLyricsBackground: string;
+	divaQueueBackground: string;
+	perfectMark: string;
 };
 
 const DEFAULT_PALETTE: Palette = {
@@ -36,6 +39,9 @@ const DEFAULT_ASSETS: Assets = {
 	kagamineRin: `${LOCAL}Kagamine-Rin.webp${Q}`,
 	fullscreenMikuXD: `${LOCAL}fullscreen-miku-XD.png${Q}`,
 	myVibe: `${LOCAL}My-vibe.png${Q}`,
+	syncLyricsBackground: `${LOCAL}fullscreen-lyrics.jpg${Q}`,
+	divaQueueBackground: `${LOCAL}Diva-Queue-Background.jpg${Q}`,
+	perfectMark: `${LOCAL}Diva-F-Perfect-Mark.webp${Q}`,
 };
 
 type Theme = { title: string; palette: Palette; assets: Assets };
@@ -57,6 +63,9 @@ const THEMES: Record<string, Theme> = {
 			kagamineRin: `${LOCAL}Kagamine-Rin-Halloween.webp${Q}`,
 			fullscreenMikuXD: `${LOCAL}fullscreen-miku-XD-halloween.png${Q}`,
 			myVibe: `${LOCAL}My-vibe-halloween.png${Q}`,
+			syncLyricsBackground: DEFAULT_ASSETS.syncLyricsBackground,
+			divaQueueBackground: DEFAULT_ASSETS.divaQueueBackground,
+			perfectMark: DEFAULT_ASSETS.perfectMark,
 		},
 	},
 
@@ -68,6 +77,9 @@ const THEMES: Record<string, Theme> = {
 			kagamineRin: `${LOCAL}Kagamine-Rin-Christmas.webp${Q}`,
 			fullscreenMikuXD: `${LOCAL}fullscreen-miku-XD-Christmas.png${Q}`,
 			myVibe: `${LOCAL}My-vibe-Christmas.png${Q}`,
+			syncLyricsBackground: DEFAULT_ASSETS.syncLyricsBackground,
+			divaQueueBackground: DEFAULT_ASSETS.divaQueueBackground,
+			perfectMark: DEFAULT_ASSETS.perfectMark,
 		},
 	},
 
@@ -87,11 +99,15 @@ const THEMES: Record<string, Theme> = {
 			kagamineRin: DEFAULT_ASSETS.kagamineRin,
 			fullscreenMikuXD: `${TETO_BASE}/Fullscreen/fullscreen-miku-XD.png`,
 			myVibe: `${TETO_BASE}/MainPage/My-vibe.png`,
+			syncLyricsBackground: `${TETO_BASE}/SyncLyrics/fullscreen-lyrics.jpg`,
+			divaQueueBackground: `${TETO_BASE}/Queue/Diva-Queue-Background.png`,
+			perfectMark: `${TETO_BASE}/Queue/Diva-F-Perfect-Mark.png`,
 		},
 	},
 };
 
 let myVibeMiku: string = DEFAULT_ASSETS.myVibe;
+let syncLyricsBackgroundDefault: string = DEFAULT_ASSETS.syncLyricsBackground;
 let applyStyleTheme: string;
 
 function applyStyle(palette: Palette, assets: Assets): void {
@@ -109,6 +125,14 @@ function applyStyle(palette: Palette, assets: Assets): void {
 	root.style.setProperty(
 		"--assets-after-image",
 		`url("${assets.fullscreenMikuXD}")`,
+	);
+	root.style.setProperty(
+		"--queue-background-image",
+		`url("${assets.divaQueueBackground}")`,
+	);
+	root.style.setProperty(
+		"--perfect-mark-image",
+		`url("${assets.perfectMark}")`,
 	);
 }
 
@@ -156,6 +180,7 @@ async function applyTheme() {
 	if (!themeTitleText) return;
 
 	myVibeMiku = DEFAULT_ASSETS.myVibe;
+	syncLyricsBackgroundDefault = DEFAULT_ASSETS.syncLyricsBackground;
 	applyStyle(DEFAULT_PALETTE, DEFAULT_ASSETS);
 
 	let style = themeOverride.toLowerCase();
@@ -175,6 +200,7 @@ async function applyTheme() {
 
 	themeTitleText.textContent = theme.title;
 	myVibeMiku = theme.assets.myVibe;
+	syncLyricsBackgroundDefault = theme.assets.syncLyricsBackground;
 	applyStyle(theme.palette, theme.assets);
 }
 
@@ -208,4 +234,4 @@ if (document.readyState === "complete") {
 	window.addEventListener("load", waitForThemeReady);
 }
 
-export { myVibeMiku, applyStyleTheme };
+export { myVibeMiku, syncLyricsBackgroundDefault, applyStyleTheme };
