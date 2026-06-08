@@ -8,6 +8,7 @@ let enabled = false;
 
 function injectSettingsButton(): void {
 	if (!enabled) return;
+	if ((window as any).getCurrentModClient?.() !== "nm") return;
 	const container = document.querySelector(
 		'[class*="PlayerBarDesktopWithBackgroundProgressBar_meta"]',
 	);
