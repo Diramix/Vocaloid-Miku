@@ -1,141 +1,138 @@
+"use strict";
+
 (function () {
-	interface WebpackRequire {
-		(id: string): unknown;
-		m: Record<string, unknown>;
-	}
-	interface Experiments {
-		checkExperiment(name: string, variant: string): unknown;
-	}
-	interface StoreValue {
-		experiments: Experiments;
-	}
-	interface ReactFiber {
-		memoizedProps?: {
-			value?: StoreValue & { experiments: Experiments };
-		};
-		return?: ReactFiber;
-	}
-	interface MstModule {
-		_$(experiments: Experiments): {
-			containerStorage: Map<string, Record<string, unknown>>;
-		};
-		gK: object;
-		Zn(): void;
-	}
-	interface KeysModule {
-		c: {
-			OverwrittenExperiments: string;
-			[key: string]: string;
-		};
+	const EXPERIMENT_NAME = "WebNextNewWaveTab";
+	const LS_KEY = "overwrittenExperiments";
+
+	// Types
+	interface ExperimentStore {
+		checkExperiment(name: string, value: string): boolean;
 	}
 
-	function getWr(): WebpackRequire | null {
+	interface RootStore {
+		experiments: ExperimentStore;
+	}
+
+	interface CheckExperimentArgs {
+		name: string;
+		containerStorage: unknown;
+		experimentDetail: unknown;
+	}
+
+	interface WebpackRequire {
+		(id: string): any;
+		m: Record<string, unknown>;
+	}
+
+	// localStorage
+	function persistDefaultToLocalStorage(): void {
+		try {
+			const raw = localStorage.getItem(LS_KEY);
+			const parsed = raw ? JSON.parse(raw) : { value: {} };
+			parsed.value ??= {};
+			parsed.value[EXPERIMENT_NAME] = { group: "default" };
+			localStorage.setItem(LS_KEY, JSON.stringify(parsed));
+		} catch {
+			console.warn("[patch] Failed to write to localStorage");
+		}
+	}
+
+	// Webpack
+	function getWebpackRequire(): WebpackRequire | null {
 		const chunkKey = Object.keys(window).find((k) =>
 			k.startsWith("webpackChunk"),
-		) as keyof Window | undefined;
+		);
 		if (!chunkKey) return null;
+
 		let wr: WebpackRequire | undefined;
-		(window[chunkKey] as unknown[]).push([
+		(window as any)[chunkKey].push([
 			[Math.random()],
 			{},
 			(r: WebpackRequire) => {
 				wr = r;
 			},
 		]);
+
 		return wr ?? null;
 	}
 
-	function findStore(): (StoreValue & { experiments: Experiments }) | null {
-		let storeVal: (StoreValue & { experiments: Experiments }) | null = null;
+	// React store
+	function findReactStore(): RootStore | null {
+		let result: RootStore | null = null;
+
 		document.querySelectorAll("*").forEach((el) => {
-			if (storeVal) return;
-			const fk = Object.keys(el).find((k) => k.startsWith("__reactFiber"));
-			if (!fk) return;
-			let f: ReactFiber | undefined = (
-				el as unknown as Record<string, ReactFiber>
-			)[fk];
-			for (let i = 0; i < 200 && f; i++) {
-				if (f.memoizedProps?.value?.experiments?.checkExperiment) {
-					storeVal = f.memoizedProps.value as StoreValue & {
-						experiments: Experiments;
-					};
+			if (result) return;
+
+			const fiberKey = Object.keys(el).find((k) =>
+				k.startsWith("__reactFiber"),
+			);
+			if (!fiberKey) return;
+
+			let fiber = (el as any)[fiberKey];
+
+			for (let i = 0; i < 200 && fiber; i++) {
+				if (fiber.memoizedProps?.value?.experiments?.checkExperiment) {
+					result = fiber.memoizedProps.value as RootStore;
 					return;
 				}
-				f = f.return;
+				fiber = fiber.return;
 			}
 		});
-		return storeVal;
+
+		return result;
 	}
 
-	function findMst(wr: WebpackRequire): string | undefined {
-		return Object.keys(wr.m).find((id) => {
+	// Patch R.i
+	function patchCheckExperimentFunction(wr: WebpackRequire): boolean {
+		for (const id of Object.keys(wr.m)) {
 			try {
-				const m = wr(id) as Partial<MstModule> | null;
-				return (
-					typeof m?._$ === "function" &&
-					typeof m?.gK === "object" &&
-					typeof m?.Zn === "function"
-				);
-			} catch {
-				return false;
-			}
-		});
+				const mod = wr(id);
+				if (typeof mod?.i !== "function") continue;
+
+				const source = mod.i.toString();
+				const isCheckExperimentFn =
+					source.includes("experimentDetail") &&
+					source.includes("containerStorage");
+
+				if (!isCheckExperimentFn) continue;
+				if (mod.i.__patched) return true;
+
+				const original = mod.i;
+				mod.i = function (args: CheckExperimentArgs, config: unknown): boolean {
+					if (args?.name === EXPERIMENT_NAME) return false;
+					return original.call(this, args, config);
+				};
+				mod.i.__patched = true;
+
+				return true;
+			} catch {}
+		}
+
+		return false;
 	}
 
-	function findKeysModule(wr: WebpackRequire): string | undefined {
-		return Object.keys(wr.m).find((id) => {
-			try {
-				const m = wr(id) as Partial<KeysModule> | null;
-				return (
-					typeof m?.c === "object" &&
-					m.c !== null &&
-					"OverwrittenExperiments" in m.c &&
-					typeof m.c.OverwrittenExperiments === "string"
-				);
-			} catch {
-				return false;
-			}
-		});
-	}
-
+	// Entry point
 	function applyPatch(): boolean {
-		const wr = getWr();
+		const wr = getWebpackRequire();
 		if (!wr) return false;
 
-		const storeVal = findStore();
-		if (!storeVal) return false;
+		const store = findReactStore();
+		if (!store) return false;
 
-		const mstId = findMst(wr);
-		const keysId = findKeysModule(wr);
-		if (!mstId || !keysId) return false;
+		if (!patchCheckExperimentFunction(wr)) return false;
 
-		const mst = wr(mstId) as MstModule;
-		const n = wr(keysId) as KeysModule;
-		const { containerStorage } = mst._$(storeVal.experiments);
-		const data = containerStorage.get(n.c.OverwrittenExperiments);
+		const result = store.experiments.checkExperiment(EXPERIMENT_NAME, "on");
+		console.log(`[patch] ${EXPERIMENT_NAME}:`, result);
 
-		if (!data?.WebNextNewWaveTab) return true;
-
-		const patched = { ...data };
-		delete patched.WebNextNewWaveTab;
-		containerStorage.set(n.c.OverwrittenExperiments, patched);
-
-		console.log(
-			"[patch] WebNextNewWaveTab:",
-			storeVal.experiments.checkExperiment("WebNextNewWaveTab", "on"),
-		);
 		return true;
 	}
 
+	persistDefaultToLocalStorage();
+
 	if (!applyPatch()) {
 		const observer = new MutationObserver((_, obs) => {
-			if (applyPatch()) {
-				obs.disconnect();
-			}
+			if (applyPatch()) obs.disconnect();
 		});
-		observer.observe(document.body, {
-			childList: true,
-			subtree: true,
-		});
+		observer.observe(document.body, { childList: true, subtree: true });
 	}
 })();

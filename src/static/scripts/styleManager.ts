@@ -4,6 +4,9 @@ const themeOverride: string = "";
 
 const FLAGS_URL =
 	"https://github.com/Diramix/Vocaloid-Miku/releases/download/feature-flags/flags.json";
+const FLAGS_CACHE_KEY = "vocaloid_miku_flags_cache";
+const FLAGS_CACHE_TTL = 60 * 60 * 1000; // 1 hour
+const FLAGS_FETCH_TIMEOUT = 3000; // 3 seconds
 
 const LOCAL = "http://127.0.0.1:2007/assets/";
 const Q = "?name=Vocaloid Miku!";
@@ -109,6 +112,45 @@ function applyStyle(palette: Palette, assets: Assets): void {
 	);
 }
 
+function getCachedFlags(): string | null {
+	try {
+		const raw = localStorage.getItem(FLAGS_CACHE_KEY);
+		if (!raw) return null;
+		const { style, ts } = JSON.parse(raw);
+		if (Date.now() - ts > FLAGS_CACHE_TTL) return null;
+		return typeof style === "string" ? style : null;
+	} catch {
+		return null;
+	}
+}
+
+function setCachedFlags(style: string): void {
+	try {
+		localStorage.setItem(
+			FLAGS_CACHE_KEY,
+			JSON.stringify({ style, ts: Date.now() }),
+		);
+	} catch {}
+}
+
+async function fetchFlagsStyle(): Promise<string> {
+	const cached = getCachedFlags();
+	if (cached !== null) return cached;
+
+	const controller = new AbortController();
+	const timeoutId = setTimeout(() => controller.abort(), FLAGS_FETCH_TIMEOUT);
+	try {
+		const response = await fetch(FLAGS_URL, { signal: controller.signal });
+		if (!response.ok) throw new Error("HTTP " + response.status);
+		const data = await response.json();
+		const style = data.style?.toLowerCase() ?? "";
+		setCachedFlags(style);
+		return style;
+	} finally {
+		clearTimeout(timeoutId);
+	}
+}
+
 async function applyTheme() {
 	const themeTitleText = document.querySelector(".ThemeTitleText");
 	if (!themeTitleText) return;
@@ -119,10 +161,7 @@ async function applyTheme() {
 	let style = themeOverride.toLowerCase();
 	if (!themeOverride) {
 		try {
-			const response = await fetch(FLAGS_URL);
-			if (!response.ok) throw new Error("HTTP " + response.status);
-			const data = await response.json();
-			style = data.style?.toLowerCase() ?? "";
+			style = await fetchFlagsStyle();
 		} catch (err) {
 			console.error("Failed to load theme:", err);
 			return;
