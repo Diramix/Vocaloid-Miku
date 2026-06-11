@@ -49,18 +49,7 @@ function update() {
 
 	// Font
 	if (key !== lastKey) {
-		const fontStyle = getOrCreateStyle("sync-lyrics-font-style");
-		fontStyle.textContent = `
-			@font-face {
-				font-family: "Montserrat";
-				src: url("http://127.0.0.1:2007/assets/Montserrat.ttf?name=Vocaloid Miku!") format("truetype");
-			}
-			[class*="SyncLyricsLine_root"] {
-				font-family: ${normalFont ? '"Montserrat", sans-serif' : ""};
-				font-weight: ${normalFont ? "700" : ""};
-				font-size: ${normalFont ? "35px" : ""};
-			}
-		`;
+		document.body.classList.toggle("vm-lyrics-normal-font", normalFont);
 	}
 
 	lastKey = key;

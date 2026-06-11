@@ -1,3 +1,11 @@
+.AssetsImages:after {
+	display: none;
+}
+
+body.vm-fullscreen-miku .AssetsImages:after {
+	display: block;
+}
+
 .AssetsImages {
 	&:after {
 		visibility: visible;

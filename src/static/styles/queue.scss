@@ -243,6 +243,29 @@
 	top: 50vh;
 	right: 4.6%;
 	z-index: 99999;
+	display: none;
+}
+
+body.vm-perfect-mark .Diva-Perfect-Mark {
+	display: block;
+}
+
+[class*="PlayQueue_content"] * [aria-label="Трек скачан"],
+[class*="PlayQueue_content"]
+	*
+	[aria-label="Этот трек можете слушать только вы"] {
+	display: none;
+}
+
+body.vm-queue-download-icon
+	[class*="PlayQueue_content"]
+	*
+	[aria-label="Трек скачан"],
+body.vm-queue-download-icon
+	[class*="PlayQueue_content"]
+	*
+	[aria-label="Этот трек можете слушать только вы"] {
+	display: block;
 }
 
 [class*="PlayQueueVibeBlock_title"] {

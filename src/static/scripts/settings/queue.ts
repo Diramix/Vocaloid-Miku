@@ -1,24 +1,22 @@
 import { getSettings } from "../settings";
-import { getOrCreateStyle } from "../utils";
 
-let lastKey: string | null = null;
+let lastPerfectMark: boolean | null = null;
+let lastDownloadIcon: boolean | null = null;
 
 function update() {
 	const s = getSettings();
-	const key = JSON.stringify(s);
-	if (key === lastKey) return;
-	lastKey = key;
 
-	const style = getOrCreateStyle("queue-style");
-	style.textContent = `
-		.Diva-Perfect-Mark {
-			display: ${s.togglePerfectMark?.value ? "block" : "none"} !important;
-		}
-		[class*="PlayQueue_content"] * [aria-label="Трек скачан"],
-		[class*="PlayQueue_content"] * [aria-label="Этот трек можете слушать только вы"] {
-			display: ${s.toggleDownloadAndVisibleIcon?.value ? "block" : "none"} !important;
-		}
-	`;
+	const perfectMark = !!s.togglePerfectMark?.value;
+	if (perfectMark !== lastPerfectMark) {
+		lastPerfectMark = perfectMark;
+		document.body.classList.toggle("vm-perfect-mark", perfectMark);
+	}
+
+	const downloadIcon = !!s.toggleDownloadAndVisibleIcon?.value;
+	if (downloadIcon !== lastDownloadIcon) {
+		lastDownloadIcon = downloadIcon;
+		document.body.classList.toggle("vm-queue-download-icon", downloadIcon);
+	}
 }
 
 export { update };

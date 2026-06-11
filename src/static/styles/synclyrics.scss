@@ -67,9 +67,21 @@
 	}
 }
 
+@font-face {
+	font-family: "Montserrat";
+	src: url("http://127.0.0.1:2007/assets/Montserrat.ttf?name=Vocaloid Miku!")
+		format("truetype");
+}
+
 [class*="SyncLyricsLine_root"] {
 	color: #bec8d1;
 	margin-bottom: -0px;
+}
+
+body.vm-lyrics-normal-font [class*="SyncLyricsLine_root"] {
+	font-family: "Montserrat", sans-serif;
+	font-weight: 700;
+	font-size: 35px;
 }
 
 [class*="SyncLyricsCard_root"],

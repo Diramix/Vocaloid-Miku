@@ -1,20 +1,12 @@
 import { getSettings } from "../settings";
-import { getOrCreateStyle } from "../utils";
 
-let lastKey: string | null = null;
+let last: boolean | null = null;
 
 function update() {
-	const s = getSettings();
-	const key = JSON.stringify(s);
-	if (key === lastKey) return;
-	lastKey = key;
-
-	const style = getOrCreateStyle("fullscreen-style");
-	style.textContent = `
-		.AssetsImages:after {
-			display: ${s.toggleFullscreenMikuXD?.value ? "block" : "none"} !important;
-		}
-	`;
+	const on = !!getSettings().toggleFullscreenMikuXD?.value;
+	if (on === last) return;
+	last = on;
+	document.body.classList.toggle("vm-fullscreen-miku", on);
 }
 
 export { update };
