@@ -98,7 +98,10 @@
 				if (mod.i.__patched) return true;
 
 				const original = mod.i;
-				mod.i = function (args: CheckExperimentArgs, config: unknown): boolean {
+				mod.i = function (
+					args: CheckExperimentArgs,
+					config: unknown,
+				): boolean {
 					if (args?.name === EXPERIMENT_NAME) return false;
 					return original.call(this, args, config);
 				};

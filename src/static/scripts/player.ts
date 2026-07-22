@@ -68,7 +68,8 @@ function updateVibeBackgroundImage() {
 	dynamicBG.style.position = "relative";
 	dynamicBG.style.overflow = "hidden";
 
-	let dynamicBG_Blur = dynamicBG.querySelector<HTMLDivElement>(".blur-element");
+	let dynamicBG_Blur =
+		dynamicBG.querySelector<HTMLDivElement>(".blur-element");
 	if (!dynamicBG_Blur) {
 		dynamicBG_Blur = document.createElement("div");
 		dynamicBG_Blur.classList.add("blur-element");

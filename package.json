@@ -7,14 +7,10 @@
 		"build": "ymtm build",
 		"build:nextmusic": "ymtm build nextmusic",
 		"build:pulsesync": "ymtm build pulsesync",
-		"format": "prettier --write .",
-		"format:check": "prettier --check ."
+		"format": "biome format --write ."
 	},
 	"build": {
-		"package": [
-			"nextmusic",
-			"pulsesync"
-		]
+		"package": ["nextmusic", "pulsesync"]
 	},
 	"nextmusic": {
 		"tarGz": {
@@ -31,7 +27,7 @@
 	},
 	"devDependencies": {
 		"@diram1x/ymtm": "^4.0.0",
-		"prettier": "^3.8.5",
+		"@biomejs/biome": "^2.5.3",
 		"typescript": "^6.0.3"
 	}
 }

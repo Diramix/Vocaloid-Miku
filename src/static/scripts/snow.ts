@@ -10,7 +10,9 @@ import { Flake } from "./types/snow";
 			parentEl.style.position = "relative";
 		}
 
-		let snowContainer = parentEl.querySelector<HTMLDivElement>("#" + SNOW_ID);
+		let snowContainer = parentEl.querySelector<HTMLDivElement>(
+			"#" + SNOW_ID,
+		);
 
 		if (!snowContainer && applyStyleTheme === "christmas") {
 			snowContainer = document.createElement("div");
@@ -31,7 +33,9 @@ import { Flake } from "./types/snow";
 			const canvas = document.createElement("canvas");
 			snowContainer.appendChild(canvas);
 
-			const ctx = canvas.getContext("2d") as CanvasRenderingContext2D | null;
+			const ctx = canvas.getContext(
+				"2d",
+			) as CanvasRenderingContext2D | null;
 
 			function resizeCanvas() {
 				canvas.width = parentEl.clientWidth;
@@ -89,7 +93,8 @@ import { Flake } from "./types/snow";
 	}
 
 	const snowObserver = new MutationObserver(() => {
-		const parentEl = document.querySelector<HTMLDivElement>(TARGET_SELECTOR);
+		const parentEl =
+			document.querySelector<HTMLDivElement>(TARGET_SELECTOR);
 		if (parentEl) {
 			ensureSnow(parentEl);
 		}

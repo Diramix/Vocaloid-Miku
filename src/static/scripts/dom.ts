@@ -8,7 +8,9 @@ function syncInjectedElements() {
 				document
 					.querySelector('[class*="PlayQueue_root"]')
 					?.appendChild(
-						Object.assign(document.createElement("div"), { className }),
+						Object.assign(document.createElement("div"), {
+							className,
+						}),
 					);
 			}
 		});

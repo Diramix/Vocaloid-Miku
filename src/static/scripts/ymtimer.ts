@@ -31,7 +31,9 @@ function ymTimerInteger() {
 					handleTimerElement(node);
 					return;
 				}
-				const nested = node.querySelector<HTMLDivElement>("#" + TIMER_ID);
+				const nested = node.querySelector<HTMLDivElement>(
+					"#" + TIMER_ID,
+				);
 				if (nested) {
 					handleTimerElement(nested);
 					return;
