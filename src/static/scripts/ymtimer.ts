@@ -2,10 +2,34 @@ function ymTimerInteger() {
 	const TIMER_ID = "yandex-music-timer";
 	const TARGET_SELECTOR = ".ThemeTitleText";
 
+	const LABELS = new Map<string, string>([
+		["Всего", "Total"],
+		["За год", "Year"],
+		["За месяц", "Month"],
+		["За неделю", "Week"],
+		["За день", "Day"],
+		["Сессия", "Session"],
+	]);
+
+	function translateTimerText(text: string) {
+		return text
+			.replace(/([^:]+):/, (match, label: string) => {
+				const translated = LABELS.get(label.trim());
+				return translated
+					? `${match.slice(0, match.indexOf(label))}${translated}:`
+					: match;
+			})
+			.replace(/(\d+)\s*ч/g, "$1h")
+			.replace(/(\d+)\s*м/g, "$1m")
+			.replace(/(\d+)\s*с/g, "$1s");
+	}
+
 	function syncText(timerEl: HTMLDivElement) {
 		const targetEl = document.querySelector(TARGET_SELECTOR);
 		if (targetEl) {
-			targetEl.textContent = timerEl.textContent;
+			targetEl.textContent = translateTimerText(
+				timerEl.textContent ?? "",
+			);
 		} else {
 			setTimeout(() => syncText(timerEl), 100);
 		}
