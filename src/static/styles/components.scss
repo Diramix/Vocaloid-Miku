@@ -235,8 +235,8 @@ body > [class*="DevPanel_root"] > button {
 
 /* Track duration timestamps */
 /*--------------------------------------------*/
-[class*="CommonControlsBar_duration"] {
-	color: var(--font-color);
+[class*="Content_main"] * [class*="CommonControlsBar_duration"] {
+	color: var(--font-color) !important;
 
 	&:hover {
 		color: var(--font-color);
