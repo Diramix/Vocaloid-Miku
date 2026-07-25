@@ -66,6 +66,7 @@ declare global {
 		location.protocol === "http:" || location.protocol === "https:";
 	const TARGET = isWeb ? "/landing/main" : "/landing?skeleton=main";
 	const STYLE_ID = "__vibe-block-style";
+	const SLOT = "__vibeFactory";
 	const MEMO = Symbol.for("react.memo");
 	const MAIN_RE = /\.d\([\w$]+,\{[^{}]*MainPage:\(\)=>[\w$]+/;
 	const LB_RE = /\{landing:[\w$]+,headerConcealerComponent:/;
@@ -244,6 +245,37 @@ declare global {
 			);
 	}
 
+	function findNonce(): string {
+		for (const script of document.scripts) {
+			const nonce = script.nonce || script.getAttribute("nonce");
+			if (nonce) return nonce;
+		}
+		return "";
+	}
+
+	function compile(source: string): ModuleFactory | null {
+		const slot = window as unknown as Record<string, unknown>;
+		delete slot[SLOT];
+		const el = document.createElement("script");
+		const nonce = findNonce();
+		if (nonce) {
+			el.setAttribute("nonce", nonce);
+			el.nonce = nonce;
+		}
+		el.textContent = `window.${SLOT}=(${source});`;
+		try {
+			(document.head ?? document.documentElement).appendChild(el);
+		} catch {
+			return null;
+		}
+		el.remove();
+		const compiled = slot[SLOT];
+		delete slot[SLOT];
+		return typeof compiled === "function"
+			? (compiled as ModuleFactory)
+			: null;
+	}
+
 	function patchFactory(
 		modules: Record<string, ModuleFactory>,
 		id: string,
@@ -257,13 +289,9 @@ declare global {
 		if (src.includes("__VibeBlock")) return true;
 		const patched = patchSource(src);
 		if (!patched) return false;
-		try {
-			modules[id] = new Function(
-				`return (${patched})`,
-			)() as ModuleFactory;
-		} catch {
-			return false;
-		}
+		const compiled = compile(patched);
+		if (!compiled) return false;
+		modules[id] = compiled;
 		return true;
 	}
 
