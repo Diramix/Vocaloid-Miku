@@ -1,11 +1,11 @@
-[role="menuitem"],
-[role="menuitemcheckbox"],
-[role="menuitemradio"] {
-	background: var(--main-color);
+[role="menu"] {
+	:is([role="menuitem"], [role="menuitemcheckbox"], [role="menuitemradio"]) {
+		background: var(--main-color);
 
-	&:hover,
-	&[data-nested][data-open] {
-		--ym-surface-color-primary-enabled-list: var(--light-main-color);
+		&:hover,
+		&[data-nested][data-open] {
+			--ym-surface-color-primary-enabled-list: var(--light-main-color);
+		}
 	}
 }
 
