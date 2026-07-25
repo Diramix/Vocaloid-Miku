@@ -20,6 +20,41 @@
 	border-radius: 10px;
 	background-color: var(--basic-color);
 }
+
+[class*="VibeBlock_root__"],
+[class*="MainPage_vibe__"] {
+	position: relative;
+	overflow: hidden;
+
+	> *:not(.blur-element):not(.additional-image-element) {
+		position: relative;
+		z-index: 3;
+	}
+
+	> .blur-element {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		background-color: #26f4fe;
+		background-image: var(--vm-cover, none);
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		filter: blur(0px) brightness(0.5);
+	}
+
+	> .additional-image-element {
+		position: absolute;
+		inset: 0;
+		z-index: 2;
+		border-radius: 10px;
+		pointer-events: none;
+		background-image: var(--my-vibe-image);
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+}
 /*--------------------------------------------*/
 
 /* Vibe and neuromusic buttons */
@@ -74,7 +109,7 @@
 [class*="OverwrittenExperimentsModal_submitButton"],
 [class*="OverwrittenExperimentsModal_closeModalButton"],
 [class*="OverwrittenExperimentsModal_reloadButton"],
-[class*="OverwrittenExperimentsModal_overrideForm"] > .qU2apWBO1yyEK0lZ3lPO {
+[class*="OverwrittenExperimentsModal_overrideForm"] > button {
 	background: var(--basic-color);
 	color: #fff;
 
@@ -143,7 +178,7 @@
 
 /* DevPanel */
 /*--------------------------------------------*/
-body > [class*="DevPanel_root"] > .qU2apWBO1yyEK0lZ3lPO {
+body > [class*="DevPanel_root"] > button {
 	backdrop-filter: blur(0px);
 	z-index: 99999;
 	background: var(--miku-color);

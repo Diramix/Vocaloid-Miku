@@ -1,3 +1,6 @@
+$track-downloaded: '[aria-label="Трек скачан"]';
+$track-private: '[aria-label="Этот трек можете слушать только вы"]';
+
 [class*="PlayQueue_root"] {
 	background-image: var(--queue-background-image);
 	background-position: center;
@@ -217,7 +220,7 @@
 		font-size: 16px;
 	}
 
-	* [class*="CommonControlsBar_contextMenu"] > .JjlbHZ4FaP9EAcR_1DxF {
+	* [class*="CommonControlsBar_contextMenu"] > span {
 		color: var(--main-color);
 		font-weight: 800;
 		font-size: 16px;
@@ -231,6 +234,10 @@
 	top: 15vh;
 	right: 4.6%;
 	z-index: 99999;
+	background-image: var(--vm-cover, none);
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 .Diva-Perfect-Mark {
@@ -250,21 +257,13 @@ body.vm-perfect-mark .Diva-Perfect-Mark {
 	display: block;
 }
 
-[class*="PlayQueue_content"] * [aria-label="Трек скачан"],
-[class*="PlayQueue_content"]
-	*
-	[aria-label="Этот трек можете слушать только вы"] {
+[class*="PlayQueue_content"] * #{$track-downloaded},
+[class*="PlayQueue_content"] * #{$track-private} {
 	display: none;
 }
 
-body.vm-queue-download-icon
-	[class*="PlayQueue_content"]
-	*
-	[aria-label="Трек скачан"],
-body.vm-queue-download-icon
-	[class*="PlayQueue_content"]
-	*
-	[aria-label="Этот трек можете слушать только вы"] {
+body.vm-queue-download-icon [class*="PlayQueue_content"] * #{$track-downloaded},
+body.vm-queue-download-icon [class*="PlayQueue_content"] * #{$track-private} {
 	display: block;
 }
 

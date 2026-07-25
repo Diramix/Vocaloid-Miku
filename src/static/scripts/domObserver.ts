@@ -21,7 +21,6 @@ function flush(): void {
 			console.error("[Vocaloid Miku] dom subscriber failed:", err);
 		}
 	}
-	observer?.takeRecords();
 }
 
 function schedule(): void {

@@ -7,7 +7,9 @@
 		"build": "ymtm build",
 		"build:nextmusic": "ymtm build nextmusic",
 		"build:pulsesync": "ymtm build pulsesync",
-		"format": "biome format --write ."
+		"format": "biome format --write .",
+		"lint": "biome check .",
+		"typecheck": "tsc --noEmit"
 	},
 	"build": {
 		"package": ["nextmusic", "pulsesync"]

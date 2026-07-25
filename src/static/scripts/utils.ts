@@ -17,19 +17,16 @@ export function getPlayerBarCoverUrl(): string | null {
 	return null;
 }
 
-export function isElementInViewport(el: Element): boolean {
-	const rect = el.getBoundingClientRect();
-	if (rect.width <= 0 || rect.height <= 0) return false;
+const nodeCache = new Map<string, Element>();
 
-	const height = window.innerHeight || document.documentElement.clientHeight;
-	const width = window.innerWidth || document.documentElement.clientWidth;
+export function findCached<T extends Element>(selector: string): T | null {
+	const cached = nodeCache.get(selector);
+	if (cached?.isConnected) return cached as T;
 
-	return (
-		rect.top < height &&
-		rect.bottom > 0 &&
-		rect.left < width &&
-		rect.right > 0
-	);
+	const found = document.querySelector<T>(selector);
+	if (found) nodeCache.set(selector, found);
+	else nodeCache.delete(selector);
+	return found;
 }
 
 export function getOrCreateStyle(id: string): HTMLStyleElement {

@@ -1,5 +1,6 @@
 import { onDomChange } from "../domObserver";
 import { getSettings } from "../settings";
+import { findCached } from "../utils";
 
 const SETTINGS_BTN_ID = "vocaloid-settings-btn";
 
@@ -10,7 +11,7 @@ let enabled = false;
 function injectSettingsButton(): void {
 	if (!enabled) return;
 	if (window.getCurrentModClient?.() !== "nm") return;
-	const container = document.querySelector(
+	const container = findCached(
 		'[class*="PlayerBarDesktopWithBackgroundProgressBar_meta"]',
 	);
 	if (!container || document.getElementById(SETTINGS_BTN_ID)) return;

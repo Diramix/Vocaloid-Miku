@@ -29,6 +29,19 @@
 	) !important;
 }
 
+.ThemeTitleText {
+	position: fixed;
+	visibility: visible;
+	font-family: "Vocaloid", sans-serif;
+	font-size: 16px;
+	font-weight: 1000;
+	left: 50%;
+	margin-left: -66px;
+	top: 10px;
+	color: var(--main-color);
+	z-index: 1;
+}
+
 @font-face {
 	font-family: "Vocaloid";
 	src: url("http://127.0.0.1:2007/assets/VOC-RE.ttf?name=Vocaloid Miku!")

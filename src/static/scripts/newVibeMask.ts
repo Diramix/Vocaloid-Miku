@@ -77,7 +77,6 @@ interface Lifted {
 declare global {
 	interface Window {
 		__vibeBlockApplied?: boolean;
-		next?: { router?: { push?: (url: string) => void } };
 	}
 }
 
@@ -93,6 +92,7 @@ declare global {
 	const REFRESH_LANE = 17;
 	const MEMO = Symbol.for("react.memo");
 	const MAIN_RE = /\.d\([\w$]+,\{[^{}]*MainPage:\(\)=>[\w$]+/;
+	const MAIN_CAPTURE_RE = new RegExp(`(${MAIN_RE.source})`);
 	const LB_RE = /\{landing:[\w$]+,headerConcealerComponent:/;
 	const JSX_RE =
 		/([\w$]+)\.Fragment=Symbol\.for\("react\.fragment"\),\1\.jsx=([\w$]+),\1\.jsxs=\2/;
@@ -264,7 +264,7 @@ declare global {
 			.replace(LAZY_RE, "$1=()=>null")
 			.replace(DYN_RE, "$1=()=>null")
 			.replace(
-				/(\.d\([\w$]+,\{[^{}]*MainPage:\(\)=>[\w$]+)/,
+				MAIN_CAPTURE_RE,
 				`$1,__VibeBlock:()=>${vibe[1]},__css:()=>${cssAcc[1]}`,
 			);
 	}
@@ -348,7 +348,7 @@ declare global {
 		if (install()) return;
 		const timer = setInterval(() => {
 			if (install()) clearInterval(timer);
-		}, 0);
+		}, 50);
 		setTimeout(() => clearInterval(timer), 30000);
 	}
 
@@ -555,9 +555,6 @@ declare global {
 		return true;
 	}
 
-	const atHome = (): boolean =>
-		location.pathname === "/" || location.pathname === "/index.html";
-
 	function isRootUrl(href: string | null): boolean {
 		if (!href) return false;
 		let url: URL;
@@ -634,7 +631,7 @@ declare global {
 
 	function watch(): void {
 		const check = () => {
-			if (atHome()) goToLanding();
+			if (isRootUrl(location.href)) goToLanding();
 		};
 		check();
 		setInterval(check, 400);
@@ -645,10 +642,17 @@ declare global {
 	async function boot(): Promise<void> {
 		hookChunks();
 		injectStyle();
-		for (let attempt = 0; attempt < 20; attempt++) {
-			if (await applyPatch()) break;
-			await new Promise((r) => setTimeout(r, 500));
+
+		let patched = false;
+		for (let attempt = 0; attempt < 20 && !patched; attempt++) {
+			if (attempt > 0) await new Promise((r) => setTimeout(r, 500));
+			patched = await applyPatch();
 		}
+		if (!patched)
+			console.warn(
+				"[Vocaloid Miku] VibeBlock patch failed: Yandex Music internals changed",
+			);
+
 		watch();
 	}
 

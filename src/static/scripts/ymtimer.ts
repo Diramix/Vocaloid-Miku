@@ -50,7 +50,6 @@ function ymTimerInteger() {
 
 		textObserver?.disconnect();
 		trackedTimer = timerEl;
-		timerEl.style.display = "none";
 		syncText(timerEl);
 
 		textObserver = new MutationObserver(() => syncText(timerEl));

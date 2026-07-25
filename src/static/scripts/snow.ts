@@ -1,5 +1,6 @@
 import { onDomChange } from "./domObserver";
 import { applyStyleTheme } from "./styleManager";
+import { findCached } from "./utils";
 import { Flake } from "./types/snow";
 
 (function () {
@@ -84,7 +85,10 @@ import { Flake } from "./types/snow";
 			}
 
 			(function animate() {
-				if (!parentEl.contains(snowContainer)) return;
+				if (!parentEl.contains(snowContainer)) {
+					window.removeEventListener("resize", resizeCanvas);
+					return;
+				}
 				if (!document.hidden) drawSnow();
 				requestAnimationFrame(animate);
 			})();
@@ -95,8 +99,7 @@ import { Flake } from "./types/snow";
 
 	function syncSnow(): void {
 		if (applyStyleTheme !== "christmas") return;
-		const parentEl =
-			document.querySelector<HTMLDivElement>(TARGET_SELECTOR);
+		const parentEl = findCached<HTMLDivElement>(TARGET_SELECTOR);
 		if (parentEl) ensureSnow(parentEl);
 	}
 
