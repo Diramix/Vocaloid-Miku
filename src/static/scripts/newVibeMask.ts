@@ -44,6 +44,29 @@ interface SkeletonIds {
 	MAIN_NOLOGIN: string;
 }
 
+interface HookQueue {
+	dispatch?: (action: unknown) => void;
+	lastRenderedReducer?: (state: unknown, action: unknown) => unknown;
+}
+
+interface Hook {
+	queue?: HookQueue | null;
+	next?: Hook | null;
+}
+
+interface Fiber {
+	return: Fiber | null;
+	child: Fiber | null;
+	sibling: Fiber | null;
+	alternate: Fiber | null;
+	elementType: unknown;
+	type: unknown;
+	lanes: number;
+	childLanes: number;
+	memoizedProps: unknown;
+	memoizedState: Hook | null;
+}
+
 type CssAccessor = () => Record<string, string>;
 
 interface Lifted {
@@ -67,6 +90,7 @@ declare global {
 	const TARGET = isWeb ? "/landing/main" : "/landing?skeleton=main";
 	const STYLE_ID = "__vibe-block-style";
 	const SLOT = "__vibeFactory";
+	const REFRESH_LANE = 17;
 	const MEMO = Symbol.for("react.memo");
 	const MAIN_RE = /\.d\([\w$]+,\{[^{}]*MainPage:\(\)=>[\w$]+/;
 	const LB_RE = /\{landing:[\w$]+,headerConcealerComponent:/;
@@ -383,6 +407,101 @@ declare global {
 		return null;
 	}
 
+	function fiberOf(node: Element): Fiber | null {
+		const props = node as unknown as Record<string, Fiber | undefined>;
+		for (const key of Object.keys(props)) {
+			if (key.startsWith("__reactContainer$")) return props[key] ?? null;
+			if (key.startsWith("__reactFiber$")) {
+				let fiber = props[key] ?? null;
+				while (fiber?.return) fiber = fiber.return;
+				return fiber;
+			}
+		}
+		return null;
+	}
+
+	function getRootFiber(): Fiber | null {
+		for (const node of document.querySelectorAll("body, body *")) {
+			const fiber = fiberOf(node);
+			if (fiber) return fiber;
+		}
+		return null;
+	}
+
+	function isStateQueue(queue: HookQueue): boolean {
+		const reducer = queue.lastRenderedReducer;
+		if (typeof reducer !== "function") return false;
+		const probe = {};
+		try {
+			return reducer({}, () => probe) === probe;
+		} catch {
+			return false;
+		}
+	}
+
+	function markLanes(fiber: Fiber): void {
+		fiber.lanes |= REFRESH_LANE;
+		if (fiber.alternate) fiber.alternate.lanes |= REFRESH_LANE;
+		for (let parent = fiber.return; parent; parent = parent.return) {
+			parent.childLanes |= REFRESH_LANE;
+			if (parent.alternate) parent.alternate.childLanes |= REFRESH_LANE;
+		}
+	}
+
+	function stalePropsOf(props: unknown): Record<string, unknown> | null {
+		if (!props || typeof props !== "object") return null;
+		return { ...(props as Record<string, unknown>), __vibeStale: {} };
+	}
+
+	function invalidateProps(fiber: Fiber): void {
+		const current = stalePropsOf(fiber.memoizedProps);
+		if (current) fiber.memoizedProps = current;
+		const alternate = fiber.alternate;
+		if (!alternate) return;
+		const previous = stalePropsOf(alternate.memoizedProps);
+		if (previous) alternate.memoizedProps = previous;
+	}
+
+	function ping(fiber: Fiber): boolean {
+		for (let hook = fiber.memoizedState; hook; hook = hook.next ?? null) {
+			const queue = hook.queue;
+			if (!queue || typeof queue.dispatch !== "function") continue;
+			if (!isStateQueue(queue)) continue;
+			markLanes(fiber);
+			try {
+				queue.dispatch((state: unknown) => state);
+				return true;
+			} catch {}
+		}
+		return false;
+	}
+
+	function refreshMounted(
+		component: MemoComponent,
+		nextType: (props: LandingProps) => unknown,
+	): void {
+		const root = getRootFiber();
+		if (!root) return;
+		const stack: Fiber[] = [root];
+		let guard = 0;
+		while (stack.length > 0 && guard++ < 50000) {
+			const fiber = stack.pop() as Fiber;
+			if (fiber.child) stack.push(fiber.child);
+			if (fiber.sibling) stack.push(fiber.sibling);
+			if (fiber.elementType !== component) continue;
+			fiber.type = nextType;
+			if (fiber.alternate) fiber.alternate.type = nextType;
+			invalidateProps(fiber);
+			markLanes(fiber);
+			for (
+				let target: Fiber | null = fiber;
+				target;
+				target = target.return
+			)
+				if (ping(target)) break;
+		}
+	}
+
 	async function applyPatch(): Promise<boolean> {
 		const wr = getRequire();
 		if (!wr) return false;
@@ -412,7 +531,7 @@ declare global {
 		const { VibeBlock, css } = lifted;
 		const origType = lb.component.type;
 
-		lb.component.type = (props: LandingProps) => {
+		const nextType = (props: LandingProps) => {
 			const id = props?.landing?.id;
 			if (wanted.length && (id === undefined || !wanted.includes(id)))
 				return origType(props);
@@ -429,7 +548,10 @@ declare global {
 				],
 			});
 		};
+
+		lb.component.type = nextType;
 		lb.component.__vibePatched = true;
+		refreshMounted(lb.component, nextType);
 		return true;
 	}
 
