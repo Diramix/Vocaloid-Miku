@@ -1,3 +1,4 @@
+import { onDomChange } from "../domObserver";
 import { getSettings } from "../settings";
 
 const SETTINGS_BTN_ID = "vocaloid-settings-btn";
@@ -8,7 +9,7 @@ let enabled = false;
 
 function injectSettingsButton(): void {
 	if (!enabled) return;
-	if ((window as any).getCurrentModClient?.() !== "nm") return;
+	if (window.getCurrentModClient?.() !== "nm") return;
 	const container = document.querySelector(
 		'[class*="PlayerBarDesktopWithBackgroundProgressBar_meta"]',
 	);
@@ -19,7 +20,7 @@ function injectSettingsButton(): void {
 	btn.innerHTML = SETTINGS_ICON_SVG;
 
 	btn.addEventListener("click", () => {
-		(window as any).next?.router?.push("/settings");
+		window.next?.router?.push?.("/settings");
 	});
 
 	container.appendChild(btn);
@@ -29,8 +30,7 @@ function removeSettingsButton(): void {
 	document.getElementById(SETTINGS_BTN_ID)?.remove();
 }
 
-const observer = new MutationObserver(() => injectSettingsButton());
-observer.observe(document.body, { childList: true, subtree: true });
+let unsubscribe: (() => void) | null = null;
 
 function update() {
 	const s = getSettings();
@@ -41,7 +41,10 @@ function update() {
 
 	if (enabled) {
 		injectSettingsButton();
+		unsubscribe ??= onDomChange(injectSettingsButton);
 	} else {
+		unsubscribe?.();
+		unsubscribe = null;
 		removeSettingsButton();
 	}
 }

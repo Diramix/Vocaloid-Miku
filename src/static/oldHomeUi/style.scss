@@ -1,0 +1,7 @@
+[class*="NavbarDesktop_navigation"] li:has(a[href="/"]) {
+	display: none !important;
+}
+
+[class*="LandingPage_root"] * header {
+	margin-top: -70px;
+}

@@ -51,17 +51,20 @@ interface Lifted {
 	css: CssAccessor;
 }
 
-interface Window {
-	__vibeBlockApplied?: boolean;
-	next?: { router?: { push?: (url: string) => void } };
-	[key: string]: unknown;
+declare global {
+	interface Window {
+		__vibeBlockApplied?: boolean;
+		next?: { router?: { push?: (url: string) => void } };
+	}
 }
 
 (() => {
 	if (window.__vibeBlockApplied) return;
 	window.__vibeBlockApplied = true;
 
-	const TARGET = "/landing?skeleton=main";
+	const isWeb =
+		location.protocol === "http:" || location.protocol === "https:";
+	const TARGET = isWeb ? "/landing/main" : "/landing?skeleton=main";
 	const STYLE_ID = "__vibe-block-style";
 	const MEMO = Symbol.for("react.memo");
 	const MAIN_RE = /\.d\([\w$]+,\{[^{}]*MainPage:\(\)=>[\w$]+/;
@@ -81,14 +84,21 @@ interface Window {
 		(document.head ?? document.documentElement).appendChild(style);
 	}
 
-	function getRequire(): WebpackRequire | null {
+	function getChunks():
+		| ({ push(entry: ChunkPush): unknown } & { __vibeHooked?: boolean })
+		| null {
 		const key = Object.keys(window).find((k) =>
 			k.startsWith("webpackChunk"),
 		);
 		if (!key) return null;
-		const chunks = window[key] as
-			| { push(entry: ChunkPush): unknown }
-			| undefined;
+		const value = (window as unknown as Record<string, unknown>)[key];
+		if (!value || typeof (value as { push?: unknown }).push !== "function")
+			return null;
+		return value as { push(entry: ChunkPush): unknown };
+	}
+
+	function getRequire(): WebpackRequire | null {
+		const chunks = getChunks();
 		if (!chunks) return null;
 		let wr: WebpackRequire | undefined;
 		try {
@@ -191,23 +201,29 @@ interface Window {
 		page: string,
 		done: () => boolean,
 	): Promise<void> {
+		const pageUrl = new URL(page, location.href).href;
 		let html: string;
 		try {
-			html = await fetch(new URL(page, location.origin).href).then((r) =>
-				r.text(),
-			);
+			html = await fetch(pageUrl).then((r) => r.text());
 		} catch {
 			return;
 		}
 		const loaded = new Set(
 			[...document.scripts].map((s) => s.src.split("/").pop()),
 		);
-		const files = [
-			...new Set(html.match(/static\/chunks\/[\w./()-]+?\.js/g) ?? []),
-		].filter((f) => !loaded.has(f.split("/").pop()));
-		for (const file of files) {
+		const urls = new Set<string>();
+		for (const [, raw] of html.matchAll(
+			/<script[^>]+src=["']([^"']+)["']/g,
+		)) {
+			if (!raw.includes("_next/static/chunks/")) continue;
+			if (loaded.has(raw.split("?")[0].split("/").pop())) continue;
 			try {
-				await injectScript(`/_next/${file.replace(/^_next\//, "")}`);
+				urls.add(new URL(raw, pageUrl).href);
+			} catch {}
+		}
+		for (const url of urls) {
+			try {
+				await injectScript(url);
 			} catch {
 				continue;
 			}
@@ -265,18 +281,8 @@ interface Window {
 
 	function hookChunks(): void {
 		const install = (): boolean => {
-			const key = Object.keys(window).find((k) =>
-				k.startsWith("webpackChunk"),
-			);
-			if (!key) return false;
-			const chunks = (window as unknown as Record<string, unknown>)[
-				key
-			] as
-				| ({ push(entry: ChunkPush): unknown } & {
-						__vibeHooked?: boolean;
-				  })
-				| undefined;
-			if (!chunks || typeof chunks.push !== "function") return false;
+			const chunks = getChunks();
+			if (!chunks) return false;
 			if (chunks.__vibeHooked) return true;
 			const origPush = chunks.push.bind(chunks);
 			chunks.push = (entry: ChunkPush) => {
@@ -294,19 +300,38 @@ interface Window {
 		setTimeout(() => clearInterval(timer), 30000);
 	}
 
-	function liftVibeBlock(wr: WebpackRequire, mainId: string): Lifted | null {
-		if (!patchFactory(wr.m, mainId)) return null;
-
-		let mod: Record<string, unknown> | null;
-		try {
-			mod = wr(mainId) as Record<string, unknown> | null;
-		} catch {
-			return null;
-		}
+	function readLifted(exports: unknown): Lifted | null {
+		const mod = exports as Record<string, unknown> | null | undefined;
 		const VibeBlock = mod?.__VibeBlock;
 		const css = mod?.__css as CssAccessor | undefined;
 		if (!VibeBlock || typeof css !== "function") return null;
 		return { VibeBlock, css };
+	}
+
+	function liftVibeBlock(wr: WebpackRequire, mainId: string): Lifted | null {
+		if (!patchFactory(wr.m, mainId)) return null;
+
+		const cached = wr.c?.[mainId] as
+			| { exports?: Record<string, unknown> }
+			| undefined;
+
+		if (cached) {
+			const fromCache = readLifted(cached.exports);
+			if (fromCache) return fromCache;
+		} else {
+			try {
+				const required = readLifted(wr(mainId));
+				if (required) return required;
+			} catch {}
+		}
+
+		const mod = { exports: {} as Record<string, unknown> };
+		try {
+			wr.m[mainId](mod, mod.exports, wr);
+		} catch {
+			return null;
+		}
+		return readLifted(mod.exports);
 	}
 
 	function resolveJsx(wr: WebpackRequire): JsxRuntime | null {
@@ -336,7 +361,7 @@ interface Window {
 
 		const ready = () => Boolean(findMain(wr) && findLandingBlocks(wr));
 		if (!ready()) {
-			for (const page of ["/", "/landing"]) {
+			for (const page of ["/", TARGET.split("?")[0]]) {
 				if (ready()) break;
 				await loadChunksFrom(page, ready);
 			}
@@ -383,28 +408,78 @@ interface Window {
 	const atHome = (): boolean =>
 		location.pathname === "/" || location.pathname === "/index.html";
 
+	function isRootUrl(href: string | null): boolean {
+		if (!href) return false;
+		let url: URL;
+		try {
+			url = new URL(href, location.href);
+		} catch {
+			return false;
+		}
+		return (
+			url.origin === location.origin &&
+			(url.pathname === "/" || url.pathname === "/index.html") &&
+			!url.search
+		);
+	}
+
+	function findLandingLink(): HTMLElement | null {
+		for (const a of document.querySelectorAll("a[href]")) {
+			const href = a.getAttribute("href") ?? "";
+			if (
+				(href.includes("skeleton=main") ||
+					href.includes("/landing/main")) &&
+				a instanceof HTMLElement
+			)
+				return a;
+		}
+		return null;
+	}
+
 	let lastPush = 0;
 	function goToLanding(): void {
 		if (Date.now() - lastPush < 1500) return;
 		lastPush = Date.now();
 
+		const link = findLandingLink();
+		const href = link?.getAttribute("href");
+		const target = href && !isRootUrl(href) ? href : TARGET;
+
 		const router = window.next?.router;
 		if (typeof router?.push === "function") {
-			router.push(TARGET);
+			router.push(target);
 			return;
 		}
-		const link = [...document.querySelectorAll("a[href]")].find((a) => {
-			const href = a.getAttribute("href") ?? "";
-			return (
-				href.includes("skeleton=main") || href.includes("/landing/main")
-			);
-		});
-		if (link instanceof HTMLElement) {
+		if (link) {
 			link.click();
 			return;
 		}
-		history.pushState(null, "", TARGET);
+		history.pushState(null, "", target);
 		window.dispatchEvent(new PopStateEvent("popstate"));
+	}
+
+	function interceptRootLinks(): void {
+		document.addEventListener(
+			"click",
+			(event) => {
+				if (event.defaultPrevented || event.button !== 0) return;
+				if (
+					event.ctrlKey ||
+					event.metaKey ||
+					event.shiftKey ||
+					event.altKey
+				)
+					return;
+				if (!(event.target instanceof Element)) return;
+				const anchor = event.target.closest("a[href]");
+				if (!anchor || !isRootUrl(anchor.getAttribute("href"))) return;
+				event.preventDefault();
+				event.stopPropagation();
+				lastPush = 0;
+				goToLanding();
+			},
+			true,
+		);
 	}
 
 	function watch(): void {
@@ -414,6 +489,7 @@ interface Window {
 		check();
 		setInterval(check, 400);
 		window.addEventListener("popstate", check);
+		interceptRootLinks();
 	}
 
 	async function boot(): Promise<void> {

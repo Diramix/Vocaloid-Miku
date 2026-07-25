@@ -1,9 +1,6 @@
 import { myVibeMiku } from "./styleManager";
-import {
-	getPlayerBarCoverUrl,
-	isElementInViewport,
-	observeWithRaf,
-} from "./utils";
+import { onDomChange } from "./domObserver";
+import { getPlayerBarCoverUrl, isElementInViewport } from "./utils";
 
 function refreshPlayerVisuals() {
 	updateBackgroundImage();
@@ -11,14 +8,7 @@ function refreshPlayerVisuals() {
 	coverAndAssetsImagesElements();
 }
 
-observeWithRaf(document.body, refreshPlayerVisuals, {
-	childList: true,
-	subtree: true,
-	attributes: true,
-	attributeFilter: ["src"],
-});
-
-refreshPlayerVisuals();
+onDomChange(refreshPlayerVisuals);
 
 // Change fullscreen player background image script
 let lastBgUrl: string | null = null;
@@ -60,7 +50,7 @@ function updateVibeBackgroundImage() {
 	const imgBackground = getPlayerBarCoverUrl();
 
 	const dynamicBG = document.querySelector<HTMLDivElement>(
-		`[data-test-id="VIBE_BLOCK"], [class*="MainPage_vibe"]`,
+		`[class*="MainPage_vibe__"], [class*="VibeBlock_root__"]`,
 	);
 
 	if (!dynamicBG || !isElementInViewport(dynamicBG)) return;

@@ -41,21 +41,3 @@ export function getOrCreateStyle(id: string): HTMLStyleElement {
 	}
 	return el;
 }
-
-export function observeWithRaf(
-	target: Node,
-	callback: () => void,
-	options: MutationObserverInit,
-): MutationObserver {
-	let rafPending = false;
-	const observer = new MutationObserver(() => {
-		if (rafPending) return;
-		rafPending = true;
-		requestAnimationFrame(() => {
-			rafPending = false;
-			callback();
-		});
-	});
-	observer.observe(target, options);
-	return observer;
-}

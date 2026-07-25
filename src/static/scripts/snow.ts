@@ -1,3 +1,4 @@
+import { onDomChange } from "./domObserver";
 import { applyStyleTheme } from "./styleManager";
 import { Flake } from "./types/snow";
 
@@ -92,19 +93,13 @@ import { Flake } from "./types/snow";
 		}
 	}
 
-	const snowObserver = new MutationObserver(() => {
+	function syncSnow(): void {
+		if (applyStyleTheme !== "christmas") return;
 		const parentEl =
 			document.querySelector<HTMLDivElement>(TARGET_SELECTOR);
-		if (parentEl) {
-			ensureSnow(parentEl);
-		}
-	});
+		if (parentEl) ensureSnow(parentEl);
+	}
 
-	snowObserver.observe(document.documentElement, {
-		childList: true,
-		subtree: true,
-	});
-
-	const initial = document.querySelector<HTMLDivElement>(TARGET_SELECTOR);
-	if (initial) ensureSnow(initial);
+	syncSnow();
+	onDomChange(syncSnow);
 })();

@@ -1,3 +1,4 @@
+import { waitFor } from "./domObserver";
 import { ymTimerInteger } from "./ymtimer";
 
 const themeOverride: string = "";
@@ -205,27 +206,15 @@ async function applyTheme() {
 }
 
 function waitForThemeReady() {
-	const run = () => {
-		applyTheme().then(() => {
-			ymTimerInteger?.();
-		});
-	};
-
-	if (document.querySelector(".ThemeTitleText") && document.head) {
-		run();
-		return;
-	}
-
-	const observer = new MutationObserver(() => {
-		if (document.querySelector(".ThemeTitleText") && document.head) {
-			observer.disconnect();
-			run();
-		}
-	});
-	observer.observe(document.body ?? document.documentElement, {
-		childList: true,
-		subtree: true,
-	});
+	waitFor(
+		() =>
+			Boolean(document.querySelector(".ThemeTitleText") && document.head),
+		() => {
+			applyTheme().then(() => {
+				ymTimerInteger();
+			});
+		},
+	);
 }
 
 if (document.readyState === "complete") {

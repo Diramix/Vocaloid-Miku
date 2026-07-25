@@ -7,5 +7,6 @@ declare global {
 		nextmusicApi: any;
 		pulsesyncApi: any;
 		desktopEvents: any;
+		next?: { router?: { push?: (url: string) => void } };
 	}
 }

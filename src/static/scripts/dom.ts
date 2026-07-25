@@ -1,4 +1,4 @@
-import { observeWithRaf } from "./utils";
+import { onDomChange } from "./domObserver";
 
 function syncInjectedElements() {
 	// Diva Cover & Diva Perfect Mark
@@ -27,10 +27,7 @@ function syncInjectedElements() {
 	}
 }
 
-observeWithRaf(document.body, syncInjectedElements, {
-	childList: true,
-	subtree: true,
-});
+onDomChange(syncInjectedElements);
 
 // Vocaloid Miku! - theme title element
 const themeTitleText = Object.assign(document.createElement("div"), {
