@@ -1,6 +1,8 @@
 import { waitFor } from "./domObserver";
 import { ymTimerInteger } from "./ymtimer";
 
+const themeOverride: string = "";
+
 const FLAGS_URL =
 	"https://github.com/Diramix/Vocaloid-Miku/releases/download/feature-flags/flags.json";
 const FLAGS_CACHE_KEY = "vocaloid_miku_flags_cache";
@@ -181,12 +183,14 @@ async function applyTheme() {
 	syncLyricsBackgroundDefault = DEFAULT_ASSETS.syncLyricsBackground;
 	applyStyle(DEFAULT_PALETTE, DEFAULT_ASSETS);
 
-	let style: string;
-	try {
-		style = await fetchFlagsStyle();
-	} catch (err) {
-		console.error("Failed to load theme:", err);
-		return;
+	let style = themeOverride.toLowerCase();
+	if (!themeOverride) {
+		try {
+			style = await fetchFlagsStyle();
+		} catch (err) {
+			console.error("Failed to load theme:", err);
+			return;
+		}
 	}
 
 	applyStyleTheme = style;
