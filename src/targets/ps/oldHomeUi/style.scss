@@ -1,0 +1,7 @@
+li:has(a[data-test-id="NAVBAR_NAVIGATION_ITEM_HOME"]) {
+	display: none !important;
+}
+
+[data-test-id="COMPOSITE_HEADER_CONTAINER"] {
+	margin-top: -50px;
+}

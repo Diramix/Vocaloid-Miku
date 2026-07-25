@@ -60,35 +60,37 @@ function updateVibeBackgroundImage() {
 	const imgBackground = getPlayerBarCoverUrl();
 
 	const dynamicBG = document.querySelector<HTMLDivElement>(
-		`[class*="MainPage_vibe"]`,
+		`[data-test-id="VIBE_BLOCK"], [class*="MainPage_vibe"]`,
 	);
 
-	if (!dynamicBG || !isElementInViewport(dynamicBG) || !imgBackground) return;
+	if (!dynamicBG || !isElementInViewport(dynamicBG)) return;
 
 	dynamicBG.style.position = "relative";
 	dynamicBG.style.overflow = "hidden";
 
-	let dynamicBG_Blur =
-		dynamicBG.querySelector<HTMLDivElement>(".blur-element");
-	if (!dynamicBG_Blur) {
-		dynamicBG_Blur = document.createElement("div");
-		dynamicBG_Blur.classList.add("blur-element");
-		Object.assign(dynamicBG_Blur.style, {
-			position: "absolute",
-			top: "0",
-			left: "0",
-			width: "100%",
-			height: "100%",
-			backgroundColor: "#26F4FE",
-			filter: "blur(0px) brightness(0.5)",
-			zIndex: "0",
-		});
-		dynamicBG.appendChild(dynamicBG_Blur);
-	}
+	if (imgBackground) {
+		let dynamicBG_Blur =
+			dynamicBG.querySelector<HTMLDivElement>(".blur-element");
+		if (!dynamicBG_Blur) {
+			dynamicBG_Blur = document.createElement("div");
+			dynamicBG_Blur.classList.add("blur-element");
+			Object.assign(dynamicBG_Blur.style, {
+				position: "absolute",
+				top: "0",
+				left: "0",
+				width: "100%",
+				height: "100%",
+				backgroundColor: "#26F4FE",
+				filter: "blur(0px) brightness(0.5)",
+				zIndex: "0",
+			});
+			dynamicBG.appendChild(dynamicBG_Blur);
+		}
 
-	const nextBackground = `url(${imgBackground}) center center / cover no-repeat`;
-	if (dynamicBG_Blur.style.background !== nextBackground) {
-		dynamicBG_Blur.style.background = nextBackground;
+		const nextBackground = `url(${imgBackground}) center center / cover no-repeat`;
+		if (dynamicBG_Blur.style.background !== nextBackground) {
+			dynamicBG_Blur.style.background = nextBackground;
+		}
 	}
 
 	let myVibeMikuElement = dynamicBG.querySelector<HTMLDivElement>(

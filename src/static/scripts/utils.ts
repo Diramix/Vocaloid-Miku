@@ -19,13 +19,16 @@ export function getPlayerBarCoverUrl(): string | null {
 
 export function isElementInViewport(el: Element): boolean {
 	const rect = el.getBoundingClientRect();
+	if (rect.width <= 0 || rect.height <= 0) return false;
+
+	const height = window.innerHeight || document.documentElement.clientHeight;
+	const width = window.innerWidth || document.documentElement.clientWidth;
+
 	return (
-		rect.top >= 0 &&
-		rect.left >= 0 &&
-		rect.bottom <=
-			(window.innerHeight || document.documentElement.clientHeight) &&
-		rect.right <=
-			(window.innerWidth || document.documentElement.clientWidth)
+		rect.top < height &&
+		rect.bottom > 0 &&
+		rect.left < width &&
+		rect.right > 0
 	);
 }
 
