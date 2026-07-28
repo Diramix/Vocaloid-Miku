@@ -1,11 +1,3 @@
-/* Beta button */
-/*--------------------------------------------*/
-[class*="MainPage_beta_withReleaseNotes"] {
-	border: 3px solid var(--font-color);
-	color: var(--font-color);
-}
-/*--------------------------------------------*/
-
 /* play button */
 /*--------------------------------------------*/
 [class*="VibeBlock_playButton"] {
@@ -27,6 +19,41 @@
 	margin-left: 20px;
 	border-radius: 10px;
 	background-color: var(--basic-color);
+}
+
+[class*="VibeBlock_root__"],
+[class*="MainPage_vibe__"] {
+	position: relative;
+	overflow: hidden;
+
+	> *:not(.blur-element):not(.additional-image-element) {
+		position: relative;
+		z-index: 3;
+	}
+
+	> .blur-element {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		background-color: #26f4fe;
+		background-image: var(--vm-cover, none);
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		filter: blur(0px) brightness(0.5);
+	}
+
+	> .additional-image-element {
+		position: absolute;
+		inset: 0;
+		z-index: 2;
+		border-radius: 10px;
+		pointer-events: none;
+		background-image: var(--my-vibe-image);
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
 }
 /*--------------------------------------------*/
 
@@ -82,7 +109,7 @@
 [class*="OverwrittenExperimentsModal_submitButton"],
 [class*="OverwrittenExperimentsModal_closeModalButton"],
 [class*="OverwrittenExperimentsModal_reloadButton"],
-[class*="OverwrittenExperimentsModal_overrideForm"] > .qU2apWBO1yyEK0lZ3lPO {
+[class*="OverwrittenExperimentsModal_overrideForm"] > button {
 	background: var(--basic-color);
 	color: #fff;
 
@@ -149,9 +176,17 @@
 }
 /*--------------------------------------------*/
 
+/* Context Menu */
+/*--------------------------------------------*/
+[role="menu"] {
+	padding: 0;
+	background: var(--main-color) !important;
+}
+/*--------------------------------------------*/
+
 /* DevPanel */
 /*--------------------------------------------*/
-body > [class*="DevPanel_root"] > .qU2apWBO1yyEK0lZ3lPO {
+body > [class*="DevPanel_root"] > button {
 	backdrop-filter: blur(0px);
 	z-index: 99999;
 	background: var(--miku-color);
@@ -200,8 +235,8 @@ body > [class*="DevPanel_root"] > .qU2apWBO1yyEK0lZ3lPO {
 
 /* Track duration timestamps */
 /*--------------------------------------------*/
-[class*="CommonControlsBar_duration"] {
-	color: var(--font-color);
+[class*="Content_main"] * [class*="CommonControlsBar_duration"] {
+	color: var(--font-color) !important;
 
 	&:hover {
 		color: var(--font-color);

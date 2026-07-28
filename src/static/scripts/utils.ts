@@ -17,16 +17,16 @@ export function getPlayerBarCoverUrl(): string | null {
 	return null;
 }
 
-export function isElementInViewport(el: Element): boolean {
-	const rect = el.getBoundingClientRect();
-	return (
-		rect.top >= 0 &&
-		rect.left >= 0 &&
-		rect.bottom <=
-			(window.innerHeight || document.documentElement.clientHeight) &&
-		rect.right <=
-			(window.innerWidth || document.documentElement.clientWidth)
-	);
+const nodeCache = new Map<string, Element>();
+
+export function findCached<T extends Element>(selector: string): T | null {
+	const cached = nodeCache.get(selector);
+	if (cached?.isConnected) return cached as T;
+
+	const found = document.querySelector<T>(selector);
+	if (found) nodeCache.set(selector, found);
+	else nodeCache.delete(selector);
+	return found;
 }
 
 export function getOrCreateStyle(id: string): HTMLStyleElement {
@@ -37,22 +37,4 @@ export function getOrCreateStyle(id: string): HTMLStyleElement {
 		document.head.appendChild(el);
 	}
 	return el;
-}
-
-export function observeWithRaf(
-	target: Node,
-	callback: () => void,
-	options: MutationObserverInit,
-): MutationObserver {
-	let rafPending = false;
-	const observer = new MutationObserver(() => {
-		if (rafPending) return;
-		rafPending = true;
-		requestAnimationFrame(() => {
-			rafPending = false;
-			callback();
-		});
-	});
-	observer.observe(target, options);
-	return observer;
 }

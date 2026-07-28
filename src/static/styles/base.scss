@@ -24,9 +24,22 @@
 }
 
 * {
-	--yellow-play-button-color: var(
+	--ym-logo-color-primary-player: var(
 		--ym-controls-color-secondary-on_default-hovered
 	) !important;
+}
+
+.ThemeTitleText {
+	position: fixed;
+	visibility: visible;
+	font-family: "Vocaloid", sans-serif;
+	font-size: 16px;
+	font-weight: 1000;
+	left: 50%;
+	margin-left: -66px;
+	top: 10px;
+	color: var(--main-color);
+	z-index: 1;
 }
 
 @font-face {

@@ -1,54 +1,40 @@
-import { observeWithRaf } from "./utils";
+import { onDomChange } from "./domObserver";
+import { findCached } from "./utils";
 
-function syncInjectedElements() {
+const COVER_SELECTOR = '[class*="PlayButtonWithCover_coverImage"]';
+const QUEUE_SELECTOR = '[class*="PlayQueue_root"]';
+const SONATA_SELECTOR =
+	'[class*="PlayerBarDesktopWithBackgroundProgressBar_sonata"]';
+
+function syncInjectedElements(): void {
 	// Diva Cover & Diva Perfect Mark
-	if (document.querySelector('[class*="PlayButtonWithCover_coverImage"]')) {
-		["Diva-Cover", "Diva-Perfect-Mark"].forEach((className) => {
-			if (!document.querySelector(`.${className}`)) {
-				document
-					.querySelector('[class*="PlayQueue_root"]')
-					?.appendChild(
-						Object.assign(document.createElement("div"), {
-							className,
-						}),
-					);
+	if (findCached(COVER_SELECTOR)) {
+		const queue = findCached(QUEUE_SELECTOR);
+		if (queue) {
+			for (const className of ["Diva-Cover", "Diva-Perfect-Mark"]) {
+				if (queue.querySelector(`:scope > .${className}`)) continue;
+				queue.appendChild(
+					Object.assign(document.createElement("div"), { className }),
+				);
 			}
-		});
+		}
 	}
 
 	// Miku Run
-	const target = document.querySelector(
-		'[class*="PlayerBarDesktopWithBackgroundProgressBar_sonata"]',
-	);
-	if (target && !document.querySelector(".mikuRun")) {
-		const newElement = document.createElement("div");
-		newElement.className = "mikuRun";
-		target.insertAdjacentElement("afterend", newElement);
+	const sonata = findCached(SONATA_SELECTOR);
+	if (sonata && !sonata.nextElementSibling?.classList.contains("mikuRun")) {
+		const mikuRun = document.createElement("div");
+		mikuRun.className = "mikuRun";
+		sonata.insertAdjacentElement("afterend", mikuRun);
 	}
 }
 
-observeWithRaf(document.body, syncInjectedElements, {
-	childList: true,
-	subtree: true,
-});
+onDomChange(syncInjectedElements);
 
 // Vocaloid Miku! - theme title element
-const themeTitleText = Object.assign(document.createElement("div"), {
-	className: "ThemeTitleText",
-	textContent: "Vocaloid Miku!",
-});
-
-Object.assign(themeTitleText.style, {
-	position: "fixed",
-	visibility: "visible",
-	fontFamily: '"Vocaloid", sans-serif',
-	fontSize: "16px",
-	fontWeight: "1000",
-	left: "50%",
-	marginLeft: "-66px",
-	top: "10px",
-	color: "var(--main-color)",
-	zIndex: "1",
-});
-
-document.body.appendChild(themeTitleText);
+document.body.appendChild(
+	Object.assign(document.createElement("div"), {
+		className: "ThemeTitleText",
+		textContent: "Vocaloid Miku!",
+	}),
+);

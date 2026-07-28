@@ -1,3 +1,4 @@
+import { waitFor } from "./domObserver";
 import { ymTimerInteger } from "./ymtimer";
 
 const themeOverride: string = "";
@@ -106,7 +107,6 @@ const THEMES: Record<string, Theme> = {
 	},
 };
 
-let myVibeMiku: string = DEFAULT_ASSETS.myVibe;
 let syncLyricsBackgroundDefault: string = DEFAULT_ASSETS.syncLyricsBackground;
 let applyStyleTheme: string;
 
@@ -118,6 +118,7 @@ function applyStyle(palette: Palette, assets: Assets): void {
 	}
 
 	root.style.setProperty("--miku-run-image", `url("${assets.mikuRun}")`);
+	root.style.setProperty("--my-vibe-image", `url("${assets.myVibe}")`);
 	root.style.setProperty(
 		"--assets-before-image",
 		`url("${assets.kagamineRin}")`,
@@ -179,7 +180,6 @@ async function applyTheme() {
 	const themeTitleText = document.querySelector(".ThemeTitleText");
 	if (!themeTitleText) return;
 
-	myVibeMiku = DEFAULT_ASSETS.myVibe;
 	syncLyricsBackgroundDefault = DEFAULT_ASSETS.syncLyricsBackground;
 	applyStyle(DEFAULT_PALETTE, DEFAULT_ASSETS);
 
@@ -199,33 +199,20 @@ async function applyTheme() {
 	if (!theme) return;
 
 	themeTitleText.textContent = theme.title;
-	myVibeMiku = theme.assets.myVibe;
 	syncLyricsBackgroundDefault = theme.assets.syncLyricsBackground;
 	applyStyle(theme.palette, theme.assets);
 }
 
 function waitForThemeReady() {
-	const run = () => {
-		applyTheme().then(() => {
-			ymTimerInteger?.();
-		});
-	};
-
-	if (document.querySelector(".ThemeTitleText") && document.head) {
-		run();
-		return;
-	}
-
-	const observer = new MutationObserver(() => {
-		if (document.querySelector(".ThemeTitleText") && document.head) {
-			observer.disconnect();
-			run();
-		}
-	});
-	observer.observe(document.body ?? document.documentElement, {
-		childList: true,
-		subtree: true,
-	});
+	waitFor(
+		() =>
+			Boolean(document.querySelector(".ThemeTitleText") && document.head),
+		() => {
+			applyTheme().then(() => {
+				ymTimerInteger();
+			});
+		},
+	);
 }
 
 if (document.readyState === "complete") {
@@ -234,4 +221,4 @@ if (document.readyState === "complete") {
 	window.addEventListener("load", waitForThemeReady);
 }
 
-export { myVibeMiku, syncLyricsBackgroundDefault, applyStyleTheme };
+export { syncLyricsBackgroundDefault, applyStyleTheme };

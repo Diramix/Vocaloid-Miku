@@ -1,9 +1,11 @@
 import { getSettings } from "../settings";
-import { getPlayerBarCoverUrl, getOrCreateStyle } from "../utils";
+import { getOrCreateStyle } from "../utils";
+import { onCoverChange } from "../trackCover";
 import { syncLyricsBackgroundDefault } from "../styleManager";
 
 let baseBlur = 0;
-let lastCoverUrl: string | null = null;
+let coverUrl: string | null = null;
+let useCover = false;
 let lastKey: string | null = null;
 
 function applyBackground(url: string) {
@@ -15,27 +17,19 @@ function applyBackground(url: string) {
 	if (style.textContent !== next) style.textContent = next;
 }
 
-function syncCoverBackground() {
-	const coverUrl = getPlayerBarCoverUrl();
-	if (coverUrl && coverUrl !== lastCoverUrl) {
-		lastCoverUrl = coverUrl;
-		applyBackground(coverUrl);
-	}
-}
-
 function update() {
 	const s = getSettings();
 
 	const rawUrl = String(s.backgroundUrl?.value || "default");
 	const newUrl = rawUrl === "default" ? syncLyricsBackgroundDefault : rawUrl;
-	const useCover = !!s.coverImage?.value;
+	useCover = !!s.coverImage?.value;
 	const newBlur = parseInt(String(s.blurFilter?.value ?? 0), 10) || 0;
 	const normalFont = !!s.normalFont?.value;
 	const key = JSON.stringify({ newUrl, useCover, newBlur, normalFont });
 
 	// Background
 	if (useCover) {
-		syncCoverBackground();
+		if (coverUrl) applyBackground(coverUrl);
 	} else if (key !== lastKey) {
 		applyBackground(newUrl);
 	}
@@ -55,9 +49,9 @@ function update() {
 	lastKey = key;
 }
 
-setInterval(() => {
-	if (!getSettings().coverImage?.value) return;
-	syncCoverBackground();
-}, 1000);
+onCoverChange((url) => {
+	coverUrl = url;
+	if (useCover && url) applyBackground(url);
+});
 
 export { update };

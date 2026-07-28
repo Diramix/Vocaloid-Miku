@@ -1,16 +1,18 @@
-const body = document.body;
+import { onDomChange } from "./domObserver";
 
 const applyTheme = () => {
-	if (
-		!body.classList.contains("ym-light-theme") &&
-		!body.classList.contains("ym-dark-theme")
-	) {
-		body.classList.add("ym-light-theme");
-	} else if (body.classList.contains("ym-dark-theme")) {
-		body.classList.replace("ym-dark-theme", "ym-light-theme");
+	const body = document.body;
+	if (!body) return;
+
+	const classes = body.classList;
+	if (classes.contains("ym-light-theme")) return;
+
+	if (classes.contains("ym-dark-theme")) {
+		classes.replace("ym-dark-theme", "ym-light-theme");
+	} else {
+		classes.add("ym-light-theme");
 	}
 };
-applyTheme();
 
-const observer = new MutationObserver(() => applyTheme());
-observer.observe(body, { attributes: true, attributeFilter: ["class"] });
+applyTheme();
+onDomChange(applyTheme);

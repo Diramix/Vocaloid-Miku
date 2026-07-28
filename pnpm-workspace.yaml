@@ -1,6 +1,6 @@
 allowBuilds:
   "@parcel/watcher": true
-  bun: false
+  bun: true
   esbuild: true
 minimumReleaseAgeExclude:
   - '@diram1x/ymtm@4.0.0'

@@ -12,8 +12,15 @@
 		sendInitFinished();
 	}
 
+	const MAX_ATTEMPTS = 60;
+	let attempts = 0;
+
 	function setup(): void {
 		if (!window.desktopEvents?.send || !window.desktopEvents?.on) {
+			if (++attempts > MAX_ATTEMPTS) {
+				console.warn("[Vocaloid Miku] desktopEvents never appeared");
+				return;
+			}
 			setTimeout(setup, 100);
 			return;
 		}

@@ -1,5 +1,5 @@
 ![1](https://github.com/user-attachments/assets/0dcab9cc-47ce-47d3-b13f-e288f5f32c84)
-![License](https://img.shields.io/github/license/Diramix/Spotify-Music.svg?style=for-the-badge)
+![License](https://img.shields.io/github/license/Diramix/Vocaloid-Miku.svg?style=for-the-badge)
 
 # Vocaloid Miku!
 
