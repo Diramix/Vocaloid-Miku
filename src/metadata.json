@@ -5,7 +5,7 @@
 	"author": ["diram1x"],
 	"description": "Hatsune Miku: Project DIRA F",
 	"type": "theme",
-	"version": "1.13.0-beta.1",
+	"version": "1.13.0",
 	"css": "style.css",
 	"script": "script.js",
 	"allowedUrls": [
