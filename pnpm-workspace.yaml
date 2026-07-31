@@ -3,5 +3,5 @@ allowBuilds:
   bun: true
   esbuild: true
 minimumReleaseAgeExclude:
-  - '@diram1x/ymtm@4.0.0'
+  - '@diram1x/ymtm@4.0.0 || 4.1.1'
   - prettier@3.8.5
