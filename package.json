@@ -12,10 +12,7 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"build": {
-		"package": [
-			"nextmusic",
-			"pulsesync"
-		]
+		"package": ["nextmusic", "pulsesync"]
 	},
 	"nextmusic": {
 		"tarGz": {

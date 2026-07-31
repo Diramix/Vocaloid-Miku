@@ -61,7 +61,7 @@ body.vm-fullscreen-miku .AssetsImages:after {
 [class*="FullscreenPlayerDesktop_modalContent"] {
 	background-image:
 		linear-gradient(180deg, rgb(0 0 0 / 0.3) 0%, rgb(0 0 0 / 0.75) 100%),
-		var(--vm-cover, none);
+		var(--vm-background, var(--vm-cover, none));
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;

@@ -17,6 +17,29 @@ export function getPlayerBarCoverUrl(): string | null {
 	return null;
 }
 
+export function getCurrentTrackArtistIds(): string[] {
+	const currentModClient = window.getCurrentModClient?.();
+	if (!currentModClient) return [];
+
+	const track =
+		currentModClient === "nm"
+			? window.nextmusicApi?.getCurrentTrack()
+			: currentModClient === "ps"
+				? window.pulsesyncApi?.getCurrentTrack()
+				: null;
+	if (!track) return [];
+
+	const ids: unknown[] = Array.isArray(track.artistIds)
+		? track.artistIds
+		: Array.isArray(track.artists)
+			? track.artists.map((artist: any) => artist?.id)
+			: [];
+
+	return ids
+		.filter((id) => id !== null && id !== undefined && id !== "")
+		.map((id) => String(id));
+}
+
 const nodeCache = new Map<string, Element>();
 
 export function findCached<T extends Element>(selector: string): T | null {
