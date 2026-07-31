@@ -42,3 +42,14 @@
 [class*="InnerHeader_root_showColor"] {
 	background: 0;
 }
+
+
+[class*="SettingsPage_container"] {
+	align-items: center;
+}
+
+[class*="SettingsPage_content"],
+[class*="Settings_root"] {
+	width: 100%;
+	max-width: 800px;
+}
