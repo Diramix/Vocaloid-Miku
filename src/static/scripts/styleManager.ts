@@ -1,7 +1,14 @@
 import { waitFor } from "./domObserver";
 import { ymTimerInteger } from "./ymtimer";
 
+type VisualizerWindow = Window & {
+	nextmusicApi?: {
+		visualizer?: { setAccentColor(color: string): boolean };
+	};
+};
+
 const themeOverride: string = "";
+const DEFAULT_ACCENT_COLOR = "#10758b";
 
 const FLAGS_URL =
 	"https://github.com/Diramix/Vocaloid-Miku/releases/download/feature-flags/flags.json";
@@ -45,11 +52,17 @@ const DEFAULT_ASSETS: Assets = {
 	perfectMark: `${LOCAL}Diva-F-Perfect-Mark.webp${Q}`,
 };
 
-type Theme = { title: string; palette: Palette; assets: Assets };
+type Theme = {
+	title: string;
+	palette: Palette;
+	assets: Assets;
+	accentColor: string;
+};
 
 const THEMES: Record<string, Theme> = {
 	halloween: {
 		title: "Miku-Miku Boo!",
+				accentColor: "#422c54",
 		palette: {
 			"--main-color": "#E48742",
 			"--light-main-color": "#FFCB63",
@@ -72,6 +85,7 @@ const THEMES: Record<string, Theme> = {
 
 	christmas: {
 		title: "Happy Miku Year!",
+				accentColor: DEFAULT_ACCENT_COLOR,
 		palette: DEFAULT_PALETTE,
 		assets: {
 			mikuRun: DEFAULT_ASSETS.mikuRun,
@@ -86,6 +100,7 @@ const THEMES: Record<string, Theme> = {
 
 	teto: {
 		title: "Kasane Teto!",
+				accentColor: "#2A2433",
 		palette: {
 			"--main-color": "#D46A83",
 			"--light-main-color": "#FF9FC4",
@@ -110,7 +125,33 @@ const THEMES: Record<string, Theme> = {
 let syncLyricsBackgroundDefault: string = DEFAULT_ASSETS.syncLyricsBackground;
 let applyStyleTheme: string;
 
-function applyStyle(palette: Palette, assets: Assets): void {
+let accentRetryTimer: ReturnType<typeof setTimeout> | undefined;
+
+function applyVisualizerAccent(color: string): void {
+	clearTimeout(accentRetryTimer);
+	let attempts = 0;
+
+	function apply(): void {
+		const api = (window as VisualizerWindow).nextmusicApi;
+		if (api?.visualizer?.setAccentColor) {
+			api.visualizer.setAccentColor(color);
+			return;
+		}
+		if (++attempts < 60) {
+			accentRetryTimer = setTimeout(apply, 500);
+		}
+	}
+
+	apply();
+}
+
+function applyStyle(
+	palette: Palette,
+	assets: Assets,
+	accentColor: string,
+): void {
+	applyVisualizerAccent(accentColor);
+
 	const root = document.documentElement;
 
 	for (const [name, value] of Object.entries(palette)) {
@@ -181,7 +222,7 @@ async function applyTheme() {
 	if (!themeTitleText) return;
 
 	syncLyricsBackgroundDefault = DEFAULT_ASSETS.syncLyricsBackground;
-	applyStyle(DEFAULT_PALETTE, DEFAULT_ASSETS);
+	applyStyle(DEFAULT_PALETTE, DEFAULT_ASSETS, DEFAULT_ACCENT_COLOR);
 
 	let style = themeOverride.toLowerCase();
 	if (!themeOverride) {
@@ -200,7 +241,7 @@ async function applyTheme() {
 
 	themeTitleText.textContent = theme.title;
 	syncLyricsBackgroundDefault = theme.assets.syncLyricsBackground;
-	applyStyle(theme.palette, theme.assets);
+	applyStyle(theme.palette, theme.assets, theme.accentColor);
 }
 
 function waitForThemeReady() {
