@@ -3,6 +3,9 @@
 
 # Vocaloid Miku!
 
+> [!IMPORTANT]
+> PulseSync support has been suspended indefinitely due to an update to the add-on system.
+
 ## Screenshots
 
 ![2](https://github.com/user-attachments/assets/7e81b89c-4c30-4b53-9a82-69d67467f37b)
