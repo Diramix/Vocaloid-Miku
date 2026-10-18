@@ -39,6 +39,19 @@
 	margin-block-start: 0;
 }
 
+[class*="NavbarDesktop_navigationGroup"] {
+	* {
+		animation: none !important;
+	}
+
+	li {
+		a {
+			padding-block-end: var(--ym-spacer-size-xs);
+			padding-block-start: var(--ym-spacer-size-xs);
+		}
+	}
+}
+
 [class*="InnerHeader_root_showColor"] {
 	background: 0;
 }
