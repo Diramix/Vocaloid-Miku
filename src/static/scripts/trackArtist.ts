@@ -1,5 +1,4 @@
-import { onDomChange } from "./domObserver";
-import { getCurrentTrackArtistIds } from "./utils";
+import { onTrackStateChange, type Track } from "./trackState";
 
 type Listener = (url: string | null) => void;
 
@@ -46,8 +45,12 @@ function emit(url: string | null): void {
 	for (const listener of listeners) listener(url);
 }
 
-async function poll(): Promise<void> {
-	const ids = getCurrentTrackArtistIds();
+async function update(track: Track | null): Promise<void> {
+	const rawIds =
+		track?.artistIds ?? track?.artists?.map((artist) => artist.id) ?? [];
+	const ids = rawIds
+		.filter((id) => id !== null && id !== undefined && id !== "")
+		.map(String);
 	const key = ids.join(",");
 	if (key === currentKey) return;
 	currentKey = key;
@@ -63,7 +66,6 @@ export function onArtistCoverChange(listener: Listener): () => void {
 	return () => listeners.delete(listener);
 }
 
-poll();
-onDomChange(() => {
-	poll();
+onTrackStateChange((track) => {
+	void update(track);
 });

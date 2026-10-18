@@ -62,7 +62,7 @@ type Theme = {
 const THEMES: Record<string, Theme> = {
 	halloween: {
 		title: "Miku-Miku Boo!",
-				accentColor: "#422c54",
+		accentColor: "#422c54",
 		palette: {
 			"--main-color": "#E48742",
 			"--light-main-color": "#FFCB63",
@@ -85,7 +85,7 @@ const THEMES: Record<string, Theme> = {
 
 	christmas: {
 		title: "Happy Miku Year!",
-				accentColor: DEFAULT_ACCENT_COLOR,
+		accentColor: DEFAULT_ACCENT_COLOR,
 		palette: DEFAULT_PALETTE,
 		assets: {
 			mikuRun: DEFAULT_ASSETS.mikuRun,
@@ -100,7 +100,7 @@ const THEMES: Record<string, Theme> = {
 
 	teto: {
 		title: "Kasane Teto!",
-				accentColor: "#2A2433",
+		accentColor: "#2A2433",
 		palette: {
 			"--main-color": "#D46A83",
 			"--light-main-color": "#FF9FC4",
@@ -118,6 +118,29 @@ const THEMES: Record<string, Theme> = {
 			syncLyricsBackground: `${TETO_BASE}/SyncLyrics/fullscreen-lyrics.jpg`,
 			divaQueueBackground: `${TETO_BASE}/Queue/Diva-Queue-Background.png`,
 			perfectMark: `${TETO_BASE}/Queue/Diva-F-Perfect-Mark.png`,
+		},
+	},
+
+	sneakie: {
+		title: "Sneakie!",
+		accentColor: "#5d81e2",
+		palette: {
+			"--main-color": "#5d81e2",
+			"--light-main-color": "#6d97f9",
+			"--buttons-color": "#5d81e2",
+			"--basic-color": "#363a97",
+			"--hatsune-light": "#110626",
+			"--font-color": "#0f0124",
+			"--miku-color": "#393c99",
+		},
+		assets: {
+			mikuRun: `${LOCAL}miku-run-Sneakie.png${Q}`,
+			kagamineRin: `${LOCAL}Kagamine-Rin.webp${Q}`,
+			fullscreenMikuXD: `${LOCAL}fullscreen-miku-XD-Sneakie.png${Q}`,
+			myVibe: `${LOCAL}My-vibe-Sneakie.png${Q}`,
+			syncLyricsBackground: `${LOCAL}fullscreen-lyrics-Sneakie.webp${Q}`,
+			divaQueueBackground: DEFAULT_ASSETS.divaQueueBackground,
+			perfectMark: DEFAULT_ASSETS.perfectMark,
 		},
 	},
 };

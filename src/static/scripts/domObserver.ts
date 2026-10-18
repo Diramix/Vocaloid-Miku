@@ -63,14 +63,12 @@ export function waitFor(
 		return;
 	}
 
-	const deadline = Date.now() + timeoutMs;
+	let timeoutId: ReturnType<typeof setTimeout>;
 	const unsubscribe = onDomChange(() => {
-		if (Date.now() > deadline) {
-			unsubscribe();
-			return;
-		}
 		if (!predicate()) return;
+		clearTimeout(timeoutId);
 		unsubscribe();
 		callback();
 	});
+	timeoutId = setTimeout(unsubscribe, timeoutMs);
 }

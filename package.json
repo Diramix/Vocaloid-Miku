@@ -1,38 +1,30 @@
 {
 	"name": "vocaloid-miku",
+	"addonName": "Vocaloid Miku!",
+	"version": "1.13.3",
+	"description": "Hatsune Miku: Project DIRA F",
+	"author": "diram1x",
 	"license": "CC0-1.0",
 	"packageManager": "pnpm@12.9.1",
 	"scripts": {
-		"dev": "ymtm dev",
-		"build": "ymtm build",
-		"build:nextmusic": "ymtm build nextmusic",
-		"build:pulsesync": "ymtm build pulsesync",
+		"dev": "nmtools dev",
+		"build": "nmtools build",
+		"build:nextmusic": "nmtools build nextmusic",
 		"format": "biome format --write .",
 		"lint": "biome check .",
 		"typecheck": "tsc --noEmit"
 	},
 	"build": {
-		"package": [
-			"nextmusic",
-			"pulsesync"
-		]
+		"targets": ["nextmusic"]
 	},
 	"nextmusic": {
 		"tarGz": {
 			"artifactName": "Vocaloid-Miku_${addon.version}_${build.package}.tar.gz"
 		}
 	},
-	"pulsesync": {
-		"zip": {
-			"artifactName": "Vocaloid-Miku_${addon.version}_${build.package}.zip"
-		},
-		"pext": {
-			"artifactName": "Vocaloid-Miku_${addon.version}_${build.package}.pext"
-		}
-	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.5.15",
-		"@diram1x/ymtm": "^4.2.0",
+		"@web-next-music/nmtools": "^5.0.0",
 		"typescript": "^7.0.2"
 	}
 }

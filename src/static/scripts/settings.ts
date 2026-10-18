@@ -27,9 +27,7 @@ let attempts = 0;
 
 function subscribe(): void {
 	const w = window as any;
-	const source =
-		w.pulsesyncApi?.getSettings?.(metadata.name) ??
-		w.nextmusicApi?.getSettings?.(metadata.name);
+	const source = w.nextmusicApi?.getSettings?.(metadata.name);
 	if (!source?.onChange) {
 		if (++attempts > MAX_ATTEMPTS) {
 			console.warn("[Vocaloid Miku] addon settings API never appeared");

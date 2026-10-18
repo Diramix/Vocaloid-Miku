@@ -10,7 +10,7 @@ let enabled = false;
 
 function injectSettingsButton(): void {
 	if (!enabled) return;
-	if (window.getCurrentModClient?.() !== "nm") return;
+
 	const container = findCached(
 		'[class*="PlayerBarDesktopWithBackgroundProgressBar_meta"]',
 	);

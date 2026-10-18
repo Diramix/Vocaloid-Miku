@@ -1,10 +1,5 @@
-import { onDomChange } from "./domObserver";
 import { onArtistCoverChange } from "./trackArtist";
 import { onCoverChange } from "./trackCover";
-import { findCached } from "./utils";
-
-const VIBE_SELECTOR = '[class*="MainPage_vibe__"], [class*="VibeBlock_root__"]';
-const FULLSCREEN_SELECTOR = '[class*="FullscreenPlayerDesktopContent_root"]';
 
 const LOCAL = "http://127.0.0.1:2007/assets/";
 const Q = "?name=Vocaloid Miku!";
@@ -19,17 +14,19 @@ function preload(url: string): void {
 	img.src = url;
 }
 
-function setImage(name: string, url: string): void {
-	document.documentElement.style.setProperty(name, `url("${url}")`);
-	preload(url);
+const appliedImages = new Map<string, string>();
+
+function setImage(name: string, url: string | null): void {
+	const value = url ? `url("${url}")` : "none";
+	if (appliedImages.get(name) === value) return;
+	const alreadyLoaded = url && [...appliedImages.values()].includes(value);
+	appliedImages.set(name, value);
+	document.documentElement.style.setProperty(name, value);
+	if (url && !alreadyLoaded) preload(url);
 }
 
 function applyImages(): void {
-	if (coverUrl) {
-		setImage("--vm-cover-raw", coverUrl);
-	} else {
-		document.documentElement.style.setProperty("--vm-cover-raw", "none");
-	}
+	setImage("--vm-cover-raw", coverUrl);
 
 	setImage("--vm-cover", coverUrl ?? FALLBACK_COVER);
 	setImage(
@@ -48,27 +45,5 @@ function applyArtistCover(url: string | null): void {
 	applyImages();
 }
 
-function ensureChild(parent: Element, className: string): void {
-	if (parent.querySelector(`:scope > .${className}`)) return;
-	parent.appendChild(
-		Object.assign(document.createElement("div"), { className }),
-	);
-}
-
-function syncPlayerElements(): void {
-	const vibe = findCached(VIBE_SELECTOR);
-	if (vibe) {
-		ensureChild(vibe, "blur-element");
-		ensureChild(vibe, "additional-image-element");
-	}
-
-	const fullscreen = findCached(FULLSCREEN_SELECTOR);
-	if (fullscreen) {
-		ensureChild(fullscreen, "CoverImage");
-		ensureChild(fullscreen, "AssetsImages");
-	}
-}
-
 onCoverChange(applyCover);
 onArtistCoverChange(applyArtistCover);
-onDomChange(syncPlayerElements);
