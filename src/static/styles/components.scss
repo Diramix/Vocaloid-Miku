@@ -31,7 +31,8 @@
 		z-index: 3;
 	}
 
-	> .blur-element {
+	> .blur-element,
+	&:not(:has(> .blur-element))::before {
 		position: absolute;
 		inset: 0;
 		z-index: 0;
@@ -43,7 +44,8 @@
 		filter: blur(0px) brightness(0.5);
 	}
 
-	> .additional-image-element {
+	> .additional-image-element,
+	&:not(:has(> .additional-image-element))::after {
 		position: absolute;
 		inset: 0;
 		z-index: 2;
@@ -54,6 +56,30 @@
 		background-size: cover;
 		background-repeat: no-repeat;
 	}
+
+	&:not(:has(> .blur-element))::before,
+	&:not(:has(> .additional-image-element))::after {
+		content: "";
+		pointer-events: none;
+	}
+}
+
+:root:has(use[*|href$="#navigationForYouAndTrends_selected_xs"])
+	[class*="LandingPage_content__"]:not(:has([class*="VibeBlock_root__"]))::before {
+	content: "";
+	display: block;
+	flex-shrink: 0;
+	height: 56vh;
+	min-height: 31.25rem;
+	margin-top: 20px;
+	margin-left: 20px;
+	border-radius: 10px;
+	pointer-events: none;
+	background-color: var(--basic-color);
+	background-image: var(--my-vibe-image, none), linear-gradient(#0008, #0008), var(--vm-cover-raw, none);
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 /*--------------------------------------------*/
 

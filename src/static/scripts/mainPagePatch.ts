@@ -2,6 +2,11 @@ type Callable = (...args: any[]) => any;
 type RuntimeRequire = {
 	(id: string): any;
 	m?: Record<string, Callable>;
+	l?: (
+		url: string,
+		onLoad: (event: { type: string }) => void,
+		key?: string,
+	) => void;
 };
 type PageState = {
 	ids: Set<unknown>;
@@ -9,6 +14,7 @@ type PageState = {
 	className?: string;
 	installed: boolean;
 	refreshScheduled?: boolean;
+	loading?: boolean;
 };
 
 const states = new WeakMap<RuntimeRequire, PageState>();
@@ -52,6 +58,7 @@ function install(require: RuntimeRequire, jsx: Callable): boolean {
 			}
 		}
 		if (/MainPage\s*:\s*\(\s*\)\s*=>/.test(source)) {
+			if (state.vibe) continue;
 			let exports = require(id);
 			if (!exports.__VibeBlock && source.includes("__VibeBlock")) {
 				const module = { exports: {} };
@@ -75,7 +82,18 @@ function install(require: RuntimeRequire, jsx: Callable): boolean {
 			landings.push(...Object.values(require(id)));
 		}
 	}
-	if (!state.vibe || !state.ids.size) return false;
+	if (!state.vibe || !state.ids.size) {
+		if (
+			!state.vibe &&
+			!state.loading &&
+			require.l &&
+			typeof window !== "undefined"
+		) {
+			state.loading = true;
+			void loadVibeChunks(require, jsx, state);
+		}
+		return false;
+	}
 	const current = state;
 	for (const component of landings) {
 		if (
@@ -137,4 +155,90 @@ function install(require: RuntimeRequire, jsx: Callable): boolean {
 		});
 	}
 	return current.installed;
+}
+
+async function loadVibeChunks(
+	require: RuntimeRequire,
+	jsx: Callable,
+	state: PageState,
+): Promise<void> {
+	const controller = new AbortController();
+	const timeout = setTimeout(() => controller.abort(), 10_000);
+	try {
+		const response = await fetch(new URL("/", location.href), {
+			signal: controller.signal,
+		});
+		if (!response.ok) throw new Error(`HTTP ${response.status}`);
+		let html = "";
+		if (response.body) {
+			const reader = response.body.getReader();
+			const decoder = new TextDecoder();
+			try {
+				while (!html.includes("</head>")) {
+					const { done, value } = await reader.read();
+					if (done) break;
+					html += decoder.decode(value, { stream: true });
+				}
+			} finally {
+				await reader.cancel();
+			}
+		} else {
+			html = await response.text();
+		}
+		const present = new Set(
+			[...document.scripts]
+				.filter((script) => script.src)
+				.map((script) => new URL(script.src, location.href).href),
+		);
+		const urls = new Set<string>();
+		for (const match of html.matchAll(
+			/<script\b[^>]*\bsrc=["']([^"']+)["']/g,
+		)) {
+			const url = new URL(match[1], response.url || location.href);
+			if (
+				!/^https?:$/.test(url.protocol) ||
+				!url.pathname.includes("/_next/static/chunks/")
+			)
+				continue;
+			if (!present.has(url.href)) urls.add(url.href);
+		}
+		const pending = [...urls].sort(
+			(left, right) =>
+				Number(right.includes("/page-")) -
+				Number(left.includes("/page-")),
+		);
+		let index = 0;
+		async function worker(): Promise<void> {
+			while (
+				index < pending.length &&
+				!state.installed &&
+				!controller.signal.aborted
+			) {
+				const url = pending[index++];
+				await new Promise<void>((resolve) => {
+					const finish = () => {
+						controller.signal.removeEventListener("abort", finish);
+						resolve();
+					};
+					controller.signal.addEventListener("abort", finish, {
+						once: true,
+					});
+					try {
+						require.l!(url, finish, `vocaloid-miku-vibe:${url}`);
+					} catch {
+						finish();
+					}
+				});
+				if (!controller.signal.aborted)
+					installMainPagePatch(require, jsx);
+			}
+		}
+		await Promise.all(
+			Array.from({ length: Math.min(4, pending.length) }, worker),
+		);
+	} catch (error) {
+		console.warn("[Vocaloid Miku] Could not preload Vibe chunks", error);
+	} finally {
+		clearTimeout(timeout);
+	}
 }
