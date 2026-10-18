@@ -62,7 +62,7 @@ type Theme = {
 const THEMES: Record<string, Theme> = {
 	halloween: {
 		title: "Miku-Miku Boo!",
-				accentColor: "#422c54",
+		accentColor: "#422c54",
 		palette: {
 			"--main-color": "#E48742",
 			"--light-main-color": "#FFCB63",
@@ -85,7 +85,7 @@ const THEMES: Record<string, Theme> = {
 
 	christmas: {
 		title: "Happy Miku Year!",
-				accentColor: DEFAULT_ACCENT_COLOR,
+		accentColor: DEFAULT_ACCENT_COLOR,
 		palette: DEFAULT_PALETTE,
 		assets: {
 			mikuRun: DEFAULT_ASSETS.mikuRun,
@@ -100,7 +100,7 @@ const THEMES: Record<string, Theme> = {
 
 	teto: {
 		title: "Kasane Teto!",
-				accentColor: "#2A2433",
+		accentColor: "#2A2433",
 		palette: {
 			"--main-color": "#D46A83",
 			"--light-main-color": "#FF9FC4",
