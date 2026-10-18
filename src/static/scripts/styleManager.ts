@@ -120,6 +120,29 @@ const THEMES: Record<string, Theme> = {
 			perfectMark: `${TETO_BASE}/Queue/Diva-F-Perfect-Mark.png`,
 		},
 	},
+
+	sneakie: {
+		title: "Sneakie!",
+		accentColor: "#5d81e2",
+		palette: {
+			"--main-color": "#5d81e2",
+			"--light-main-color": "#6d97f9",
+			"--buttons-color": "#5d81e2",
+			"--basic-color": "#363a97",
+			"--hatsune-light": "#110626",
+			"--font-color": "#0f0124",
+			"--miku-color": "#393c99",
+		},
+		assets: {
+			mikuRun: `${LOCAL}miku-run-Sneakie.png${Q}`,
+			kagamineRin: `${LOCAL}Kagamine-Rin.webp${Q}`,
+			fullscreenMikuXD: `${LOCAL}fullscreen-miku-XD-Sneakie.png${Q}`,
+			myVibe: `${LOCAL}My-vibe-Sneakie.png${Q}`,
+			syncLyricsBackground: `${LOCAL}fullscreen-lyrics-Sneakie.webp${Q}`,
+			divaQueueBackground: DEFAULT_ASSETS.divaQueueBackground,
+			perfectMark: DEFAULT_ASSETS.perfectMark,
+		},
+	},
 };
 
 let syncLyricsBackgroundDefault: string = DEFAULT_ASSETS.syncLyricsBackground;
