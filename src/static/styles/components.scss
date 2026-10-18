@@ -35,7 +35,7 @@
 		position: absolute;
 		inset: 0;
 		z-index: 0;
-		background-color: #26f4fe;
+		background-color: var(--basic-color);
 		background-image: var(--vm-cover-raw, none);
 		background-position: center;
 		background-size: cover;
