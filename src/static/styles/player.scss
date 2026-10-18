@@ -61,7 +61,10 @@ section[class*="PlayerBar_root"] {
 	}
 }
 
-.mikuRun {
+.mikuRun,
+[class*="PlayerBarDesktopWithBackgroundProgressBar_player__"]:not(
+		:has(> .mikuRun)
+	)::after {
 	text-align: center;
 	width: 20vw;
 	min-width: 89px;
@@ -72,6 +75,17 @@ section[class*="PlayerBar_root"] {
 	background-image: var(--miku-run-image);
 	background-position: center;
 	background-repeat: no-repeat;
+}
+
+[class*="PlayerBarDesktopWithBackgroundProgressBar_player__"]:not(
+		:has(> .mikuRun)
+	)::after {
+	content: "";
+}
+
+[class*="PlayerBarDesktopWithBackgroundProgressBar_player__"]
+	> [class*="PlayerBarDesktopWithBackgroundProgressBar_meta__"] {
+	order: 1;
 }
 
 [class*="PlayerBarDesktopWithBackgroundProgressBar_meta"] {

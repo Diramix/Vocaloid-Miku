@@ -1,4 +1,5 @@
 import { installMainPagePatch } from "./mainPagePatch";
+import { patchPlayerBarProps } from "./playerBarPatch";
 
 type Callable = (...args: any[]) => any;
 type Factory = Callable;
@@ -10,7 +11,6 @@ type RuntimeRequire = {
 type Chunk = [unknown, Record<string, Factory>?, Callable?];
 type ChunkQueue = Chunk[];
 
-const fragment = Symbol.for("react.fragment");
 const stateKey = Symbol.for("vocaloid-miku.chunk-patches.v1");
 const decorations = [
 	["PlayQueue_root__", ["Diva-Cover", "Diva-Perfect-Mark"]],
@@ -44,7 +44,7 @@ export function installChunkPatches(): void {
 		const existing = wrappedFunctions.get(original);
 		if (existing) return existing;
 		const replacement = function (this: unknown, ...args: any[]) {
-			const [type, props, key] = args;
+			const [type, props] = args;
 			const className = props?.className;
 			if (
 				typeof type !== "string" ||
@@ -56,10 +56,26 @@ export function installChunkPatches(): void {
 						"FullscreenPlayerDesktopContent_root__",
 					) &&
 					!className.includes(
-						"PlayerBarDesktopWithBackgroundProgressBar_sonata__",
+						"PlayerBarDesktopWithBackgroundProgressBar_player__",
 					))
 			) {
 				return Reflect.apply(original, this, args);
+			}
+			if (
+				className.includes(
+					"PlayerBarDesktopWithBackgroundProgressBar_player__",
+				)
+			) {
+				const nextProps = patchPlayerBarProps(
+					type,
+					props,
+					(...values) => Reflect.apply(original, this, values),
+				);
+				if (nextProps === props)
+					return Reflect.apply(original, this, args);
+				const nextArgs = [...args];
+				nextArgs[1] = nextProps;
+				return Reflect.apply(original, this, nextArgs);
 			}
 			const classes = className.split(/\s+/);
 			const hasPrefix = (prefix: string) =>
@@ -102,21 +118,7 @@ export function installChunkPatches(): void {
 					children: [...nextChildren, ...additions],
 				};
 			}
-			const element = Reflect.apply(original, this, callArgs);
-			if (
-				!hasPrefix("PlayerBarDesktopWithBackgroundProgressBar_sonata__")
-			)
-				return element;
-			const runner = Reflect.apply(original, this, [
-				"div",
-				{ className: "mikuRun", "aria-hidden": true },
-				"miku:mikuRun",
-			]);
-			return Reflect.apply(original, this, [
-				fragment,
-				{ children: [element, runner] },
-				element.key ?? key,
-			]);
+			return Reflect.apply(original, this, callArgs);
 		};
 		wrappedFunctions.set(original, replacement);
 		wrappedFunctions.set(replacement, replacement);
