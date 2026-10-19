@@ -139,8 +139,8 @@ const THEMES: Record<string, Theme> = {
 			fullscreenMikuXD: `${LOCAL}fullscreen-miku-XD-Sneakie.png${Q}`,
 			myVibe: `${LOCAL}My-vibe-Sneakie.png${Q}`,
 			syncLyricsBackground: `${LOCAL}fullscreen-lyrics-Sneakie.webp${Q}`,
-			divaQueueBackground: DEFAULT_ASSETS.divaQueueBackground,
-			perfectMark: DEFAULT_ASSETS.perfectMark,
+			divaQueueBackground: `${LOCAL}Diva-Queue-Background-Sneakie.jpg${Q}`,
+			perfectMark: `${LOCAL}Diva-F-Perfect-Mark-Sneakie.webp${Q}`,
 		},
 	},
 };
