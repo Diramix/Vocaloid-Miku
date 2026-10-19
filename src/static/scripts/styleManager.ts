@@ -135,7 +135,7 @@ const THEMES: Record<string, Theme> = {
 		},
 		assets: {
 			mikuRun: `${LOCAL}miku-run-Sneakie.png${Q}`,
-			kagamineRin: `${LOCAL}Kagamine-Rin.webp${Q}`,
+			kagamineRin: DEFAULT_ASSETS.kagamineRin,
 			fullscreenMikuXD: `${LOCAL}fullscreen-miku-XD-Sneakie.png${Q}`,
 			myVibe: `${LOCAL}My-vibe-Sneakie.png${Q}`,
 			syncLyricsBackground: `${LOCAL}fullscreen-lyrics-Sneakie.webp${Q}`,
