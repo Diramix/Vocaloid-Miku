@@ -126,8 +126,8 @@ const THEMES: Record<string, Theme> = {
 		accentColor: "#5d81e2",
 		palette: {
 			"--main-color": "#5d81e2",
-			"--light-main-color": "#6d97f9",
-			"--buttons-color": "#5d81e2",
+			"--light-main-color": "#80b0f9",
+			"--buttons-color": "#6d97f9",
 			"--basic-color": "#363a97",
 			"--hatsune-light": "#110626",
 			"--font-color": "#0f0124",
