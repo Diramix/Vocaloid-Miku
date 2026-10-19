@@ -2,7 +2,7 @@ import { update as updateSyncLyrics } from "./settings/syncLyrics";
 import { update as updateQueue } from "./settings/queue";
 import { update as updateFullscreen } from "./settings/fullscreen";
 import { update as updatePlayer } from "./settings/player";
-import metadata from "../../metadata.json";
+import { addonName } from "../../../package.json";
 
 export type AddonSettings = Record<
 	string,
@@ -27,7 +27,7 @@ let attempts = 0;
 
 function subscribe(): void {
 	const w = window as any;
-	const source = w.nextmusicApi?.getSettings?.(metadata.name);
+	const source = w.nextmusicApi?.getSettings?.(addonName);
 	if (!source?.onChange) {
 		if (++attempts > MAX_ATTEMPTS) {
 			console.warn("[Vocaloid Miku] addon settings API never appeared");
