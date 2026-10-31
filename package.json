@@ -5,7 +5,7 @@
 	"description": "Hatsune Miku: Project DIRA F",
 	"author": "diram1x",
 	"license": "CC0-1.0",
-	"packageManager": "pnpm@12.9.1",
+	"packageManager": "pnpm@12.16.1",
 	"scripts": {
 		"dev": "nmtools dev",
 		"build": "nmtools build",
@@ -23,8 +23,8 @@
 		}
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.5.15",
-		"@web-next-music/nmtools": "^5.0.0",
+		"@biomejs/biome": "^2.6.4",
+		"@web-next-music/nmtools": "^5.1.0",
 		"typescript": "^7.0.2"
 	}
 }

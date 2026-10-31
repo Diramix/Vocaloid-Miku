@@ -4,3 +4,4 @@ allowBuilds:
   esbuild: true
 minimumReleaseAgeExclude:
   - prettier@3.8.5
+  - "@web-next-music/nmtools@5.1.0"
