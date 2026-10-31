@@ -10,7 +10,8 @@ function ymTimerInteger() {
 	const TARGET_SELECTOR = ".ThemeTitleText";
 
 	const LABELS = new Map<string, string>([
-		["Всего", "Total"],
+		["Время", "Time"],
+		["Дней подряд", "Streak"],
 		["За год", "Year"],
 		["За месяц", "Month"],
 		["За неделю", "Week"],
@@ -20,12 +21,10 @@ function ymTimerInteger() {
 
 	function translateTimerText(text: string) {
 		return text
-			.replace(/([^:]+):/, (match, label: string) => {
-				const translated = LABELS.get(label.trim());
-				return translated
-					? `${match.slice(0, match.indexOf(label))}${translated}:`
-					: match;
-			})
+			.replace(
+				/Время|Дней подряд|За год|За месяц|За неделю|За день|Сессия/g,
+				(label) => LABELS.get(label) ?? label,
+			)
 			.replace(/(\d+)\s*ч/g, "$1h")
 			.replace(/(\d+)\s*м/g, "$1m")
 			.replace(/(\d+)\s*с/g, "$1s");

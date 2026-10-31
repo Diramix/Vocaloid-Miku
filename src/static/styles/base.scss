@@ -36,7 +36,7 @@
 	font-size: 16px;
 	font-weight: 1000;
 	left: 50%;
-	margin-left: -66px;
+	transform: translateX(-50%);
 	top: 10px;
 	color: var(--main-color);
 	z-index: 1;
