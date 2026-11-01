@@ -1,4 +1,4 @@
-import { installMainPagePatch } from "./mainPagePatch";
+import { installMainPagePatch, recordChunkFactories } from "./mainPagePatch";
 import { patchPlayerBarProps } from "./playerBarPatch";
 
 type Callable = (...args: any[]) => any;
@@ -174,6 +174,7 @@ export function installChunkPatches(): void {
 
 	function capture(require: RuntimeRequire): void {
 		if (runtimes.has(require)) return;
+		performance.mark("vocaloid-miku:vibe:runtime-ready");
 		runtimes.add(require);
 		if (require.m) patchFactories(require.m, require);
 		if (require.c)
@@ -188,8 +189,13 @@ export function installChunkPatches(): void {
 		for (const chunk of queue) if (chunk?.[1]) patchFactories(chunk[1]);
 		const intercept = (delegate: Callable): Callable =>
 			function (this: unknown, ...chunks: Chunk[]) {
-				for (const chunk of chunks)
-					if (chunk?.[1]) patchFactories(chunk[1]);
+				for (const chunk of chunks) {
+					if (!chunk?.[1]) continue;
+					const script = document.currentScript;
+					if (script instanceof HTMLScriptElement && script.src)
+						recordChunkFactories(chunk[1], script.src);
+					patchFactories(chunk[1]);
+				}
 				const result = Reflect.apply(delegate, this, chunks);
 				if (runtimeJsx)
 					for (const require of runtimes)

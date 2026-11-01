@@ -15,4 +15,16 @@ const applyTheme = () => {
 };
 
 applyTheme();
-onDomChange(applyTheme);
+onDomChange((records) => {
+	if (
+		!records ||
+		records.some(
+			(record) =>
+				record.type === "attributes" &&
+				record.target === document.body &&
+				record.attributeName === "class",
+		)
+	) {
+		applyTheme();
+	}
+});

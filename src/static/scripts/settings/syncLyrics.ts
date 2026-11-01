@@ -1,7 +1,7 @@
 import { getSettings } from "../settings";
 import { getOrCreateStyle } from "../utils";
 import { onCoverChange } from "../trackCover";
-import { syncLyricsBackgroundDefault } from "../styleManager";
+import { onThemeChange, syncLyricsBackgroundDefault } from "../styleManager";
 
 let baseBlur = 0;
 let coverUrl: string | null = null;
@@ -48,6 +48,8 @@ function update() {
 
 	lastKey = key;
 }
+
+onThemeChange(update);
 
 onCoverChange((url) => {
 	coverUrl = url;

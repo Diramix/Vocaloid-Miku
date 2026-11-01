@@ -147,6 +147,12 @@ const THEMES: Record<string, Theme> = {
 
 let syncLyricsBackgroundDefault: string = DEFAULT_ASSETS.syncLyricsBackground;
 let applyStyleTheme: string;
+const themeSubscribers = new Set<() => void>();
+
+function onThemeChange(subscriber: () => void): () => void {
+	themeSubscribers.add(subscriber);
+	return () => themeSubscribers.delete(subscriber);
+}
 
 let accentRetryTimer: ReturnType<typeof setTimeout> | undefined;
 
@@ -260,11 +266,18 @@ async function applyTheme() {
 	applyStyleTheme = style;
 
 	const theme = THEMES[style];
-	if (!theme) return;
-
-	themeTitleText.textContent = theme.title;
-	syncLyricsBackgroundDefault = theme.assets.syncLyricsBackground;
-	applyStyle(theme.palette, theme.assets, theme.accentColor);
+	if (theme) {
+		themeTitleText.textContent = theme.title;
+		syncLyricsBackgroundDefault = theme.assets.syncLyricsBackground;
+		applyStyle(theme.palette, theme.assets, theme.accentColor);
+	}
+	for (const subscriber of themeSubscribers) {
+		try {
+			subscriber();
+		} catch (err) {
+			console.error("[Vocaloid Miku] theme subscriber failed:", err);
+		}
+	}
 }
 
 function waitForThemeReady() {
@@ -285,4 +298,4 @@ if (document.readyState === "complete") {
 	window.addEventListener("load", waitForThemeReady);
 }
 
-export { syncLyricsBackgroundDefault, applyStyleTheme };
+export { syncLyricsBackgroundDefault, applyStyleTheme, onThemeChange };

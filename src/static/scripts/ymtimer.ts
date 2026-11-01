@@ -71,7 +71,23 @@ function ymTimerInteger() {
 	}
 
 	findTimer();
-	return onDomChange(findTimer);
+	return onDomChange((records) => {
+		if (
+			!records ||
+			(trackedTimer && !trackedTimer.isConnected) ||
+			records.some(
+				(record) =>
+					record.type === "childList" &&
+					Array.from(record.addedNodes).some(
+						(node) =>
+							node instanceof Element &&
+							(node.id === TIMER_ID ||
+								!!node.querySelector(`#${TIMER_ID}`)),
+					),
+			)
+		)
+			findTimer();
+	});
 }
 
 export { ymTimerInteger };
